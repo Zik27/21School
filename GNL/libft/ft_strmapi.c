@@ -1,25 +1,32 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   get_next_line.h                                    :+:      :+:    :+:   */
+/*   ft_strmapi.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: vurrigon <vurrigon@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2018/12/24 17:00:20 by vurrigon          #+#    #+#             */
-/*   Updated: 2018/12/24 17:37:55 by vurrigon         ###   ########.fr       */
+/*   Created: 2018/11/30 12:13:07 by vurrigon          #+#    #+#             */
+/*   Updated: 2018/12/07 14:24:36 by vurrigon         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef GET_NEXT_LINE_H
-# define GET_NEXT_LINE_H
-# define BUFF_SIZE 32
-# include "libft/includes/libft.h"
-# include <unistd.h>
-# include <fcntl.h>
-# include <sys/stat.h>
-# include <sys/types.h>
-# include <stdlib.h>
+#include "libft.h"
 
-int get_next_line(const int fd, char **line);
+char	*ft_strmapi(char const *s, char (*f)(unsigned int, char))
+{
+	char	*fresh;
+	int		index;
 
-#endif
+	index = 0;
+	if (!s)
+		return (NULL);
+	fresh = ft_strnew(ft_strlen(s));
+	if (!fresh)
+		return (NULL);
+	while (*(s + index))
+	{
+		*(fresh + index) = f(index, *(s + index));
+		index++;
+	}
+	return (fresh);
+}
