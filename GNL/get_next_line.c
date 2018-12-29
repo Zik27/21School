@@ -6,7 +6,7 @@
 /*   By: vurrigon <vurrigon@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/12/24 12:58:51 by vurrigon          #+#    #+#             */
-/*   Updated: 2018/12/24 17:40:18 by vurrigon         ###   ########.fr       */
+/*   Updated: 2018/12/25 18:48:26 by vurrigon         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -42,7 +42,7 @@ int			copy_line(char **line, char *content)
 
 int			read_fd(int fd, char **content)
 {
-	char	buf[BUFF_SIZE];
+	char	buf[BUFF_SIZE + 1];
 	int		result;
 	char	*temp;
 
@@ -53,7 +53,7 @@ int			read_fd(int fd, char **content)
 		if (!(*content = ft_strjoin(*content, buf)))
 			return (-1);
 		free(temp);
-		if (ft_strchr(buf, '\n') != NULL)
+		if (ft_strchr(buf, '\n'))
 			break ;
 	}
 	return (result);
@@ -79,13 +79,13 @@ t_list		*search_fd(t_list **head, int fd)
 
 int			get_next_line(const int fd, char **line)
 {
-	char			*buf[BUFF_SIZE + 1];
+	char			buf[BUFF_SIZE + 1];
 	static t_list	*head;
 	t_list			*lst;
 	char			*temp;
 	int				result_read;
 
-	if (fd < 0 || line == NULL || read(fd, buf, 0) < 0 ||
+	if (fd < 0 || line == NULL || (read(fd, buf, 0)) < 0 ||
 		!(lst = search_fd(&head, fd)))
 		return (-1);
 	temp = lst->content;

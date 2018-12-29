@@ -1,20 +1,31 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   get_next_line.h                                    :+:      :+:    :+:   */
+/*   check_valid.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: vurrigon <vurrigon@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2018/12/24 17:00:20 by vurrigon          #+#    #+#             */
-/*   Updated: 2018/12/25 16:56:55 by vurrigon         ###   ########.fr       */
+/*   Created: 2018/12/29 16:26:52 by vurrigon          #+#    #+#             */
+/*   Updated: 2018/12/29 17:42:24 by vurrigon         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef GET_NEXT_LINE_H
-# define GET_NEXT_LINE_H
-# define BUFF_SIZE 32
-# include "libft/includes/libft.h"
+#include "fillit.h"
+#include <stdio.h>
 
-int get_next_line(const int fd, char **line);
+int	check_valid(char *file)
+{
+	int	fd;
+	int	ret;
+	char buf[BUFF_SIZE + 1];
 
-#endif
+	if ((fd = open(file, O_RDONLY)) == -1 && (ret = read(fd, buf, 0) == -1))
+		return (0);
+	while ((ret = read(fd, buf, BUFF_SIZE)))
+	{
+		buf[ret] = '\0';
+		printf("%s", buf);
+	}
+
+	return (1);
+}

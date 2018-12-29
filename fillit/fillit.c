@@ -1,20 +1,28 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   get_next_line.h                                    :+:      :+:    :+:   */
+/*   fillit.c                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: vurrigon <vurrigon@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2018/12/24 17:00:20 by vurrigon          #+#    #+#             */
-/*   Updated: 2018/12/25 16:56:55 by vurrigon         ###   ########.fr       */
+/*   Created: 2018/12/29 16:05:03 by vurrigon          #+#    #+#             */
+/*   Updated: 2018/12/29 16:31:27 by vurrigon         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef GET_NEXT_LINE_H
-# define GET_NEXT_LINE_H
-# define BUFF_SIZE 32
-# include "libft/includes/libft.h"
+#include "fillit.h"
 
-int get_next_line(const int fd, char **line);
-
-#endif
+int		main(int argc, char **argv)
+{
+	if (argc != 2)
+	{
+		ft_putstr("usage: ./fillit Tetriminos_file\n");
+		return (0);
+	}
+	if (!check_valid(argv[1]))
+	{
+		ft_putstr("error\n");
+		return (0);
+	}
+	//fillit(argv[1]);
+}
