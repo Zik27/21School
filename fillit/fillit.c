@@ -6,23 +6,32 @@
 /*   By: vurrigon <vurrigon@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/12/29 16:05:03 by vurrigon          #+#    #+#             */
-/*   Updated: 2018/12/29 16:31:27 by vurrigon         ###   ########.fr       */
+/*   Updated: 2018/12/30 17:50:08 by vurrigon         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "fillit.h"
+#include <stdio.h>
+
+int		fillit(char *file, int count_blocks)
+{
+	
+}
 
 int		main(int argc, char **argv)
 {
+	int	count_blocks;
+
 	if (argc != 2)
 	{
 		ft_putstr("usage: ./fillit Tetriminos_file\n");
 		return (0);
 	}
-	if (!check_valid(argv[1]))
+	if (!(count_blocks = check_valid(argv[1])))
 	{
 		ft_putstr("error\n");
 		return (0);
 	}
-	//fillit(argv[1]);
+	printf("%d\n", count_blocks);
+	fillit(argv[1], count_blocks);
 }
