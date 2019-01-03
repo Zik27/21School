@@ -6,7 +6,7 @@
 /*   By: vurrigon <vurrigon@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/12/29 16:26:52 by vurrigon          #+#    #+#             */
-/*   Updated: 2018/12/30 17:33:48 by vurrigon         ###   ########.fr       */
+/*   Updated: 2019/01/03 20:27:05 by vurrigon         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -104,9 +104,17 @@ int	check_valid(char *file)
 		buf[ret] = '\0';
 		if (!check_symbols(buf) || !check_size(buf) || !check_neigh(buf))
 			return (0);
+		if(!prepare_data(buf))
+		{
+			//OCHISTKA
+			return (0);
+		}
 		count++;
 	}
+	if (close(fd) == -1)
+		return (0);
 	if (count > 26 || count < 1)
 		return (0);
+	
 	return (count);
 }
