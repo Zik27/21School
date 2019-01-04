@@ -6,7 +6,7 @@
 /*   By: vurrigon <vurrigon@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/12/29 16:10:01 by vurrigon          #+#    #+#             */
-/*   Updated: 2019/01/03 21:03:09 by vurrigon         ###   ########.fr       */
+/*   Updated: 2019/01/04 18:35:29 by vurrigon         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,11 +21,14 @@
 typedef struct	tetriminos_figure
 {
 	struct tetriminos_figure	*next;
-	int							data[3];
+	int							*data;
 }				tetriminos_fig;
 
-int		check_valid(char *file);
-int		prepare_data(char *square);
-void	lst_push_back(tetriminos_fig **begin_list, int *data);
+int		check_valid(char *file, tetriminos_fig **head);
+int		prepare_data(char *square, tetriminos_fig **head);
+int		lst_push_back(tetriminos_fig **begin_list, int *data);
+void	free_lst(tetriminos_fig **head);
+char	**build_map(int side);
+void	free_map(char **map, int count);
 
 #endif 

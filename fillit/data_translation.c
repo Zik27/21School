@@ -6,7 +6,7 @@
 /*   By: vurrigon <vurrigon@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/01/03 15:19:42 by vurrigon          #+#    #+#             */
-/*   Updated: 2019/01/03 21:08:22 by vurrigon         ###   ########.fr       */
+/*   Updated: 2019/01/04 17:32:28 by vurrigon         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -42,14 +42,13 @@ int		*num_translation(char *square, int *figure, int i)
 	return (figure - 3);
 }
 
-int		prepare_data(char *square)
+int		prepare_data(char *square, tetriminos_fig **head)
 {
 	int	i;
 	int j;
 	int	*figure_numb;
 	int	*tmp;
-	static tetriminos_fig *head = NULL;
-
+	
 	i = 0;
 	j = 0;
 	figure_numb = (int *)malloc(sizeof(int) * 3 + 1);
@@ -62,22 +61,8 @@ int		prepare_data(char *square)
 			figure_numb = num_translation(square, figure_numb, --i);
 			break ;
 		}
+	if (!lst_push_back(head, figure_numb))
+		return (0);
 	free(tmp);
-	j = 0;
-	while (j < 3)
-		printf("fig = %d\n", figure_numb[j++]);
-	lst_push_back(&head, figure_numb);
-
-	tetriminos_fig	*current;
-	current = head;
-	while (current)
-	{
-		printf("%d\n", current->data[0]);
-		printf("%d\n", current->data[1]);
-		printf("%d\n", current->data[2]);
-		printf("\n");
-
-		current = current->next;
-	}
 	return (1);
 }
