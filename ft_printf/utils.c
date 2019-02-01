@@ -3,18 +3,18 @@
 /*                                                        :::      ::::::::   */
 /*   utils.c                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: djast <djast@student.42.fr>                +#+  +:+       +#+        */
+/*   By: vurrigon <vurrigon@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/01/23 18:32:00 by djast             #+#    #+#             */
-/*   Updated: 2019/01/24 16:29:56 by djast            ###   ########.fr       */
+/*   Updated: 2019/02/01 14:49:22 by vurrigon         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_printf.h"
 
-static intmax_t	ft_num_size(intmax_t n)
+unsigned int		ft_num_size(uintmax_t n)
 {
-	intmax_t	count;
+	unsigned int	count;
 
 	count = 0;
 	while ((n = n / 10) != 0)
@@ -33,80 +33,57 @@ static intmax_t	ft_recursive_power(intmax_t nb, intmax_t power)
 	return (nb * ft_recursive_power(nb, power - 1));
 }
 
-void		ft_putllnbr(intmax_t n)
+void		ft_putllnbr(uintmax_t n)
 {
-	intmax_t	size;
-	intmax_t	mno;
+	unsigned int	size;
+	uintmax_t	mno;
 
 	size = ft_num_size(n) - 1;
 	mno = ft_recursive_power(10, size);
-	n < 0 ? ft_putchar('-') : NULL;
 	while (mno != 0)
 	{
-		ft_putchar(n > 0 ? n / mno + 48 : -(n / mno) + 48);
+		ft_putchar(n / mno + 48);
 		n %= mno;
 		mno /= 10;
 	}
 }
 
-static uintmax_t	ft_num_size_u(uintmax_t n)
+static long long    ft_pow(long long nb, int pow)
 {
-	intmax_t	count;
+    long long result;
 
-	count = 0;
-	while ((n = n / 10) != 0)
-		count++;
-	return (count + 1);
-}
-
-void		ft_putllunbr(uintmax_t n)
-{
-	intmax_t	size;
-	uintmax_t	mno;
-
-	size = ft_num_size_u(n) - 1;
-	mno = ft_recursive_power(10, size);
-	while (mno != 0)
+	result = 1;
+	if (pow == 0)
+		return (1);
+	else if (pow < 0)
+		return (0);
+	else
 	{
-		ft_putchar(n > 0 ? n / mno + 48 : -(n / mno) + 48);
-		n %= mno;
-		mno /= 10;
+		while (pow > 0)
+		{
+			result *= nb;
+			pow--;
+		}
+		return (result);
 	}
 }
 
-static long long    ft_pow(int nb, int pow)
-{
-    if (pow == 0)
-        return (1);
-    else
-        return (nb * ft_pow(nb, pow - 1));
-}
-
-char    *ft_translation(long long value, int base)
+char    *ft_translation(uintmax_t value, int base)
 {
     int        i;
     char    *nbr;
-    int        neg;
 
     i = 1;
-    neg = 0;
-    if (value < 0)
-    {
-        if (base == 10)
-            neg = 1;
-        value *= -1;
-    }
-    while (ft_pow(base, i) - 1 < value)
+    while ((uintmax_t)ft_pow(base, i) - 1 < value)
         i++;
-    nbr = (char*)malloc(sizeof(nbr) * i);
-    nbr[i + neg] = '\0';
+    if (!(nbr = (char *)malloc(sizeof(nbr) * i)))
+    	return (0);
+    nbr[i] = '\0';
     while (i-- > 0)
     {
-        nbr[i + neg] = (value % base) + (value % base > 9 ? 'a' - 10 : '0');
+        nbr[i] = (value % base) + (value % base > 9 ? 'a' - 10 : '0');
         value = value / base;
     }
-    if (neg)
-        nbr[0] = '-';
     return (nbr);
 }
 

@@ -3,14 +3,15 @@
 #                                                         :::      ::::::::    #
 #    Makefile                                           :+:      :+:    :+:    #
 #                                                     +:+ +:+         +:+      #
-#    By: djast <djast@student.42.fr>                +#+  +:+       +#+         #
+#    By: vurrigon <vurrigon@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2019/01/05 16:29:34 by djast             #+#    #+#              #
-#    Updated: 2019/01/24 15:26:35 by djast            ###   ########.fr        #
+#    Updated: 2019/01/31 19:27:04 by vurrigon         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
 NAME = libftprintf.a
+NAME_LIBFT = ./libft/libft.a
 LIBS = 
 CC = gcc
 CFLAGS = -Wall -Wextra -Werror
@@ -33,5 +34,6 @@ clean:
 
 fclean: clean
 	@/bin/rm -rf $(NAME)
+	@/bin/rm -rf $(NAME_LIBFT)
 
 re: fclean all

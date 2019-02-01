@@ -3,18 +3,32 @@
 /*                                                        :::      ::::::::   */
 /*   ft_printf.h                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: djast <djast@student.42.fr>                +#+  +:+       +#+        */
+/*   By: vurrigon <vurrigon@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/01/23 18:32:21 by djast             #+#    #+#             */
-/*   Updated: 2019/01/24 18:04:49 by djast            ###   ########.fr       */
+/*   Updated: 2019/02/01 14:27:18 by vurrigon         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include <unistd.h>
-#include <stdarg.h>
-#include <stdint.h>
-#include <stdio.h>
-#include "Libft/libft.h"
+#ifndef FT_PRINTF_H
+# define FT_PRINTF_H
+
+# include <unistd.h>
+# include <stdarg.h>
+# include <stdint.h>
+# include <stdio.h>
+# include "Libft/libft.h"
+
+# define RESET		"\033[0m"
+# define BOLD		"\033[1m"
+# define BLACK		"\033[30;1m"
+# define RED		"\033[31;1m"
+# define GREEN		"\033[32;1m"
+# define YELLOW		"\033[33;1m"
+# define BLUE		"\033[34;1m"
+# define MAGENTA	"\033[35;1m"
+# define CYAN		"\033[36;1m"
+# define WHITE		"\033[37;1m"
 
 /*
 ** Структура, описывающие поведение спецификатора.
@@ -32,6 +46,8 @@
 ** precision - {Точность} - максимальное число символов, которые будут выведены для типа s;
 **-------------------------------------------------------------------------------------------------------------------
 ** lenght - {Размер} "l, ll, h, hh, L" - long, long long, short, char, long для float
+**-------------------------------------------------------------------------------------------------------------------
+** sign - знак, если это число (0 - положительное, 1 - отрицательное).
 */
 
 typedef struct	s_qual
@@ -44,9 +60,30 @@ typedef struct	s_qual
 	int width;
 	int precision;
 	char *lenght;
+	int sign : 2;
+	int unsint : 2;
 }				t_qual;
 
-void			ft_putllnbr(intmax_t n);
-void			ft_putllunbr(uintmax_t n);
-char		    *ft_translation(long long value, int base);
+void			ft_putllnbr(uintmax_t n);
+char		    *ft_translation(uintmax_t value, int base);
 void			ft_upper_str(char *str);
+unsigned int	ft_num_size(uintmax_t n);
+char			*ft_check_lenght(char *str, t_qual **qual);
+char			*ft_check_flags(char *str, t_qual **qual);
+char			*ft_check_width(char *str, t_qual **qual, va_list *args);
+char			*ft_check_precision(char *str, t_qual **qual, va_list *args);
+int				ft_d(intmax_t nbr, t_qual *qual);
+int				ft_f(long double d, t_qual *qual);
+int				ft_x(intmax_t numb, int flag, t_qual *qual);
+int				ft_o(intmax_t numb, t_qual *qual);
+int				ft_p(long long addr, t_qual *qual);
+int				ft_s(char *str, t_qual *qual);
+int				ft_c(char str, t_qual *qual);
+int				ft_u(uintmax_t d, t_qual *qual);
+int				ft_percent(char percent, t_qual *qual);
+void			ft_print_width(t_qual *qual, int size_nbr);
+void			ft_print_presicion(t_qual *qual, int size_nbr);
+intmax_t		ft_max(int count, ...);
+intmax_t		ft_size_by_lenght(intmax_t nbr, t_qual *qual);
+int				ft_b(intmax_t numb, t_qual *qual);
+#endif
