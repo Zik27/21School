@@ -6,7 +6,7 @@
 /*   By: vurrigon <vurrigon@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/01/23 18:32:00 by djast             #+#    #+#             */
-/*   Updated: 2019/02/01 14:49:22 by vurrigon         ###   ########.fr       */
+/*   Updated: 2019/02/04 15:09:33 by vurrigon         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,7 +22,7 @@ unsigned int		ft_num_size(uintmax_t n)
 	return (count + 1);
 }
 
-static intmax_t	ft_recursive_power(intmax_t nb, intmax_t power)
+static intmax_t		ft_recursive_power(intmax_t nb, intmax_t power)
 {
 	if (power < 0)
 		return (0);
@@ -33,10 +33,10 @@ static intmax_t	ft_recursive_power(intmax_t nb, intmax_t power)
 	return (nb * ft_recursive_power(nb, power - 1));
 }
 
-void		ft_putllnbr(uintmax_t n)
+void				ft_putllnbr(uintmax_t n)
 {
 	unsigned int	size;
-	uintmax_t	mno;
+	uintmax_t		mno;
 
 	size = ft_num_size(n) - 1;
 	mno = ft_recursive_power(10, size);
@@ -48,9 +48,9 @@ void		ft_putllnbr(uintmax_t n)
 	}
 }
 
-static long long    ft_pow(long long nb, int pow)
+static long long	ft_pow(long long nb, int pow)
 {
-    long long result;
+	long long result;
 
 	result = 1;
 	if (pow == 0)
@@ -68,31 +68,21 @@ static long long    ft_pow(long long nb, int pow)
 	}
 }
 
-char    *ft_translation(uintmax_t value, int base)
+char				*ft_translation(uintmax_t value, int base)
 {
-    int        i;
-    char    *nbr;
+	int			i;
+	char		*nbr;
 
-    i = 1;
-    while ((uintmax_t)ft_pow(base, i) - 1 < value)
-        i++;
-    if (!(nbr = (char *)malloc(sizeof(nbr) * i)))
-    	return (0);
-    nbr[i] = '\0';
-    while (i-- > 0)
-    {
-        nbr[i] = (value % base) + (value % base > 9 ? 'a' - 10 : '0');
-        value = value / base;
-    }
-    return (nbr);
-}
-
-void	ft_upper_str(char *str)
-{
-	while (*str)
+	i = 1;
+	while ((uintmax_t)ft_pow(base, i) - 1 < value)
+		i++;
+	if (!(nbr = (char *)malloc(sizeof(nbr) * i)))
+		return (0);
+	nbr[i] = '\0';
+	while (i-- > 0)
 	{
-		if (*str >= 97 && *str <= 122)
-			*str = *str - 32;
-		str++;
+		nbr[i] = (value % base) + (value % base > 9 ? 'a' - 10 : '0');
+		value = value / base;
 	}
+	return (nbr);
 }

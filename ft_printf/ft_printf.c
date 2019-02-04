@@ -6,13 +6,13 @@
 /*   By: vurrigon <vurrigon@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/01/23 14:31:01 by djast             #+#    #+#             */
-/*   Updated: 2019/02/01 18:14:41 by vurrigon         ###   ########.fr       */
+/*   Updated: 2019/02/04 19:05:50 by vurrigon         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_printf.h"
-#include <wchar.h>
-void ft_init_qual(t_qual **qual)
+
+void		ft_init_qual(t_qual **qual)
 {
 	(*qual)->minus = 0;
 	(*qual)->plus = 0;
@@ -26,11 +26,11 @@ void ft_init_qual(t_qual **qual)
 	(*qual)->unsint = 0;
 }
 
-char *ft_check_percent(char *str, va_list *args, int *printed)
+char		*ft_check_percent(char *str, va_list *args, int *printed)
 {
 	t_qual *qual;
 
-	qual = (t_qual *) malloc (sizeof(t_qual));
+	qual = (t_qual *)malloc(sizeof(t_qual));
 	ft_init_qual(&qual);
 	str = ft_check_flags(str, &qual);
 	str = ft_check_width(str, &qual, args);
@@ -38,10 +38,8 @@ char *ft_check_percent(char *str, va_list *args, int *printed)
 	str = ft_check_lenght(str, &qual);
 	if (*(str + 1) == 'c')
 		*printed += ft_c(va_arg(*args, intmax_t), qual);
-
 	else if (*(str + 1) == 'C')
 		*printed += ft_c(va_arg(*args, wint_t), qual);
-
 	else if (*(str + 1) == 'O')
 	{
 		qual->lenght = *(str + 1) == 'O' ? "l" : qual->lenght;
@@ -52,7 +50,6 @@ char *ft_check_percent(char *str, va_list *args, int *printed)
 		qual->lenght = *(str + 1) == 'D' ? "l" : qual->lenght;
 		*printed += ft_d(va_arg(*args, intmax_t), qual);
 	}
-
 	else if (*(str + 1) == 's')
 		*printed += ft_s(va_arg(*args, char *), qual);
 	else if (*(str + 1) == 'd' || *(str + 1) == 'i')
@@ -63,42 +60,48 @@ char *ft_check_percent(char *str, va_list *args, int *printed)
 		*printed += ft_u(va_arg(*args, uintmax_t), qual);
 	}
 	else if (*(str + 1) == 'p')
-        *printed += ft_p(va_arg(*args, intmax_t), qual);
-    else if (*(str + 1) == 'f' && (ft_strcmp(qual->lenght, "") == 0 || ft_strcmp(qual->lenght, "l") == 0))
-        *printed += ft_f(va_arg(*args, 	double), qual);
-    else if (*(str + 1) == 'f' && ft_strcmp(qual->lenght, "L") == 0)
-        *printed += ft_f(va_arg(*args, 	long double), qual);
-    else if (*(str + 1) == '%')
-    	*printed += ft_percent('%', qual);
-    else if (*(str + 1) == 'o')
-    	*printed += ft_o(va_arg(*args, intmax_t), qual);
-    else if (*(str + 1) == 'x')
-    	*printed += ft_x(va_arg(*args, intmax_t), 0, qual);
-    else if (*(str + 1) == 'X')
-    	*printed += ft_x(va_arg(*args, intmax_t), 1, qual);
-    else if (*(str + 1) == 'b')
-    	*printed += ft_b(va_arg(*args, intmax_t), qual);
+		*printed += ft_p(va_arg(*args, intmax_t), qual);
+	else if (*(str + 1) == 'f' && (ft_strcmp(qual->lenght, "") == 0 ||
+	ft_strcmp(qual->lenght, "l") == 0))
+		*printed += ft_f(va_arg(*args, double), qual);
+	else if (*(str + 1) == 'f' && ft_strcmp(qual->lenght, "L") == 0)
+		*printed += ft_f(va_arg(*args, long double), qual);
+	else if (*(str + 1) == '%')
+		*printed += ft_percent('%', qual);
+	else if (*(str + 1) == 'o')
+		*printed += ft_o(va_arg(*args, intmax_t), qual);
+	else if (*(str + 1) == 'x')
+		*printed += ft_x(va_arg(*args, intmax_t), 0, qual);
+	else if (*(str + 1) == 'X')
+		*printed += ft_x(va_arg(*args, intmax_t), 1, qual);
+	else if (*(str + 1) == 'b')
+		*printed += ft_b(va_arg(*args, intmax_t), qual);
 	else
 	{
+		if (qual->width > 0 && qual->precision == -1 && !qual->zero)
+		{
+			*printed += qual->width - 1;
+			while (qual->width-- > 1)
+				write(1, " ", 1);
+		}
 		free(qual);
 		return (str);
 	}
-	   // printf("\nQUAL:\nMinus: %d\nPlus: %d\nSpace: %d\nHash: %d\nZero: %d\nWidth: %d\nPrecision: %d\nLenght: %s\nSign: %d\nUint: %d\n",
-	   // 	qual->minus, qual->plus, qual->space, qual->hash, qual->zero, qual->width, qual->precision, qual->lenght, qual->sign, qual->unsint);
+	  //printf("\nQUAL:\nMinus: %d\nPlus: %d\nSpace: %d\nHash: %d\nZero: %d\nWidth: %d\nPrecision: %d\nLenght: %s\nSign: %d\nUint: %d\n",
+      //    qual->minus, qual->plus, qual->space, qual->hash, qual->zero, qual->width, qual->precision, qual->lenght, qual->sign, qual->unsint);
 	free(qual);
 	return (str + 1);
 }
 
-int ft_parse_str(char *format, va_list *argptr, int *printed)
+int			ft_parse_str(char *format, va_list *argptr, int *printed)
 {
 	char *percent;
-	
+
 	percent = ft_strchr(format, '%');
 	if (percent == NULL)
 	{
 		ft_putstr(format);
-		//printf("%d\n", *printed);
-		return (ft_strlen(format) + (*printed));	
+		return (ft_strlen(format) + (*printed));
 	}
 	else
 	{
@@ -109,15 +112,15 @@ int ft_parse_str(char *format, va_list *argptr, int *printed)
 			format++;
 		}
 		format = ft_check_percent(format, argptr, printed);
-		return(ft_parse_str(format + 1, argptr, printed));
+		return (ft_parse_str(format + 1, argptr, printed));
 	}
 	return (0);
 }
 
-int ft_printf(const char *format, ...)
+int			ft_printf(const char *format, ...)
 {
-	va_list argptr;
-	int printed;
+	va_list	argptr;
+	int		printed;
 
 	printed = 0;
 	va_start(argptr, format);
@@ -128,9 +131,10 @@ int ft_printf(const char *format, ...)
 
 // int main()
 // {
-//   //ft_printf("%x\n", 1000);
-//   printf("%-5+d\n", -42);
-//   ft_printf("%-5+d\n", -42);
+// 	int a, b;
 
-//   return (0);
+// 	a = printf("%o\n", 0);
+// 	b = ft_printf("%o\n", 0);
+
+// 	printf("result = %d %d\n", a, b);
 // }

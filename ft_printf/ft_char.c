@@ -6,7 +6,7 @@
 /*   By: vurrigon <vurrigon@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/01/30 13:01:33 by djast             #+#    #+#             */
-/*   Updated: 2019/02/01 18:28:38 by vurrigon         ###   ########.fr       */
+/*   Updated: 2019/02/04 17:52:10 by vurrigon         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,6 +16,7 @@ int	ft_c(char str, t_qual *qual)
 {
 	int	real_width;
 
+	printf("str = %c\n", str);
 	real_width = qual->width;
 	if (qual->minus)
 	{

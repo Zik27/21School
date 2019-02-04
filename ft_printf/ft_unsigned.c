@@ -6,13 +6,13 @@
 /*   By: vurrigon <vurrigon@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/01/30 13:02:41 by djast             #+#    #+#             */
-/*   Updated: 2019/02/01 14:07:20 by vurrigon         ###   ########.fr       */
+/*   Updated: 2019/02/04 15:06:15 by vurrigon         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_printf.h"
 
-static uintmax_t ft_size_by_lenght_u(uintmax_t nbr, t_qual *qual)
+static uintmax_t	ft_size_by_lenght_u(uintmax_t nbr, t_qual *qual)
 {
 	if (ft_strcmp(qual->lenght, "ll") == 0)
 		nbr = (unsigned long long)nbr;
@@ -31,14 +31,15 @@ static uintmax_t ft_size_by_lenght_u(uintmax_t nbr, t_qual *qual)
 	return (nbr);
 }
 
-int ft_u(uintmax_t nbr, t_qual *qual)
+int					ft_u(uintmax_t nbr, t_qual *qual)
 {
 	int size_nbr;
+
 	nbr = ft_size_by_lenght_u(nbr, qual);
 	qual->unsint = 1;
 	qual->sign = 0;
 	size_nbr = ft_num_size(nbr);
-	if(qual->minus == 0)
+	if (qual->minus == 0)
 	{
 		ft_print_width(qual, size_nbr);
 		ft_print_presicion(qual, size_nbr);
@@ -54,5 +55,6 @@ int ft_u(uintmax_t nbr, t_qual *qual)
 			ft_putllnbr(nbr);
 		ft_print_width(qual, size_nbr);
 	}
-	return (qual->precision == 0 && nbr == 0 ? 0 : ft_max(3, qual->width, qual->precision, size_nbr));
+	return (qual->precision == 0 && nbr == 0 ? 0 :
+	ft_max(3, qual->width, qual->precision, size_nbr));
 }

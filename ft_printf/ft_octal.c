@@ -6,7 +6,7 @@
 /*   By: vurrigon <vurrigon@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/01/30 13:03:39 by djast             #+#    #+#             */
-/*   Updated: 2019/02/01 15:56:20 by vurrigon         ###   ########.fr       */
+/*   Updated: 2019/02/04 19:02:44 by vurrigon         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -41,16 +41,9 @@ static void		octal_check_width(t_qual *qual, int size)
 	}
 }
 
-int ft_o(intmax_t numb, t_qual *qual)
+static	char	*check_modifier(intmax_t numb, t_qual *qual)
 {
-	char *result_str;
-	int		size;
-	int		tmp;
-	int lenght;
-
-	tmp = qual->precision;
-
-	numb = ft_size_by_lenght(numb, qual);
+	char	*result_str;
 
 	if (ft_strcmp(qual->lenght, "l") == 0)
 		result_str = ft_translation((unsigned long int)numb, 8);
@@ -66,34 +59,51 @@ int ft_o(intmax_t numb, t_qual *qual)
 		result_str = ft_translation((size_t)numb, 8);
 	else
 		result_str = ft_translation((unsigned int)numb, 8);
+	return (result_str);
+}
 
+static	int		check_zwp_begin(char **res_str, t_qual *qual)
+{
+	int		size;
+	int		precision;
 
-
-
-	if (qual->hash && ft_strcmp(result_str, "0") != 0)
-		result_str = ft_strjoin("0", result_str);
-	size = ft_strcmp(result_str, "0") == 0 ? 0 : (int)ft_strlen(result_str);
-
+	precision = qual->precision;
+	if (qual->hash && ft_strcmp(*res_str, "0") != 0)
+		*res_str = ft_strjoin("0", *res_str);
+	size = ft_strcmp(*res_str, "0") == 0 ? 0 : (int)ft_strlen(*res_str);
 	if (!qual->minus)
 		octal_check_width(qual, size);
-	if (tmp > size)
-		while (tmp-- - size > 0)
+	if (precision > size)
+		while (precision-- - size > 0)
 			write(1, "0", 1);
-	if (ft_strcmp(result_str, "0") == 0 && qual->precision == 0 && !qual->hash)
+	return (size);
+}
+
+int				ft_o(intmax_t numb, t_qual *qual)
+{
+	char	*res_str;
+	int		size;
+	int		lenght;
+
+	res_str = check_modifier(numb, qual);
+	size = check_zwp_begin(&res_str, qual);
+	if (ft_strcmp(res_str, "0") == 0 && qual->precision == 0 && !qual->hash)
 	{
-		free(result_str);
+		free(res_str);
 		return (qual->width == -1 ? 0 : qual->width);
 	}
-	else if (ft_strcmp(result_str, "0") == 0 && qual->precision == 0 && qual->hash)
+	else if (ft_strcmp(res_str, "0") == 0 && qual->precision == 0 && qual->hash)
 	{
 		write(1, "0", 1);
-		free(result_str);
+		free(res_str);
 		return (qual->width == -1 ? 1 : qual->width);
 	}
-	ft_putstr(result_str);
-	lenght = ft_strlen(result_str);
+	if ((ft_strcmp(res_str, "0") == 0 && qual->precision == -1 && qual->width == -1 && !qual->zero) || ft_strcmp(res_str, "0") != 0)
+		ft_putstr(res_str);
+	lenght = ft_strlen(res_str);
 	if (qual->minus == 1)
 		octal_check_width(qual, size);
-	free(result_str);
-	return (lenght == 0 && qual->width == -1 && qual->precision != -1 ? 0 : ft_max(3, qual->width, qual->precision, lenght));
+	free(res_str);
+	return (lenght == 0 && qual->width == -1 && qual->precision != -1 ? 0 :
+	ft_max(3, qual->width, qual->precision, lenght));
 }
