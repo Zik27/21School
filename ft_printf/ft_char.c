@@ -16,7 +16,6 @@ int	ft_c(char str, t_qual *qual)
 {
 	int	real_width;
 
-	printf("str = %c\n", str);
 	real_width = qual->width;
 	if (qual->minus)
 	{

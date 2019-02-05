@@ -133,8 +133,11 @@ int			ft_printf(const char *format, ...)
 // {
 // 	int a, b;
 
-// 	a = printf("%o\n", 0);
-// 	b = ft_printf("%o\n", 0);
+// 	a = printf("42%-#24.5llx42\n", -690742080);
+// 	b = ft_printf("42%-#24.5llx42\n", -690742080);
+
+// 	// a = printf("%#X\n", 42);
+// 	// b = ft_printf("%#X\n", 42);
 
 // 	printf("result = %d %d\n", a, b);
 // }

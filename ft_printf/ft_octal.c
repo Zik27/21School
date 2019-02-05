@@ -71,6 +71,8 @@ static	int		check_zwp_begin(char **res_str, t_qual *qual)
 	if (qual->hash && ft_strcmp(*res_str, "0") != 0)
 		*res_str = ft_strjoin("0", *res_str);
 	size = ft_strcmp(*res_str, "0") == 0 ? 0 : (int)ft_strlen(*res_str);
+	if (qual->width > 0 && ft_strcmp(*res_str, "0") == 0 && qual->precision == -1)
+		size++;
 	if (!qual->minus)
 		octal_check_width(qual, size);
 	if (precision > size)
@@ -98,7 +100,7 @@ int				ft_o(intmax_t numb, t_qual *qual)
 		free(res_str);
 		return (qual->width == -1 ? 1 : qual->width);
 	}
-	if ((ft_strcmp(res_str, "0") == 0 && qual->precision == -1 && qual->width == -1 && !qual->zero) || ft_strcmp(res_str, "0") != 0)
+	if ((ft_strcmp(res_str, "0") == 0 && qual->precision == -1) || ft_strcmp(res_str, "0") != 0)
 		ft_putstr(res_str);
 	lenght = ft_strlen(res_str);
 	if (qual->minus == 1)
