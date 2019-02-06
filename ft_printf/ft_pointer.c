@@ -6,7 +6,7 @@
 /*   By: vurrigon <vurrigon@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/01/30 13:00:51 by djast             #+#    #+#             */
-/*   Updated: 2019/02/01 18:46:04 by vurrigon         ###   ########.fr       */
+/*   Updated: 2019/02/06 14:44:09 by vurrigon         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,9 +22,13 @@ static void		processing_minus(char *str, int width)
 
 static int		processing(char *result, int width, int precision, t_qual *qual)
 {
-	while (width-- > ((int)ft_strlen(result) + 2))
-		write(1, " ", 1);
+	if (!qual->zero)
+		while (width-- > ((int)ft_strlen(result) + 2))
+			write(1, " ", 1);
 	write(1, "0x", 2);
+	if (ft_strcmp(result, "0") == 0 && qual->zero)
+		while (width-- > ((int)ft_strlen(result) + 2))
+			write(1, "0", 1);
 	if (ft_strcmp(result, "0") != 0)
 	{
 		if (precision > 0)
@@ -60,7 +64,7 @@ int				ft_p(long long addr, t_qual *qual)
 	width = qual->width;
 	count = 0;
 	result = ft_translation(addr, 16);
-	if (qual->minus > 0)
+	if (qual->minus)
 		processing_minus(result, width);
 	else
 		count = processing(result, width, precision, qual);

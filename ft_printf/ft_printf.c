@@ -6,7 +6,7 @@
 /*   By: vurrigon <vurrigon@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/01/23 14:31:01 by djast             #+#    #+#             */
-/*   Updated: 2019/02/04 19:05:50 by vurrigon         ###   ########.fr       */
+/*   Updated: 2019/02/06 19:59:58 by vurrigon         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,10 +36,10 @@ char		*ft_check_percent(char *str, va_list *args, int *printed)
 	str = ft_check_width(str, &qual, args);
 	str = ft_check_precision(str, &qual, args);
 	str = ft_check_lenght(str, &qual);
-	if (*(str + 1) == 'c')
-		*printed += ft_c(va_arg(*args, intmax_t), qual);
-	else if (*(str + 1) == 'C')
-		*printed += ft_c(va_arg(*args, wint_t), qual);
+	if (*(str + 1) == 'c' && ft_strcmp(qual->lenght, "l") != 0)
+		*printed += ft_c(va_arg(*args, intmax_t), qual);	
+	else if (*(str + 1) == 'C' || (*(str + 1) == 'c' && ft_strcmp(qual->lenght, "l") == 0))
+		*printed += ft_wc(va_arg(*args, wint_t), qual);
 	else if (*(str + 1) == 'O')
 	{
 		qual->lenght = *(str + 1) == 'O' ? "l" : qual->lenght;
@@ -50,8 +50,10 @@ char		*ft_check_percent(char *str, va_list *args, int *printed)
 		qual->lenght = *(str + 1) == 'D' ? "l" : qual->lenght;
 		*printed += ft_d(va_arg(*args, intmax_t), qual);
 	}
-	else if (*(str + 1) == 's')
+	else if (*(str + 1) == 's' && ft_strcmp(qual->lenght, "l") != 0)
 		*printed += ft_s(va_arg(*args, char *), qual);
+	else if (*(str + 1) == 'S' || (*(str + 1) == 's' && ft_strcmp(qual->lenght, "l") == 0))
+		*printed += ft_ws(va_arg(*args, wchar_t *), qual);
 	else if (*(str + 1) == 'd' || *(str + 1) == 'i')
 		*printed += ft_d(va_arg(*args, intmax_t), qual);
 	else if (*(str + 1) == 'u' || *(str + 1) == 'U')
@@ -129,15 +131,15 @@ int			ft_printf(const char *format, ...)
 	return (printed);
 }
 
-// int main()
-// {
-// 	int a, b;
+int main()
+{
+	int a, b;
 
-// 	a = printf("42%-#24.5llx42\n", -690742080);
-// 	b = ft_printf("42%-#24.5llx42\n", -690742080);
+	a = printf("42%-30.2x42\n", 0);
+	b = ft_printf("42%-30.2x42\n", 0);
 
-// 	// a = printf("%#X\n", 42);
-// 	// b = ft_printf("%#X\n", 42);
+	// a = printf("%#X\n", 42);
+	// b = ft_printf("%#X\n", 42);
 
-// 	printf("result = %d %d\n", a, b);
-// }
+	printf("result = %d %d\n", a, b);
+}

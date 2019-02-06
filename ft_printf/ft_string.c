@@ -6,7 +6,7 @@
 /*   By: vurrigon <vurrigon@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/01/30 13:02:10 by djast             #+#    #+#             */
-/*   Updated: 2019/02/04 17:07:24 by vurrigon         ###   ########.fr       */
+/*   Updated: 2019/02/06 14:29:27 by vurrigon         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -52,5 +52,5 @@ int				ft_s(char *str, t_qual *qual)
 		return (qual->width);
 	return (ft_strlen(str) == 0 && qual->width == -1 &&
 	qual->precision != -1 ? 0 :
-	ft_max(3, qual->width, qual->precision, ft_strlen(str)));
+	ft_max(2, qual->width, ft_strlen(str)));
 }

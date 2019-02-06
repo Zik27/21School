@@ -6,7 +6,7 @@
 /*   By: vurrigon <vurrigon@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/01/23 18:32:21 by djast             #+#    #+#             */
-/*   Updated: 2019/02/04 16:23:18 by vurrigon         ###   ########.fr       */
+/*   Updated: 2019/02/06 16:00:05 by vurrigon         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -96,4 +96,7 @@ intmax_t		ft_max(int count, ...);
 intmax_t		ft_size_by_lenght(intmax_t nbr, t_qual *qual);
 int				ft_b(intmax_t numb, t_qual *qual);
 int				ft_s_unicode(wchar_t *str, t_qual *qual);
+int				ft_wc(wint_t c, t_qual *qual);
+int				ft_ws(wchar_t *str, t_qual *qual);
+
 #endif
