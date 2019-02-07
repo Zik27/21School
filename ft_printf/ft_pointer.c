@@ -6,7 +6,7 @@
 /*   By: vurrigon <vurrigon@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/01/30 13:00:51 by djast             #+#    #+#             */
-/*   Updated: 2019/02/06 14:44:09 by vurrigon         ###   ########.fr       */
+/*   Updated: 2019/02/07 15:43:15 by vurrigon         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,11 +22,11 @@ static void		processing_minus(char *str, int width)
 
 static int		processing(char *result, int width, int precision, t_qual *qual)
 {
-	if (!qual->zero)
+	if (!QZ)
 		while (width-- > ((int)ft_strlen(result) + 2))
 			write(1, " ", 1);
 	write(1, "0x", 2);
-	if (ft_strcmp(result, "0") == 0 && qual->zero)
+	if (ft_strcmp(result, "0") == 0 && QZ)
 		while (width-- > ((int)ft_strlen(result) + 2))
 			write(1, "0", 1);
 	if (ft_strcmp(result, "0") != 0)
@@ -41,7 +41,7 @@ static int		processing(char *result, int width, int precision, t_qual *qual)
 	{
 		while (precision-- > 0)
 			write(1, "0", 1);
-		return (qual->precision + 2);
+		return (QPR + 2);
 	}
 	else if (ft_strcmp(result, "0") == 0 && precision == 0)
 		return (2);
@@ -60,20 +60,20 @@ int				ft_p(long long addr, t_qual *qual)
 	int		precision;
 	int		count;
 
-	precision = qual->precision;
-	width = qual->width;
+	precision = QPR;
+	width = QW;
 	count = 0;
 	result = ft_translation(addr, 16);
-	if (qual->minus)
+	if (QM)
 		processing_minus(result, width);
 	else
 		count = processing(result, width, precision, qual);
 	if (!count)
 	{
-		length = qual->precision > 0 ?
-		qual->precision + 2 : ft_strlen(result) + 2;
+		length = QPR > 0 ?
+		QPR + 2 : ft_strlen(result) + 2;
 		free(result);
-		return (qual->width > length ? qual->width : length);
+		return (QW > length ? QW : length);
 	}
 	return (count);
 }

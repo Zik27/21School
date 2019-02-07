@@ -6,7 +6,7 @@
 /*   By: vurrigon <vurrigon@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/01/30 13:01:33 by djast             #+#    #+#             */
-/*   Updated: 2019/02/04 17:52:10 by vurrigon         ###   ########.fr       */
+/*   Updated: 2019/02/07 15:43:20 by vurrigon         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,8 +16,8 @@ int	ft_c(char str, t_qual *qual)
 {
 	int	real_width;
 
-	real_width = qual->width;
-	if (qual->minus)
+	real_width = QW;
+	if (QM)
 	{
 		write(1, &str, 1);
 		while (real_width-- > 1)
@@ -25,12 +25,12 @@ int	ft_c(char str, t_qual *qual)
 	}
 	else
 	{
-		if (qual->zero)
+		if (QZ)
 			while (real_width-- > 1)
 				write(1, "0", 1);
 		while (real_width-- > 1)
 			write(1, " ", 1);
 		write(1, &str, 1);
 	}
-	return (qual->width > 1 ? qual->width : 1);
+	return (QW > 1 ? QW : 1);
 }

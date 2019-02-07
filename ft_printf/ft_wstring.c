@@ -6,7 +6,7 @@
 /*   By: vurrigon <vurrigon@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/02/06 13:36:02 by vurrigon          #+#    #+#             */
-/*   Updated: 2019/02/06 14:47:06 by vurrigon         ###   ########.fr       */
+/*   Updated: 2019/02/07 15:43:27 by vurrigon         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -97,18 +97,19 @@ static void	ft_putnwstr(const wchar_t *str, int len)
 	}
 }
 
-int		ft_ws(wchar_t *str, t_qual *qual)
+int			ft_ws(wchar_t *str, t_qual *qual)
 {
 	int		lenght;
 	int		width;
 
 	if (str == NULL)
 		str = L"(null)";
-	lenght = qual->precision >= 0 ? calc_wstrlen(str, qual->precision, 0) : ft_wstrlen(str);
-	width = qual->width - lenght;
-	if (qual->width > 0 && !qual->minus)
+	lenght = QPR >= 0 ?
+	calc_wstrlen(str, QPR, 0) : ft_wstrlen(str);
+	width = QW - lenght;
+	if (QW > 0 && !QM)
 	{
-		if (qual->zero)
+		if (QZ)
 			while (width-- > 0)
 				write(1, "0", 1);
 		else
@@ -116,8 +117,8 @@ int		ft_ws(wchar_t *str, t_qual *qual)
 				write(1, " ", 1);
 	}
 	ft_putnwstr(str, lenght);
-	if (qual->width > 0 && qual->minus)
+	if (QW > 0 && QM)
 		while (width-- > 0)
 			write(1, " ", 1);
-	return (qual->width > 0 ? ft_max(2, lenght, qual->width) : lenght);
+	return (QW > 0 ? ft_max(2, lenght, QW) : lenght);
 }

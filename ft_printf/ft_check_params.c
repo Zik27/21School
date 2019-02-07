@@ -6,7 +6,7 @@
 /*   By: vurrigon <vurrigon@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/01/30 13:04:55 by djast             #+#    #+#             */
-/*   Updated: 2019/02/04 16:51:15 by vurrigon         ###   ########.fr       */
+/*   Updated: 2019/02/07 17:57:36 by vurrigon         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -106,10 +106,10 @@ char		*ft_check_precision(char *str, t_qual **qual, va_list *args)
 		else
 		{
 			precision = 0;
+			while (*(str + 1) == '.')
+				str++;
 			while (ft_isdigit(*(str + 1)))
-			{
 				precision = precision * 10 + (*(str++ + 1) - 48);
-			}
 		}
 	}
 	(*qual)->precision = precision;

@@ -6,7 +6,7 @@
 /*   By: vurrigon <vurrigon@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/01/23 18:32:00 by djast             #+#    #+#             */
-/*   Updated: 2019/02/04 15:09:33 by vurrigon         ###   ########.fr       */
+/*   Updated: 2019/02/07 16:50:08 by vurrigon         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -48,36 +48,16 @@ void				ft_putllnbr(uintmax_t n)
 	}
 }
 
-static long long	ft_pow(long long nb, int pow)
-{
-	long long result;
-
-	result = 1;
-	if (pow == 0)
-		return (1);
-	else if (pow < 0)
-		return (0);
-	else
-	{
-		while (pow > 0)
-		{
-			result *= nb;
-			pow--;
-		}
-		return (result);
-	}
-}
-
 char				*ft_translation(uintmax_t value, int base)
 {
 	int			i;
 	char		*nbr;
 
 	i = 1;
-	while ((uintmax_t)ft_pow(base, i) - 1 < value)
+	while ((uintmax_t)ft_recursive_power(base, i) - 1 < value)
 		i++;
 	if (!(nbr = (char *)malloc(sizeof(nbr) * i)))
-		return (0);
+		exit(1);
 	nbr[i] = '\0';
 	while (i-- > 0)
 	{
@@ -85,4 +65,25 @@ char				*ft_translation(uintmax_t value, int base)
 		value = value / base;
 	}
 	return (nbr);
+}
+
+char				*check_modifier(intmax_t numb, int base, t_qual *qual)
+{
+	char	*result_str;
+
+	if (ft_strcmp(QL, "l") == 0)
+		result_str = ft_translation((unsigned long int)numb, base);
+	else if (ft_strcmp(QL, "ll") == 0)
+		result_str = ft_translation((unsigned long long int)numb, base);
+	else if (ft_strcmp(QL, "j") == 0)
+		result_str = ft_translation(numb, base);
+	else if (ft_strcmp(QL, "h") == 0)
+		result_str = ft_translation((unsigned short int)numb, base);
+	else if (ft_strcmp(QL, "hh") == 0)
+		result_str = ft_translation((unsigned char)numb, base);
+	else if (ft_strcmp(QL, "z") == 0)
+		result_str = ft_translation((size_t)numb, base);
+	else
+		result_str = ft_translation((unsigned int)numb, base);
+	return (result_str);
 }

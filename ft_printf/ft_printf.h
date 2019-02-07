@@ -6,7 +6,7 @@
 /*   By: vurrigon <vurrigon@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/01/23 18:32:21 by djast             #+#    #+#             */
-/*   Updated: 2019/02/06 16:00:05 by vurrigon         ###   ########.fr       */
+/*   Updated: 2019/02/07 15:43:16 by vurrigon         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,6 +20,10 @@
 # include "Libft/libft.h"
 # include <wchar.h>
 
+/*
+** Color
+*/
+
 # define RESET		"\033[0m"
 # define BOLD		"\033[1m"
 # define BLACK		"\033[30;1m"
@@ -30,6 +34,21 @@
 # define MAGENTA	"\033[35;1m"
 # define CYAN		"\033[36;1m"
 # define WHITE		"\033[37;1m"
+
+/*
+** Reduction
+*/
+
+# define QM		qual->minus
+# define QPL	qual->plus
+# define QSP	qual->space
+# define QH		qual->hash
+# define QZ		qual->zero
+# define QW		qual->width
+# define QPR	qual->precision
+# define QL		qual->lenght
+# define QSN	qual->sign
+# define QUS	qual->unsint
 
 /*
 ** Структура, описывающие поведение спецификатора.
@@ -98,5 +117,6 @@ int				ft_b(intmax_t numb, t_qual *qual);
 int				ft_s_unicode(wchar_t *str, t_qual *qual);
 int				ft_wc(wint_t c, t_qual *qual);
 int				ft_ws(wchar_t *str, t_qual *qual);
+char			*check_modifier(intmax_t numb, int base, t_qual *qual);
 
 #endif

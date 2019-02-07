@@ -6,7 +6,7 @@
 /*   By: vurrigon <vurrigon@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/01/30 13:02:10 by djast             #+#    #+#             */
-/*   Updated: 2019/02/06 14:29:27 by vurrigon         ###   ########.fr       */
+/*   Updated: 2019/02/07 15:43:29 by vurrigon         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,8 +16,8 @@ static void		check_minus(t_qual *qual, char *str)
 {
 	int real_width;
 
-	real_width = qual->width;
-	if (qual->minus == 1)
+	real_width = QW;
+	if (QM == 1)
 	{
 		write(1, str, ft_strlen(str));
 		while (real_width-- > (int)ft_strlen(str))
@@ -25,7 +25,7 @@ static void		check_minus(t_qual *qual, char *str)
 	}
 	else
 	{
-		if (qual->zero)
+		if (QZ)
 			while (real_width-- > (int)ft_strlen(str))
 				write(1, "0", 1);
 		else
@@ -39,18 +39,18 @@ int				ft_s(char *str, t_qual *qual)
 {
 	int real_precision;
 
-	real_precision = qual->precision;
+	real_precision = QPR;
 	if (!str)
 		str = "(null)";
 	if (real_precision >= 0)
 		str = ft_strsub(str, 0, real_precision);
 	check_minus(qual, str);
-	if ((qual->width == -1 && qual->precision > (int)ft_strlen(str))
-	|| qual->width < (int)ft_strlen(str))
+	if ((QW == -1 && QPR > (int)ft_strlen(str))
+	|| QW < (int)ft_strlen(str))
 		return (ft_strlen(str));
-	else if (qual->width > (int)ft_strlen(str))
-		return (qual->width);
-	return (ft_strlen(str) == 0 && qual->width == -1 &&
-	qual->precision != -1 ? 0 :
-	ft_max(2, qual->width, ft_strlen(str)));
+	else if (QW > (int)ft_strlen(str))
+		return (QW);
+	return (ft_strlen(str) == 0 && QW == -1 &&
+	QPR != -1 ? 0 :
+	ft_max(2, QW, ft_strlen(str)));
 }
