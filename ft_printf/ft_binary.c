@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_binary.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: vurrigon <vurrigon@student.42.fr>          +#+  +:+       +#+        */
+/*   By: djast <djast@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/01/31 18:45:51 by vurrigon          #+#    #+#             */
-/*   Updated: 2019/02/07 15:43:17 by vurrigon         ###   ########.fr       */
+/*   Updated: 2019/02/08 20:47:36 by djast            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -64,7 +64,7 @@ int				ft_b(intmax_t numb, t_qual *qual)
 {
 	char	*res_str;
 	int		size;
-	int		lenght;
+	int		l;
 
 	res_str = check_modifier(numb, 2, qual);
 	size = check_zwp_begin(&res_str, qual);
@@ -79,12 +79,12 @@ int				ft_b(intmax_t numb, t_qual *qual)
 		free(res_str);
 		return (QW == -1 ? 1 : QW);
 	}
-	if ((ft_strcmp(res_str, "0") == 0 && QPR == -1) || ft_strcmp(res_str, "0") != 0)
+	if ((ft_strcmp(res_str, "0") == 0 && QPR == -1) ||
+		ft_strcmp(res_str, "0") != 0)
 		ft_putstr(res_str);
-	lenght = ft_strlen(res_str);
+	l = ft_strlen(res_str);
 	if (QM == 1)
 		binary_check_width(qual, size);
 	free(res_str);
-	return (lenght == 0 && QW == -1 && QPR != -1 ? 0 :
-	ft_max(3, QW, QPR, lenght));
+	return (l == 0 && QW == -1 && QPR != -1 ? 0 : ft_max(3, QW, QPR, l));
 }

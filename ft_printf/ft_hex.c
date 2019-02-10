@@ -6,7 +6,7 @@
 /*   By: vurrigon <vurrigon@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/01/30 13:04:04 by djast             #+#    #+#             */
-/*   Updated: 2019/02/07 15:43:13 by vurrigon         ###   ########.fr       */
+/*   Updated: 2019/02/08 18:54:51 by vurrigon         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,14 +30,16 @@ static void		check_width_begin(char *result_str, int lenght,
 					int len_nbr, t_qual *qual)
 {
 	int tmp;
+	int	is_null;
 
+	is_null = ft_strcmp(result_str, "0") == 0 ? 1 : 0;
 	if (QPR > 0 && len_nbr < QPR &&
-	(!QH || ft_strcmp(result_str, "0") == 0))
+	(!QH || is_null))
 		tmp = QW - QPR;
 	else if (QPR > 0 && len_nbr < QPR &&
-	QH && ft_strcmp(result_str, "0") != 0)
+	QH && !is_null)
 		tmp = QW - QPR - 2;
-	else if (ft_strcmp(result_str, "0") == 0 && QPR == 0)
+	else if (is_null && QPR == 0)
 		tmp = QW;
 	else
 		tmp = QW - lenght;
@@ -71,15 +73,14 @@ static int		length_detect(char *result_str, int len_nbr,
 					int flag, t_qual *qual)
 {
 	int lenght;
+	int	is_null;
 
-	if (QH && ft_strcmp(result_str, "0") != 0 &&
-	QZ && QPR == -1)
+	is_null = ft_strcmp(result_str, "0") == 0 ? 1 : 0;
+	if (QH && !is_null && QZ && QPR == -1)
 		write(1, flag ? "0X" : "0x", 2);
-	if (QH && ft_strcmp(result_str, "0") != 0 &&
-	(QPR == -1 || QPR <= len_nbr))
+	if (QH && !is_null && (QPR == -1 || QPR <= len_nbr))
 		lenght = len_nbr + 2;
-	else if (QH && ft_strcmp(result_str, "0") != 0 &&
-	QPR > len_nbr)
+	else if (QH && !is_null && QPR > len_nbr)
 		lenght = QPR + 2;
 	else if (QPR > 0 && QPR > len_nbr)
 		lenght = QPR;

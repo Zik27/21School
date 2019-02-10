@@ -6,7 +6,7 @@
 /*   By: vurrigon <vurrigon@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/01/30 13:02:41 by djast             #+#    #+#             */
-/*   Updated: 2019/02/07 15:43:30 by vurrigon         ###   ########.fr       */
+/*   Updated: 2019/02/08 21:10:48 by vurrigon         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -41,7 +41,7 @@ int					ft_u(uintmax_t nbr, t_qual *qual)
 	size_nbr = ft_num_size(nbr);
 	if (QM == 0)
 	{
-		ft_print_width(qual, size_nbr);
+		ft_print_spec_sign(qual, size_nbr);
 		ft_print_presicion(qual, size_nbr);
 		if (nbr != 0 || QPR != 0)
 			ft_putllnbr(nbr);
@@ -53,7 +53,7 @@ int					ft_u(uintmax_t nbr, t_qual *qual)
 		ft_print_presicion(qual, size_nbr);
 		if (nbr != 0 || QPR != 0)
 			ft_putllnbr(nbr);
-		ft_print_width(qual, size_nbr);
+		ft_print_spec_sign(qual, size_nbr);
 	}
 	return (QPR == 0 && nbr == 0 ? 0 :
 	ft_max(3, QW, QPR, size_nbr));

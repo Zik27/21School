@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_pointer.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: vurrigon <vurrigon@student.42.fr>          +#+  +:+       +#+        */
+/*   By: djast <djast@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/01/30 13:00:51 by djast             #+#    #+#             */
-/*   Updated: 2019/02/07 15:43:15 by vurrigon         ###   ########.fr       */
+/*   Updated: 2019/02/08 20:45:48 by djast            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -45,11 +45,8 @@ static int		processing(char *result, int width, int precision, t_qual *qual)
 	}
 	else if (ft_strcmp(result, "0") == 0 && precision == 0)
 		return (2);
-	else
-	{
-		ft_putstr(result);
-		return (0);
-	}
+	ft_putstr(result);
+	return (0);
 }
 
 int				ft_p(long long addr, t_qual *qual)

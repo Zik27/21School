@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_octal.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: vurrigon <vurrigon@student.42.fr>          +#+  +:+       +#+        */
+/*   By: djast <djast@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/01/30 13:03:39 by djast             #+#    #+#             */
-/*   Updated: 2019/02/07 15:43:14 by vurrigon         ###   ########.fr       */
+/*   Updated: 2019/02/08 20:53:29 by djast            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -45,12 +45,14 @@ static	int		check_zwp_begin(char **res_str, t_qual *qual)
 {
 	int		size;
 	int		precision;
+	int		is_null;
 
+	is_null = ft_strcmp(*res_str, "0") == 0 ? 1 : 0;
 	precision = QPR;
-	if (QH && ft_strcmp(*res_str, "0") != 0)
+	if (QH && !is_null)
 		*res_str = ft_strjoin("0", *res_str);
-	size = ft_strcmp(*res_str, "0") == 0 ? 0 : (int)ft_strlen(*res_str);
-	if (QW > 0 && ft_strcmp(*res_str, "0") == 0 && QPR == -1)
+	size = is_null ? 0 : (int)ft_strlen(*res_str);
+	if (QW > 0 && is_null && QPR == -1)
 		size++;
 	if (!QM)
 		octal_check_width(qual, size);
@@ -64,27 +66,27 @@ int				ft_o(intmax_t numb, t_qual *qual)
 {
 	char	*res_str;
 	int		size;
-	int		lenght;
+	int		l;
+	int		is_null;
 
 	res_str = check_modifier(numb, 8, qual);
 	size = check_zwp_begin(&res_str, qual);
-	if (ft_strcmp(res_str, "0") == 0 && QPR == 0 && !QH)
+	is_null = ft_strcmp(res_str, "0") == 0 ? 1 : 0;
+	if (is_null && QPR == 0 && !QH)
 	{
 		free(res_str);
 		return (QW == -1 ? 0 : QW);
 	}
-	else if (ft_strcmp(res_str, "0") == 0 && QPR == 0 && QH)
+	else if (is_null && QPR == 0 && QH)
 	{
 		write(1, "0", 1);
 		free(res_str);
 		return (QW == -1 ? 1 : QW);
 	}
-	if ((ft_strcmp(res_str, "0") == 0 && QPR == -1) || ft_strcmp(res_str, "0") != 0)
-		ft_putstr(res_str);
-	lenght = ft_strlen(res_str);
+	ft_putstr((is_null && QPR == -1) || !is_null ? res_str : NULL);
+	l = ft_strlen(res_str);
 	if (QM == 1)
 		octal_check_width(qual, size);
 	free(res_str);
-	return (lenght == 0 && QW == -1 && QPR != -1 ? 0 :
-	ft_max(3, QW, QPR, lenght));
+	return (l == 0 && QW == -1 && QPR != -1 ? 0 : ft_max(3, QW, QPR, l));
 }

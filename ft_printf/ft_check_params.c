@@ -6,7 +6,7 @@
 /*   By: vurrigon <vurrigon@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/01/30 13:04:55 by djast             #+#    #+#             */
-/*   Updated: 2019/02/07 17:57:36 by vurrigon         ###   ########.fr       */
+/*   Updated: 2019/02/10 16:24:24 by vurrigon         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,14 +29,12 @@ char		*ft_check_lenght(char *str, t_qual **qual)
 	{
 		if (*(str + 1) == 'l')
 			(*qual)->lenght = "l";
-		if (*(str + 1) == 'h')
+		else if (*(str + 1) == 'h')
 			(*qual)->lenght = "h";
-		if (*(str + 1) == 'L')
+		else if (*(str + 1) == 'L')
 			(*qual)->lenght = "L";
-		if (*(str + 1) == 'j')
-			(*qual)->lenght = "j";
-		if (*(str + 1) == 'z')
-			(*qual)->lenght = "z";
+		else
+			(*qual)->lenght = *(str + 1) == 'j' ? "j" : "z";
 		return (str + 1);
 	}
 	return (str);
@@ -62,20 +60,23 @@ char		*ft_check_flags(char *str, t_qual **qual)
 	return (str);
 }
 
+static void	insert_star_width(t_qual **qual, va_list *args)
+{
+	(*qual)->width = va_arg(*args, int);
+	if ((*qual)->width < 0)
+	{
+		(*qual)->width = -(*qual)->width;
+		(*qual)->minus = 1;
+	}
+}
+
 char		*ft_check_width(char *str, t_qual **qual, va_list *args)
 {
 	int width;
 
 	width = -1;
 	if (*(str + 1) == '*')
-	{
-		(*qual)->width = va_arg(*args, int);
-		if ((*qual)->width < 0)
-		{
-			(*qual)->width = -(*qual)->width;
-			(*qual)->minus = 1;
-		}
-	}
+		insert_star_width(qual, args);
 	else
 	{
 		while (ft_isdigit(*(str + 1)))
@@ -85,7 +86,10 @@ char		*ft_check_width(char *str, t_qual **qual, va_list *args)
 			width = width * 10 + (*(str++ + 1) - 48);
 		}
 		(*qual)->width = width;
-		return (str);
+		if (*(str + 1) != '*')
+			return (str);
+		else
+			(*qual)->width = va_arg(*args, int);
 	}
 	return (str + 1);
 }
@@ -101,6 +105,8 @@ char		*ft_check_precision(char *str, t_qual **qual, va_list *args)
 		if (*(str + 1) == '*')
 		{
 			(*qual)->precision = va_arg(*args, int);
+			if ((*qual)->precision < 0)
+				(*qual)->precision = -1;
 			return (str + 1);
 		}
 		else
