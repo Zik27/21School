@@ -1,0 +1,4 @@
+#kill first job number
+kill %1
+#kill the most recently backgrounded job
+kill $!
