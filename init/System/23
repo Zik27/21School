@@ -1,0 +1,2 @@
+Graphic: You must first add the user - adduser user_name. And then log in through the GUI.
+SSH: ssh new_user@ip and then enter the password.

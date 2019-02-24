@@ -1,2 +1,2 @@
-ifconfig en0
-arp -a
+ifconfig en0 | grep 'broadcast' | awk '{print $6}'
+ifconfig en0 | grep 'broadcast' | awk '{print $6}' | xargs ping | arp -a | awk '{print $2}' | cut -c 2- | rev | cut -c 2- | rev

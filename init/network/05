@@ -1,1 +1,1 @@
-nslookup slash16.org
+nslookup -q=ns slash16.org

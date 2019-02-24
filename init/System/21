@@ -1,0 +1,1 @@
+cut -d: -f1,3 /etc/passwd | grep -E ':[0-9]{4}$' | cut -d: -f1

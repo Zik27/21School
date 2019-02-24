@@ -1,0 +1,92 @@
+#!/bin/bash
+
+if [ $# -eq 4 -o $# -eq 2 ]
+then
+	if cd $2 2> /dev/null
+	then
+		echo "\033[1;32mProject directory found\033[0m"
+		if mkdir $1 2> /dev/null
+		then
+			echo "\033[1;32mProject directory was created - \033[0m\033[1;35m$1\033[0m"
+			if [ $# -eq 4 ]
+			then
+				if [ $3 = "--lib" ]
+				then
+					echo "\033[1;32mFound --lib option\033[0m"
+					if [ -d $4 ]
+					then
+						echo "\033[1;32mLib directory found\033[0m"
+						cp -r $4 $1
+					else
+						echo "\033[1;31mLib directory not found\033[0m"
+						rm -r $1
+						exit
+					fi
+				else
+					echo "\033[1;31mWrong flag \033[0m\033[1;35m$3\033[0m"
+					echo "usage: ./03 project_name path_to_project [--lib path_to_lib]"
+					rm -r $1
+					exit
+				fi
+			fi
+			cd $1
+			if touch $1.c $1.h Makefile 2> /dev/null
+			then
+				echo "\033[1;32mSuccess creating files - \033[0m\033[1;35m$1.c $1.h Makefile\033[0m"
+				upper=$(echo $1 | awk '{print toupper($0)}')
+				#Write to .h file
+				echo "#ifndef "$upper"_H" >> $1.h
+				echo "# define "$upper"_H" >> $1.h
+				echo "" >> $1.h
+				echo "#endif" >> $1.h
+				echo "\033[1;32mSuccessfully adding a base to the header file\033[0m"
+				#Write to .c file
+				echo "#include \"$1.h\"" >> $1.c
+				echo "" >> $1.c
+				echo "int	main(void)" >> $1.c
+				echo "{" >> $1.c
+				echo "	/* code */" >> $1.c
+				echo "	return (0);" >> $1.c
+				echo "}" >> $1.c
+				echo "\033[1;32mSuccessfully adding a base to the source file\033[0m"
+				#Write to Makefile
+				echo "NAME = $1" >> Makefile
+				echo "" >> Makefile
+				echo "SRC = $1.c" >> Makefile
+				echo "" >> Makefile
+				echo "OBJ = \$(SRC:.c=.o)" >> Makefile
+				echo "" >> Makefile
+				echo "FLAGS = -Wall -Wextra -Werror" >> Makefile
+				echo "" >> Makefile
+				echo "all: \$(NAME)" >> Makefile
+				echo "" >> Makefile
+				echo "clean:" >> Makefile
+				echo "	@/bin/rm -f \$(OBJ)" >> Makefile
+				echo "" >> Makefile
+				echo "fclean: clean" >> Makefile
+				echo "	@/bin/rm -f \$(NAME)" >> Makefile
+				echo "" >> Makefile
+				echo "re: fclean all" >> Makefile
+				echo "" >> Makefile
+				echo "\$(NAME): \$(OBJ)" >> Makefile
+				echo "	@gcc \$(OBJ) -o $1" >> Makefile
+				echo "" >> Makefile
+				echo "\$(OBJ): \$(SRC)" >> Makefile
+				echo "	@gcc -c \$(FLAGS) \$(SRC)" >> Makefile
+				echo "\033[1;32mSuccessfully adding a base to the Makefile\033[0m"
+			else
+				echo "\033[1;31mError creating files\033[0m"
+				exit
+			fi
+
+		else
+			echo "\033[1;31mError creating directory\033[0m"
+			exit
+		fi
+	else
+		echo  "\033[1;31mProject directory not found\033[0m"
+		exit
+	fi
+else
+	echo "usage: ./03 project_name path_to_project [--lib path_to_lib]"
+fi

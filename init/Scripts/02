@@ -1,0 +1,17 @@
+#!/bin/bash
+
+if [ $# -lt 1 ]
+
+then
+	echo "Enter the name of the active user to be deleted"
+else
+	for param in "$@"
+	do
+		if [ $(w -h $@ | wc -c) -ne 0 ]; then
+			userdel -rf $param 2> /dev/null
+			echo "User $param was deleted"
+		else
+			echo "User is inactive or does not exist"
+		fi
+	done
+fi
