@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   main.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: vurrigon <vurrigon@student.42.fr>          +#+  +:+       +#+        */
+/*   By: djast <djast@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/02/27 18:41:23 by djast             #+#    #+#             */
-/*   Updated: 2019/02/28 17:32:39 by vurrigon         ###   ########.fr       */
+/*   Updated: 2019/03/01 17:06:05 by djast            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,9 +22,7 @@ t_ls	*init_struct()
 	ls->is_with_dot = 0;
 	ls->is_sort_by_time = 0;
 	ls->long_format = 0;
-	ls->dir_struct = NULL;
-	ls->path = NULL;
-	ls->is_dir = 0;
+	ls->path = ".";
 	return (ls);
 }
 
@@ -44,15 +42,21 @@ t_ls	*init_struct()
 int main(int argc, char const *argv[])
 {
 	t_ls	*ls;
+	int		error_code;
 
 	ls = init_struct();
-	if (argc > 1 && parsing_flags(argc, argv, ls) == -1)
+	if (argc > 1)
 	{
-		ft_printf("ft_ls: illegal option -- ??\nusage: ls [-Ralrt] [file ...]\n");
-		return (-1);
+		error_code = parsing_flags(argc, argv, ls);
+		if (error_code == -1)
+			ft_printf("ft_ls: illegal option -- ??\nusage: ls [-Ralrt] [file ...]\n");
+		else if (error_code == -2)
+			ft_printf("ft_ls: %s: No such file or directory\n", ls->path);
+		if (error_code == -1 || error_code == -2)
+			return (-1);
 	}
-	if (!(prepare_output(argc, argv, ls)))
+	if (!(prepare_output(ls)))
 		return (0);
 	print_struct(ls);
-	return 0;
+	return (-1);
 }
