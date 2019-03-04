@@ -63,7 +63,7 @@ int					parsing_flags(int argc, char const *flags[], t_ls *ls);
 void				print_struct(t_ls *ls);
 int					prepare_output(t_ls *ls);
 void                list_sort_by_name(t_dir **begin_list);
-void                list_sort_by_name_rev(t_dir **begin_list);
+void    			list_reverse(t_dir **begin_list);
 void                list_sort_by_time(t_dir **begin_list);
 
 #endif

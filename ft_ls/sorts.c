@@ -49,41 +49,23 @@ void    list_sort_by_name(t_dir **begin_list)
     }
 }
 
-void    list_sort_by_name_rev(t_dir **begin_list)
+void    list_reverse(t_dir **begin_list)
 {
-    t_dir    *list_prev;
-    t_dir    *list_cur;
-    t_dir    *list_next;
-    int        flag;
+    t_dir *list_prev; 
+    t_dir *list_cur; 
+    t_dir *list_next;
 
+    list_next = NULL;
+    list_prev = NULL;
     list_cur = *begin_list;
-    if (list_cur == 0)
-        return ;
-    while (1)
-    {
-        flag = 0;
-        list_cur = *begin_list;
-        list_prev = NULL;
-        while (list_cur->next_file)
-        {
-            list_next = list_cur->next_file;
-            if (ft_strcmp(list_cur->path_file, (list_next->path_file)) < 0)
-            {
-                flag = 1;
-                list_cur->next_file = list_cur->next_file->next_file;
-                if (list_prev)
-                    list_prev->next_file = list_next;
-                list_next->next_file = list_cur;
-                if (list_cur == *begin_list)
-                    *begin_list = list_next;
-            }
-            list_prev = list_cur;
-            if (list_cur->next_file)
-                list_cur = list_cur->next_file;
-        }
-        if (flag == 0)
-            break ;
-    }
+    while (list_cur) 
+    { 
+        list_next = list_cur->next_file;   
+        list_cur->next_file = list_prev;    
+        list_prev = list_cur; 
+        list_cur = list_next; 
+    } 
+    *begin_list = list_prev;
 }
 
 void    list_sort_by_time(t_dir **begin_list)
@@ -109,8 +91,11 @@ void    list_sort_by_time(t_dir **begin_list)
             
             stat(list_cur->path_file, &buf);
             stat(list_next->path_file, &buf_2);
+            //printf("FILE === %s (%ld) %s (%ld)\n", list_cur->path_file, buf.st_mtime, list_next->path_file, buf_2.st_mtime);
+            //|| (buf.st_mtime == buf_2.st_mtime && ft_strcmp(list_cur->path_file, list_next->path_file) > 0)
             if (buf.st_mtime < buf_2.st_mtime)
             {
+                //printf("FILE === %s (%ld) %s (%ld)\n", list_cur->path_file, buf.st_mtime, list_next->path_file, buf_2.st_mtime);
                 flag = 1;
                 list_cur->next_file = list_cur->next_file->next_file;
                 if (list_prev)
@@ -123,6 +108,7 @@ void    list_sort_by_time(t_dir **begin_list)
             if (list_cur->next_file)
                 list_cur = list_cur->next_file;
         }
+        //printf("\n");
         if (flag == 0)
             break ;
     }

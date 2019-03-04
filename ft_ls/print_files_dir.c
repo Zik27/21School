@@ -204,8 +204,8 @@ int	prepare_output(t_ls *ls)
 	file_list = ft_create_file(ls->path, NULL, FT_ROOT);
 	i = 0;
 	add_in_list(ls->path, ls, &file_list);
-	ls->is_reversed ? list_sort_by_name_rev(&(file_list->next_file)) : list_sort_by_name(&(file_list->next_file));
-	ls->is_sort_by_time ? list_sort_by_time(&(file_list->next_file)) : NULL;
+	ls->is_sort_by_time ? list_sort_by_time(&(file_list->next_file)) : list_sort_by_name(&(file_list->next_file));
+	ls->is_reversed ? list_reverse(&(file_list->next_file)) : NULL;
 	if (ls->long_format == 1)
 	{
 		take_info(file_list->next_file);
