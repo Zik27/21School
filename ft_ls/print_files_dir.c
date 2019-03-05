@@ -82,8 +82,10 @@ void print_long(t_ls *ls, t_dir *file_list)
 
 t_dir	*ft_create_file(char *fname, t_dir *subdir, int type)
 {
-	t_dir	*list;
+	t_dir		*list;
+	struct stat	status;
 
+	stat(fname, &status);
 	list = malloc(sizeof(t_dir));
 	if (list)
 	{
@@ -96,7 +98,7 @@ t_dir	*ft_create_file(char *fname, t_dir *subdir, int type)
 		list->user = 0;
 		list->group = 0;
 		list->size = 0;
-		list->time = 0;
+		list->time = status.st_mtime;
 	}
 	return (list);
 }
@@ -204,6 +206,7 @@ int	prepare_output(t_ls *ls)
 	file_list = ft_create_file(ls->path, NULL, FT_ROOT);
 	i = 0;
 	add_in_list(ls->path, ls, &file_list);
+	list_sort_by_name(&(file_list->next_file));
 	ls->is_sort_by_time ? list_sort_by_time(&(file_list->next_file)) : list_sort_by_name(&(file_list->next_file));
 	ls->is_reversed ? list_reverse(&(file_list->next_file)) : NULL;
 	if (ls->long_format == 1)
