@@ -6,7 +6,7 @@
 /*   By: djast <djast@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/02/27 18:41:23 by djast             #+#    #+#             */
-/*   Updated: 2019/03/01 17:06:05 by djast            ###   ########.fr       */
+/*   Updated: 2019/03/07 12:24:22 by djast            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -55,8 +55,8 @@ int main(int argc, char const *argv[])
 		if (error_code == -1 || error_code == -2)
 			return (-1);
 	}
-	if (!(prepare_output(ls)))
-		return (0);
 	print_struct(ls);
-	return (-1);
+	prepare_output(ls);
+	free(ls);
+	return (0);
 }

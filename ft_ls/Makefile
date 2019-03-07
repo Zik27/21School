@@ -3,10 +3,10 @@
 #                                                         :::      ::::::::    #
 #    Makefile                                           :+:      :+:    :+:    #
 #                                                     +:+ +:+         +:+      #
-#    By: vurrigon <vurrigon@student.42.fr>          +#+  +:+       +#+         #
+#    By: djast <djast@student.42.fr>                +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2019/02/15 17:18:06 by djast             #+#    #+#              #
-#    Updated: 2019/02/28 11:12:17 by vurrigon         ###   ########.fr        #
+#    Updated: 2019/03/07 12:11:03 by djast            ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -22,10 +22,10 @@ HEADERS = $(wildcard *.h)
 all: $(NAME)
  
 %.o: %.c $(HEADERS)
-	@$(CC) $(CFLAGS) -c $< -o $@
+	@$(CC) $(CFLAGS) -c $< -o $@ -g
 
 $(NAME): $(OBJECTS)
-	@$(CC) $(OBJECTS) -o $(NAME)
+	@$(CC) $(OBJECTS) -o $(NAME) -g
 
 clean:
 	@/bin/rm -rf $(OBJECTS)

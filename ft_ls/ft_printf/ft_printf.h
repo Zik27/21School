@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_printf.h                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: djast <djast@student.42.fr>                +#+  +:+       +#+        */
+/*   By: vurrigon <vurrigon@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/01/23 18:32:21 by djast             #+#    #+#             */
-/*   Updated: 2019/02/11 11:44:29 by djast            ###   ########.fr       */
+/*   Updated: 2019/03/07 13:33:10 by vurrigon         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,6 +29,7 @@
 # define BOLD		"\033[1m"
 # define BLACK		"\033[30;1m"
 # define RED		"\033[31;1m"
+# define RED_DARK 	"\033[31m"
 # define GREEN		"\033[32;1m"
 # define YELLOW		"\033[33;1m"
 # define BLUE		"\033[34;1m"

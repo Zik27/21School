@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_ls.h                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: djast <djast@student.42.fr>                +#+  +:+       +#+        */
+/*   By: vurrigon <vurrigon@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/02/27 18:44:15 by djast             #+#    #+#             */
-/*   Updated: 2019/03/01 19:03:12 by djast            ###   ########.fr       */
+/*   Updated: 2019/03/07 13:13:04 by vurrigon         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,6 +23,7 @@
 # define FT_FILE 1
 # define FT_DIR 2
 # define FT_ROOT 3
+# define FT_FILE_EXE 4
 
 
 /*
@@ -56,7 +57,13 @@ typedef struct		s_dir
 	unsigned int	user;
 	unsigned int	group;
 	long long int	size;
-	long int		time;
+	char			*month;
+	char			*day;
+	char			*time;
+	long int		mtime;
+	long int		mtime_nano;
+	int				block;
+
 } 					t_dir;
 
 int					parsing_flags(int argc, char const *flags[], t_ls *ls);

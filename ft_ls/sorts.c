@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   sorts.c                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: djast <djast@student.42.fr>                +#+  +:+       +#+        */
+/*   By: vurrigon <vurrigon@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/03/01 19:02:51 by djast             #+#    #+#             */
-/*   Updated: 2019/03/01 19:05:15 by djast            ###   ########.fr       */
+/*   Updated: 2019/03/07 12:26:20 by vurrigon         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -68,67 +68,55 @@ void    list_reverse(t_dir **begin_list)
     *begin_list = list_prev;
 }
 
+void    list_sort_sw(t_dir **begin_list, t_dir **list_cur, t_dir **list_next, t_dir **list_prev)
+{
+    (*list_cur)->next_file = (*list_cur)->next_file->next_file;
+    if (*list_prev)
+        (*list_prev)->next_file = *list_next;
+    (*list_next)->next_file = *list_cur;
+    if (*list_cur == *begin_list)
+        *begin_list = *list_next;
+}
+
+void    list_is_sort_t(t_dir **begin_list, t_dir *list_cur, t_dir *list_prev, int *flag)
+{
+    t_dir *list_next;
+
+    while (list_cur->next_file)
+    {
+        list_next = list_cur->next_file;
+        if (list_cur->mtime < list_next->mtime)
+        {
+            *flag = 1;
+            list_sort_sw(begin_list, &list_cur, &list_next, &list_prev);
+        }
+        else if (list_cur->mtime == list_next->mtime && list_cur->mtime_nano < list_next->mtime_nano)
+        {
+            *flag = 1;
+            list_sort_sw(begin_list, &list_cur, &list_next, &list_prev);
+        }
+        else if (list_cur->mtime == list_next->mtime && list_cur->mtime_nano == list_next->mtime_nano && ft_strcmp(list_cur->path_file, list_next->path_file) > 0)
+        {
+            *flag = 1;
+            list_sort_sw(begin_list, &list_cur, &list_next, &list_prev);
+        }
+        list_prev = list_cur;
+        if (list_cur->next_file)
+            list_cur = list_cur->next_file;
+    }
+}
+
 void    list_sort_by_time(t_dir **begin_list)
 {
-    t_dir    *list_prev;
     t_dir    *list_cur;
-    t_dir    *list_next;
-    struct stat buf;
-    struct stat buf_2; //move to init
-    int        flag;
+    int         flag;
 
     list_cur = *begin_list;
-    if (list_cur == 0)
-        return ;
     while (1)
     {
         flag = 0;
         list_cur = *begin_list;
-        list_prev = NULL;
-        while (list_cur->next_file)
-        {
-            list_next = list_cur->next_file;
-            
-            stat(list_cur->path_file, &buf); // move to INIT
-            stat(list_next->path_file, &buf_2);
-            //printf("FILE === %s (%ld) %s (%ld)\n", list_cur->path_file, buf.st_mtime, list_next->path_file, buf_2.st_mtime);
-            //|| (buf.st_mtime == buf_2.st_mtime && ft_strcmp(list_cur->path_file, list_next->path_file) > 0)
-            if (buf.st_mtime < buf_2.st_mtime)
-            {
-                //Move to a new func
-                flag = 1;
-                list_cur->next_file = list_cur->next_file->next_file;
-                if (list_prev)
-                    list_prev->next_file = list_next;
-                list_next->next_file = list_cur;
-                if (list_cur == *begin_list)
-                    *begin_list = list_next;
-            }
-            else if (buf.st_mtime == buf_2.st_mtime && buf.st_mtimespec.tv_nsec < buf_2.st_mtimespec.tv_nsec) // need new variable for nano sec time (in .h file)
-            {
-                flag = 1;
-                list_cur->next_file = list_cur->next_file->next_file;
-                if (list_prev)
-                    list_prev->next_file = list_next;
-                list_next->next_file = list_cur;
-                if (list_cur == *begin_list)
-                    *begin_list = list_next;
-            }
-            else if (buf.st_mtime == buf_2.st_mtime && buf.st_mtimespec.tv_nsec == buf_2.st_mtimespec.tv_nsec && ft_strcmp(list_cur->path_file, list_next->path_file) > 0)
-            {
-                flag = 1;
-                list_cur->next_file = list_cur->next_file->next_file;
-                if (list_prev)
-                    list_prev->next_file = list_next;
-                list_next->next_file = list_cur;
-                if (list_cur == *begin_list)
-                    *begin_list = list_next;
-            }
-            list_prev = list_cur;
-            if (list_cur->next_file)
-                list_cur = list_cur->next_file;
-        }
-        //printf("\n");
+        list_is_sort_t(begin_list, list_cur, NULL, &flag);
         if (flag == 0)
             break ;
     }
