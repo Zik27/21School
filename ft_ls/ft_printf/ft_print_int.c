@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_print_int.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: djast <djast@student.42.fr>                +#+  +:+       +#+        */
+/*   By: vurrigon <vurrigon@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/02/08 19:51:34 by djast             #+#    #+#             */
-/*   Updated: 2019/02/11 11:44:43 by djast            ###   ########.fr       */
+/*   Updated: 2019/02/11 12:20:54 by vurrigon         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,7 +16,6 @@ char			*get_int(char *decimal, char *ans)
 {
 	char	*s;
 	int		count;
-
 
 	count = ft_strlen(decimal) - 1;
 	s = ft_strnew(DD_SIZE);

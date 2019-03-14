@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_float.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: djast <djast@student.42.fr>                +#+  +:+       +#+        */
+/*   By: vurrigon <vurrigon@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/01/30 13:03:09 by djast             #+#    #+#             */
-/*   Updated: 2019/02/11 12:17:59 by djast            ###   ########.fr       */
+/*   Updated: 2019/02/11 12:28:45 by vurrigon         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,8 +14,8 @@
 
 char			*int_to_bin(unsigned long long int nbr, char *s, int my_exp)
 {
-	unsigned long long int copy_nbr;
-	int copy_exp;
+	unsigned long long int	copy_nbr;
+	int						copy_exp;
 
 	copy_nbr = nbr;
 	copy_exp = my_exp;
@@ -55,7 +55,6 @@ char			*add_precision(char *ans, t_qual *qual)
 			tmp = ans;
 			ans = ft_strsub(ans, 0, ft_int_size(ans) + 1 + qual->precision + 1);
 			free(tmp);
-
 			ans = round_fract(ans);
 		}
 	}
@@ -65,7 +64,7 @@ char			*add_precision(char *ans, t_qual *qual)
 	return (ans);
 }
 
-char			*add_width(char *ans, t_qual *qual)
+char			*add_width(char *s, t_qual *qual)
 {
 	char	print_char;
 	int		real_width;
@@ -73,28 +72,29 @@ char			*add_width(char *ans, t_qual *qual)
 	int		dot;
 
 	str = ft_strnew(1);
-	ans = QPL == 1 && (QZ == 0 || QM == 1) && QSN == 0 ? ft_strjoin("+", ans) : ans;
+	s = QPL == 1 && (QZ == 0 || QM == 1) &&
+	QSN == 0 ? ft_strjoin("+", s) : s;
 	print_char = QZ == 1 && QM == 0 ? '0' : ' ';
 	dot = QPR == 0 ? 0 : 1;
-	if (QSN == 0 && QSP == 1 && QPL == 0)
-		real_width = QW - (QPR + ft_int_size(ans) + dot + QSP);
-	else
-		real_width = QW - (QPR + ft_int_size(ans) + dot);
+	real_width = QSN == 0 && QSP == 1 && QPL == 0 ?
+					QW - (QPR + ft_int_size(s) + dot + QSP) :
+					QW - (QPR + ft_int_size(s) + dot);
 	while (real_width-- > 0)
 	{
 		*str = print_char;
 		if (QSN == 1 && print_char == '0')
-			ans = ft_strjoin("-", ft_strjoin(str,
-				ft_strsub(ans, 1, ft_strlen(ans))));
+			s = ft_strjoin("-", ft_strjoin(str,
+				ft_strsub(s, 1, ft_strlen(s))));
 		else
-			ans = QM == 0 ? ft_strjoin(str, ans) : ft_strjoin(ans, str);
+			s = QM == 0 ? ft_strjoin(str, s) : ft_strjoin(s, str);
 	}
-	ans = QSP == 1 && QSN == 0 && QPL == 0 ? ft_strjoin(" ", ans) : ans;
-	ans = QPL == 1 && QSN == 0 && QZ == 1 && QM == 0? ft_strjoin("+", ans) : ans;
-	return (ans);
+	s = QSP == 1 && QSN == 0 && QPL == 0 ? ft_strjoin(" ", s) : s;
+	s = QPL == 1 && QSN == 0 && QZ == 1 && QM == 0 ? ft_strjoin("+", s) : s;
+	return (s);
 }
 
-char			*get_number(int real_exp, unsigned long long int nbr, char *ans, int my_exp)
+char			*get_number(int real_exp, unsigned long long int nbr,
+						char *ans, int my_exp)
 {
 	char *s;
 	char *decimal;
@@ -108,7 +108,8 @@ char			*get_number(int real_exp, unsigned long long int nbr, char *ans, int my_e
 	fract = real_exp > size_fract(s) ? 0 :
 	ft_strsub(s, real_exp + 1, size_fract(s) - real_exp);
 	ans = get_int(decimal, ans);
-	ans = ft_strlen(ans) == 0 || (ft_strlen(ans) == 1 && *ans == '-') ? ft_strjoin(ans, "0") : ans;
+	ans = ft_strlen(ans) == 0 || (ft_strlen(ans) == 1 && *ans == '-')
+	? ft_strjoin(ans, "0") : ans;
 	tmp = ans;
 	ans = ft_strjoin(ans, ".");
 	free(tmp);
@@ -128,7 +129,7 @@ int				ft_f(long double nbr, t_qual *qual)
 	char		*ans;
 	int			size;
 	t_ldbl		d1;
-	int flag;
+	int			flag;
 
 	ans = ft_strnew(310);
 	d1.f = nbr;

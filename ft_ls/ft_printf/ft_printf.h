@@ -6,7 +6,7 @@
 /*   By: vurrigon <vurrigon@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/01/23 18:32:21 by djast             #+#    #+#             */
-/*   Updated: 2019/03/07 13:33:10 by vurrigon         ###   ########.fr       */
+/*   Updated: 2019/03/10 15:48:21 by vurrigon         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,17 +25,18 @@
 ** Color
 */
 
-# define RESET		"\033[0m"
-# define BOLD		"\033[1m"
-# define BLACK		"\033[30;1m"
-# define RED		"\033[31;1m"
-# define RED_DARK 	"\033[31m"
-# define GREEN		"\033[32;1m"
-# define YELLOW		"\033[33;1m"
-# define BLUE		"\033[34;1m"
-# define MAGENTA	"\033[35;1m"
-# define CYAN		"\033[36;1m"
-# define WHITE		"\033[37;1m"
+# define RESET			"\033[0m"
+# define BOLD			"\033[1m"
+# define BLACK			"\033[30;1m"
+# define RED			"\033[31;1m"
+# define RED_DARK 		"\033[31m"
+# define GREEN			"\033[32;1m"
+# define YELLOW			"\033[33;1m"
+# define BLUE			"\033[34;1m"
+# define MAGENTA		"\033[35;1m"
+# define MAGENTA_DARK	"\033[35m"
+# define CYAN			"\033[36;1m"
+# define WHITE			"\033[37;1m"
 
 /*
 ** Reduction

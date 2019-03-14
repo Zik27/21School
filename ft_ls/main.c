@@ -3,16 +3,16 @@
 /*                                                        :::      ::::::::   */
 /*   main.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: djast <djast@student.42.fr>                +#+  +:+       +#+        */
+/*   By: vurrigon <vurrigon@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/02/27 18:41:23 by djast             #+#    #+#             */
-/*   Updated: 2019/03/07 12:24:22 by djast            ###   ########.fr       */
+/*   Updated: 2019/03/14 16:54:22 by vurrigon         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_ls.h"
 
-t_ls	*init_struct()
+t_ls		*init_struct(void)
 {
 	t_ls *ls;
 
@@ -22,24 +22,18 @@ t_ls	*init_struct()
 	ls->is_with_dot = 0;
 	ls->is_sort_by_time = 0;
 	ls->long_format = 0;
-	ls->path = ".";
+	ls->not_sort = 0;
+	ls->is_sort_by_size = 0;
+	ls->is_almost_all = 0;
+	ls->is_numb_gr_user = 0;
+	ls->colors = 0;
+	ls->path = NULL;
+	ls->multiple_files = 0;
+	ls->first_time = 1;
 	return (ls);
 }
 
-// t_dir	*init_file_list()
-// {
-// 	t_dir *file_list;
-
-// 	if (!(file_list = (t_dir *)malloc(sizeof(file_list))))
-// 		return (NULL);
-// 	file_list->fname = NULL;
-// 	file_list->subdir = NULL;
-// 	file_list->next_file = NULL;
-	
-// 	return (file_list);
-// }
-
-int main(int argc, char const *argv[])
+int			main(int argc, char const *argv[])
 {
 	t_ls	*ls;
 	int		error_code;
@@ -48,15 +42,21 @@ int main(int argc, char const *argv[])
 	if (argc > 1)
 	{
 		error_code = parsing_flags(argc, argv, ls);
-		if (error_code == -1)
-			ft_printf("ft_ls: illegal option -- ??\nusage: ls [-Ralrt] [file ...]\n");
-		else if (error_code == -2)
-			ft_printf("ft_ls: %s: No such file or directory\n", ls->path);
-		if (error_code == -1 || error_code == -2)
-			return (-1);
+		if (error_code < -3)
+		{
+			ft_printf("ft_ls: illegal option -- %c\n", -error_code);
+			ft_printf("usage: ls [-AGSRaflnrt] [file ...]\n");
+			return (1);
+		}
 	}
-	print_struct(ls);
+	else
+	{
+		ls->path = (char **)malloc(sizeof(char *) * 2);
+		ls->path[0] = ".";
+		ls->path[1] = NULL;
+	}
 	prepare_output(ls);
+	free(ls->path);
 	free(ls);
 	return (0);
 }
