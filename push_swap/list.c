@@ -1,40 +1,26 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   utils.c                                            :+:      :+:    :+:   */
+/*   list.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: vurrigon <vurrigon@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2019/03/29 16:45:28 by vurrigon          #+#    #+#             */
-/*   Updated: 2019/06/13 18:34:33 by vurrigon         ###   ########.fr       */
+/*   Created: 2019/06/13 16:47:56 by vurrigon          #+#    #+#             */
+/*   Updated: 2019/06/13 18:27:09 by vurrigon         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-t_list	*ft_create_lst(int	nbr)
-{
-	t_list	*list;
+#include "push_swap.h"
 
-	if ((list = malloc(sizeof(t_list))))
+t_head	*create_head(char **data)
+{
+	t_head	*head;
+
+	if ((head = malloc(sizeof(t_head))))
 	{
-		list->value = nbr;
-		list->next = NULL;
-		return (list);
+		head->a = create_a(data);
+		head->b = NULL;
+		return (head);
 	}
 	return (NULL);
-}
-
-t_lst	*create_a(char **data)
-{
-	t_lst	*current;
-	int		i;
-
-	i = 0;
-	while (data[i])
-	{
-		
-	}
-	while (current->next)
-		current = current->next;
-	if (!(current->next = ft_create_lst(data)))
-		return (0);
 }
