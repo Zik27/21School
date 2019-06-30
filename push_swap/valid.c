@@ -6,12 +6,12 @@
 /*   By: vurrigon <vurrigon@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/03/28 19:05:40 by vurrigon          #+#    #+#             */
-/*   Updated: 2019/06/13 16:31:15 by vurrigon         ###   ########.fr       */
+/*   Updated: 2019/06/30 14:23:24 by vurrigon         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
-
+#include <stdio.h>
 int	check_max(char *str)
 {
 	int	length;
@@ -74,11 +74,10 @@ int	ft_isnumber(char *str)
 	return (1);
 }
 
-int	valid(char **str, int count)
+int	valid(char **str)
 {
 	int	i;
 
-	count++;
 	i = 1;
 	while (str[i])
 	{
