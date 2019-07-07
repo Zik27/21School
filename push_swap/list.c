@@ -6,11 +6,27 @@
 /*   By: vurrigon <vurrigon@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/06/13 16:47:56 by vurrigon          #+#    #+#             */
-/*   Updated: 2019/06/30 14:04:42 by vurrigon         ###   ########.fr       */
+/*   Updated: 2019/07/07 17:09:55 by vurrigon         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
+
+void	delete_last_elem(t_lst **list)
+{
+	t_lst *current;
+	t_lst *before;
+
+	current = *list;
+	while (current->next)
+	{
+		if (!current->next->next)
+			before = current;
+		current = current->next;
+	}
+	free(current);
+	before->next = NULL;
+}
 
 t_lst	*ft_create_elem(int data)
 {
@@ -45,7 +61,7 @@ t_lst	*create_lst(char **data)
 	return (head);
 }
 
-t_head	*create_head(char **data)
+t_head	*create_head(char **data, int write)
 {
 	t_head	*head;
 
@@ -53,6 +69,7 @@ t_head	*create_head(char **data)
 	{
 		head->a = create_lst(data);
 		head->b = NULL;
+		head->do_write = write;
 		return (head);
 	}
 	return (NULL);

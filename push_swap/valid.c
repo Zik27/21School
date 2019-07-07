@@ -6,12 +6,12 @@
 /*   By: vurrigon <vurrigon@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/03/28 19:05:40 by vurrigon          #+#    #+#             */
-/*   Updated: 2019/06/30 14:23:24 by vurrigon         ###   ########.fr       */
+/*   Updated: 2019/07/07 13:31:09 by vurrigon         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
-#include <stdio.h>
+
 int	check_max(char *str)
 {
 	int	length;

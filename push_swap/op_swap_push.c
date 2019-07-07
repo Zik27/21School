@@ -6,7 +6,7 @@
 /*   By: vurrigon <vurrigon@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/06/30 16:15:41 by vurrigon          #+#    #+#             */
-/*   Updated: 2019/06/30 18:21:57 by vurrigon         ###   ########.fr       */
+/*   Updated: 2019/07/07 17:14:24 by vurrigon         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,6 +24,8 @@ void	do_sa(t_head **head)
 		a->value = a->next->value;
 		a->next->value = tmp;
 	}
+	if ((*head)->do_write)
+		write(1, "sa\n", 3);
 }
 
 void	do_sb(t_head **head)
@@ -38,12 +40,21 @@ void	do_sb(t_head **head)
 		b->value = b->next->value;
 		b->next->value = tmp;
 	}
+	if ((*head)->do_write)
+		write(1, "sb\n", 3);
 }
 
 void	do_ss(t_head **head)
 {
+	int	writer;
+
+	writer = (*head)->do_write;
+	(*head)->do_write = 0;
 	do_sa(head);
 	do_sb(head);
+	(*head)->do_write = writer;
+	if ((*head)->do_write)
+		write(1, "ss\n", 3);
 }
 
 void	do_pa(t_head **head)
@@ -64,6 +75,8 @@ void	do_pa(t_head **head)
 		else
 			(*head)->b = NULL;
 		free(b);
+		if ((*head)->do_write)
+			write(1, "pa\n", 3);
 	}
 }
 
@@ -85,5 +98,7 @@ void	do_pb(t_head **head)
 		else
 			(*head)->a = NULL;
 		free(a);
+		if ((*head)->do_write)
+			write(1, "pb\n", 3);
 	}
 }

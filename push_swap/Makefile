@@ -3,14 +3,14 @@
 #                                                         :::      ::::::::    #
 #    Makefile                                           :+:      :+:    :+:    #
 #                                                     +:+ +:+         +:+      #
-#    By: vurrigon <marvin@42.fr>                    +#+  +:+       +#+         #
+#    By: vurrigon <vurrigon@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2019/03/28 15:07:54 by vurrigon          #+#    #+#              #
-#    Updated: 2019/03/28 15:15:04 by vurrigon         ###   ########.fr        #
+#    Updated: 2019/07/07 13:28:50 by vurrigon         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
-NAME = push_swap
+NAME = checker
 NAME_LIBFT = ./libft/libft.a
 CC = gcc
 CFLAGS = -Wall -Wextra -Werror
