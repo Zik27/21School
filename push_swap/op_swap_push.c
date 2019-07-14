@@ -6,11 +6,12 @@
 /*   By: vurrigon <vurrigon@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/06/30 16:15:41 by vurrigon          #+#    #+#             */
-/*   Updated: 2019/07/07 17:14:24 by vurrigon         ###   ########.fr       */
+/*   Updated: 2019/07/14 13:42:21 by vurrigon         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
+#include <stdio.h>
 
 void	do_sa(t_head **head)
 {

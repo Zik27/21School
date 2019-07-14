@@ -6,11 +6,12 @@
 /*   By: vurrigon <vurrigon@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/03/29 16:45:28 by vurrigon          #+#    #+#             */
-/*   Updated: 2019/07/07 15:14:49 by vurrigon         ###   ########.fr       */
+/*   Updated: 2019/07/14 14:11:50 by vurrigon         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
+#include <stdio.h>
 
 int	check_sort(t_head *head)
 {
@@ -46,3 +47,28 @@ int	get_len_stack(t_lst *stack)
 	return (length);
 }
 
+int get_smallest(t_lst *stack)
+{
+	int	smallest;
+
+	smallest = stack->value;
+	while (stack->next)
+	{
+		stack = stack->next;
+		smallest = smallest > stack->value ? stack->value : smallest; 
+	}
+	return (smallest);
+}
+
+int get_max(t_lst *stack)
+{
+	int	max;
+
+	max = stack->value;
+	while (stack->next)
+	{
+		stack = stack->next;
+		max = max < stack->value ? stack->value : max; 
+	}
+	return (max);
+}

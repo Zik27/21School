@@ -6,7 +6,7 @@
 /*   By: vurrigon <vurrigon@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/06/13 16:47:56 by vurrigon          #+#    #+#             */
-/*   Updated: 2019/07/07 17:09:55 by vurrigon         ###   ########.fr       */
+/*   Updated: 2019/07/14 13:40:42 by vurrigon         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,7 +32,7 @@ t_lst	*ft_create_elem(int data)
 {
 	t_lst	*list;
 
-	if ((list = (t_lst *) malloc(sizeof(t_lst))))
+	if ((list = (t_lst *)malloc(sizeof(t_lst))))
 	{
 		list->value = data;
 		list->next = NULL;

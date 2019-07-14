@@ -6,7 +6,7 @@
 /*   By: vurrigon <vurrigon@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/07/07 15:10:36 by vurrigon          #+#    #+#             */
-/*   Updated: 2019/07/07 17:16:12 by vurrigon         ###   ########.fr       */
+/*   Updated: 2019/07/14 14:00:56 by vurrigon         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -57,7 +57,8 @@ void	sorting_below_four(t_head **head, int length)
 			sorting_case_one(head);
 		else if (a->value > a->next->next->value)
 			sorting_case_five(head);
-		else
+		else if (a->next->next->value > a->value && a->next->value > 
+			a->next->next->value)
 			sorting_case_four(head);
 	}
 }
