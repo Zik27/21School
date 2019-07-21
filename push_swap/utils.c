@@ -6,7 +6,7 @@
 /*   By: vurrigon <vurrigon@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/03/29 16:45:28 by vurrigon          #+#    #+#             */
-/*   Updated: 2019/07/14 14:11:50 by vurrigon         ###   ########.fr       */
+/*   Updated: 2019/07/21 17:09:53 by vurrigon         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -71,4 +71,13 @@ int get_max(t_lst *stack)
 		max = max < stack->value ? stack->value : max; 
 	}
 	return (max);
+}
+
+void	swap_value(int *a, int *b)
+{
+	int	tmp;
+
+	tmp = *a;
+	*a = *b;
+	*b = tmp;
 }

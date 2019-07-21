@@ -6,7 +6,7 @@
 /*   By: vurrigon <vurrigon@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/06/13 16:47:56 by vurrigon          #+#    #+#             */
-/*   Updated: 2019/07/14 13:40:42 by vurrigon         ###   ########.fr       */
+/*   Updated: 2019/07/21 17:41:24 by vurrigon         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,13 +28,14 @@ void	delete_last_elem(t_lst **list)
 	before->next = NULL;
 }
 
-t_lst	*ft_create_elem(int data)
+t_lst	*ft_create_elem(int data, int mark)
 {
 	t_lst	*list;
 
 	if ((list = (t_lst *)malloc(sizeof(t_lst))))
 	{
 		list->value = data;
+		list->mark = mark;
 		list->next = NULL;
 		return (list);
 	}
@@ -55,7 +56,7 @@ t_lst	*create_lst(char **data)
 	current = head;
 	while (data[i])
 	{
-		current->next = ft_create_elem(ft_atoi(data[i++]));
+		current->next = ft_create_elem(ft_atoi(data[i++]), 0);
 		current = current->next;
 	}
 	return (head);
