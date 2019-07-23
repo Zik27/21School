@@ -6,7 +6,7 @@
 /*   By: vurrigon <vurrigon@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/07/21 15:44:50 by vurrigon          #+#    #+#             */
-/*   Updated: 2019/07/21 20:19:51 by vurrigon         ###   ########.fr       */
+/*   Updated: 2019/07/23 18:31:47 by vurrigon         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -114,10 +114,10 @@ int	markup(t_head **head)
 	current = (*head)->a;
 	while (current)
 	{	
-		printf("ISXODNOE == %d, Mark = %d\n", current->value, current->mark);
+		//printf("ISXODNOE == %d, Mark = %d\n", current->value, current->mark);
 		current = current->next;
 	}
-	printf("MAX = %d\n", max);
+	//printf("MAX = %d\n", max);
 	return (max);
 }
 
@@ -137,18 +137,20 @@ void	zeroing_marks(t_head **head)
 void	sorting_more_six(t_head **head)
 {
 	int		max;
+	t_lst	*cur;
 
 	max = markup(head);
 	while (check_marks((*head)->a))
 	{
-		// cur = (*head)->a;
-		// while (cur)
-		// {
-		// 	printf("VALUE == %d, mark == %d\n", cur->value, cur->mark);
-		// 	cur = cur->next;
-		// }
+		cur = (*head)->a;
+		while (cur)
+		{
+			printf("VALUE == %d, mark == %d\n", cur->value, cur->mark);
+			cur = cur->next;
+		}
 		if (check_swap(head, max))
 		{
+			//printf("max === %d\n", max);
 			do_sa(head);
 			zeroing_marks(head);
 			// cur = (*head)->a;
@@ -165,46 +167,11 @@ void	sorting_more_six(t_head **head)
 			// 	cur = cur->next;
 			// }
 		}
-		if ((*head)->a->mark)
-			do_ra(head);
-		else
+		else if (!(*head)->a->mark)
 			do_pb(head);
+		else
+			do_ra(head);
+			
 	}
 	main_sorting(head);
-
-
-
-
-
-
-	t_lst	*current;
-	printf("==================================\n");
-	if (!(*head)->b)
-		printf("B is NULL\n");
-	else
-	{
-		current = (*head)->b;
-		printf("B is not NULL\n");
-		while (current->next)
-		{
-			printf("nbr = %d\n", current->value);
-			current = current->next;
-		}
-		printf("nbr = %d\n", current->value);
-	}
-	if ((*head)->a)
-	{
-		t_lst	*current;
-		current = (*head)->a;
-		printf("A is not NULL\n");
-		while (current->next)
-		{
-			printf("nbr = %d\n", current->value);
-			current = current->next;
-		}
-		printf("nbr = %d\n", current->value);
-	}
-	else
-		printf("A is NULL\n");
-
 }

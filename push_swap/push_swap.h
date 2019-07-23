@@ -6,7 +6,7 @@
 /*   By: vurrigon <vurrigon@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/03/28 19:06:05 by vurrigon          #+#    #+#             */
-/*   Updated: 2019/07/21 19:02:37 by vurrigon         ###   ########.fr       */
+/*   Updated: 2019/07/23 15:51:45 by vurrigon         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,6 +19,9 @@ typedef struct	s_lst
 	struct s_lst	*next;
 	int				value;
 	int				mark:2;
+	int				count_op_a;
+	int				count_op_b;
+	int				sum_step;
 	
 }				t_lst;
 typedef struct	s_head
@@ -54,5 +57,6 @@ int			get_max(t_lst *stack);
 void		sorting_more_six(t_head **head);
 void		swap_value(int *a, int *b);
 void		main_sorting(t_head **head);
+void		solver(t_head **head, t_lst *stack_min);
 
 #endif

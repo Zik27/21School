@@ -6,7 +6,7 @@
 /*   By: vurrigon <vurrigon@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/07/07 13:37:45 by vurrigon          #+#    #+#             */
-/*   Updated: 2019/07/21 15:42:32 by vurrigon         ###   ########.fr       */
+/*   Updated: 2019/07/23 16:55:27 by vurrigon         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,8 +36,7 @@ int	main(int argc, char **argv)
 		sorting_below_six(&head, len);
 	else
 		sorting_more_six(&head);
-	// else
-	// 	sorting_big(&head);
+
 	// t_lst	*current;
 	// if (!head->b)
 	// 	printf("B is NULL\n");

@@ -6,7 +6,7 @@
 /*   By: vurrigon <vurrigon@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/06/13 16:47:56 by vurrigon          #+#    #+#             */
-/*   Updated: 2019/07/21 17:41:24 by vurrigon         ###   ########.fr       */
+/*   Updated: 2019/07/23 14:30:44 by vurrigon         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,6 +36,9 @@ t_lst	*ft_create_elem(int data, int mark)
 	{
 		list->value = data;
 		list->mark = mark;
+		list->count_op_a = 0;
+		list->count_op_b = 0;
+		list->sum_step = 0;
 		list->next = NULL;
 		return (list);
 	}
