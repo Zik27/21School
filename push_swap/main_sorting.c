@@ -6,7 +6,7 @@
 /*   By: vurrigon <vurrigon@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/07/21 18:49:36 by vurrigon          #+#    #+#             */
-/*   Updated: 2019/07/23 16:55:12 by vurrigon         ###   ########.fr       */
+/*   Updated: 2019/07/24 17:07:11 by vurrigon         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -127,7 +127,7 @@ int		check_stack_b(int value, t_head *head)
 	return (steps);
 }
 
-void	check_count_op(t_head **head)
+void check_count_op(t_head **head)
 {
 	t_lst	*b;
 	int		count_b;
@@ -145,6 +145,7 @@ void	check_count_op(t_head **head)
 		//printf("RESULT === %d\n", b->sum_step);
 		b = b->next;
 	}
+	//printf("AAAAAAA %d\n", all_sum);
 }
 
 void	main_sorting(t_head **head)
@@ -160,7 +161,7 @@ void	main_sorting(t_head **head)
 
 
 
-		// t_lst	*current;
+		//t_lst	*current;
 		// if (!(*head)->b)
 		// 	printf("B is NULL\n");
 		// else

@@ -6,7 +6,7 @@
 /*   By: vurrigon <vurrigon@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/06/13 16:47:56 by vurrigon          #+#    #+#             */
-/*   Updated: 2019/07/23 14:30:44 by vurrigon         ###   ########.fr       */
+/*   Updated: 2019/07/24 15:19:14 by vurrigon         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -55,6 +55,10 @@ t_lst	*create_lst(char **data)
 	if (!(head = (t_lst *)malloc(sizeof(t_lst))))
 		return (0);
 	head->value = ft_atoi(data[i++]);
+	head->mark = 0;
+	head->count_op_a = 0;
+	head->count_op_b = 0;
+	head->sum_step = 0;
 	head->next = NULL;
 	current = head;
 	while (data[i])
