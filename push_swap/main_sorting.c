@@ -43,14 +43,24 @@ int		get_total_steps(int step_a, int step_b)
 {
 	int	sum_step;
 
-	if (step_a < 0 && step_b > 0)
+	sum_step = 0;
+	if ((step_a <= 0 && step_b >= 0) || (step_a >= 0 && step_b <= 0))
 		sum_step = step_b - step_a;
-	else if (step_a > 0 && step_b < 0)
-		sum_step = step_a - step_b;
-	else
-		sum_step = step_a + step_b;
-	sum_step = sum_step < 0 ? -sum_step : sum_step;
-	return (sum_step);
+	else if (step_a < 0 && step_b < 0)
+	{
+		if (step_a < step_b)
+			sum_step = -step_a;
+		else
+			sum_step = -step_b;
+	}
+	else if (step_a > 0 && step_b > 0)
+	{
+		if (step_a > step_b)
+			sum_step = step_a;
+		else
+			sum_step = step_b;
+	}
+	return (sum_step < 0 ? -sum_step : sum_step);
 }
 
 t_lst	*choose_min_step(t_lst *stack)
@@ -65,6 +75,7 @@ t_lst	*choose_min_step(t_lst *stack)
 			min_step = stack;
 		stack = stack->next;
 	}
+	//printf("`min ======== %d\n", min_step->sum_step);
 	return (min_step);
 }
 
@@ -140,8 +151,8 @@ void check_count_op(t_head **head)
 		b->count_op_b = count_b;
 		count_a = check_stack_a(b->value, *head);
 		b->count_op_a = count_a;
-		//printf("COUNT_A === %d, COUNT_B === %d\n", count_a, count_b);
 		b->sum_step = get_total_steps(count_a, count_b);
+		//printf("COUNT_A === %d, COUNT_B === %d\n", count_a, count_b);
 		//printf("RESULT === %d\n", b->sum_step);
 		b = b->next;
 	}
@@ -154,8 +165,38 @@ void	main_sorting(t_head **head)
 
 	while ((*head)->b)
 	{
+		//t_lst	*current;
+		// if (!(*head)->b)
+		// 	printf("B is NULL\n");
+		// else
+		// {
+		// 	current = (*head)->b;
+		// 	printf("B is not NULL\n");
+		// 	while (current->next)
+		// 	{
+		// 		printf("nbr = %d\n", current->value);
+		// 		current = current->next;
+		// 	}
+		// 	printf("nbr = %d\n", current->value);
+		// }
+		// if ((*head)->a)
+		// {
+		// 	t_lst	*current;
+		// 	current = (*head)->a;
+		// 	printf("A is not NULL\n");
+		// 	while (current->next)
+		// 	{
+		// 		printf("nbr = %d\n", current->value);
+		// 		current = current->next;
+		// 	}
+		// 	printf("nbr = %d\n", current->value);
+		// }
+		// else
+		// 	printf("A is NULL\n");
 		check_count_op(head);
 		choosen = choose_min_step((*head)->b);
+		//printf("`min ======== %d\n", choosen->sum_step);
+		//printf("`a ======== %d, b ======= %d\n", choosen->count_op_a, choosen->count_op_b);
 
 
 

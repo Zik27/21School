@@ -35,17 +35,17 @@ void	solver(t_head **head, t_lst *stack_min)
 			tmp_b--;
 			do_rr(head);
 		}
-	if (tmp_a > 0)
-		while (tmp_a--)
-			do_ra(head);
-	else if (tmp_a < 0)
-		while (tmp_a++)
-			do_rra(head);
 	if (tmp_b > 0)
 		while (tmp_b--)
 			do_rb(head);
 	else if (tmp_b < 0)
 		while (tmp_b++)
 			do_rrb(head);
+	if (tmp_a > 0)
+		while (tmp_a--)
+			do_ra(head);
+	else if (tmp_a < 0)
+		while (tmp_a++)
+			do_rra(head);
 	do_pa(head);
 }
