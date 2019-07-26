@@ -6,13 +6,14 @@
 /*   By: vurrigon <vurrigon@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/03/28 19:06:05 by vurrigon          #+#    #+#             */
-/*   Updated: 2019/07/24 15:18:47 by vurrigon         ###   ########.fr       */
+/*   Updated: 2019/07/26 16:33:33 by vurrigon         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef PUSH_SWAP_H
 # define PUSH_SWAP_H
 # include "libft/libft.h"
+# include "libft/ft_printf.h"
 
 typedef struct	s_lst
 {
@@ -22,6 +23,7 @@ typedef struct	s_lst
 	int				count_op_a;
 	int				count_op_b;
 	int				sum_step;
+	int				index;
 	
 }				t_lst;
 typedef struct	s_head
@@ -29,17 +31,18 @@ typedef struct	s_head
 	struct	s_lst	*a;
 	struct	s_lst	*b;
 	int				do_write:2;
+	int				do_debug:2;
 }				t_head;
 int			valid(char **str);
 t_lst		*create_lst(char **data);
-t_head		*create_head(char **data, int write);
+t_head		*create_head(char **data, int write, int do_debug);
 int			read_command(t_head **head);
 void		do_sa(t_head **head);
 void		do_sb(t_head **head);
 void		do_ss(t_head **head);
 void		do_pa(t_head **head);
 void		do_pb(t_head **head);
-t_lst		*ft_create_elem(int data, int mark);
+t_lst		*ft_create_elem(int data, int mark, int index);
 void		delete_last_elem(t_lst **list);
 void		do_ra(t_head **head);
 void		do_rb(t_head **head);

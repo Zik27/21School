@@ -6,7 +6,7 @@
 /*   By: vurrigon <vurrigon@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/07/21 18:49:36 by vurrigon          #+#    #+#             */
-/*   Updated: 2019/07/24 17:07:11 by vurrigon         ###   ########.fr       */
+/*   Updated: 2019/07/26 12:11:26 by vurrigon         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -75,7 +75,6 @@ t_lst	*choose_min_step(t_lst *stack)
 			min_step = stack;
 		stack = stack->next;
 	}
-	//printf("`min ======== %d\n", min_step->sum_step);
 	return (min_step);
 }
 
@@ -151,12 +150,11 @@ void check_count_op(t_head **head)
 		b->count_op_b = count_b;
 		count_a = check_stack_a(b->value, *head);
 		b->count_op_a = count_a;
-		b->sum_step = get_total_steps(count_a, count_b);
 		//printf("COUNT_A === %d, COUNT_B === %d\n", count_a, count_b);
+		b->sum_step = get_total_steps(count_a, count_b);
 		//printf("RESULT === %d\n", b->sum_step);
 		b = b->next;
 	}
-	//printf("AAAAAAA %d\n", all_sum);
 }
 
 void	main_sorting(t_head **head)
@@ -165,134 +163,9 @@ void	main_sorting(t_head **head)
 
 	while ((*head)->b)
 	{
-		//t_lst	*current;
-		// if (!(*head)->b)
-		// 	printf("B is NULL\n");
-		// else
-		// {
-		// 	current = (*head)->b;
-		// 	printf("B is not NULL\n");
-		// 	while (current->next)
-		// 	{
-		// 		printf("nbr = %d\n", current->value);
-		// 		current = current->next;
-		// 	}
-		// 	printf("nbr = %d\n", current->value);
-		// }
-		// if ((*head)->a)
-		// {
-		// 	t_lst	*current;
-		// 	current = (*head)->a;
-		// 	printf("A is not NULL\n");
-		// 	while (current->next)
-		// 	{
-		// 		printf("nbr = %d\n", current->value);
-		// 		current = current->next;
-		// 	}
-		// 	printf("nbr = %d\n", current->value);
-		// }
-		// else
-		// 	printf("A is NULL\n");
 		check_count_op(head);
 		choosen = choose_min_step((*head)->b);
-		//printf("`min ======== %d\n", choosen->sum_step);
-		//printf("`a ======== %d, b ======= %d\n", choosen->count_op_a, choosen->count_op_b);
-
-
-
-
-
-		//t_lst	*current;
-		// if (!(*head)->b)
-		// 	printf("B is NULL\n");
-		// else
-		// {
-		// 	current = (*head)->b;
-		// 	printf("B is not NULL\n");
-		// 	while (current->next)
-		// 	{
-		// 		printf("nbr = %d\n", current->value);
-		// 		current = current->next;
-		// 	}
-		// 	printf("nbr = %d\n", current->value);
-		// }
-		// if ((*head)->a)
-		// {
-		// 	t_lst	*current;
-		// 	current = (*head)->a;
-		// 	printf("A is not NULL\n");
-		// 	while (current->next)
-		// 	{
-		// 		printf("nbr = %d\n", current->value);
-		// 		current = current->next;
-		// 	}
-		// 	printf("nbr = %d\n", current->value);
-		// }
-		// else
-		// 	printf("A is NULL\n");
-
-
-
-		//printf("$$$$$$SOLVER$$$$$$$$\n");
 		solver(head, choosen);
-		// if (!(*head)->b)
-		// 	printf("B is NULL\n");
-		// else
-		// {
-		// 	current = (*head)->b;
-		// 	printf("B is not NULL\n");
-		// 	while (current->next)
-		// 	{
-		// 		printf("nbr = %d\n", current->value);
-		// 		current = current->next;
-		// 	}
-		// 	printf("nbr = %d\n", current->value);
-		// }
-		// if ((*head)->a)
-		// {
-		// 	t_lst	*current;
-		// 	current = (*head)->a;
-		// 	printf("A is not NULL\n");
-		// 	while (current->next)
-		// 	{
-		// 		printf("nbr = %d\n", current->value);
-		// 		current = current->next;
-		// 	}
-		// 	printf("nbr = %d\n", current->value);
-		// }
-		// else
-		// 	printf("A is NULL\n");
-		
 	}
 	align_stack(head);
-	// t_lst	*current;
-	// if (!(*head)->b)
-	// 	printf("B is NULL\n");
-	// else
-	// {
-	// 	current = (*head)->b;
-	// 	printf("B is not NULL\n");
-	// 	while (current->next)
-	// 	{
-	// 		printf("nbr = %d\n", current->value);
-	// 		current = current->next;
-	// 	}
-	// 	printf("nbr = %d\n", current->value);
-	// }
-	// if ((*head)->a)
-	// {
-	// 	t_lst	*current;
-	// 	current = (*head)->a;
-	// 	printf("A is not NULL\n");
-	// 	while (current->next)
-	// 	{
-	// 		printf("nbr = %d\n", current->value);
-	// 		current = current->next;
-	// 	}
-	// 	printf("nbr = %d\n", current->value);
-	// }
-	// else
-	// 	printf("A is NULL\n");
-
-
 }

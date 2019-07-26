@@ -6,17 +6,20 @@
 /*   By: vurrigon <vurrigon@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/03/28 19:05:40 by vurrigon          #+#    #+#             */
-/*   Updated: 2019/07/21 13:34:02 by vurrigon         ###   ########.fr       */
+/*   Updated: 2019/07/26 17:21:35 by vurrigon         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
+#include <stdio.h>
 
 int	check_max(char *str)
 {
 	int	length;
 	int	positive;
+	char	*tmp;
 
+	tmp = NULL;
 	length = ft_strlen(str);
 	if (str[0] == '+')
 		positive = 1;
@@ -24,9 +27,16 @@ int	check_max(char *str)
 		positive = 0;
 	if (length > 11)
 		return (0);
-	else if (((str[0] == '-' || str[0] == '+') && length == 11) || length == 10)
-		if (ft_strcmp(ft_itoa(ft_atoi(str)), str + positive) != 0)
+	else
+	{
+		tmp = ft_itoa(ft_atoi(str));
+		if (ft_strcmp(tmp, str + positive) != 0)
+		{
+			free(tmp);
 			return (0);
+		}
+		free(tmp);
+	}
 	return (1);
 }
 
@@ -35,7 +45,7 @@ int	check_dup(char **str)
 	int i;
 	int	j;
 
-	i = 1;
+	i = 0;
 	while (str[i])
 	{
 		j = i + 1;
@@ -78,7 +88,7 @@ int	valid(char **str)
 {
 	int	i;
 
-	i = 1;
+	i = 0;
 	while (str[i])
 	{
 		if (!ft_isnumber(str[i]) || !check_max(str[i]))

@@ -6,7 +6,7 @@
 /*   By: vurrigon <vurrigon@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/03/29 16:45:28 by vurrigon          #+#    #+#             */
-/*   Updated: 2019/07/21 17:09:53 by vurrigon         ###   ########.fr       */
+/*   Updated: 2019/07/26 16:50:53 by vurrigon         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,9 +21,9 @@ int	check_sort(t_head *head)
 
 	a = head->a;
 	b = head->b;
-	value = a->value;
 	if (!a || b)
 		return (0);
+	value = a->value;
 	while (a->next)
 	{
 		a = a->next;

@@ -6,7 +6,7 @@
 /*   By: vurrigon <vurrigon@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/07/07 13:37:45 by vurrigon          #+#    #+#             */
-/*   Updated: 2019/07/24 12:51:09 by vurrigon         ###   ########.fr       */
+/*   Updated: 2019/07/26 15:51:37 by vurrigon         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,14 +19,15 @@ int	main(int argc, char **argv)
 
 	if (argc < 2)
 		return (0);
-	else if (argc == 2 && ft_strrchr(argv[1], ' '))
-		argv = ft_strsplit(argv[1], ' ');
+	argv = &argv[1];
+	if (argc == 2 && ft_strrchr(argv[0], ' '))
+		argv = ft_strsplit(argv[0], ' ');
 	if (!valid(argv))
 	{
 		write(1, "Error\n", 6);
 		exit(1);
 	}
-	head = create_head(argv, 1);
+	head = create_head(argv, 1, 0);
 	if (check_sort(head))
 		exit(0);
 	len = get_len_stack(head->a);
@@ -36,7 +37,6 @@ int	main(int argc, char **argv)
 		sorting_below_six(&head, len);
 	else
 		sorting_more_six(&head);
-
 	// t_lst	*current;
 	// if (!head->b)
 	// 	printf("B is NULL\n");

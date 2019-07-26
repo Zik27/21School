@@ -6,7 +6,7 @@
 /*   By: vurrigon <vurrigon@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/06/30 16:15:41 by vurrigon          #+#    #+#             */
-/*   Updated: 2019/07/21 19:30:24 by vurrigon         ###   ########.fr       */
+/*   Updated: 2019/07/26 16:44:15 by vurrigon         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,6 +27,9 @@ void	do_sa(t_head **head)
 		tmp = a->mark;
 		a->mark = a->next->mark;
 		a->next->mark = tmp;
+		tmp = a->index;
+		a->index = a->next->index;
+		a->next->index = tmp;
 	}
 	if ((*head)->do_write)
 		write(1, "sa\n", 3);
@@ -46,6 +49,9 @@ void	do_sb(t_head **head)
 		tmp = b->mark;
 		b->mark = b->next->mark;
 		b->next->mark = tmp;
+		tmp = b->index;
+		b->index = b->next->index;
+		b->next->index = tmp;
 	}
 	if ((*head)->do_write)
 		write(1, "sb\n", 3);
@@ -74,7 +80,7 @@ void	do_pa(t_head **head)
 	b = (*head)->b;
 	if (b)
 	{
-		new = ft_create_elem(b->value, b->mark);
+		new = ft_create_elem(b->value, b->mark, b->index);
 		new->next = a;
 		(*head)->a = new;
 		if (b->next)
@@ -97,7 +103,7 @@ void	do_pb(t_head **head)
 	b = (*head)->b;
 	if (a)
 	{
-		new = ft_create_elem(a->value, a->mark);
+		new = ft_create_elem(a->value, a->mark, a->index);
 		new->next = b;
 		(*head)->b = new;
 		if (a->next)

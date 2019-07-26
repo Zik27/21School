@@ -6,7 +6,7 @@
 /*   By: vurrigon <vurrigon@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/12/24 12:58:51 by vurrigon          #+#    #+#             */
-/*   Updated: 2019/06/30 15:50:37 by vurrigon         ###   ########.fr       */
+/*   Updated: 2019/07/26 13:48:10 by vurrigon         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -72,7 +72,7 @@ t_list		*search_fd(t_list **head, int fd)
 			return (tmp);
 		tmp = tmp->next;
 	}
-	tmp = ft_lstnew("", fd);
+	tmp = ft_lstnew("", fd + 1);
 	ft_lstadd(head, tmp);
 	return (tmp);
 }
