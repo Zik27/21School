@@ -6,12 +6,11 @@
 /*   By: vurrigon <vurrigon@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/06/30 18:33:52 by vurrigon          #+#    #+#             */
-/*   Updated: 2019/07/26 16:43:05 by vurrigon         ###   ########.fr       */
+/*   Updated: 2019/07/27 17:22:25 by vurrigon         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
-#include <stdio.h>
 
 void	do_rra(t_head **head)
 {
@@ -30,7 +29,10 @@ void	do_rra(t_head **head)
 		(*head)->a = new;
 		if ((*head)->do_write)
 			write(1, "rra\n", 4);
+		(*head)->operation = "rra";
 	}
+	else
+		(*head)->operation = NULL;
 }
 
 void	do_rrb(t_head **head)
@@ -50,7 +52,10 @@ void	do_rrb(t_head **head)
 		(*head)->b = new;
 		if ((*head)->do_write)
 			write(1, "rrb\n", 4);
+		(*head)->operation = "rrb";
 	}
+	else
+		(*head)->operation = NULL;
 }
 
 void	do_rrr(t_head **head)
@@ -64,6 +69,7 @@ void	do_rrr(t_head **head)
 	(*head)->do_write = writer;
 	if ((*head)->do_write)
 		write(1, "rrr\n", 4);
+	(*head)->operation = "rrr";
 }
 
 void	do_ra(t_head **head)
@@ -86,7 +92,10 @@ void	do_ra(t_head **head)
 		(*head)->a = a;
 		if ((*head)->do_write)
 			write(1, "ra\n", 3);
+		(*head)->operation = "ra";
 	}
+	else
+		(*head)->operation = NULL;
 }
 
 void	do_rb(t_head **head)
@@ -109,19 +118,8 @@ void	do_rb(t_head **head)
 		(*head)->b = b;
 		if ((*head)->do_write)
 			write(1, "rb\n", 3);
+		(*head)->operation = "rb";
 	}
-
-}
-
-void	do_rr(t_head **head)
-{
-	int	writer;
-
-	writer = (*head)->do_write;
-	(*head)->do_write = 0;
-	do_ra(head);
-	do_rb(head);
-	(*head)->do_write = writer;
-	if ((*head)->do_write)
-		write(1, "rr\n", 3);
+	else
+		(*head)->operation = NULL;
 }

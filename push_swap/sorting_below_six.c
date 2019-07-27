@@ -6,13 +6,13 @@
 /*   By: vurrigon <vurrigon@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/07/07 16:02:39 by vurrigon          #+#    #+#             */
-/*   Updated: 2019/07/14 14:21:50 by vurrigon         ###   ########.fr       */
+/*   Updated: 2019/07/27 17:05:25 by vurrigon         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
-#include <stdio.h>
-void case_for_four(t_head **head)
+
+void	case_for_four(t_head **head)
 {
 	long int	smallest;
 	int			flag;
@@ -33,7 +33,7 @@ void case_for_four(t_head **head)
 	do_pa(head);
 }
 
-void case_for_five(t_head **head)
+void	case_for_five(t_head **head)
 {
 	int	smallest;
 	int	max;

@@ -6,12 +6,11 @@
 /*   By: vurrigon <vurrigon@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/06/30 16:15:41 by vurrigon          #+#    #+#             */
-/*   Updated: 2019/07/26 16:44:15 by vurrigon         ###   ########.fr       */
+/*   Updated: 2019/07/27 17:22:07 by vurrigon         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
-#include <stdio.h>
 
 void	do_sa(t_head **head)
 {
@@ -30,7 +29,10 @@ void	do_sa(t_head **head)
 		tmp = a->index;
 		a->index = a->next->index;
 		a->next->index = tmp;
+		(*head)->operation = "ra";
 	}
+	else
+		(*head)->operation = NULL;
 	if ((*head)->do_write)
 		write(1, "sa\n", 3);
 }
@@ -52,7 +54,10 @@ void	do_sb(t_head **head)
 		tmp = b->index;
 		b->index = b->next->index;
 		b->next->index = tmp;
+		(*head)->operation = "sb";
 	}
+	else
+		(*head)->operation = NULL;
 	if ((*head)->do_write)
 		write(1, "sb\n", 3);
 }
@@ -68,6 +73,7 @@ void	do_ss(t_head **head)
 	(*head)->do_write = writer;
 	if ((*head)->do_write)
 		write(1, "ss\n", 3);
+	(*head)->operation = "ss";
 }
 
 void	do_pa(t_head **head)
@@ -90,7 +96,10 @@ void	do_pa(t_head **head)
 		free(b);
 		if ((*head)->do_write)
 			write(1, "pa\n", 3);
+		(*head)->operation = "pa";
 	}
+	else
+		(*head)->operation = NULL;
 }
 
 void	do_pb(t_head **head)
@@ -113,5 +122,8 @@ void	do_pb(t_head **head)
 		free(a);
 		if ((*head)->do_write)
 			write(1, "pb\n", 3);
+		(*head)->operation = "pb";
 	}
+	else
+		(*head)->operation = NULL;
 }

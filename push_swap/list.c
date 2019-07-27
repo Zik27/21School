@@ -6,7 +6,7 @@
 /*   By: vurrigon <vurrigon@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/06/13 16:47:56 by vurrigon          #+#    #+#             */
-/*   Updated: 2019/07/26 16:33:51 by vurrigon         ###   ########.fr       */
+/*   Updated: 2019/07/27 17:03:24 by vurrigon         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -71,7 +71,7 @@ t_lst	*create_lst(char **data)
 	return (head);
 }
 
-t_head	*create_head(char **data, int write, int do_debug)
+t_head	*create_head(char **data, int write, int do_debug, int in_file)
 {
 	t_head	*head;
 
@@ -81,6 +81,8 @@ t_head	*create_head(char **data, int write, int do_debug)
 		head->b = NULL;
 		head->do_write = write;
 		head->do_debug = do_debug;
+		head->in_file = in_file;
+		head->operation = NULL;
 		return (head);
 	}
 	return (NULL);

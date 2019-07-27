@@ -6,17 +6,16 @@
 /*   By: vurrigon <vurrigon@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/03/28 19:05:40 by vurrigon          #+#    #+#             */
-/*   Updated: 2019/07/26 17:21:35 by vurrigon         ###   ########.fr       */
+/*   Updated: 2019/07/27 16:20:44 by vurrigon         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
-#include <stdio.h>
 
 int	check_max(char *str)
 {
-	int	length;
-	int	positive;
+	int		length;
+	int		positive;
 	char	*tmp;
 
 	tmp = NULL;
@@ -58,7 +57,6 @@ int	check_dup(char **str)
 		i++;
 	}
 	return (1);
-
 }
 
 int	ft_isnumber(char *str)

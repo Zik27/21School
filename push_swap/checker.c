@@ -6,12 +6,12 @@
 /*   By: vurrigon <vurrigon@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/03/28 15:29:11 by vurrigon          #+#    #+#             */
-/*   Updated: 2019/07/26 16:50:07 by vurrigon         ###   ########.fr       */
+/*   Updated: 2019/07/27 17:29:08 by vurrigon         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
-#include <stdio.h>
+
 int	main(int argc, char **argv)
 {
 	t_head *head;
@@ -27,7 +27,7 @@ int	main(int argc, char **argv)
 		write(1, "Error\n", 6);
 		exit(1);
 	}
-	head = create_head(argv, 0, argc);
+	head = create_head(argv, 0, argc, 0);
 	if (!read_command(&head))
 	{
 		write(1, "Error\n", 6);
@@ -39,9 +39,3 @@ int	main(int argc, char **argv)
 		write(1, "KO\n", 3);
 	exit(0);
 }
-
-
-
-
-
-

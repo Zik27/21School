@@ -6,7 +6,7 @@
 /*   By: vurrigon <vurrigon@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/11/23 14:17:41 by vurrigon          #+#    #+#             */
-/*   Updated: 2019/06/30 15:49:29 by vurrigon         ###   ########.fr       */
+/*   Updated: 2019/07/27 17:03:06 by vurrigon         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -83,5 +83,5 @@ void			ft_lstdel(t_list **alst, void (*del)(void *, size_t));
 void			ft_lstadd(t_list **alst, t_list *new);
 void			ft_lstiter(t_list *lst, void (*f)(t_list *elem));
 t_list			*ft_lstmap(t_list *lst, t_list *(*f)(t_list *elem));
-int             get_next_line(const int fd, char **line);
+int				get_next_line(const int fd, char **line);
 #endif

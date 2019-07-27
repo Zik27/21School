@@ -6,7 +6,7 @@
 #    By: vurrigon <vurrigon@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2019/03/28 15:07:54 by vurrigon          #+#    #+#              #
-#    Updated: 2019/07/26 15:31:44 by vurrigon         ###   ########.fr        #
+#    Updated: 2019/07/27 17:18:41 by vurrigon         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -17,7 +17,7 @@ CFLAGS = -Wall -Wextra -Werror
 PATH_LIB = ./libft/
 SRCS = list.c op_rotate.c op_swap_push.c reader.c sorting_below_four.c \
 		sorting_below_six.c utils.c valid.c sorting_more_six.c main_sorting.c\
-		solver.c push_swap.c checker.c
+		solver.c debug.c utils_2.c cases.c count_steps.c push_swap.c checker.c
 OBJECTS =  ${SRCS:.c=.o}
 OBJECTS_PS := $(filter-out checker.o,$(OBJECTS))
 OBJECTS_CHECK := $(filter-out push_swap.o,$(OBJECTS))

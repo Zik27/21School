@@ -6,14 +6,13 @@
 /*   By: vurrigon <vurrigon@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/03/29 16:45:28 by vurrigon          #+#    #+#             */
-/*   Updated: 2019/07/26 16:50:53 by vurrigon         ###   ########.fr       */
+/*   Updated: 2019/07/27 17:02:32 by vurrigon         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
-#include <stdio.h>
 
-int	check_sort(t_head *head)
+int		check_sort(t_head *head)
 {
 	t_lst	*b;
 	t_lst	*a;
@@ -34,7 +33,7 @@ int	check_sort(t_head *head)
 	return (1);
 }
 
-int	get_len_stack(t_lst *stack)
+int		get_len_stack(t_lst *stack)
 {
 	int	length;
 
@@ -47,7 +46,7 @@ int	get_len_stack(t_lst *stack)
 	return (length);
 }
 
-int get_smallest(t_lst *stack)
+int		get_smallest(t_lst *stack)
 {
 	int	smallest;
 
@@ -55,12 +54,12 @@ int get_smallest(t_lst *stack)
 	while (stack->next)
 	{
 		stack = stack->next;
-		smallest = smallest > stack->value ? stack->value : smallest; 
+		smallest = smallest > stack->value ? stack->value : smallest;
 	}
 	return (smallest);
 }
 
-int get_max(t_lst *stack)
+int		get_max(t_lst *stack)
 {
 	int	max;
 
@@ -68,7 +67,7 @@ int get_max(t_lst *stack)
 	while (stack->next)
 	{
 		stack = stack->next;
-		max = max < stack->value ? stack->value : max; 
+		max = max < stack->value ? stack->value : max;
 	}
 	return (max);
 }

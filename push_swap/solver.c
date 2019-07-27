@@ -6,12 +6,29 @@
 /*   By: vurrigon <vurrigon@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/07/23 13:27:47 by vurrigon          #+#    #+#             */
-/*   Updated: 2019/07/24 16:56:33 by vurrigon         ###   ########.fr       */
+/*   Updated: 2019/07/27 16:19:18 by vurrigon         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
-#include <stdio.h>
+
+void	optimization(t_head **head, int *count_a, int *count_b)
+{
+	if (*count_a < 0 && *count_b < 0)
+		while (*count_a && *count_b)
+		{
+			(*count_a)++;
+			(*count_b)++;
+			do_rrr(head);
+		}
+	else if (*count_a > 0 && *count_b > 0)
+		while (*count_a && *count_b)
+		{
+			(*count_a)--;
+			(*count_b)--;
+			do_rr(head);
+		}
+}
 
 void	solver(t_head **head, t_lst *stack_min)
 {
@@ -20,21 +37,7 @@ void	solver(t_head **head, t_lst *stack_min)
 
 	tmp_a = stack_min->count_op_a;
 	tmp_b = stack_min->count_op_b;
-	//printf("value === %d, A = %d, B = %d\n", stack_min->value, stack_min->count_op_a, stack_min->count_op_b);
-	if (tmp_a < 0 && tmp_b < 0)
-		while (tmp_a && tmp_b)
-		{
-			tmp_a++;
-			tmp_b++;
-			do_rrr(head);
-		}
-	else if (tmp_a > 0 && tmp_b > 0)
-		while (tmp_a && tmp_b)
-		{
-			tmp_a--;
-			tmp_b--;
-			do_rr(head);
-		}
+	optimization(head, &tmp_a, &tmp_b);
 	if (tmp_a > 0)
 		while (tmp_a--)
 			do_ra(head);
