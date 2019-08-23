@@ -1,0 +1,26 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   parse_comment.c                                    :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: vurrigon <vurrigon@student.42.fr>          +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2019/08/21 12:46:52 by vurrigon          #+#    #+#             */
+/*   Updated: 2019/08/21 16:18:53 by vurrigon         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
+#include "lem_in.h"
+
+void	parse_comment(char *str, t_map *map)
+{
+	if (*str == '#' && *(str + 1) == '#')
+	{
+		if (ft_strcmp(str, "##start") == 0)
+			map->has_start++;
+		else if (ft_strcmp(str, "##end") == 0)
+			map->has_exit++;
+		else
+			error("Invalid command");
+	}
+}
