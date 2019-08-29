@@ -6,7 +6,7 @@
 /*   By: vurrigon <vurrigon@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/08/22 14:46:09 by vurrigon          #+#    #+#             */
-/*   Updated: 2019/08/23 16:52:30 by vurrigon         ###   ########.fr       */
+/*   Updated: 2019/08/29 16:14:25 by vurrigon         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -91,8 +91,23 @@ void	parse_links(char *str, t_map *map, t_room *rooms)
 	char	**ref;
 
 	ref = ft_strsplit(str, '-');
+	if (!map->has_links)
+		map->has_links = 1;
+	if (map->prev_command)
+	{
+		free(ref);
+		error("Invalid start/end");
+	}
 	if (!rooms->name && !rooms->x && !rooms->y)
+	{
+		free(ref);
 		error("The room is not defined");
+	}
 	if (!check_count_dash(ref) || !search_links(ref[0], ref[1], rooms))
+	{
+		free(ref);
+		free(map);
 		error("Invalid links");
+	}
+	free(ref);
 }

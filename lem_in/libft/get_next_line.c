@@ -3,104 +3,85 @@
 /*                                                        :::      ::::::::   */
 /*   get_next_line.c                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: vurrigon <vurrigon@student.42.fr>          +#+  +:+       +#+        */
+/*   By: djast <djast@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2018/12/24 12:58:51 by vurrigon          #+#    #+#             */
-/*   Updated: 2019/08/21 18:32:35 by vurrigon         ###   ########.fr       */
+/*   Created: 2019/01/02 13:11:19 by djast             #+#    #+#             */
+/*   Updated: 2019/01/03 12:44:10 by djast            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-char		*ft_strndup(const char *src, int i)
+char	*read_lines(const int fd, char **my_line)
 {
-	int		a;
-	char	*result_string;
+	int		size;
+	char	*buf;
+	char	*old_str;
 
-	a = 0;
-	if (!(result_string = ft_strnew(i)))
+	size = 1;
+	if ((buf = ft_strnew(BUFF_SIZE)) == NULL)
 		return (NULL);
-	while (src[a] && a < i)
+	while ((ft_strchr(*my_line, '\n') == NULL) && size > 0)
 	{
-		result_string[a] = src[a];
-		a++;
+		if ((size = read(fd, buf, BUFF_SIZE)) > 0)
+		{
+			buf[size] = '\0';
+			old_str = *my_line;
+			if ((*my_line = ft_strjoin(*my_line, buf)) == NULL)
+				return (NULL);
+			free(old_str);
+		}
 	}
-	return (result_string);
+	free(buf);
+	return (*my_line);
 }
 
-int			copy_line(char **line, char *content)
+char	*parse_line(char **my_line)
 {
-	int		a;
+	char *buf;
+	char *old_str;
 
-	a = 0;
-	while (content[a] && content[a] != '\n')
-		a++;
-	if (!(*line = ft_strndup(content, a)))
-		return (0);
-	return (a);
-}
-
-int			read_fd(int fd, char **content)
-{
-	char	buf[BUFF_SIZE + 1];
-	int		result;
-	char	*temp;
-
-	while ((result = read(fd, buf, BUFF_SIZE)))
+	old_str = NULL;
+	buf = NULL;
+	if (ft_strchr(*my_line, '\n') == NULL)
 	{
-		buf[result] = '\0';
-		temp = *content;
-		if (!(*content = ft_strjoin(*content, buf)))
-			return (-1);
-		free(temp);
-		if (ft_strchr(buf, '\n'))
-			break ;
-	}
-	return (result);
-}
-
-t_list		*search_fd(t_list **head, int fd)
-{
-	t_list	*tmp;
-
-	if (!head)
-		return (NULL);
-	tmp = *head;
-	while (tmp)
-	{
-		if ((int)tmp->content_size == fd)
-			return (tmp);
-		tmp = tmp->next;
-	}
-	tmp = ft_lstnew("", fd);
-	ft_lstadd(head, tmp);
-	return (tmp);
-}
-
-int			get_next_line(const int fd, char **line)
-{
-	char			buf[BUFF_SIZE + 1];
-	static t_list	*head;
-	t_list			*lst;
-	char			*temp;
-	int				result_read;
-
-	if (fd < 0 || line == NULL || (read(fd, buf, 0)) < 0 ||
-		!(lst = search_fd(&head, fd)))
-		return (-1);
-	temp = lst->content;
-	result_read = read_fd(fd, &temp);
-	lst->content = temp;
-	if (!result_read && !*temp)
-		return (0);
-	result_read = copy_line(line, lst->content);
-	temp = lst->content;
-	if (temp[result_read] != '\0')
-	{
-		lst->content = ft_strdup(&((lst->content)[result_read + 1]));
-		free(temp);
+		if ((buf = ft_strdup(*my_line)) == NULL)
+			return (NULL);
+		free(*my_line);
+		*my_line = NULL;
 	}
 	else
-		temp[0] = '\0';
-	return (1);
+	{
+		if ((buf = ft_strsub(*my_line, 0,
+			ft_strchr(*my_line, '\n') - *my_line)) == NULL)
+			return (NULL);
+		old_str = *my_line;
+		if ((*my_line = ft_strdup(ft_strchr(*my_line, '\n') + 1)) == NULL)
+			return (NULL);
+		free(old_str);
+	}
+	return (buf);
+}
+
+int		get_next_line(const int fd, char **line)
+{
+	static char *my_line[10240];
+
+	if (fd < 0 || fd > 10240 || line == NULL ||
+		read(fd, NULL, 0) == -1 || BUFF_SIZE <= 0)
+		return (-1);
+	if (my_line[fd] == NULL)
+	{
+		if ((my_line[fd] = ft_strnew(0)) == NULL)
+			return (-1);
+	}
+	if (read_lines(fd, &my_line[fd]) == NULL)
+		return (-1);
+	if (*my_line[fd])
+	{
+		if ((*line = parse_line(&my_line[fd])) == NULL)
+			return (-1);
+		return (1);
+	}
+	return (0);
 }
