@@ -6,7 +6,7 @@
 /*   By: djast <djast@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/08/20 14:18:55 by vurrigon          #+#    #+#             */
-/*   Updated: 2019/08/30 18:42:48 by djast            ###   ########.fr       */
+/*   Updated: 2019/08/30 20:02:15 by djast            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -123,7 +123,7 @@ void	parse(t_map *map)
 
 	// 	while (link)
 	// 	{
-	// 		printf("LINK === %s\n", link->name);
+	// 		printf("LINK === %s\n", link->room_l->name);
 	// 		link = link->next;
 	// 	}
 	// 	rooms = rooms->next;
@@ -131,8 +131,8 @@ void	parse(t_map *map)
 	// printf("START = %s, END = %s\n", map->start->name, map->exit->name);
 	
 
-	// if (!map->start || !map->exit || map->has_links != 1)
-	// 	error("Invalid input");
+	if (!map->start || !map->exit || map->has_links != 1)
+		error("Invalid input");
 	free_map(map);
 	free_rooms(rooms);
 }

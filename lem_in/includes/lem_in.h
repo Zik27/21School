@@ -6,7 +6,7 @@
 /*   By: djast <djast@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/08/20 14:24:28 by vurrigon          #+#    #+#             */
-/*   Updated: 2019/08/30 18:43:24 by djast            ###   ########.fr       */
+/*   Updated: 2019/08/30 19:30:46 by djast            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -43,7 +43,7 @@ typedef struct			s_map
 /* Структура, описывающая связи определенной комнаты */
 typedef struct			s_link
 {
-	char				*name;
+	struct s_room		*room_l;
 	struct s_link		*next;
 }						t_link;
 
