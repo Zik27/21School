@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   solver.c                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: vurrigon <vurrigon@student.42.fr>          +#+  +:+       +#+        */
+/*   By: djast <djast@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/08/28 15:53:30 by vurrigon          #+#    #+#             */
-/*   Updated: 2019/08/28 15:55:35 by vurrigon         ###   ########.fr       */
+/*   Updated: 2019/08/30 18:44:49 by djast            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,5 +14,6 @@
 
 void	solver(t_map *map, t_room *rooms)
 {
-	
+	(void) map;
+	(void) rooms;
 }

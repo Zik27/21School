@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   lem_in.h                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: vurrigon <vurrigon@student.42.fr>          +#+  +:+       +#+        */
+/*   By: djast <djast@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/08/20 14:24:28 by vurrigon          #+#    #+#             */
-/*   Updated: 2019/08/30 18:20:40 by vurrigon         ###   ########.fr       */
+/*   Updated: 2019/08/30 18:43:24 by djast            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,7 +16,8 @@
 # define EXIT -1
 # define WITH_NEG 1
 # define NO_NEG 0
-# include "libft/libft.h"
+# include "libft.h"
+# include <stdio.h>
 
 /* Структура, описывающая комнату */
 typedef struct			s_room

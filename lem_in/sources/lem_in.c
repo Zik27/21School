@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   lem_in.c                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: vurrigon <vurrigon@student.42.fr>          +#+  +:+       +#+        */
+/*   By: djast <djast@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/08/20 14:18:55 by vurrigon          #+#    #+#             */
-/*   Updated: 2019/08/30 18:21:28 by vurrigon         ###   ########.fr       */
+/*   Updated: 2019/08/30 18:42:48 by djast            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -67,7 +67,6 @@ t_room	*init_room(char *name, int x, int y)
 		room->count_links = 0;
 		room->links = NULL;
 		room->name = name;
-		room->next = NULL;
 	}
 	return (room);
 }
@@ -138,7 +137,7 @@ void	parse(t_map *map)
 	free_rooms(rooms);
 }
 
-int	main(int argc, char **argv)
+int	main(void)
 {
 	t_map	*map;
 

@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   parse_links.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: vurrigon <vurrigon@student.42.fr>          +#+  +:+       +#+        */
+/*   By: djast <djast@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/08/22 14:46:09 by vurrigon          #+#    #+#             */
-/*   Updated: 2019/08/30 18:29:05 by vurrigon         ###   ########.fr       */
+/*   Updated: 2019/08/30 18:43:14 by djast            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,7 +36,6 @@ void	create_link(char *name_link, t_room *rooms)
 int		search_links(char *name1, char *name2, t_map *map)
 {
 	t_room	**array;
-	t_room	*origin_room;
 
 	array = map->array_rooms;
 	printf("name1 === %s, name2 === %s\n", name1, name2);
