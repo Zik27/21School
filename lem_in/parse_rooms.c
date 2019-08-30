@@ -6,7 +6,7 @@
 /*   By: vurrigon <vurrigon@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/08/21 15:24:14 by vurrigon          #+#    #+#             */
-/*   Updated: 2019/08/29 16:16:31 by vurrigon         ###   ########.fr       */
+/*   Updated: 2019/08/30 16:33:04 by vurrigon         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,23 +21,6 @@ void	init_start_end(t_map *map, t_room *room)
 	else if ((map->start || map->exit) && (map->prev_command == START || 
 		map->prev_command == EXIT))
 		error("Invalid start/exit");
-}
-
-int		check_duplicates(t_room *rooms, char **room)
-{
-	t_room	*tmp;
-
-	tmp = rooms;
-	if (!tmp->next && !tmp->name && !tmp->x && !tmp->y)
-		return (1);
-	while (tmp)
-	{
-		if (ft_strcmp(tmp->name, room[0]) == 0 || (ft_atoi(room[1]) == tmp->x &&
-			ft_atoi(room[2]) == tmp->y))
-			return (0);
-		tmp = tmp->next;
-	}
-	return (1);
 }
 
 void	add_room(char **room, t_room **rooms, t_map *map)
@@ -86,8 +69,6 @@ void	parse_rooms(char *str, t_map *map, t_room **rooms)
 		free(room);
 		error("Invalid room");
 	}
-	// if (!check_duplicates(rooms, room))
-	// 	error("Duplicates detected");
 	add_room(room, rooms, map);
 	free(room);
 	map->prev_command = 0;

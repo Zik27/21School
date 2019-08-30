@@ -6,7 +6,7 @@
 /*   By: vurrigon <vurrigon@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/08/20 14:18:55 by vurrigon          #+#    #+#             */
-/*   Updated: 2019/08/29 16:35:49 by vurrigon         ###   ########.fr       */
+/*   Updated: 2019/08/30 18:21:28 by vurrigon         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -50,6 +50,8 @@ t_map	*init(void)
 		map->exit = NULL;
 		map->prev_command = 0;
 		map->has_links = 0;
+		map->count_rooms = 0;
+		map->array_rooms = NULL;
 	}
 	return (map);
 }
@@ -70,7 +72,9 @@ t_room	*init_room(char *name, int x, int y)
 	return (room);
 }
 
-void	read_map(t_map *map)
+
+
+void	parse(t_map *map)
 {
 	char	*line;
 	t_room	*rooms;
@@ -90,11 +94,26 @@ void	read_map(t_map *map)
 			count_rooms++;
 		}
 		else if (line && ft_strchr(line, '-'))
-			parse_links(line, map, rooms);
+			break ;
 		else
 			error("Invalid input");
 		free(line);
 	}
+	list_to_array(map, rooms, count_rooms);
+	sort_array_by_name(&map, count_rooms);
+	map->count_rooms = count_rooms;
+	parse_links(&line, map);
+	while (get_next_line(0, &line) == 1)
+	{
+		if (line && line[0] == '#')
+			parse_comment(line, map);
+		else if (line && ft_strchr(line, '-'))
+			parse_links(&line, map);
+		else
+			error("Invalid input");
+		free(line);
+	}
+
 	// printf("RESULT:\n");
 	// while (rooms)
 	// {
@@ -111,8 +130,10 @@ void	read_map(t_map *map)
 	// 	rooms = rooms->next;
 	// }
 	// printf("START = %s, END = %s\n", map->start->name, map->exit->name);
-	if (!map->start || !map->exit || map->has_links != 1)
-		error("Invalid input");
+	
+
+	// if (!map->start || !map->exit || map->has_links != 1)
+	// 	error("Invalid input");
 	free_map(map);
 	free_rooms(rooms);
 }
@@ -122,6 +143,6 @@ int	main(int argc, char **argv)
 	t_map	*map;
 
 	map = init();
-	read_map(map);
+	parse(map);
 	return (0);
 }
