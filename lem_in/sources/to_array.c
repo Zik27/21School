@@ -6,7 +6,7 @@
 /*   By: vurrigon <vurrigon@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/08/30 16:38:56 by vurrigon          #+#    #+#             */
-/*   Updated: 2019/08/30 16:39:39 by vurrigon         ###   ########.fr       */
+/*   Updated: 2019/09/03 12:22:13 by vurrigon         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,7 +19,7 @@ void	list_to_array(t_map *map, t_room *rooms, int count_rooms)
 	int		i;
 
 	i = 0;
-	array = (t_room **)malloc(sizeof(rooms) * count_rooms);
+	array = (t_room **)malloc(sizeof(t_room) * count_rooms);
 	tmp = rooms;
 	while (tmp)
 	{

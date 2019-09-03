@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   lem_in.h                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: djast <djast@student.42.fr>                +#+  +:+       +#+        */
+/*   By: vurrigon <vurrigon@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/08/20 14:24:28 by vurrigon          #+#    #+#             */
-/*   Updated: 2019/08/30 19:30:46 by djast            ###   ########.fr       */
+/*   Updated: 2019/09/03 12:43:03 by vurrigon         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -46,6 +46,12 @@ typedef struct			s_link
 	struct s_room		*room_l;
 	struct s_link		*next;
 }						t_link;
+/*Структура, хранящая входной файл */
+typedef struct			s_file_txt
+{
+	char				*text;
+	struct	s_file_txt	*next;
+}						t_file_txt;
 
 void	sort_array_by_name(t_map **map, int size);
 void	list_to_array(t_map *map, t_room *rooms, int count_rooms);

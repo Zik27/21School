@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   parse_links.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: djast <djast@student.42.fr>                +#+  +:+       +#+        */
+/*   By: vurrigon <vurrigon@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/08/22 14:46:09 by vurrigon          #+#    #+#             */
-/*   Updated: 2019/08/30 19:51:58 by djast            ###   ########.fr       */
+/*   Updated: 2019/09/03 12:23:04 by vurrigon         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -47,9 +47,11 @@ t_room	*find_room(char *name, t_room **array, int left, int right)
 	int		middle;
 
 
+	//printf("name == %s, left == %d, right == %d\n", name, left, right);
 	if (right - left <= 1)
 		return (NULL);
 	middle = (right + left) / 2;
+	//printf("middle == %d, array_middle == %s\n", middle, array[middle]->name);
 	if ((cmp = ft_strcmp(name, array[middle]->name)) == 0)
 		return (array[middle]);
 	else if (cmp > 0)
