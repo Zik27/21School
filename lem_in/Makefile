@@ -3,10 +3,10 @@
 #                                                         :::      ::::::::    #
 #    Makefile                                           :+:      :+:    :+:    #
 #                                                     +:+ +:+         +:+      #
-#    By: djast <djast@student.42.fr>                +#+  +:+       +#+         #
+#    By: vurrigon <vurrigon@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2019/02/15 17:18:06 by djast             #+#    #+#              #
-#    Updated: 2019/08/30 18:42:02 by djast            ###   ########.fr        #
+#    Updated: 2019/09/04 11:59:46 by vurrigon         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -34,7 +34,8 @@ COMMON_FILES =	lem_in.c \
 				parse_rooms.c \
 				solver.c \
 				to_array.c \
-				utils.c
+				utils.c \
+				free.c
 
 SRC_DIRECTORY = ./sources/
 SRC_COMMON_FILES = $(addprefix $(SRC_DIRECTORY), $(COMMON_FILES))

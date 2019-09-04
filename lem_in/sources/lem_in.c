@@ -6,38 +6,12 @@
 /*   By: vurrigon <vurrigon@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/08/20 14:18:55 by vurrigon          #+#    #+#             */
-/*   Updated: 2019/09/03 13:19:11 by vurrigon         ###   ########.fr       */
+/*   Updated: 2019/09/04 11:57:41 by vurrigon         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "lem_in.h"
 #include <stdio.h>
-
-void	free_map(t_map *map)
-{
-	free(map);
-}
-
-void	free_rooms(t_room *rooms)
-{
-	t_link	*link;
-	t_room	*tmp;
-	t_link	*tmp_l;
-
-	while (rooms)
-	{
-		tmp = rooms;
-		rooms = rooms->next;
-		link = tmp->links;
-		while (link)
-		{
-			tmp_l = link;
-			link = link->next;
-			free(tmp_l);
-		}
-		free(tmp);
-	}
-}
 
 t_map	*init(void)
 {
@@ -56,17 +30,17 @@ t_map	*init(void)
 	return (map);
 }
 
-// t_file_txt	*init_input_file(char *text)
-// {
-// 	t_file_txt	*file;
+t_file_txt	*init_input_file(char *text)
+{
+	t_file_txt	*file;
 
-// 	if ((file = (t_file_txt *)malloc(sizeof(t_file_txt))))
-// 	{
-// 		file->text = text;
-// 		file->next = NULL;
-// 	}
-// 	return (file);
-// }
+	if ((file = (t_file_txt *)malloc(sizeof(t_file_txt))))
+	{
+		file->text = text;
+		file->next = NULL;
+	}
+	return (file);
+}
 
 t_room	*init_room(char *name, int x, int y)
 {
@@ -83,31 +57,16 @@ t_room	*init_room(char *name, int x, int y)
 	return (room);
 }
 
-// void	add_to_file_txt(t_file_txt *input, char *line)
-// {
-// 	t_file_txt	*tmp;
-
-// 	tmp = input;
-// 	if (!input->next && !input->text)
-// 		input->text = line;
-// 	else
-// 	{
-// 		while (tmp->next)
-// 			tmp = tmp->next;
-// 		tmp->next = init_input_file(line);
-// 	}
-// }
-
 void	parse(t_map *map)
 {
 	char	*line;
 	t_room	*rooms;
 	int		count_rooms;
-	//t_file_txt	*input;
+	t_file_txt	*input;
 
 	count_rooms = 0;
 	rooms = init_room(NULL, 0, 0);
-	//input = init_input_file(NULL);
+	input = init_input_file(NULL);
 	while (get_next_line(0, &line) == 1)
 	{
 		if (map->count_ants == 0)
@@ -123,13 +82,15 @@ void	parse(t_map *map)
 			break ;
 		else
 			error("Invalid input");
-		free(line);
+		add_to_file_txt(&input, line);
+		//free(line);
 	}
 	if (!rooms->x && !rooms->y && !rooms->name)
 		error("Invalid input");
 	list_to_array(map, rooms, count_rooms);
 	sort_array_by_name(&map, count_rooms);
 	map->count_rooms = count_rooms;
+	add_to_file_txt(&input, line);
 	parse_links(&line, map);
 	while (get_next_line(0, &line) == 1)
 	{
@@ -139,8 +100,16 @@ void	parse(t_map *map)
 			parse_links(&line, map);
 		else
 			error("Invalid input");
-		free(line);
+		add_to_file_txt(&input, line);
+		//free(line);
 	}
+
+	reverse_lst(&input);
+	// while (input)
+	// {
+	// 	printf("AAA == %s\n", input->text);
+	// 	input = input->next;
+	// }
 
 	// printf("RESULT:\n");
 	// while (rooms)

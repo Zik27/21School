@@ -6,7 +6,7 @@
 /*   By: vurrigon <vurrigon@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/08/20 14:24:28 by vurrigon          #+#    #+#             */
-/*   Updated: 2019/09/03 12:43:03 by vurrigon         ###   ########.fr       */
+/*   Updated: 2019/09/04 11:58:58 by vurrigon         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -53,15 +53,20 @@ typedef struct			s_file_txt
 	struct	s_file_txt	*next;
 }						t_file_txt;
 
-void	sort_array_by_name(t_map **map, int size);
-void	list_to_array(t_map *map, t_room *rooms, int count_rooms);
-void	count_ants(char *line, t_map *map);
-void	parse_comment(char *str, t_map *map);
-void	error(char *str);
-void	parse_rooms(char *str, t_map *map, t_room **rooms);
-int		check_digits(char *str, int with_neg);
-int		check_intmax(char *str);
-t_room	*init_room(char *name, int x, int y);
-void	parse_links(char **str, t_map *map);
+void		sort_array_by_name(t_map **map, int size);
+void		list_to_array(t_map *map, t_room *rooms, int count_rooms);
+void		count_ants(char *line, t_map *map);
+void		parse_comment(char *str, t_map *map);
+void		error(char *str);
+void		parse_rooms(char *str, t_map *map, t_room **rooms);
+int			check_digits(char *str, int with_neg);
+int			check_intmax(char *str);
+t_room		*init_room(char *name, int x, int y);
+void		parse_links(char **str, t_map *map);
+void		reverse_lst(t_file_txt **lst);
+void		add_to_file_txt(t_file_txt **input, char *line);
+void		free_rooms(t_room *rooms);
+void		free_map(t_map *map);
+t_file_txt	*init_input_file(char *text);
 
 #endif
