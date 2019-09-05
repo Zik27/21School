@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   parse_links.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: vurrigon <vurrigon@student.42.fr>          +#+  +:+       +#+        */
+/*   By: djast <djast@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/08/22 14:46:09 by vurrigon          #+#    #+#             */
-/*   Updated: 2019/09/03 12:23:04 by vurrigon         ###   ########.fr       */
+/*   Updated: 2019/09/05 15:34:47 by djast            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,19 +25,20 @@ void	create_link(t_room *room, t_room *link)
 	{
 		room->links = new_link;
 		cur_link = room->links;
+		cur_link->room_l = link;
 	}
 	else
 	{
 		cur_link = room->links;
-		while (cur_link != NULL)
+		while (cur_link->next != NULL)
 		{
 			if (ft_strcmp(cur_link->room_l->name, room->name) == 0)
 				error("Dublicate link detected");
 			cur_link = cur_link->next;
 		}
-		cur_link = new_link;
+		cur_link->next = new_link;
+		cur_link->next->room_l = link;
 	}
-	cur_link->room_l = link; 
 	room->count_links++;
 }
 

@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   lem_in.h                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: vurrigon <vurrigon@student.42.fr>          +#+  +:+       +#+        */
+/*   By: djast <djast@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/08/20 14:24:28 by vurrigon          #+#    #+#             */
-/*   Updated: 2019/09/04 11:58:58 by vurrigon         ###   ########.fr       */
+/*   Updated: 2019/09/05 17:25:41 by djast            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,6 +25,9 @@ typedef struct			s_room
 	int					x;
 	int					y;
 	int					count_links;
+	int					path_len;
+	int					in_path :2;
+	int					used;
 	char				*name;
 	struct s_link		*links;
 	struct s_room		*next;
@@ -53,6 +56,24 @@ typedef struct			s_file_txt
 	struct	s_file_txt	*next;
 }						t_file_txt;
 
+typedef struct			s_path
+{
+	struct s_room		*room_path;
+	struct s_path		*next;
+}						t_path;
+
+typedef struct			s_paths
+{
+	struct s_path		*path;
+	struct s_paths		*next;
+}						t_paths;
+
+typedef struct			s_queue
+{
+	struct s_room		*room_queue;
+	struct s_queue		*next;
+}						t_queue;
+
 void		sort_array_by_name(t_map **map, int size);
 void		list_to_array(t_map *map, t_room *rooms, int count_rooms);
 void		count_ants(char *line, t_map *map);
@@ -68,5 +89,7 @@ void		add_to_file_txt(t_file_txt **input, char *line);
 void		free_rooms(t_room *rooms);
 void		free_map(t_map *map);
 t_file_txt	*init_input_file(char *text);
+void		bfs(t_map *map);
+t_paths		*get_all_paths(t_map *map);
 
 #endif

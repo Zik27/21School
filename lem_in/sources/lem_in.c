@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   lem_in.c                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: vurrigon <vurrigon@student.42.fr>          +#+  +:+       +#+        */
+/*   By: djast <djast@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/08/20 14:18:55 by vurrigon          #+#    #+#             */
-/*   Updated: 2019/09/04 11:57:41 by vurrigon         ###   ########.fr       */
+/*   Updated: 2019/09/05 17:38:42 by djast            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -50,6 +50,9 @@ t_room	*init_room(char *name, int x, int y)
 	{
 		room->x = x;
 		room->y = y;
+		room->path_len = -1;
+		room->used = 0;
+		room->in_path = 0;
 		room->count_links = 0;
 		room->links = NULL;
 		room->name = name;
@@ -57,8 +60,13 @@ t_room	*init_room(char *name, int x, int y)
 	return (room);
 }
 
+
+
+
+
 void	parse(t_map *map)
 {
+	t_paths *paths;
 	char	*line;
 	t_room	*rooms;
 	int		count_rooms;
@@ -105,6 +113,9 @@ void	parse(t_map *map)
 	}
 
 	reverse_lst(&input);
+	bfs(map);
+	paths = get_all_paths(map);
+	
 	// while (input)
 	// {
 	// 	printf("AAA == %s\n", input->text);
@@ -114,8 +125,9 @@ void	parse(t_map *map)
 	// printf("RESULT:\n");
 	// while (rooms)
 	// {
-	// 	printf("%s x=%d y=%d links=%d\n", rooms->name, rooms->x, rooms->y, rooms->count_links);
-		
+	// 	printf("%s x=%d y=%d path_len=%d\n", rooms->name, rooms->x, rooms->y, rooms->path_len);	
+	// 	rooms = rooms->next;
+	// }
 	// 	t_link	*link;
 	// 	link = rooms->links;
 
