@@ -6,7 +6,7 @@
 /*   By: djast <djast@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/08/20 14:24:28 by vurrigon          #+#    #+#             */
-/*   Updated: 2019/09/05 17:25:41 by djast            ###   ########.fr       */
+/*   Updated: 2019/09/05 18:05:40 by djast            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -64,6 +64,7 @@ typedef struct			s_path
 
 typedef struct			s_paths
 {
+	int					size;
 	struct s_path		*path;
 	struct s_paths		*next;
 }						t_paths;

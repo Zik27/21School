@@ -6,7 +6,7 @@
 /*   By: djast <djast@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/09/05 16:33:10 by djast             #+#    #+#             */
-/*   Updated: 2019/09/05 17:47:36 by djast            ###   ########.fr       */
+/*   Updated: 2019/09/05 18:06:04 by djast            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -113,7 +113,10 @@ t_paths				*get_all_paths(t_map *map)
 	{
 		path = get_one_path(map, steps);
 		if (path != NULL)
+		{
 			paths = add_to_paths(paths, path);
+			paths->size = steps;
+		}
 		else
 			steps++;
 		
