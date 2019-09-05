@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   all_paths.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: djast <djast@student.42.fr>                +#+  +:+       +#+        */
+/*   By: vurrigon <vurrigon@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/09/05 16:33:10 by djast             #+#    #+#             */
-/*   Updated: 2019/09/05 18:06:04 by djast            ###   ########.fr       */
+/*   Updated: 2019/09/05 18:22:23 by vurrigon         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -49,6 +49,7 @@ static t_path		*get_one_path(t_map *map, int steps)
 	{
 		if (cur_link->room_l == map->start)
 		{
+			cur_link->room_l->in_path = 1;
 			path = add_to_path(path, map->start);
 			return (path);
 		}
@@ -89,6 +90,7 @@ static void			print_paths(t_paths *paths)
 	while (cur_paths != NULL )
 	{
 		cur_path = cur_paths->path;
+		printf("SIZE == %d\n", cur_paths->size);
 		while (cur_path != NULL)
 		{
 			printf("%s -> ", cur_path->room_path->name);
@@ -115,11 +117,10 @@ t_paths				*get_all_paths(t_map *map)
 		if (path != NULL)
 		{
 			paths = add_to_paths(paths, path);
-			paths->size = steps;
+			paths->size = steps + 1;
 		}
 		else
 			steps++;
-		
 	}
 	print_paths(paths);
 	return (paths);

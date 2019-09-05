@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   bfs.c                                              :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: djast <djast@student.42.fr>                +#+  +:+       +#+        */
+/*   By: vurrigon <vurrigon@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/09/04 12:24:08 by djast             #+#    #+#             */
-/*   Updated: 2019/09/05 17:37:25 by djast            ###   ########.fr       */
+/*   Updated: 2019/09/05 18:19:56 by vurrigon         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -86,4 +86,6 @@ void				bfs(t_map *map)
 			cur_link = cur_link->next;
 		}
 	}
+	if (map->exit->path_len == -1)
+		error("No path found");
 }

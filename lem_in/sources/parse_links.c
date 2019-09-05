@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   parse_links.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: djast <djast@student.42.fr>                +#+  +:+       +#+        */
+/*   By: vurrigon <vurrigon@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/08/22 14:46:09 by vurrigon          #+#    #+#             */
-/*   Updated: 2019/09/05 15:34:47 by djast            ###   ########.fr       */
+/*   Updated: 2019/09/05 19:08:45 by vurrigon         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,30 +14,27 @@
 
 void	create_link(t_room *room, t_room *link)
 {
-	t_link	*cur_link;
 	t_link	*new_link;
+	t_link	*tmp;
+	t_link	*room_links;
 
+	room_links = room->links;
 	if (!(new_link = (t_link *)malloc(sizeof(t_link))))
 		error("Malloc error");
-	new_link->room_l = NULL;
+	new_link->room_l = link;
 	new_link->next = NULL;
-	if (room->links == NULL)
-	{
+	if (!room_links)
 		room->links = new_link;
-		cur_link = room->links;
-		cur_link->room_l = link;
-	}
 	else
 	{
-		cur_link = room->links;
-		while (cur_link->next != NULL)
+		while (room_links)
 		{
-			if (ft_strcmp(cur_link->room_l->name, room->name) == 0)
-				error("Dublicate link detected");
-			cur_link = cur_link->next;
+			if (ft_strcmp(room_links->room_l->name, link->name) == 0)
+				error("Duplicate links");
+			tmp = room_links;
+			room_links = room_links->next;
 		}
-		cur_link->next = new_link;
-		cur_link->next->room_l = link;
+		tmp->next = new_link;
 	}
 	room->count_links++;
 }
