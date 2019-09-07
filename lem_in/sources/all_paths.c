@@ -6,7 +6,7 @@
 /*   By: vurrigon <vurrigon@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/09/05 16:33:10 by djast             #+#    #+#             */
-/*   Updated: 2019/09/05 18:22:23 by vurrigon         ###   ########.fr       */
+/*   Updated: 2019/09/07 14:24:21 by vurrigon         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -49,11 +49,12 @@ static t_path		*get_one_path(t_map *map, int steps)
 	{
 		if (cur_link->room_l == map->start)
 		{
-			cur_link->room_l->in_path = 1;
 			path = add_to_path(path, map->start);
 			return (path);
 		}
-		if (cur_link->room_l->path_len == steps && cur_link->room_l->in_path == 0)
+		else if (cur_link->room_l == map->exit)
+			cur_link = cur_link->next;
+		else if (cur_link->room_l->path_len == steps && cur_link->room_l->in_path == 0)
 		{
 			cur_link->room_l->in_path = 1;
 			path = add_to_path(path, cur_link->room_l);
@@ -64,7 +65,7 @@ static t_path		*get_one_path(t_map *map, int steps)
 		else
 			cur_link = cur_link->next;
 	}
-	return (NULL);
+	return (path);
 }
 
 static int			check_links(t_room *cur_room)
@@ -99,8 +100,27 @@ static void			print_paths(t_paths *paths)
 		printf("\n");
 		cur_paths = cur_paths->next;
 	}
-
 }
+
+static int has_start(t_path *path, t_map *map)
+{
+	if (path == NULL)
+		return (-1);
+	if (ft_strcmp(path->room_path->name, map->start->name) == 0)
+		return (1);
+	else if (ft_strcmp(path->room_path->name, map->exit->name) == 0)
+		return (-1);
+	return (0);
+}
+
+/*
+start = tUoWhWSXvELmhkzmVsF
+end = PQaWUDENo
+from_start: 
+AAgEnzrrmOnNgc
+dPDSi
+SbWqFBwuhwpTU
+*/
 
 t_paths				*get_all_paths(t_map *map)
 {
@@ -111,16 +131,17 @@ t_paths				*get_all_paths(t_map *map)
 	steps = 0;
 	paths = NULL;
 	while (check_links(map->start) == 1 &&
-											check_links(map->exit) == 1)
+									check_links(map->exit) == 1 && steps < 10)
 	{
 		path = get_one_path(map, steps);
-		if (path != NULL)
+		if (has_start(path, map) == 1)
 		{
 			paths = add_to_paths(paths, path);
 			paths->size = steps + 1;
 		}
-		else
+		else if (has_start(path, map) == -1)
 			steps++;
+		
 	}
 	print_paths(paths);
 	return (paths);

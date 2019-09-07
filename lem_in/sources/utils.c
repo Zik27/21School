@@ -6,7 +6,7 @@
 /*   By: vurrigon <vurrigon@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/08/22 16:02:42 by vurrigon          #+#    #+#             */
-/*   Updated: 2019/09/04 11:54:48 by vurrigon         ###   ########.fr       */
+/*   Updated: 2019/09/07 11:30:09 by vurrigon         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,7 +26,7 @@ void	add_to_file_txt(t_file_txt **input, char *line)
 	}
 }
 
-void	reverse_lst(t_file_txt **lst)
+void	reverse_input_file(t_file_txt **lst)
 {
 	t_file_txt	*current;
 	t_file_txt	*before;
@@ -43,4 +43,23 @@ void	reverse_lst(t_file_txt **lst)
 		current = after;
 	}
 	*lst = before;
+}
+
+void	reverse_paths(t_paths **paths)
+{
+	t_paths	*current;
+	t_paths	*before;
+	t_paths	*after;
+
+	current = *paths;
+	after = 0;
+	before = NULL;
+	while (current)
+	{
+		after = current->next;
+		current->next = before;
+		before = current;
+		current = after;
+	}
+	*paths = before;
 }

@@ -6,7 +6,7 @@
 /*   By: vurrigon <vurrigon@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/08/22 14:46:09 by vurrigon          #+#    #+#             */
-/*   Updated: 2019/09/05 19:08:45 by vurrigon         ###   ########.fr       */
+/*   Updated: 2019/09/07 11:14:39 by vurrigon         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,7 +30,10 @@ void	create_link(t_room *room, t_room *link)
 		while (room_links)
 		{
 			if (ft_strcmp(room_links->room_l->name, link->name) == 0)
+			{
+				printf("name == %s %s\n", room_links->room_l->name, link->name);
 				error("Duplicate links");
+			}
 			tmp = room_links;
 			room_links = room_links->next;
 		}
@@ -44,19 +47,15 @@ t_room	*find_room(char *name, t_room **array, int left, int right)
 	int		cmp;
 	int		middle;
 
-
-	//printf("name == %s, left == %d, right == %d\n", name, left, right);
 	if (right - left <= 1)
 		return (NULL);
 	middle = (right + left) / 2;
-	//printf("middle == %d, array_middle == %s\n", middle, array[middle]->name);
 	if ((cmp = ft_strcmp(name, array[middle]->name)) == 0)
 		return (array[middle]);
 	else if (cmp > 0)
 		return find_room(name, array, middle, right);
 	else
 		return find_room(name, array, left, middle);
-	
 }
 
 int		search_links(char *name1, char *name2, t_map *map)

@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   lem_in.h                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: djast <djast@student.42.fr>                +#+  +:+       +#+        */
+/*   By: vurrigon <vurrigon@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/08/20 14:24:28 by vurrigon          #+#    #+#             */
-/*   Updated: 2019/09/05 18:05:40 by djast            ###   ########.fr       */
+/*   Updated: 2019/09/07 12:44:56 by vurrigon         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,6 +18,7 @@
 # define NO_NEG 0
 # include "libft.h"
 # include <stdio.h>
+# include <limits.h>
 
 /* Структура, описывающая комнату */
 typedef struct			s_room
@@ -85,12 +86,13 @@ int			check_digits(char *str, int with_neg);
 int			check_intmax(char *str);
 t_room		*init_room(char *name, int x, int y);
 void		parse_links(char **str, t_map *map);
-void		reverse_lst(t_file_txt **lst);
+void		reverse_input_file(t_file_txt **lst);
 void		add_to_file_txt(t_file_txt **input, char *line);
 void		free_rooms(t_room *rooms);
 void		free_map(t_map *map);
 t_file_txt	*init_input_file(char *text);
 void		bfs(t_map *map);
 t_paths		*get_all_paths(t_map *map);
+void		reverse_paths(t_paths **paths);
 
 #endif
