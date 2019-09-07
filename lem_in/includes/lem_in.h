@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   lem_in.h                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: vurrigon <vurrigon@student.42.fr>          +#+  +:+       +#+        */
+/*   By: djast <djast@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/08/20 14:24:28 by vurrigon          #+#    #+#             */
-/*   Updated: 2019/09/07 12:44:56 by vurrigon         ###   ########.fr       */
+/*   Updated: 2019/09/07 15:58:14 by djast            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,9 +16,13 @@
 # define EXIT -1
 # define WITH_NEG 1
 # define NO_NEG 0
+# define SIZE_WINDOW_X 2560	
+# define SIZE_WINDOW_Y 1440
+# define ROOM_SIZE 20
 # include "libft.h"
 # include <stdio.h>
 # include <limits.h>
+# include <SDL.h>
 
 /* Структура, описывающая комнату */
 typedef struct			s_room
@@ -76,6 +80,12 @@ typedef struct			s_queue
 	struct s_queue		*next;
 }						t_queue;
 
+typedef struct		s_sdl
+{
+	SDL_Window		*window;
+	SDL_Renderer	*renderer;
+}					t_sdl;
+
 void		sort_array_by_name(t_map **map, int size);
 void		list_to_array(t_map *map, t_room *rooms, int count_rooms);
 void		count_ants(char *line, t_map *map);
@@ -94,5 +104,8 @@ t_file_txt	*init_input_file(char *text);
 void		bfs(t_map *map);
 t_paths		*get_all_paths(t_map *map);
 void		reverse_paths(t_paths **paths);
+t_map		*init(void);
+t_file_txt	*init_input_file(char *text);
+t_room		*init_room(char *name, int x, int y);
 
 #endif

@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   all_paths.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: vurrigon <vurrigon@student.42.fr>          +#+  +:+       +#+        */
+/*   By: djast <djast@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/09/05 16:33:10 by djast             #+#    #+#             */
-/*   Updated: 2019/09/07 14:24:21 by vurrigon         ###   ########.fr       */
+/*   Updated: 2019/09/07 15:57:40 by djast            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -49,6 +49,7 @@ static t_path		*get_one_path(t_map *map, int steps)
 	{
 		if (cur_link->room_l == map->start)
 		{
+			cur_link->room_l->in_path = 1;
 			path = add_to_path(path, map->start);
 			return (path);
 		}
@@ -113,15 +114,6 @@ static int has_start(t_path *path, t_map *map)
 	return (0);
 }
 
-/*
-start = tUoWhWSXvELmhkzmVsF
-end = PQaWUDENo
-from_start: 
-AAgEnzrrmOnNgc
-dPDSi
-SbWqFBwuhwpTU
-*/
-
 t_paths				*get_all_paths(t_map *map)
 {
 	int		steps;
@@ -131,7 +123,7 @@ t_paths				*get_all_paths(t_map *map)
 	steps = 0;
 	paths = NULL;
 	while (check_links(map->start) == 1 &&
-									check_links(map->exit) == 1 && steps < 10)
+			check_links(map->exit) == 1)
 	{
 		path = get_one_path(map, steps);
 		if (has_start(path, map) == 1)
@@ -141,7 +133,6 @@ t_paths				*get_all_paths(t_map *map)
 		}
 		else if (has_start(path, map) == -1)
 			steps++;
-		
 	}
 	print_paths(paths);
 	return (paths);

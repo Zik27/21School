@@ -3,16 +3,16 @@
 /*                                                        :::      ::::::::   */
 /*   parse_rooms.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: vurrigon <vurrigon@student.42.fr>          +#+  +:+       +#+        */
+/*   By: djast <djast@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/08/21 15:24:14 by vurrigon          #+#    #+#             */
-/*   Updated: 2019/08/30 16:33:04 by vurrigon         ###   ########.fr       */
+/*   Updated: 2019/09/07 14:50:29 by djast            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "lem_in.h"
 
-void	init_start_end(t_map *map, t_room *room)
+void		init_start_end(t_map *map, t_room *room)
 {
 	if (map->prev_command == START && !map->start)
 		map->start = room;
@@ -23,7 +23,7 @@ void	init_start_end(t_map *map, t_room *room)
 		error("Invalid start/exit");
 }
 
-void	add_room(char **room, t_room **rooms, t_map *map)
+static void	add_room(char **room, t_room **rooms, t_map *map)
 {
 	t_room	*new_room;
 
@@ -43,7 +43,7 @@ void	add_room(char **room, t_room **rooms, t_map *map)
 	}
 }
 
-void	parse_rooms(char *str, t_map *map, t_room **rooms)
+void		parse_rooms(char *str, t_map *map, t_room **rooms)
 {
 	char	**room;
 	int		i;

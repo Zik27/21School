@@ -3,62 +3,15 @@
 /*                                                        :::      ::::::::   */
 /*   lem_in.c                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: vurrigon <vurrigon@student.42.fr>          +#+  +:+       +#+        */
+/*   By: djast <djast@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/08/20 14:18:55 by vurrigon          #+#    #+#             */
-/*   Updated: 2019/09/07 14:25:20 by vurrigon         ###   ########.fr       */
+/*   Updated: 2019/09/07 16:04:12 by djast            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "lem_in.h"
 #include <stdio.h>
-
-t_map	*init(void)
-{
-	t_map	*map;
-
-	if ((map = (t_map *)malloc(sizeof(t_map))))
-	{
-		map->count_ants = 0;
-		map->start = NULL;
-		map->exit = NULL;
-		map->prev_command = 0;
-		map->has_links = 0;
-		map->count_rooms = 0;
-		map->array_rooms = NULL;
-	}
-	return (map);
-}
-
-t_file_txt	*init_input_file(char *text)
-{
-	t_file_txt	*file;
-
-	if ((file = (t_file_txt *)malloc(sizeof(t_file_txt))))
-	{
-		file->text = text;
-		file->next = NULL;
-	}
-	return (file);
-}
-
-t_room	*init_room(char *name, int x, int y)
-{
-	t_room	*room;
-
-	if ((room = (t_room *)malloc(sizeof(t_room))))
-	{
-		room->x = x;
-		room->y = y;
-		room->path_len = -1;
-		room->used = 0;
-		room->in_path = 0;
-		room->count_links = 0;
-		room->links = NULL;
-		room->name = name;
-	}
-	return (room);
-}
 
 int		compare_steps(int ants, int steps, int count_paths, int *least_steps)
 {
