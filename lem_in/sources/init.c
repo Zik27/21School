@@ -57,7 +57,6 @@ t_room	*init_room(char *name, int x, int y)
 		room->links = NULL;
 		room->name = name;
 		room->ant_id = -1;
-		room->start_exit = 0;
 		room->next = NULL;
 	}
 	return (room);

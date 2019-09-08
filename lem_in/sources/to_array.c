@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   to_array.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: djast <djast@student.42.fr>                +#+  +:+       +#+        */
+/*   By: vurrigon <vurrigon@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/08/30 16:38:56 by vurrigon          #+#    #+#             */
-/*   Updated: 2019/09/07 17:13:31 by djast            ###   ########.fr       */
+/*   Updated: 2019/09/07 19:21:11 by vurrigon         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,13 +21,11 @@ void	list_to_array(t_map *map, t_room *rooms, int count_rooms)
 	i = 0;
 	array = (t_room **)malloc(sizeof(t_room) * count_rooms);
 	tmp = rooms;
-
 	while (tmp)
 	{
 		array[i++] = tmp;
 		tmp = tmp->next;
 	}
-
 	array[i] = NULL;
 	map->array_rooms = array;
 }

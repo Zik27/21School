@@ -6,7 +6,7 @@
 /*   By: vurrigon <vurrigon@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/08/20 14:24:28 by vurrigon          #+#    #+#             */
-/*   Updated: 2019/09/07 20:21:25 by vurrigon         ###   ########.fr       */
+/*   Updated: 2019/09/08 13:55:54 by vurrigon         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,7 +18,7 @@
 # define NO_NEG 0
 # define SIZE_WINDOW_X 2560	
 # define SIZE_WINDOW_Y 1440
-# define ROOM_SIZE 2
+# define ROOM_SIZE 20
 # include "libft.h"
 # include <stdio.h>
 # include <limits.h>
@@ -32,7 +32,6 @@ typedef struct			s_room
 	int					count_links;
 	int					path_len;
 	int					in_path :2;
-	int					start_exit;
 	int					used;
 	int					ant_id;
 	char				*name;
@@ -49,6 +48,7 @@ typedef struct			s_map
 	int					prev_command;
 	struct s_room		**array_rooms;
 	int					has_links:2;
+	int					count_out_line;
 }						t_map;
 /* Структура, описывающая связи определенной комнаты */
 typedef struct			s_link
@@ -83,8 +83,8 @@ typedef struct			s_queue
 }						t_queue;
 
 // typedef struct		s_sdl
-// 	SDL_Window		*window;
 // {
+// 	SDL_Window		*window;
 // 	SDL_Renderer	*renderer;
 // }					t_sdl;
 
@@ -109,11 +109,10 @@ void		reverse_paths(t_paths **paths);
 t_map		*init(void);
 t_file_txt	*init_input_file(char *text);
 t_room		*init_room(char *name, int x, int y);
-t_room		*find_room(char *name, t_room **array, int left, int right);
-int			choose_path(int ants, t_paths *paths);
 void		print_out(t_file_txt *input, t_paths *paths, int count_ants, int count_lines);
-void		free_paths(t_paths *paths);
 void		path_removal(t_paths *paths, int count_path);
+void		free_paths(t_paths *paths);
 void		ft_swap(int *a, int *b);
+int			choose_path(int ants, t_paths *paths, t_map *map);
 
 #endif

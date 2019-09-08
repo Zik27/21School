@@ -6,7 +6,7 @@
 /*   By: vurrigon <vurrigon@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/08/20 14:18:55 by vurrigon          #+#    #+#             */
-/*   Updated: 2019/09/08 12:58:01 by djast            ###   ########.fr       */
+/*   Updated: 2019/09/08 13:55:27 by vurrigon         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -69,7 +69,6 @@ void	parse(t_map *map)
 	paths = get_all_paths(map);
 	reverse_paths(&paths);
 	path = choose_path(map->count_ants, paths, map);
-	path = choose_path(map->count_ants, paths);
 	printf("PATHS: %d\n", path);
 	path_removal(paths, path);
 	print_out(input, paths, map->count_ants, map->count_out_line);
