@@ -6,7 +6,7 @@
 #    By: djast <djast@student.42.fr>                +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2019/02/15 17:18:06 by djast             #+#    #+#              #
-#    Updated: 2019/09/07 14:53:58 by djast            ###   ########.fr        #
+#    Updated: 2019/09/07 19:58:30 by djast            ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -38,7 +38,8 @@ COMMON_FILES =	lem_in.c \
 				free.c \
 				bfs.c \
 				all_paths.c \
-				init.c
+				init.c \
+				choose_path.c
 
 SRC_DIRECTORY = ./sources/
 SRC_COMMON_FILES = $(addprefix $(SRC_DIRECTORY), $(COMMON_FILES))

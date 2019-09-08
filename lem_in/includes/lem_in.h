@@ -6,7 +6,7 @@
 /*   By: djast <djast@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/08/20 14:24:28 by vurrigon          #+#    #+#             */
-/*   Updated: 2019/09/07 15:58:14 by djast            ###   ########.fr       */
+/*   Updated: 2019/09/08 12:53:10 by djast            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,11 +18,12 @@
 # define NO_NEG 0
 # define SIZE_WINDOW_X 2560	
 # define SIZE_WINDOW_Y 1440
-# define ROOM_SIZE 20
+# define ROOM_SIZE 2
 # include "libft.h"
 # include <stdio.h>
 # include <limits.h>
 # include <SDL.h>
+# include <SDL_ttf.h>
 
 /* Структура, описывающая комнату */
 typedef struct			s_room
@@ -32,6 +33,7 @@ typedef struct			s_room
 	int					count_links;
 	int					path_len;
 	int					in_path :2;
+	int					start_exit;
 	int					used;
 	char				*name;
 	struct s_link		*links;
@@ -84,6 +86,7 @@ typedef struct		s_sdl
 {
 	SDL_Window		*window;
 	SDL_Renderer	*renderer;
+	TTF_Font*		Sans;
 }					t_sdl;
 
 void		sort_array_by_name(t_map **map, int size);
@@ -107,5 +110,7 @@ void		reverse_paths(t_paths **paths);
 t_map		*init(void);
 t_file_txt	*init_input_file(char *text);
 t_room		*init_room(char *name, int x, int y);
+t_room		*find_room(char *name, t_room **array, int left, int right);
+int			choose_path(int ants, t_paths *paths);
 
 #endif

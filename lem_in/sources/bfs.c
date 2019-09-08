@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   bfs.c                                              :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: vurrigon <vurrigon@student.42.fr>          +#+  +:+       +#+        */
+/*   By: djast <djast@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/09/04 12:24:08 by djast             #+#    #+#             */
-/*   Updated: 2019/09/05 18:19:56 by vurrigon         ###   ########.fr       */
+/*   Updated: 2019/09/07 20:49:20 by djast            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -73,6 +73,8 @@ void				bfs(t_map *map)
 	map->start->used = 1;
 	while ((cur_room = pop_from_queue(&queue)) != NULL)
 	{
+		if (cur_room == map->exit)
+			continue ;
 		step = cur_room->path_len;
 		cur_link = cur_room->links;
 		while (cur_link != NULL)
