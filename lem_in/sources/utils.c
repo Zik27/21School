@@ -6,7 +6,7 @@
 /*   By: vurrigon <vurrigon@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/08/22 16:02:42 by vurrigon          #+#    #+#             */
-/*   Updated: 2019/09/07 19:20:48 by vurrigon         ###   ########.fr       */
+/*   Updated: 2019/09/08 16:11:33 by vurrigon         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -71,7 +71,6 @@ void	path_removal(t_paths *paths, int count_paths)
 	{
 		if (!count_paths)
 		{
-			printf("AAAA\n");
 			tmp->next = NULL;
 			free_paths(paths);
 			break ;

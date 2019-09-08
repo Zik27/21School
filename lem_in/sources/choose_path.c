@@ -6,7 +6,7 @@
 /*   By: vurrigon <vurrigon@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/09/07 19:57:54 by djast             #+#    #+#             */
-/*   Updated: 2019/09/08 13:59:26 by vurrigon         ###   ########.fr       */
+/*   Updated: 2019/09/08 16:06:22 by vurrigon         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,7 +21,7 @@ static int		compare_steps(int ants, int steps, int count_paths,
 		tmp = (steps + ants - count_paths) / count_paths;
 	else
 		tmp = ((steps + ants - count_paths) / count_paths) + 1;
-	printf("sum: %d, count: %d\n", tmp, count_paths);
+	//printf("sum: %d, count: %d\n", tmp, count_paths);
 	if (tmp <= *least_steps)
 	{
 		*least_steps = tmp;
@@ -47,6 +47,13 @@ static int		get_steps(t_paths *paths, int count_paths)
 	return (size);
 }
 
+static int		get_path_last_size(t_paths *paths, int count_paths)
+{
+	while (count_paths--)
+		paths = paths->next;
+	return (paths->size);
+}
+
 int		choose_path(int ants, t_paths *paths, t_map *map)
 {
 	int	count_paths;
@@ -57,10 +64,11 @@ int		choose_path(int ants, t_paths *paths, t_map *map)
 	min_steps = INT_MAX;
 	while ((steps = get_steps(paths, count_paths)) != 0)
 	{
-		if (compare_steps(ants, steps, count_paths, &min_steps) == 0)
-			break;
+		if (compare_steps(ants, steps, count_paths, &min_steps) == 0 ||
+		get_path_last_size(paths, count_paths - 1) > min_steps)
+			break ;
 		count_paths++;
 	}
 	map->count_out_line = min_steps;
-	return (5);
+	return (count_paths - 1);
 }
