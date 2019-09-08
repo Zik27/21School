@@ -6,7 +6,7 @@
 /*   By: vurrigon <vurrigon@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/09/04 11:56:12 by vurrigon          #+#    #+#             */
-/*   Updated: 2019/09/04 11:57:28 by vurrigon         ###   ########.fr       */
+/*   Updated: 2019/09/07 16:48:47 by vurrigon         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,5 +35,18 @@ void	free_rooms(t_room *rooms)
 			free(tmp_l);
 		}
 		free(tmp);
+	}
+}
+
+void	free_paths(t_paths *current)
+{
+	t_paths *before;
+
+	while (current)
+	{
+		before = current;
+		current = current->next;
+		free(before->path);
+		free(before);
 	}
 }

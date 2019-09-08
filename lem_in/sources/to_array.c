@@ -6,7 +6,7 @@
 /*   By: vurrigon <vurrigon@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/08/30 16:38:56 by vurrigon          #+#    #+#             */
-/*   Updated: 2019/09/03 12:22:13 by vurrigon         ###   ########.fr       */
+/*   Updated: 2019/09/07 19:21:11 by vurrigon         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,7 +39,7 @@ int		room_cmp(char *a, char *b)
 	return (cmp);
 }
 
-void	ft_swap(t_room **a, t_room **b)
+static void	swap_rooms(t_room **a, t_room **b)
 {
 	t_room	*tmp;
 
@@ -61,7 +61,7 @@ int		sort_pass(t_room **array, int size)
 		if (room_cmp((array[pos])->name, (array[pos + 1])->name) > 0)
 		{
 			res = 0;
-			ft_swap(&array[pos], &array[pos + 1]);
+			swap_rooms(&array[pos], &array[pos + 1]);
 		}
 		pos++;
 	}

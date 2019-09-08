@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   init.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: djast <djast@student.42.fr>                +#+  +:+       +#+        */
+/*   By: vurrigon <vurrigon@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/09/07 14:52:57 by djast             #+#    #+#             */
-/*   Updated: 2019/09/07 14:53:15 by djast            ###   ########.fr       */
+/*   Updated: 2019/09/07 20:18:59 by vurrigon         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,6 +25,7 @@ t_map	*init(void)
 		map->has_links = 0;
 		map->count_rooms = 0;
 		map->array_rooms = NULL;
+		map->count_out_line = -1;
 	}
 	return (map);
 }
@@ -55,6 +56,8 @@ t_room	*init_room(char *name, int x, int y)
 		room->count_links = 0;
 		room->links = NULL;
 		room->name = name;
+		room->ant_id = -1;
+		room->next = NULL;
 	}
 	return (room);
 }

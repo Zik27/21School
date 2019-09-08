@@ -6,7 +6,7 @@
 /*   By: vurrigon <vurrigon@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/08/22 16:02:42 by vurrigon          #+#    #+#             */
-/*   Updated: 2019/09/07 11:30:09 by vurrigon         ###   ########.fr       */
+/*   Updated: 2019/09/07 19:20:48 by vurrigon         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -62,4 +62,31 @@ void	reverse_paths(t_paths **paths)
 		current = after;
 	}
 	*paths = before;
+}
+
+void	path_removal(t_paths *paths, int count_paths)
+{
+	t_paths		*tmp;
+	while (paths)
+	{
+		if (!count_paths)
+		{
+			printf("AAAA\n");
+			tmp->next = NULL;
+			free_paths(paths);
+			break ;
+		}
+		count_paths--;
+		tmp = paths;
+		paths = paths->next;
+	}
+}
+
+void	ft_swap(int *a, int *b)
+{
+	int	tmp;
+
+	tmp = *a;
+	*a = *b;
+	*b = tmp;
 }

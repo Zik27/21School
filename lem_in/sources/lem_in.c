@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   lem_in.c                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: djast <djast@student.42.fr>                +#+  +:+       +#+        */
+/*   By: vurrigon <vurrigon@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/08/20 14:18:55 by vurrigon          #+#    #+#             */
-/*   Updated: 2019/09/07 16:04:12 by djast            ###   ########.fr       */
+/*   Updated: 2019/09/08 12:54:46 by vurrigon         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -46,7 +46,7 @@ int		get_steps(t_paths *paths, int count_paths)
 	return (size);
 }
 
-int		choose_path(int ants, t_paths *paths)
+int		choose_path(int ants, t_paths *paths, t_map *map)
 {
 	int	count_paths;
 	int	steps;
@@ -60,6 +60,7 @@ int		choose_path(int ants, t_paths *paths)
 			break;
 		count_paths++;
 	}
+	map->count_out_line = min_steps;
 	return (count_paths - 1);
 }
 
@@ -118,13 +119,10 @@ void	parse(t_map *map)
 
 	paths = get_all_paths(map);
 	reverse_paths(&paths);
-	path = choose_path(map->count_ants, paths);
+	path = choose_path(map->count_ants, paths, map);
 	printf("PATHS: %d\n", path);
-	// while (input)
-	// {
-	// 	printf("AAA == %s\n", input->text);
-	// 	input = input->next;
-	// }
+	path_removal(paths, path);
+	print_out(input, paths, map->count_ants, map->count_out_line);
 
 	// printf("RESULT:\n");
 	// while (rooms)

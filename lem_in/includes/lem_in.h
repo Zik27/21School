@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   lem_in.h                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: djast <djast@student.42.fr>                +#+  +:+       +#+        */
+/*   By: vurrigon <vurrigon@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/08/20 14:24:28 by vurrigon          #+#    #+#             */
-/*   Updated: 2019/09/07 15:58:14 by djast            ###   ########.fr       */
+/*   Updated: 2019/09/07 20:21:25 by vurrigon         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,7 +22,7 @@
 # include "libft.h"
 # include <stdio.h>
 # include <limits.h>
-# include <SDL.h>
+//# include <SDL.h>
 
 /* Структура, описывающая комнату */
 typedef struct			s_room
@@ -33,6 +33,7 @@ typedef struct			s_room
 	int					path_len;
 	int					in_path :2;
 	int					used;
+	int					ant_id;
 	char				*name;
 	struct s_link		*links;
 	struct s_room		*next;
@@ -47,6 +48,7 @@ typedef struct			s_map
 	int					prev_command;
 	struct s_room		**array_rooms;
 	int					has_links:2;
+	int					count_out_line;
 }						t_map;
 /* Структура, описывающая связи определенной комнаты */
 typedef struct			s_link
@@ -80,11 +82,11 @@ typedef struct			s_queue
 	struct s_queue		*next;
 }						t_queue;
 
-typedef struct		s_sdl
-{
-	SDL_Window		*window;
-	SDL_Renderer	*renderer;
-}					t_sdl;
+// typedef struct		s_sdl
+// {
+// 	SDL_Window		*window;
+// 	SDL_Renderer	*renderer;
+// }					t_sdl;
 
 void		sort_array_by_name(t_map **map, int size);
 void		list_to_array(t_map *map, t_room *rooms, int count_rooms);
@@ -107,5 +109,9 @@ void		reverse_paths(t_paths **paths);
 t_map		*init(void);
 t_file_txt	*init_input_file(char *text);
 t_room		*init_room(char *name, int x, int y);
+void		print_out(t_file_txt *input, t_paths *paths, int count_ants, int count_lines);
+void		path_removal(t_paths *paths, int count_path);
+void		free_paths(t_paths *paths);
+void		ft_swap(int *a, int *b);
 
 #endif
