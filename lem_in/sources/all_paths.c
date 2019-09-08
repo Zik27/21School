@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   all_paths.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: vurrigon <vurrigon@student.42.fr>          +#+  +:+       +#+        */
+/*   By: djast <djast@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/09/05 16:33:10 by djast             #+#    #+#             */
-/*   Updated: 2019/09/08 12:08:53 by vurrigon         ###   ########.fr       */
+/*   Updated: 2019/09/08 14:17:10 by djast            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,7 +35,7 @@ static t_paths		*add_to_paths(t_paths *paths, t_path *path)
 }
 
 
-static t_path		*get_one_path(t_map *map, int steps)
+static t_path		*get_one_path(t_map *map, int steps, int status)
 {
 	t_room	*cur_room;
 	t_link	*cur_link;
@@ -47,6 +47,11 @@ static t_path		*get_one_path(t_map *map, int steps)
 	cur_link = cur_room->links;
 	while (cur_link != NULL)
 	{
+		if (cur_link->room_l == map->start && cur_room == map->exit && status == 1)
+		{
+			cur_link = cur_link->next;
+			continue ;
+		}
 		if (cur_link->room_l == map->start)
 		{
 			cur_link->room_l->in_path = 1;
@@ -119,13 +124,17 @@ t_paths				*get_all_paths(t_map *map)
 	int		steps;
 	t_paths	*paths;
 	t_path	*path;
+	int		status;
 
 	steps = 0;
 	paths = NULL;
+	status = 0;
 	while (check_links(map->start) == 1 &&
 			check_links(map->exit) == 1)
 	{
-		path = get_one_path(map, steps);
+		path = get_one_path(map, steps, status);
+		if (path->room_path == map->start && path->next->room_path == map->exit && status == 0)
+			status = 1;
 		if (has_start(path, map) == 1)
 		{
 			paths = add_to_paths(paths, path);

@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   lem_in.h                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: vurrigon <vurrigon@student.42.fr>          +#+  +:+       +#+        */
+/*   By: djast <djast@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/08/20 14:24:28 by vurrigon          #+#    #+#             */
-/*   Updated: 2019/09/08 13:55:54 by vurrigon         ###   ########.fr       */
+/*   Updated: 2019/09/08 14:18:34 by djast            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,7 +22,7 @@
 # include "libft.h"
 # include <stdio.h>
 # include <limits.h>
-//# include <SDL.h>
+# include <SDL.h>
 
 /* Структура, описывающая комнату */
 typedef struct			s_room
@@ -82,11 +82,11 @@ typedef struct			s_queue
 	struct s_queue		*next;
 }						t_queue;
 
-// typedef struct		s_sdl
-// {
-// 	SDL_Window		*window;
-// 	SDL_Renderer	*renderer;
-// }					t_sdl;
+typedef struct		s_sdl
+{
+	SDL_Window		*window;
+	SDL_Renderer	*renderer;
+}					t_sdl;
 
 void		sort_array_by_name(t_map **map, int size);
 void		list_to_array(t_map *map, t_room *rooms, int count_rooms);
