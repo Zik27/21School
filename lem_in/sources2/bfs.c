@@ -6,7 +6,7 @@
 /*   By: djast <djast@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/09/04 12:24:08 by djast             #+#    #+#             */
-/*   Updated: 2019/09/10 10:46:49 by djast            ###   ########.fr       */
+/*   Updated: 2019/09/10 10:42:09 by djast            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -61,33 +61,6 @@ static t_room		*pop_from_queue(t_queue **queue)
 // 	printf("\n");
 // }
 
-void				clear_full(t_room *room)
-{
-	t_room *cur_room;
-
-	cur_room = room;
-	while (cur_room != NULL)
-	{
-		cur_room->used = 0;
-		cur_room->in_path = 0;
-		cur_room->path_len = -1;
-		cur_room = cur_room->next;
-	}
-}
-
-void				clear_bfs(t_room *room)
-{
-	t_room *cur_room;
-
-	cur_room = room;
-	while (cur_room != NULL)
-	{
-		cur_room->used = 0;
-		cur_room->path_len = -1;
-		cur_room = cur_room->next;
-	}
-}
-
 void				bfs(t_map *map)
 {
 	t_queue	*queue;
@@ -106,12 +79,7 @@ void				bfs(t_map *map)
 		cur_link = cur_room->links;
 		while (cur_link != NULL)
 		{
-			if (cur_link->room_l->in_path == 1)
-			{
-				cur_link = cur_link->next;
-				continue;
-			}
-			else if (cur_link->room_l->used == 0)
+			if (cur_link->room_l->used == 0)
 			{
 				cur_link->room_l->used = 1;
 				cur_link->room_l->path_len = step + 1;

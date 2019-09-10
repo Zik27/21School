@@ -22,14 +22,17 @@ LIBFT_HEADER = $(LIBFT_FOLDER)/libft.h
 
 ID_UN := $(shell id -un)
 
-SDL_FOLDER = /Users/$(ID_UN)/.brew/Cellar/sdl2/2.0.9_1/include/SDL2
-SDL_LIB = /Users/$(ID_UN)/.brew/Cellar/sdl2/2.0.9_1/lib
+SDL_FOLDER = /Users/$(ID_UN)/.brew/Cellar/sdl2/2.0.10/include/SDL2
+SDL_LIB = /Users/$(ID_UN)/.brew/Cellar/sdl2/2.0.10/lib
+
+SDL_TTF_FOLDER = /Users/$(ID_UN)/.brew/Cellar/sdl2_ttf/2.0.15/include/SDL2
+SDL_TTF_LIB = /Users/$(ID_UN)/.brew/Cellar/sdl2_ttf/2.0.15/lib
 
 HEADERS_DIRECTORY = ./includes
 HEADERS = $(HEADERS_DIRECTORY)/lem_in.h
 
-LIBS = -lft -L$(LIBFT_FOLDER) -L$(SDL_LIB) -lSDL2
-INCLUDES = -I$(HEADERS_DIRECTORY) -I$(LIBFT_FOLDER) -I$(SDL_FOLDER)
+LIBS = -lft -L$(LIBFT_FOLDER) -L$(SDL_TTF_LIB) -L$(SDL_LIB) -lSDL2 -lSDL2_ttf
+INCLUDES = -I$(HEADERS_DIRECTORY) -I$(LIBFT_FOLDER) -I$(SDL_TTF_FOLDER) -I$(SDL_FOLDER) 
 
 COMMON_FILES =	count_ants.c \
 				error.c \
@@ -42,7 +45,10 @@ COMMON_FILES =	count_ants.c \
 				free.c \
 				bfs.c \
 				all_paths.c \
-				init.c
+				init.c \
+				choose_path.c \
+				print_results.c \
+				optimize.c
 
 LEM_IN_FILES = lem_in.c
 VISUAL_FILES = visualize.c

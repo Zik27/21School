@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   print_results.c                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: djast <djast@student.42.fr>                +#+  +:+       +#+        */
+/*   By: vurrigon <vurrigon@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/09/07 16:25:16 by vurrigon          #+#    #+#             */
-/*   Updated: 2019/09/10 11:16:23 by djast            ###   ########.fr       */
+/*   Updated: 2019/09/08 15:20:45 by vurrigon         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,7 +38,16 @@ t_path	*make_step(t_path *path, int id)
 	return (end);
 }
 
-
+void	print_way(t_path *way)
+{
+	//printf("WAY == %p\n", way);
+	while (way)
+	{
+		printf("ID == %d\n", way->room_path->ant_id);
+		way = way->next;
+	}
+	printf("################\n");
+}
 
 void	print_solution(t_path *path, t_paths *paths)
 {
@@ -67,11 +76,13 @@ void	step_by_step(t_paths *paths, int count_ants, int count_lines)
 
 	ways = paths;
 	id = 1;
-	//printf("COUNT_IENS: %d\n", count_lines);
+	printf("COUINT LINES == %d\n", count_lines);
+	printf("COUNT ANTS == %d\n", count_ants);
 	while (count_lines)
 	{
 		while (ways)
 		{
+			//printf("count_lines ==  %d, size == %d\n", count_lines, ways->size);
 			if (count_ants - id >= 0 && count_lines >= ways->size)
 				end = make_step(ways->path->next, id++);
 			else
@@ -81,6 +92,7 @@ void	step_by_step(t_paths *paths, int count_ants, int count_lines)
 				end->room_path->ant_id = -1;
 			ways = ways->next;
 		}
+		//printf("EXIT\n");
 		count_lines--;
 		ways = paths;
 		ft_putchar('\n');
@@ -89,12 +101,12 @@ void	step_by_step(t_paths *paths, int count_ants, int count_lines)
 
 void	print_out(t_file_txt *input, t_paths *paths, int count_ants, int count_lines)
 {
-	//input++;
-	while (input)
-	{
-		ft_putendl(input->text);
-		input = input->next;
-	}
-	ft_putstr("\n");
+	input++;
+	// while (input)
+	// {
+	// 	ft_putendl(input->text);
+	// 	input = input->next;
+	// }
+	// ft_putstr("\n");
 	step_by_step(paths, count_ants, count_lines);
 }

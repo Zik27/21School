@@ -6,7 +6,7 @@
 /*   By: djast <djast@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/09/05 16:33:10 by djast             #+#    #+#             */
-/*   Updated: 2019/09/08 14:17:10 by djast            ###   ########.fr       */
+/*   Updated: 2019/09/10 11:25:07 by djast            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,60 +35,53 @@ static t_paths		*add_to_paths(t_paths *paths, t_path *path)
 }
 
 
-static t_path		*get_one_path(t_map *map, int steps, int status)
+static t_path		*get_one_path(t_map *map)
 {
 	t_room	*cur_room;
 	t_link	*cur_link;
 	t_path	*path;
+	int		min_steps;
 
 	path = NULL;
 	cur_room = map->exit;
 	path = add_to_path(path, map->exit);
 	cur_link = cur_room->links;
-	while (cur_link != NULL)
+	min_steps = cur_room->path_len - 1;
+	while (min_steps != -1)
 	{
-		if (cur_link->room_l == map->start && cur_room == map->exit && status == 1)
+		cur_link = cur_room->links;
+		while (cur_link != NULL)
 		{
-			cur_link = cur_link->next;
-			continue ;
+			if (cur_link->room_l->path_len == min_steps)
+			{
+				cur_link->room_l->in_path = 1;
+				path = add_to_path(path, cur_link->room_l);
+				min_steps -= 1;
+				cur_room = cur_link->room_l;
+				break ;
+			}
+			else
+				cur_link = cur_link->next;
 		}
-		if (cur_link->room_l == map->start)
-		{
-			cur_link->room_l->in_path = 1;
-			path = add_to_path(path, map->start);
-			return (path);
-		}
-		else if (cur_link->room_l == map->exit)
-			cur_link = cur_link->next;
-		else if (cur_link->room_l->path_len == steps && cur_link->room_l->in_path == 0)
-		{
-			cur_link->room_l->in_path = 1;
-			path = add_to_path(path, cur_link->room_l);
-			steps -= 1;
-			cur_room = cur_link->room_l;
-			cur_link = cur_room->links;
-		}
-		else
-			cur_link = cur_link->next;
 	}
 	return (path);
 }
 
-static int			check_links(t_room *cur_room)
-{
-	t_link	*cur_link;
+// static int			check_links(t_room *cur_room)
+// {
+// 	t_link	*cur_link;
 
-	cur_link = cur_room->links;
-	while (cur_link != NULL)
-	{
-		if (cur_link->room_l->in_path == 0)
-			return (1);
-		cur_link = cur_link->next;
-	}
-	return (0);
-}
+// 	cur_link = cur_room->links;
+// 	while (cur_link != NULL)
+// 	{
+// 		if (cur_link->room_l->in_path == 0)
+// 			return (1);
+// 		cur_link = cur_link->next;
+// 	}
+// 	return (0);
+// }
 
-static void			print_paths(t_paths *paths)
+void			print_paths(t_paths *paths)
 {
 	t_path *cur_path;
 	t_paths *cur_paths;
@@ -106,43 +99,62 @@ static void			print_paths(t_paths *paths)
 		printf("\n");
 		cur_paths = cur_paths->next;
 	}
+	printf("__________________________\n");
 }
 
-static int has_start(t_path *path, t_map *map)
-{
-	if (path == NULL)
-		return (-1);
-	if (ft_strcmp(path->room_path->name, map->start->name) == 0)
-		return (1);
-	else if (ft_strcmp(path->room_path->name, map->exit->name) == 0)
-		return (-1);
-	return (0);
-}
+// static int has_start(t_path *path, t_map *map)
+// {
+// 	if (path == NULL)
+// 		return (-1);
+// 	if (ft_strcmp(path->room_path->name, map->start->name) == 0)
+// 		return (1);
+// 	else if (ft_strcmp(path->room_path->name, map->exit->name) == 0)
+// 		return (-1);
+// 	return (0);
+// }
 
-t_paths				*get_all_paths(t_map *map)
+t_paths				*get_all_paths(t_map *map, t_room *rooms, int status)
 {
-	int		steps;
 	t_paths	*paths;
 	t_path	*path;
-	int		status;
 
-	steps = 0;
 	paths = NULL;
-	status = 0;
-	while (check_links(map->start) == 1 &&
-			check_links(map->exit) == 1)
+	clear_full(rooms);
+	bfs(map);
+	if (map->exit->path_len == -1 && status == 1)
+		error("No path found");
+	while (map->exit->path_len != -1)
 	{
-		path = get_one_path(map, steps, status);
-		if (path->room_path == map->start && path->next->room_path == map->exit && status == 0)
-			status = 1;
-		if (has_start(path, map) == 1)
-		{
-			paths = add_to_paths(paths, path);
-			paths->size = steps + 1;
-		}
-		else if (has_start(path, map) == -1)
-			steps++;
+		path = get_one_path(map);
+		paths = add_to_paths(paths, path);	
+		paths->size = map->exit->path_len;
+		clear_bfs(rooms);
+		bfs(map);
 	}
-	print_paths(paths);
+	//print_paths(paths);
 	return (paths);
 }
+// 	int		steps;
+// 	t_paths	*paths;
+// 	t_path	*path;
+// 	int		status;
+
+// 	steps = 0;
+// 	paths = NULL;
+// 	status = 0;
+// 	while (check_links(map->start) == 1 &&
+// 			check_links(map->exit) == 1)
+// 	{
+// 		path = get_one_path(map, steps, status);
+// 		if (path->room_path == map->start && path->next->room_path == map->exit && status == 0)
+// 			status = 1;
+// 		if (has_start(path, map) == 1)
+// 		{
+// 			paths = add_to_paths(paths, path);
+// 			paths->size = steps + 1;
+// 		}
+// 		else if (has_start(path, map) == -1)
+// 			steps++;
+// 	}
+// 	return (paths);
+// }

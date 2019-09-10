@@ -6,7 +6,7 @@
 /*   By: djast <djast@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/08/20 14:24:28 by vurrigon          #+#    #+#             */
-/*   Updated: 2019/09/08 14:18:34 by djast            ###   ########.fr       */
+/*   Updated: 2019/09/10 11:25:25 by djast            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,11 +18,12 @@
 # define NO_NEG 0
 # define SIZE_WINDOW_X 2560	
 # define SIZE_WINDOW_Y 1440
-# define ROOM_SIZE 20
+# define ROOM_SIZE 100
 # include "libft.h"
 # include <stdio.h>
 # include <limits.h>
 # include <SDL.h>
+# include <SDL_ttf.h>
 
 /* Структура, описывающая комнату */
 typedef struct			s_room
@@ -86,6 +87,7 @@ typedef struct		s_sdl
 {
 	SDL_Window		*window;
 	SDL_Renderer	*renderer;
+	TTF_Font*		Sans;
 }					t_sdl;
 
 void		sort_array_by_name(t_map **map, int size);
@@ -104,7 +106,7 @@ void		free_rooms(t_room *rooms);
 void		free_map(t_map *map);
 t_file_txt	*init_input_file(char *text);
 void		bfs(t_map *map);
-t_paths		*get_all_paths(t_map *map);
+t_paths		*get_all_paths(t_map *map, t_room *rooms, int status);
 void		reverse_paths(t_paths **paths);
 t_map		*init(void);
 t_file_txt	*init_input_file(char *text);
@@ -114,5 +116,11 @@ void		path_removal(t_paths *paths, int count_path);
 void		free_paths(t_paths *paths);
 void		ft_swap(int *a, int *b);
 int			choose_path(int ants, t_paths *paths, t_map *map);
+t_room		*find_room(char *name, t_room **array, int left, int right);
+void		clear_full(t_room *room);
+void		delete_link(t_room **room_path, t_room *next_room);
+void		create_link(t_room *room, t_room *link);
+void		print_paths(t_paths *paths);
+void		clear_bfs(t_room *room);
 
 #endif
