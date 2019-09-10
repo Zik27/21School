@@ -6,25 +6,46 @@
 /*   By: vurrigon <vurrigon@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/08/20 14:18:55 by vurrigon          #+#    #+#             */
-/*   Updated: 2019/09/08 16:14:36 by vurrigon         ###   ########.fr       */
+/*   Updated: 2019/09/10 10:55:01 by vurrigon         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "lem_in.h"
 #include <stdio.h>
 
+void	reading_links(char *line, t_map *map, t_room *rooms, int count_rooms)
+{
+	if (!rooms->x && !rooms->y && !rooms->name)
+		error("Invalid input");
+	list_to_array(map, rooms, count_rooms);
+	sort_array_by_name(&map, count_rooms);
+	map->count_rooms = count_rooms;
+	add_to_file_txt(&map->input, line);
+	parse_links(&line, map);
+	while (get_next_line(0, &line) == 1)
+	{
+		if (line && line[0] == '#')
+			parse_comment(line, map);
+		else if (line && ft_strchr(line, '-'))
+			parse_links(&line, map);
+		else
+			error("Invalid input");
+		add_to_file_txt(&map->input, line);
+		//free(line);
+	}
+}
+
 void	parse(t_map *map)
 {
-	t_paths *paths;
-	char	*line;
-	t_room	*rooms;
-	int		count_rooms;
-	t_file_txt	*input;
+	char		*line;
+	t_room		*rooms;
+	int			count_rooms;
 	int			path;
+	t_paths 	*paths;
 
 	count_rooms = 0;
 	rooms = init_room(NULL, 0, 0);
-	input = init_input_file(NULL);
+	map->input = init_input_file(NULL);
 	while (get_next_line(0, &line) == 1)
 	{
 		if (map->count_ants == 0)
@@ -37,42 +58,24 @@ void	parse(t_map *map)
 			count_rooms++;
 		}
 		else if (line && ft_strchr(line, '-'))
+		{
+			reading_links(line, map, rooms, count_rooms);
 			break ;
+		}
 		else
 			error("Invalid input");
-		add_to_file_txt(&input, line);
+		add_to_file_txt(&map->input, line);
 		//free(line);
 	}
-	if (!rooms->x && !rooms->y && !rooms->name)
+	if (!map->start || !map->exit || map->has_links != 1)
 		error("Invalid input");
-	list_to_array(map, rooms, count_rooms);
-	sort_array_by_name(&map, count_rooms);
-	map->count_rooms = count_rooms;
-	add_to_file_txt(&input, line);
-	parse_links(&line, map);
-	while (get_next_line(0, &line) == 1)
-	{
-		if (line && line[0] == '#')
-			parse_comment(line, map);
-		else if (line && ft_strchr(line, '-'))
-			parse_links(&line, map);
-		else
-			error("Invalid input");
-		add_to_file_txt(&input, line);
-		//free(line);
-	}
-
-	reverse_input_file(&input);
-
+	reverse_input_file(&map->input);
 	bfs(map);
 	paths = get_all_paths(map);
-	
 	reverse_paths(&paths);
 	path = choose_path(map->count_ants, paths, map);
-	//printf("PATHS: %d\n", path);
 	path_removal(paths, path);
-	print_out(input, paths, map->count_ants, map->count_out_line);
-
+	print_out(map->input, paths, map->count_ants, map->count_out_line);
 	// printf("RESULT:\n");
 	// while (rooms)
 	// {
@@ -91,9 +94,7 @@ void	parse(t_map *map)
 	// }
 	// printf("START = %s, END = %s\n", map->start->name, map->exit->name);
 
-
-	if (!map->start || !map->exit || map->has_links != 1)
-		error("Invalid input");
+	
 	free_map(map);
 	free_rooms(rooms);
 }

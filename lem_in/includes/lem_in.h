@@ -6,7 +6,7 @@
 /*   By: vurrigon <vurrigon@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/08/20 14:24:28 by vurrigon          #+#    #+#             */
-/*   Updated: 2019/09/08 13:55:54 by vurrigon         ###   ########.fr       */
+/*   Updated: 2019/09/10 10:50:04 by vurrigon         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,6 +24,13 @@
 # include <limits.h>
 //# include <SDL.h>
 
+
+/*Структура, хранящая входной файл */
+typedef struct			s_file_txt
+{
+	char				*text;
+	struct	s_file_txt	*next;
+}						t_file_txt;
 /* Структура, описывающая комнату */
 typedef struct			s_room
 {
@@ -49,6 +56,8 @@ typedef struct			s_map
 	struct s_room		**array_rooms;
 	int					has_links:2;
 	int					count_out_line;
+	struct s_file_txt	*input;
+
 }						t_map;
 /* Структура, описывающая связи определенной комнаты */
 typedef struct			s_link
@@ -56,12 +65,6 @@ typedef struct			s_link
 	struct s_room		*room_l;
 	struct s_link		*next;
 }						t_link;
-/*Структура, хранящая входной файл */
-typedef struct			s_file_txt
-{
-	char				*text;
-	struct	s_file_txt	*next;
-}						t_file_txt;
 
 typedef struct			s_path
 {

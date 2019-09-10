@@ -6,7 +6,7 @@
 /*   By: vurrigon <vurrigon@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/09/07 14:52:57 by djast             #+#    #+#             */
-/*   Updated: 2019/09/07 20:18:59 by vurrigon         ###   ########.fr       */
+/*   Updated: 2019/09/10 10:47:28 by vurrigon         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,6 +25,7 @@ t_map	*init(void)
 		map->has_links = 0;
 		map->count_rooms = 0;
 		map->array_rooms = NULL;
+		map->input = NULL;
 		map->count_out_line = -1;
 	}
 	return (map);
