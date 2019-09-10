@@ -83,18 +83,12 @@ static t_path		*get_one_path(t_map *map)
 
 void			print_paths(t_paths *paths)
 {
-	t_link	*cur_link;
 	t_path *cur_path;
 	t_paths *cur_paths;
 
-	cur_link = cur_room->links;
-	while (cur_link != NULL)
 	cur_paths = paths;
 	while (cur_paths != NULL )
 	{
-		if (cur_link->room_l->in_path == 0)
-			return (1);
-		cur_link = cur_link->next;
 		cur_path = cur_paths->path;
 		printf("SIZE == %d\n", cur_paths->size);
 		while (cur_path != NULL)
@@ -105,10 +99,8 @@ void			print_paths(t_paths *paths)
 		printf("\n");
 		cur_paths = cur_paths->next;
 	}
-	return (0);
 	printf("__________________________\n");
 }
-
 
 // static int has_start(t_path *path, t_map *map)
 // {
@@ -125,7 +117,6 @@ t_paths				*get_all_paths(t_map *map, t_room *rooms, int status)
 {
 	t_paths	*paths;
 	t_path	*path;
-	int		status;
 
 	paths = NULL;
 	clear_full(rooms);

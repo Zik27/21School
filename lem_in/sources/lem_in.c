@@ -6,7 +6,7 @@
 /*   By: djast <djast@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/08/20 14:18:55 by vurrigon          #+#    #+#             */
-/*   Updated: 2019/09/10 11:25:38 by djast            ###   ########.fr       */
+/*   Updated: 2019/09/10 11:40:16 by djast            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -48,6 +48,7 @@ void	parse(t_map *map)
 	t_path		*cur_path;
 	int			is_best;
 	int			optimize_try;
+	t_paths 	*paths;
 
 	count_rooms = 0;
 	rooms = init_room(NULL, 0, 0);
@@ -75,24 +76,6 @@ void	parse(t_map *map)
 	}
 	if (!map->start || !map->exit || map->has_links != 1)
 		error("Invalid input");
-	list_to_array(map, rooms, count_rooms);
-	sort_array_by_name(&map, count_rooms);
-	map->count_rooms = count_rooms;
-	add_to_file_txt(&input, line);
-	parse_links(&line, map);
-	while (get_next_line(0, &line) == 1)
-	{
-		if (line && line[0] == '#')
-			parse_comment(line, map);
-		else if (line && ft_strchr(line, '-'))
-			parse_links(&line, map);
-		else
-			error("Invalid input");
-		add_to_file_txt(&input, line);
-		//free(line);
-	}
-
-	reverse_input_file(&input);
 	best_paths = get_all_paths(map, rooms, 1);
 	reverse_paths(&best_paths);
 	best_path_count = choose_path(map->count_ants, best_paths, map);
@@ -144,7 +127,7 @@ void	parse(t_map *map)
 //	printf("PATHS: %d\n", best_path_count);
 	print_paths(best_paths);
 	path_removal(best_paths, best_path_count);
-	print_out(input, best_paths, map->count_ants, min_lines);
+	print_out(map->input, best_paths, map->count_ants, min_lines);
 	// printf("RESULT:\n");
 	// while (rooms)
 	// {
