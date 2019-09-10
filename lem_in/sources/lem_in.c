@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   lem_in.c                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: djast <djast@student.42.fr>                +#+  +:+       +#+        */
+/*   By: vurrigon <vurrigon@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/08/20 14:18:55 by vurrigon          #+#    #+#             */
-/*   Updated: 2019/09/10 11:40:16 by djast            ###   ########.fr       */
+/*   Updated: 2019/09/10 12:09:25 by vurrigon         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -76,6 +76,7 @@ void	parse(t_map *map)
 	}
 	if (!map->start || !map->exit || map->has_links != 1)
 		error("Invalid input");
+	reverse_input_file(&map->input);
 	best_paths = get_all_paths(map, rooms, 1);
 	reverse_paths(&best_paths);
 	best_path_count = choose_path(map->count_ants, best_paths, map);
