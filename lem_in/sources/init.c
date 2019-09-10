@@ -25,6 +25,7 @@ t_map	*init(void)
 		map->has_links = 0;
 		map->count_rooms = 0;
 		map->array_rooms = NULL;
+		map->input = NULL;
 		map->count_out_line = -1;
 	}
 	return (map);

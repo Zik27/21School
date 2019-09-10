@@ -25,6 +25,13 @@
 # include <SDL.h>
 # include <SDL_ttf.h>
 
+
+/*Структура, хранящая входной файл */
+typedef struct			s_file_txt
+{
+	char				*text;
+	struct	s_file_txt	*next;
+}						t_file_txt;
 /* Структура, описывающая комнату */
 typedef struct			s_room
 {
@@ -50,6 +57,8 @@ typedef struct			s_map
 	struct s_room		**array_rooms;
 	int					has_links:2;
 	int					count_out_line;
+	struct s_file_txt	*input;
+
 }						t_map;
 /* Структура, описывающая связи определенной комнаты */
 typedef struct			s_link
@@ -57,12 +66,6 @@ typedef struct			s_link
 	struct s_room		*room_l;
 	struct s_link		*next;
 }						t_link;
-/*Структура, хранящая входной файл */
-typedef struct			s_file_txt
-{
-	char				*text;
-	struct	s_file_txt	*next;
-}						t_file_txt;
 
 typedef struct			s_path
 {

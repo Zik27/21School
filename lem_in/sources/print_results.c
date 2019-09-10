@@ -67,7 +67,7 @@ void	step_by_step(t_paths *paths, int count_ants, int count_lines)
 
 	ways = paths;
 	id = 1;
-	//printf("COUNT_IENS: %d\n", count_lines);
+	printf("COUNT === %d\n", count_lines);
 	while (count_lines)
 	{
 		while (ways)
@@ -89,7 +89,6 @@ void	step_by_step(t_paths *paths, int count_ants, int count_lines)
 
 void	print_out(t_file_txt *input, t_paths *paths, int count_ants, int count_lines)
 {
-	//input++;
 	while (input)
 	{
 		ft_putendl(input->text);

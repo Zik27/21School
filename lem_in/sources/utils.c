@@ -71,7 +71,6 @@ void	path_removal(t_paths *paths, int count_paths)
 	{
 		if (!count_paths)
 		{
-			//printf("AAAA\n");
 			tmp->next = NULL;
 			free_paths(paths);
 			break ;
