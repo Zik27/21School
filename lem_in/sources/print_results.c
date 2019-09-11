@@ -6,7 +6,7 @@
 /*   By: djast <djast@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/09/07 16:25:16 by vurrigon          #+#    #+#             */
-/*   Updated: 2019/09/10 11:16:23 by djast            ###   ########.fr       */
+/*   Updated: 2019/09/10 12:26:36 by djast            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,7 +19,11 @@ t_path	*make_step(t_path *path, int id)
 
 	end = NULL;
 	if (path->room_path->ant_id == -1 && id != -1)
+	{
+		if (!path->next)
+			end = path;
 		path->room_path->ant_id = id;
+	}
 	else
 	{
 		tmp = path->room_path->ant_id;
@@ -37,8 +41,6 @@ t_path	*make_step(t_path *path, int id)
 	}
 	return (end);
 }
-
-
 
 void	print_solution(t_path *path, t_paths *paths)
 {

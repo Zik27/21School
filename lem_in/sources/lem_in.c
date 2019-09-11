@@ -6,7 +6,7 @@
 /*   By: djast <djast@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/08/20 14:18:55 by vurrigon          #+#    #+#             */
-/*   Updated: 2019/09/10 11:40:16 by djast            ###   ########.fr       */
+/*   Updated: 2019/09/10 12:09:17 by djast            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -76,6 +76,7 @@ void	parse(t_map *map)
 	}
 	if (!map->start || !map->exit || map->has_links != 1)
 		error("Invalid input");
+	reverse_input_file(&map->input);
 	best_paths = get_all_paths(map, rooms, 1);
 	reverse_paths(&best_paths);
 	best_path_count = choose_path(map->count_ants, best_paths, map);
@@ -124,7 +125,7 @@ void	parse(t_map *map)
 			cur_paths = cur_paths->next;
 		}
 	}
-//	printf("PATHS: %d\n", best_path_count);
+	printf("PATHS: %d\n", best_path_count);
 	print_paths(best_paths);
 	path_removal(best_paths, best_path_count);
 	print_out(map->input, best_paths, map->count_ants, min_lines);
