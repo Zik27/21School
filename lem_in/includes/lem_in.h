@@ -6,7 +6,7 @@
 /*   By: vurrigon <vurrigon@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/08/20 14:24:28 by vurrigon          #+#    #+#             */
-/*   Updated: 2019/09/10 11:48:06 by vurrigon         ###   ########.fr       */
+/*   Updated: 2019/09/11 13:28:43 by vurrigon         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -125,5 +125,6 @@ void		delete_link(t_room **room_path, t_room *next_room);
 void		create_link(t_room *room, t_room *link);
 void		print_paths(t_paths *paths);
 void		clear_bfs(t_room *room);
+void		free_input(t_file_txt *input);
 
 #endif
