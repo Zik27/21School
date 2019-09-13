@@ -6,7 +6,7 @@
 /*   By: vurrigon <vurrigon@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/08/20 14:18:55 by vurrigon          #+#    #+#             */
-/*   Updated: 2019/09/11 18:42:16 by vurrigon         ###   ########.fr       */
+/*   Updated: 2019/09/13 15:41:09 by vurrigon         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,7 +31,6 @@ void	reading_links(char *line, t_map *map, t_room *rooms, int count_rooms)
 		else
 			error("Invalid input");
 		add_to_file_txt(&map->input, line);
-		//free(line);
 	}
 }
 
@@ -48,7 +47,7 @@ void	parse(t_map *map)
 	t_path		*cur_path;
 	int			is_best;
 	int			optimize_try;
-	t_paths 	*paths;
+	t_paths		*paths;
 
 	count_rooms = 0;
 	rooms = init_room(NULL, 0, 0);
@@ -72,7 +71,6 @@ void	parse(t_map *map)
 		else
 			error("Invalid input");
 		add_to_file_txt(&map->input, line);
-		//free(line);
 	}
 	if (!map->start || !map->exit || map->has_links != 1)
 		error("Invalid input");
@@ -81,41 +79,32 @@ void	parse(t_map *map)
 	reverse_paths(&best_paths);
 	best_path_count = choose_path(map->count_ants, best_paths, map);
 	min_lines = map->count_out_line;
-	//printf("min_lines: %d\n", min_lines);
 	optimize_try = 3;
 	is_best = 1;
 	while (is_best == 1)
 	{
-		//printf("AAAAA\n");
 		is_best = 0;
 		cur_paths = best_paths;
-		//print_paths(best_paths);
-		//printf("_________________________\n");
 		while (cur_paths != NULL && is_best == 0 && optimize_try-- != 0)
 		{
 			cur_path = cur_paths->path;
 			while (cur_path->next != NULL && is_best == 0)
 			{
-				// printf("ROOM1: %s ROOM2: %s\n", cur_path->room_path->name,
-				// 								cur_path->next->room_path->name);
 				delete_link(&(cur_path->room_path), cur_path->next->room_path);
 				delete_link(&(cur_path->next->room_path), cur_path->room_path);
 				paths = get_all_paths(map, rooms, 0);
 				reverse_paths(&paths);
-				
 				path = choose_path(map->count_ants, paths, map);
 				create_link(cur_path->room_path, cur_path->next->room_path);
 				create_link(cur_path->next->room_path, cur_path->room_path);
-				//printf("min_lines: %d\n", map->count_out_line);
 				if (min_lines > map->count_out_line)
 				{
-				//	printf("FOUND\n");
 					free_paths(best_paths);
 					best_paths = paths;
 					min_lines = map->count_out_line;
 					best_path_count = path;
 					is_best = 1;
-					break;
+					break ;
 				}
 				else
 					free_paths(paths);
@@ -124,35 +113,15 @@ void	parse(t_map *map)
 			cur_paths = cur_paths->next;
 		}
 	}
-	//printf("PATHS: %d\n", best_path_count);
-	//print_paths(best_paths);
 	path_removal(best_paths, best_path_count);
 	print_out(map->input, best_paths, map->count_ants, min_lines);
-	// printf("RESULT:\n");
-	// while (rooms)
-	// {
-	// 	printf("%s x=%d y=%d path_len=%d\n", rooms->name, rooms->x, rooms->y, rooms->path_len);	
-	// 	rooms = rooms->next;
-	// }
-	// 	t_link	*link;
-	// 	link = rooms->links;
-
-	// 	while (link)
-	// 	{
-	// 		printf("LINK === %s\n", link->room_l->name);
-	// 		link = link->next;
-	// 	}
-	// 	rooms = rooms->next;
-	// }
-	// printf("START = %s, END = %s\n", map->start->name, map->exit->name);
-
 	free_input(map->input);
 	free_rooms(rooms);
 	free_paths(best_paths);
 	free_map(map);
 }
 
-int	main(void)
+int		main(void)
 {
 	t_map	*map;
 

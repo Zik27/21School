@@ -6,13 +6,13 @@
 /*   By: vurrigon <vurrigon@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/09/04 11:56:12 by vurrigon          #+#    #+#             */
-/*   Updated: 2019/09/11 15:10:36 by vurrigon         ###   ########.fr       */
+/*   Updated: 2019/09/13 15:26:11 by vurrigon         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "lem_in.h"
 
-void	free_map(t_map *map)
+void		free_map(t_map *map)
 {
 	t_room	**rooms;
 	int		i;
@@ -23,7 +23,7 @@ void	free_map(t_map *map)
 	free(map);
 }
 
-void	free_rooms(t_room *rooms)
+void		free_rooms(t_room *rooms)
 {
 	t_link	*link;
 	t_room	*tmp;
@@ -45,7 +45,7 @@ void	free_rooms(t_room *rooms)
 	}
 }
 
-static void free_path(t_path *path)
+static void	free_path(t_path *path)
 {
 	t_path	*tmp;
 
@@ -57,7 +57,7 @@ static void free_path(t_path *path)
 	}
 }
 
-void	free_paths(t_paths *current)
+void		free_paths(t_paths *current)
 {
 	t_paths *before;
 
@@ -70,7 +70,7 @@ void	free_paths(t_paths *current)
 	}
 }
 
-void	free_input(t_file_txt *input)
+void		free_input(t_file_txt *input)
 {
 	t_file_txt *before;
 

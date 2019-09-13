@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   choose_path.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: djast <djast@student.42.fr>                +#+  +:+       +#+        */
+/*   By: vurrigon <vurrigon@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/09/07 19:57:54 by djast             #+#    #+#             */
-/*   Updated: 2019/09/10 11:12:55 by djast            ###   ########.fr       */
+/*   Updated: 2019/09/13 15:22:51 by vurrigon         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,14 +21,12 @@ static int		compare_steps(int ants, int steps, int count_paths,
 		tmp = (steps + ants - count_paths) / count_paths;
 	else
 		tmp = ((steps + ants - count_paths) / count_paths) + 1;
-	//printf("sum: %d, count: %d\n", tmp, count_paths);
 	if (tmp <= *least_steps)
 	{
 		*least_steps = tmp;
 		return (1);
 	}
 	return (0);
-
 }
 
 static int		get_steps(t_paths *paths, int count_paths)
@@ -54,7 +52,7 @@ static int		get_path_last_size(t_paths *paths, int count_paths)
 	return (paths->size);
 }
 
-int		choose_path(int ants, t_paths *paths, t_map *map)
+int				choose_path(int ants, t_paths *paths, t_map *map)
 {
 	int	count_paths;
 	int	steps;

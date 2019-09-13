@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   optimize.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: djast <djast@student.42.fr>                +#+  +:+       +#+        */
+/*   By: vurrigon <vurrigon@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/09/09 17:17:42 by djast             #+#    #+#             */
-/*   Updated: 2019/09/09 18:17:57 by djast            ###   ########.fr       */
+/*   Updated: 2019/09/13 15:27:44 by vurrigon         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,7 +24,6 @@ void		delete_link(t_room **cur_room, t_room *next_room)
 	while (tmp)
 	{
 		after_list = tmp->next;
-		//printf("Name: %s, Find: %s\n", tmp->room_l->name, next_room->name);
 		if (tmp->room_l == next_room)
 		{
 			if (tmp == (*cur_room)->links)
@@ -32,7 +31,7 @@ void		delete_link(t_room **cur_room, t_room *next_room)
 			else
 				before_list->next = after_list;
 			free(tmp);
-			break;
+			break ;
 		}
 		else
 		{

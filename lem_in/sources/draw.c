@@ -3,7 +3,7 @@
 /*                                                        :::      ::::::::   */
 /*   draw.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: djast <djast@student.42.fr>                +#+  +:+       +#+        */
+/*   By: vurrigon <vurrigon@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/09/11 12:23:20 by djast             #+#    #+#             */
 /*   Updated: 2019/09/13 15:49:52 by djast            ###   ########.fr       */
@@ -21,8 +21,6 @@ void				draw_rooms(t_sdl *sdl, t_room *rooms, t_map *map)
 	cur_room = rooms;
 	while (cur_room != NULL)
 	{
-		// printf("%p\n", cur_room);
-		// printf("%s\n", cur_room->name);
 		r.x = cur_room->x - ROOM_SIZE / 2;
 		r.y = cur_room->y - ROOM_SIZE / 2;
 		r.h = ROOM_SIZE;
@@ -39,7 +37,6 @@ void				draw_rooms(t_sdl *sdl, t_room *rooms, t_map *map)
 		}
 		else if (cur_room == map->exit)
 		{
-
 			color.r = 255;
 			color.g = 0;
 			color.b = 0;
@@ -50,16 +47,17 @@ void				draw_rooms(t_sdl *sdl, t_room *rooms, t_map *map)
 	}
 }
 
-static void			draw_link(t_sdl *sdl, t_room *room_start, t_room *room_end, SDL_Color color)
+static void			draw_link(t_sdl *sdl, t_room *room_start, t_room *room_end,
+								SDL_Color color)
 {
-    SDL_SetRenderDrawColor(sdl->renderer, color.r, color.g, color.b, color.a);
+	SDL_SetRenderDrawColor(sdl->renderer, color.r, color.g, color.b, color.a);
 	SDL_RenderDrawLine(sdl->renderer, room_start->x,
 										room_start->y,
 										room_end->x,
 										room_end->y);
 }
 
-void			draw_links(t_sdl *sdl, t_links *links)
+void				draw_links(t_sdl *sdl, t_links *links)
 {
 	SDL_Color color;
 
@@ -67,18 +65,19 @@ void			draw_links(t_sdl *sdl, t_links *links)
 	color.g = 128;
 	color.b = 128;
 	color.a = 255;
-    SDL_SetRenderDrawColor(sdl->renderer, color.r, color.g, color.b, color.a);
-    while (links != NULL)
-    {
-    	SDL_RenderDrawLine(sdl->renderer, links->room_start->x,
-    										links->room_start->y,
-    										links->room_end->x,
-    										links->room_end->y);
-    	links = links->next;
-    }
+	SDL_SetRenderDrawColor(sdl->renderer, color.r, color.g, color.b, color.a);
+	while (links != NULL)
+	{
+		SDL_RenderDrawLine(sdl->renderer, links->room_start->x,
+											links->room_start->y,
+											links->room_end->x,
+											links->room_end->y);
+		links = links->next;
+	}
 }
 
-static void	add_to_links(t_links **links, t_room *room_start, t_room *room_end)
+static void			add_to_links(t_links **links, t_room *room_start,
+									t_room *room_end)
 {
 	t_links	*tmp;
 
@@ -95,7 +94,7 @@ static void	add_to_links(t_links **links, t_room *room_start, t_room *room_end)
 	}
 }
 
-void			parse_link_and_add(char *line, t_map *map, t_links **links)
+void				parse_link_and_add(char *line, t_map *map, t_links **links)
 {
 	t_room	*result1;
 	t_room	*result2;
@@ -112,9 +111,9 @@ void			parse_link_and_add(char *line, t_map *map, t_links **links)
 
 void				highlight_paths(t_sdl *sdl, t_paths *paths, int path)
 {
-	t_paths *cur_path;
-	t_path *cur_room;
-	t_path *prev_room;
+	t_paths		*cur_path;
+	t_path		*cur_room;
+	t_path		*prev_room;
 	SDL_Color	color;
 
 	cur_path = paths;
@@ -138,7 +137,7 @@ void				highlight_paths(t_sdl *sdl, t_paths *paths, int path)
 
 void				draw_ants(t_sdl *sdl, t_ants *ants)
 {
-	t_ants *cur_ants;
+	t_ants		*cur_ants;
 	SDL_Rect	r;
 
 	cur_ants = ants;
@@ -156,13 +155,12 @@ void				draw_ants(t_sdl *sdl, t_ants *ants)
 void				redraw(t_sdl *sdl, t_ants *ants)
 {
 	SDL_SetRenderDrawColor(sdl->renderer, 0, 0, 0, 255);
-	SDL_RenderClear(sdl->renderer);	
+	SDL_RenderClear(sdl->renderer);
 	SDL_RenderCopy(sdl->renderer, sdl->background, NULL, NULL);
 	draw_rooms(sdl, sdl->rooms, sdl->map);
 	draw_links(sdl, sdl->links);
 	highlight_paths(sdl, sdl->best_paths, sdl->best_paths_count);
 	if (ants != NULL)
 		draw_ants(sdl, ants);
-
 	SDL_RenderPresent(sdl->renderer);
 }
