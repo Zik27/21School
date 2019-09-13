@@ -6,7 +6,7 @@
 /*   By: vurrigon <vurrigon@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/08/20 14:18:55 by vurrigon          #+#    #+#             */
-/*   Updated: 2019/09/10 12:09:17 by djast            ###   ########.fr       */
+/*   Updated: 2019/09/11 18:42:16 by vurrigon         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -81,7 +81,6 @@ void	parse(t_map *map)
 	reverse_paths(&best_paths);
 	best_path_count = choose_path(map->count_ants, best_paths, map);
 	min_lines = map->count_out_line;
-	
 	//printf("min_lines: %d\n", min_lines);
 	optimize_try = 3;
 	is_best = 1;
@@ -125,8 +124,8 @@ void	parse(t_map *map)
 			cur_paths = cur_paths->next;
 		}
 	}
-	printf("PATHS: %d\n", best_path_count);
-	print_paths(best_paths);
+	//printf("PATHS: %d\n", best_path_count);
+	//print_paths(best_paths);
 	path_removal(best_paths, best_path_count);
 	print_out(map->input, best_paths, map->count_ants, min_lines);
 	// printf("RESULT:\n");
@@ -147,9 +146,10 @@ void	parse(t_map *map)
 	// }
 	// printf("START = %s, END = %s\n", map->start->name, map->exit->name);
 
-	
-	free_map(map);
+	free_input(map->input);
 	free_rooms(rooms);
+	free_paths(best_paths);
+	free_map(map);
 }
 
 int	main(void)

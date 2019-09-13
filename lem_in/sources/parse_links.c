@@ -6,11 +6,18 @@
 /*   By: vurrigon <vurrigon@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/08/22 14:46:09 by vurrigon          #+#    #+#             */
-/*   Updated: 2019/09/07 11:14:39 by vurrigon         ###   ########.fr       */
+/*   Updated: 2019/09/11 18:39:55 by vurrigon         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "lem_in.h"
+
+static void	free_str_links(char **ref)
+{
+	free(ref[0]);
+	free(ref[1]);
+	free(ref);
+}
 
 void	create_link(t_room *room, t_room *link)
 {
@@ -30,10 +37,7 @@ void	create_link(t_room *room, t_room *link)
 		while (room_links)
 		{
 			if (ft_strcmp(room_links->room_l->name, link->name) == 0)
-			{
-				printf("name == %s %s\n", room_links->room_l->name, link->name);
 				error("Duplicate links");
-			}
 			tmp = room_links;
 			room_links = room_links->next;
 		}
@@ -86,14 +90,14 @@ void	parse_links(char **str, t_map *map)
 		map->has_links = 1;
 	if (map->prev_command)
 	{
-		free(ref);
+		free_str_links(ref);
 		error("Invalid start/end");
 	}
 	if (ref[2] || !search_links(ref[0], ref[1], map))
 	{
-		free(ref);
+		free_str_links(ref);
 		free(map);
 		error("Invalid links");
 	}
-	free(ref);
+	free_str_links(ref);
 }

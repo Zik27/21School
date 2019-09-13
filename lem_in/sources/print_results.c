@@ -42,11 +42,10 @@ t_path	*make_step(t_path *path, int id)
 	return (end);
 }
 
-
-
 void	print_solution(t_path *path, char **result)
 {
 	char *tmp;
+	char *free_str;
 
 	while (path)
 	{
@@ -55,25 +54,32 @@ void	print_solution(t_path *path, char **result)
 			path = path->next;
 			continue ;
 		}
-		tmp = ft_strjoin("L", ft_itoa(path->room_path->ant_id));
-		tmp = ft_strjoin(tmp, "-");
-		tmp = ft_strjoin(tmp, path->room_path->name);
-		tmp = ft_strjoin(tmp, " ");
-		*result = ft_strjoin(tmp, *result);
-		//*result = ft_strjoin(*result, " ");
-		//printf("result [%s]\n", *result);
-		// if (paths->next || path->next)
-		// 	ft_putchar(' ');
+		free_str = ft_itoa(path->room_path->ant_id);
+		tmp = ft_strjoin("L", free_str);
+		free(free_str);
+		free_str = ft_strjoin(tmp, "-");
+		free(tmp);
+		tmp = free_str;
+		free_str = ft_strjoin(tmp, path->room_path->name);
+		free(tmp);
+		tmp = free_str;
+		free_str = ft_strjoin(tmp, " ");
+		free(tmp);
+		tmp = *result;
+		*result = ft_strjoin(free_str, tmp);
+		if (ft_strcmp(tmp, ""))
+			free(tmp);
+		free(free_str);
 		path = path->next;
 	}
-	//ft_putstr(*result);
 }
 
-void	step_by_step(t_paths *paths, int count_ants, int count_lines, char *result)
+void	step_by_step(t_paths *paths, int count_ants, int count_lines)
 {
 	int		id;
 	t_paths	*ways;
 	t_path	*end;
+	char	*result;
 
 	ways = paths;
 	id = 1;
@@ -90,11 +96,12 @@ void	step_by_step(t_paths *paths, int count_ants, int count_lines, char *result)
 			if (end)
 				end->room_path->ant_id = -1;
 			ft_putstr(result);
+			if (ft_strcmp(result, ""))
+				free(result);
 			ways = ways->next;
 		}
 		count_lines--;
 		ways = paths;
-		//ft_putstr(result);
 		ft_putchar('\n');
 		result = "";
 	}
@@ -102,14 +109,11 @@ void	step_by_step(t_paths *paths, int count_ants, int count_lines, char *result)
 
 void	print_out(t_file_txt *input, t_paths *paths, int count_ants, int count_lines)
 {
-	char	*result;
-
-	result = "";
 	while (input)
 	{
 		ft_putendl(input->text);
 		input = input->next;
 	}
 	ft_putstr("\n");
-	step_by_step(paths, count_ants, count_lines, result);
+	step_by_step(paths, count_ants, count_lines);
 }

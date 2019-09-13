@@ -153,6 +153,7 @@ void		delete_link(t_room **room_path, t_room *next_room);
 void		create_link(t_room *room, t_room *link);
 void		print_paths(t_paths *paths);
 void		clear_bfs(t_room *room);
+void		free_input(t_file_txt *input);
 
 /* SDL
 */

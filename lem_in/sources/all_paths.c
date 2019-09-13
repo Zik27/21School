@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   all_paths.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: djast <djast@student.42.fr>                +#+  +:+       +#+        */
+/*   By: vurrigon <vurrigon@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/09/05 16:33:10 by djast             #+#    #+#             */
-/*   Updated: 2019/09/11 11:25:26 by djast            ###   ########.fr       */
+/*   Updated: 2019/09/11 18:43:30 by vurrigon         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -83,26 +83,26 @@ static t_path		*get_one_path(t_map *map, int status)
 // 	return (0);
 // }
 
-void			print_paths(t_paths *paths)
-{
-	t_path *cur_path;
-	t_paths *cur_paths;
+// void			print_paths(t_paths *paths)
+// {
+// 	t_path *cur_path;
+// 	t_paths *cur_paths;
 
-	cur_paths = paths;
-	while (cur_paths != NULL )
-	{
-		cur_path = cur_paths->path;
-		printf("SIZE == %d\n", cur_paths->size);
-		while (cur_path != NULL)
-		{
-			printf("%s -> ", cur_path->room_path->name);
-			cur_path = cur_path->next;
-		}
-		printf("\n");
-		cur_paths = cur_paths->next;
-	}
-	printf("__________________________\n");
-}
+// 	cur_paths = paths;
+// 	while (cur_paths != NULL )
+// 	{
+// 		cur_path = cur_paths->path;
+// 		printf("SIZE == %d\n", cur_paths->size);
+// 		while (cur_path != NULL)
+// 		{
+// 			printf("%s -> ", cur_path->room_path->name);
+// 			cur_path = cur_path->next;
+// 		}
+// 		printf("\n");
+// 		cur_paths = cur_paths->next;
+// 	}
+// 	printf("__________________________\n");
+// }
 
 // static int has_start(t_path *path, t_map *map)
 // {

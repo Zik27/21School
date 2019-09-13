@@ -3,14 +3,27 @@
 /*                                                        :::      ::::::::   */
 /*   parse_rooms.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: djast <djast@student.42.fr>                +#+  +:+       +#+        */
+/*   By: vurrigon <vurrigon@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/08/21 15:24:14 by vurrigon          #+#    #+#             */
-/*   Updated: 2019/09/08 14:40:41 by djast            ###   ########.fr       */
+/*   Updated: 2019/09/11 18:27:47 by vurrigon         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "lem_in.h"
+
+void		free_str_room(char **room, int flag)
+{
+	int i;
+
+	if (flag)
+		i = 0;
+	else
+		i = 1;
+	while (room[i])
+		free(room[i++]);
+	free(room);
+}
 
 void		init_start_end(t_map *map, t_room *room)
 {
@@ -52,24 +65,24 @@ void		parse_rooms(char *str, t_map *map, t_room **rooms)
 	room = ft_strsplit(str, ' ');
 	if (room[0][0] == 'L' || ft_strchr(room[0], '-'))
 	{
-		free(room);
+		free_str_room(room, 1);
 		error("Invalid room name");
 	}
 	while (room[i])
 	{
 		if (!check_digits(room[i], WITH_NEG) || !check_intmax(room[i]))
 		{
-			free(room);
+			free_str_room(room, 1);
 			error("Invalid coordinates");
 		}
 		i++;
 	}
 	if (i != 3)
 	{
-		free(room);
+		free_str_room(room, 1);
 		error("Invalid room");
 	}
 	add_room(room, rooms, map);
-	free(room);
+	free_str_room(room, 0);
 	map->prev_command = 0;
 }
