@@ -6,7 +6,7 @@
 /*   By: djast <djast@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/09/11 12:25:28 by djast             #+#    #+#             */
-/*   Updated: 2019/09/13 15:35:23 by djast            ###   ########.fr       */
+/*   Updated: 2019/09/13 15:58:53 by djast            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,7 +24,7 @@ t_sdl		*create_window(void)
 					SDL_WINDOW_OPENGL);
 	sdl->renderer = SDL_CreateRenderer(sdl->window, -1,
 											SDL_RENDERER_ACCELERATED);
-	sdl->Sans = TTF_OpenFont("OpenSans.ttf", 500);
+	sdl->sans = TTF_OpenFont("OpenSans.ttf", 500);
 	sdl->surface = SDL_LoadBMP("20483.bmp");
 	sdl->background = SDL_CreateTextureFromSurface(sdl->renderer, sdl->surface);
 	SDL_FreeSurface(sdl->surface);
@@ -41,7 +41,7 @@ void				put_text(t_sdl *sdl, char *message, SDL_Color color, t_room *cur_room)
 	SDL_Surface* surfaceMessage;
 	SDL_Texture* Message;
 
-	surfaceMessage = TTF_RenderText_Solid(sdl->Sans, message, color);
+	surfaceMessage = TTF_RenderText_Solid(sdl->sans, message, color);
 	Message = SDL_CreateTextureFromSurface(sdl->renderer, surfaceMessage);
 	SDL_FreeSurface(surfaceMessage);
 	r.x = cur_room->x - ROOM_SIZE / 2;

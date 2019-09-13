@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   print_result_sdl.c                                 :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: vurrigon <vurrigon@student.42.fr>          +#+  +:+       +#+        */
+/*   By: djast <djast@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/09/07 16:25:16 by vurrigon          #+#    #+#             */
-/*   Updated: 2019/09/13 15:13:31 by djast            ###   ########.fr       */
+/*   Updated: 2019/09/13 15:59:03 by djast            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -111,7 +111,7 @@ static void	move_ants(t_ants *ants)
 	}
 }
 
-static void	step_by_step_sdl(t_sdl *sdl, t_paths *paths, int count_ants,
+void	step_by_step_sdl(t_sdl *sdl, t_paths *paths, int count_ants,
 								int count_lines)
 {
 	int			id;
