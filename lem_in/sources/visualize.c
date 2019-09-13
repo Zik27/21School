@@ -6,7 +6,7 @@
 /*   By: djast <djast@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/09/07 14:46:56 by djast             #+#    #+#             */
-/*   Updated: 2019/09/11 19:42:03 by djast            ###   ########.fr       */
+/*   Updated: 2019/09/13 14:34:19 by djast            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -131,8 +131,8 @@ void				make_lem_in(t_sdl *sdl, t_map *map)
 			cur_paths = cur_paths->next;
 		}
 	}
-	printf("PATHS: %d\n", best_path_count);
-	print_paths(best_paths);
+	// printf("PATHS: %d\n", best_path_count);
+	// print_paths(best_paths);
 	sdl->best_paths = best_paths;
 	sdl->best_paths_count = best_path_count;
 	sdl->map = map;
