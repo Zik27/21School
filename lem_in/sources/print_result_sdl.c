@@ -6,7 +6,7 @@
 /*   By: djast <djast@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/09/07 16:25:16 by vurrigon          #+#    #+#             */
-/*   Updated: 2019/09/11 18:16:03 by djast            ###   ########.fr       */
+/*   Updated: 2019/09/13 15:13:31 by djast            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -111,7 +111,7 @@ static void	move_ants(t_ants *ants)
 	}
 }
 
-static void	step_by_step_sdl(t_sdl *sdl, t_paths *paths, int count_ants, int count_lines)
+void	step_by_step_sdl(t_sdl *sdl, t_paths *paths, int count_ants, int count_lines)
 {
 	int		id;
 	t_paths	*ways;
@@ -141,9 +141,5 @@ static void	step_by_step_sdl(t_sdl *sdl, t_paths *paths, int count_ants, int cou
 		count_lines--;
 		ways = paths;
 	}
-}
-
-void	print_out_sdl(t_sdl *sdl, t_map *map, t_paths *paths, int count_lines)
-{
-	step_by_step_sdl(sdl, paths, map->count_ants, count_lines);
+	free_ants(ants);
 }

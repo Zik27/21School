@@ -6,7 +6,7 @@
 /*   By: djast <djast@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/08/20 14:24:28 by vurrigon          #+#    #+#             */
-/*   Updated: 2019/09/11 19:49:10 by djast            ###   ########.fr       */
+/*   Updated: 2019/09/13 15:37:54 by djast            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -165,9 +165,12 @@ void		draw_rooms(t_sdl *sdl, t_room *rooms, t_map *map);
 t_sdl		*create_window(void);
 void		put_text(t_sdl *sdl, char *message, SDL_Color color, t_room *cur_room);
 void		pressed(int key);
-void		print_out_sdl(t_sdl *sdl, t_map *map, t_paths *paths, int count_lines);
+void		step_by_step_sdl(t_sdl *sdl, t_paths *paths, int count_ants,
+															int count_lines);
 t_ants		*init_ants(t_path *cur_path);
 t_links		*init_links(t_room *room_start, t_room *room_end);
 void		redraw(t_sdl *sdl, t_ants *ants);
+void		free_ants(t_ants *ants);
+void		free_links(t_links *links);
 
 #endif

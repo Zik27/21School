@@ -6,7 +6,7 @@
 /*   By: djast <djast@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/09/07 14:46:56 by djast             #+#    #+#             */
-/*   Updated: 2019/09/13 14:34:19 by djast            ###   ########.fr       */
+/*   Updated: 2019/09/13 15:50:02 by djast            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,7 +36,6 @@ void	reading_links(t_sdl *sdl, char *line, t_map *map, t_room *rooms)
 		else
 			error("Invalid input");
 		add_to_file_txt(&map->input, line);
-		//free(line);
 	}
 	sdl->links = links;
 }
@@ -77,34 +76,26 @@ void				make_lem_in(t_sdl *sdl, t_map *map)
 		else
 			error("Invalid input");
 		add_to_file_txt(&map->input, line);
-		//free(line);
 	}
 	if (!map->start || !map->exit || map->has_links != 1)
 		error("Invalid input");
-	reverse_input_file(&map->input);
 	sdl->rooms = rooms;
+	reverse_input_file(&map->input);
 	best_paths = get_all_paths(map, rooms, 1);
 	reverse_paths(&best_paths);
 	best_path_count = choose_path(map->count_ants, best_paths, map);
 	min_lines = map->count_out_line;
-	
-	//printf("min_lines: %d\n", min_lines);
 	optimize_try = 3;
 	is_best = 1;
 	while (is_best == 1)
 	{
-		//printf("AAAAA\n");
 		is_best = 0;
 		cur_paths = best_paths;
-		//print_paths(best_paths);
-		//printf("_________________________\n");
 		while (cur_paths != NULL && is_best == 0 && optimize_try-- != 0)
 		{
 			cur_path = cur_paths->path;
 			while (cur_path->next != NULL && is_best == 0)
 			{
-				// printf("ROOM1: %s ROOM2: %s\n", cur_path->room_path->name,
-				// 								cur_path->next->room_path->name);
 				delete_link(&(cur_path->room_path), cur_path->next->room_path);
 				delete_link(&(cur_path->next->room_path), cur_path->room_path);
 				paths = get_all_paths(map, rooms, 0);
@@ -113,10 +104,8 @@ void				make_lem_in(t_sdl *sdl, t_map *map)
 				path = choose_path(map->count_ants, paths, map);
 				create_link(cur_path->room_path, cur_path->next->room_path);
 				create_link(cur_path->next->room_path, cur_path->room_path);
-				//printf("min_lines: %d\n", map->count_out_line);
 				if (min_lines > map->count_out_line)
 				{
-				//	printf("FOUND\n");
 					free_paths(best_paths);
 					best_paths = paths;
 					min_lines = map->count_out_line;
@@ -131,16 +120,17 @@ void				make_lem_in(t_sdl *sdl, t_map *map)
 			cur_paths = cur_paths->next;
 		}
 	}
-	// printf("PATHS: %d\n", best_path_count);
-	// print_paths(best_paths);
 	sdl->best_paths = best_paths;
 	sdl->best_paths_count = best_path_count;
 	sdl->map = map;
 	redraw(sdl, NULL);
 	path_removal(best_paths, best_path_count);
-	print_out_sdl(sdl, map, best_paths, min_lines);
-	free_map(map);
+	step_by_step_sdl(sdl, best_paths, map->count_ants, min_lines);
+	free_input(map->input);
 	free_rooms(rooms);
+	free_paths(best_paths);
+	free_map(map);
+	free_links(sdl->links);
 }
 
 int					main()
@@ -150,7 +140,6 @@ int					main()
 	t_map	*map;
 
 	sdl = create_window();
-
 	map = init();
 	SDL_SetRenderDrawColor(sdl->renderer, 0, 0, 0, 255);
 	SDL_RenderClear(sdl->renderer);	

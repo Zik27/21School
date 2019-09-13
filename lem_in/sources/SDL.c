@@ -6,7 +6,7 @@
 /*   By: djast <djast@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/09/11 12:25:28 by djast             #+#    #+#             */
-/*   Updated: 2019/09/11 19:41:13 by djast            ###   ########.fr       */
+/*   Updated: 2019/09/13 15:35:23 by djast            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,9 +38,12 @@ t_sdl		*create_window(void)
 void				put_text(t_sdl *sdl, char *message, SDL_Color color, t_room *cur_room)
 {
 	SDL_Rect	r;
+	SDL_Surface* surfaceMessage;
+	SDL_Texture* Message;
 
-	SDL_Surface* surfaceMessage = TTF_RenderText_Solid(sdl->Sans, message, color);
-	SDL_Texture* Message = SDL_CreateTextureFromSurface(sdl->renderer, surfaceMessage);
+	surfaceMessage = TTF_RenderText_Solid(sdl->Sans, message, color);
+	Message = SDL_CreateTextureFromSurface(sdl->renderer, surfaceMessage);
+	SDL_FreeSurface(surfaceMessage);
 	r.x = cur_room->x - ROOM_SIZE / 2;
 	r.y = cur_room->y - ROOM_SIZE - 5;
 	r.h = 2 * ROOM_SIZE / 3;

@@ -6,7 +6,7 @@
 /*   By: djast <djast@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/09/11 12:23:20 by djast             #+#    #+#             */
-/*   Updated: 2019/09/11 19:42:14 by djast            ###   ########.fr       */
+/*   Updated: 2019/09/13 15:49:52 by djast            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -104,6 +104,9 @@ void			parse_link_and_add(char *line, t_map *map, t_links **links)
 	ref = ft_strsplit(line, '-');
 	result1 = find_room(ref[0], map->array_rooms, -1, map->count_rooms);
 	result2 = find_room(ref[1], map->array_rooms, -1, map->count_rooms);
+	free(ref[0]);
+	free(ref[1]);
+	free(ref);
 	add_to_links(links, result1, result2);
 }
 
