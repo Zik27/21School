@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   bfs.c                                              :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: djast <djast@student.42.fr>                +#+  +:+       +#+        */
+/*   By: vurrigon <vurrigon@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/09/04 12:24:08 by djast             #+#    #+#             */
-/*   Updated: 2019/09/10 10:46:49 by djast            ###   ########.fr       */
+/*   Updated: 2019/09/13 15:26:38 by vurrigon         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -45,21 +45,6 @@ static t_room		*pop_from_queue(t_queue **queue)
 	cur_list->next = NULL;
 	return (room);
 }
-
-// static void			print_queue(t_queue *queue)
-// {
-// 	t_queue *cur_queue;
-
-// 	if (queue == NULL)
-// 		return ;
-// 	cur_queue = queue;
-// 	while (cur_queue != NULL)
-// 	{
-// 		printf("%s -> ", cur_queue->room_queue->name);
-// 		cur_queue = cur_queue->next;
-// 	}
-// 	printf("\n");
-// }
 
 void				clear_full(t_room *room)
 {

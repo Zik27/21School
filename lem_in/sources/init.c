@@ -3,16 +3,16 @@
 /*                                                        :::      ::::::::   */
 /*   init.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: djast <djast@student.42.fr>                +#+  +:+       +#+        */
+/*   By: vurrigon <vurrigon@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/09/07 14:52:57 by djast             #+#    #+#             */
-/*   Updated: 2019/09/11 17:11:54 by djast            ###   ########.fr       */
+/*   Updated: 2019/09/13 15:33:00 by vurrigon         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "lem_in.h"
 
-t_map	*init(void)
+t_map		*init(void)
 {
 	t_map	*map;
 
@@ -43,7 +43,7 @@ t_file_txt	*init_input_file(char *text)
 	return (file);
 }
 
-t_links	*init_links(t_room *room_start, t_room *room_end)
+t_links		*init_links(t_room *room_start, t_room *room_end)
 {
 	t_links	*links;
 
@@ -74,15 +74,17 @@ t_ants		*init_ants(t_path *cur_path)
 		{
 			ants->x = cur_path->room_path->x;
 			ants->y = cur_path->room_path->y;
-			ants->speed_x = (cur_path->next->room_path->x - cur_path->room_path->x) / SPEED;
-			ants->speed_y = (cur_path->next->room_path->y - cur_path->room_path->y) / SPEED;
+			ants->speed_x = (cur_path->next->room_path->x -
+				cur_path->room_path->x) / SPEED;
+			ants->speed_y = (cur_path->next->room_path->y -
+				cur_path->room_path->y) / SPEED;
 		}
 		ants->next = NULL;
 	}
 	return (ants);
 }
 
-t_room	*init_room(char *name, int x, int y)
+t_room		*init_room(char *name, int x, int y)
 {
 	t_room	*room;
 

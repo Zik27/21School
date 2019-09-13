@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   print_result_sdl.c                                 :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: djast <djast@student.42.fr>                +#+  +:+       +#+        */
+/*   By: vurrigon <vurrigon@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/09/07 16:25:16 by vurrigon          #+#    #+#             */
-/*   Updated: 2019/09/11 18:16:03 by djast            ###   ########.fr       */
+/*   Updated: 2019/09/13 15:49:14 by vurrigon         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,7 @@
 
 static t_path	*make_step_sdl(t_path *path, int id)
 {
-	int	tmp;
+	int		tmp;
 	t_path	*end;
 
 	end = NULL;
@@ -42,7 +42,7 @@ static t_path	*make_step_sdl(t_path *path, int id)
 	return (end);
 }
 
-static void	add_to_ants(t_ants **ants, t_path *cur_path)
+static void		add_to_ants(t_ants **ants, t_path *cur_path)
 {
 	t_ants	*tmp;
 
@@ -65,7 +65,7 @@ static void	add_to_ants(t_ants **ants, t_path *cur_path)
 static void	animate_ants(t_sdl *sdl, t_ants *ants)
 {
 	t_ants	*cur_ants;
-	int	steps;
+	int		steps;
 
 	steps = SPEED;
 	while (steps--)
@@ -111,12 +111,13 @@ static void	move_ants(t_ants *ants)
 	}
 }
 
-static void	step_by_step_sdl(t_sdl *sdl, t_paths *paths, int count_ants, int count_lines)
+static void	step_by_step_sdl(t_sdl *sdl, t_paths *paths, int count_ants,
+								int count_lines)
 {
-	int		id;
-	t_paths	*ways;
-	t_path	*end;
-	t_ants *ants;
+	int			id;
+	t_paths		*ways;
+	t_path		*end;
+	t_ants		*ants;
 
 	ants = init_ants(NULL);
 	ways = paths;
