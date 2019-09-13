@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   lem_in.h                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: vurrigon <vurrigon@student.42.fr>          +#+  +:+       +#+        */
+/*   By: djast <djast@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/08/20 14:24:28 by vurrigon          #+#    #+#             */
-/*   Updated: 2019/09/10 11:48:06 by vurrigon         ###   ########.fr       */
+/*   Updated: 2019/09/11 19:49:10 by djast            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,12 +18,14 @@
 # define NO_NEG 0
 # define SIZE_WINDOW_X 2560	
 # define SIZE_WINDOW_Y 1440
-# define ROOM_SIZE 100
+# define ROOM_SIZE 50
+# define ANTS_SIZE 100
+# define SPEED 200
 # include "libft.h"
 # include <stdio.h>
 # include <limits.h>
-// # include <SDL.h>
-// # include <SDL_ttf.h>
+# include <SDL.h>
+# include <SDL_ttf.h>
 
 
 /*Структура, хранящая входной файл */
@@ -35,8 +37,8 @@ typedef struct			s_file_txt
 /* Структура, описывающая комнату */
 typedef struct			s_room
 {
-	int					x;
-	int					y;
+	double				x;
+	double				y;
 	int					count_links;
 	int					path_len;
 	int					in_path :2;
@@ -67,6 +69,13 @@ typedef struct			s_link
 	struct s_link		*next;
 }						t_link;
 
+typedef struct			s_links
+{
+	struct s_room		*room_start;
+	struct s_room		*room_end;
+	struct s_links		*next;
+}						t_links;
+
 typedef struct			s_path
 {
 	struct s_room		*room_path;
@@ -86,12 +95,31 @@ typedef struct			s_queue
 	struct s_queue		*next;
 }						t_queue;
 
-// typedef struct		s_sdl
-// {
-// 	SDL_Window		*window;
-// 	SDL_Renderer	*renderer;
-// 	TTF_Font*		Sans;
-// }					t_sdl;
+typedef struct		s_sdl
+{
+	SDL_Window		*window;
+	SDL_Renderer	*renderer;
+	TTF_Font*		Sans;
+	SDL_Surface		*surface;
+	SDL_Texture		*background;
+	SDL_Texture		*ant;
+	struct s_room	*rooms;
+	struct s_paths	*best_paths;
+	int				best_paths_count;
+	struct s_links	*links;
+	struct s_map	*map;
+}					t_sdl;
+
+typedef struct		s_ants
+{
+	double			x;
+	double			y;
+	double			speed_x;
+	double			speed_y;
+	struct s_path	*cur_path;
+	struct s_ants	*next;
+}					t_ants;
+
 
 void		sort_array_by_name(t_map **map, int size);
 void		list_to_array(t_map *map, t_room *rooms, int count_rooms);
@@ -125,5 +153,20 @@ void		delete_link(t_room **room_path, t_room *next_room);
 void		create_link(t_room *room, t_room *link);
 void		print_paths(t_paths *paths);
 void		clear_bfs(t_room *room);
+
+/* SDL
+*/
+
+void		highlight_paths(t_sdl *sdl, t_paths *paths, int path);
+void		parse_link_and_add(char *line, t_map *map, t_links **links);
+void		draw_links(t_sdl *sdl, t_links *links);
+void		draw_rooms(t_sdl *sdl, t_room *rooms, t_map *map);
+t_sdl		*create_window(void);
+void		put_text(t_sdl *sdl, char *message, SDL_Color color, t_room *cur_room);
+void		pressed(int key);
+void		print_out_sdl(t_sdl *sdl, t_map *map, t_paths *paths, int count_lines);
+t_ants		*init_ants(t_path *cur_path);
+t_links		*init_links(t_room *room_start, t_room *room_end);
+void		redraw(t_sdl *sdl, t_ants *ants);
 
 #endif

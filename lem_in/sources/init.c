@@ -6,7 +6,7 @@
 /*   By: djast <djast@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/09/07 14:52:57 by djast             #+#    #+#             */
-/*   Updated: 2019/09/09 17:51:21 by djast            ###   ########.fr       */
+/*   Updated: 2019/09/11 17:11:54 by djast            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -41,6 +41,45 @@ t_file_txt	*init_input_file(char *text)
 		file->next = NULL;
 	}
 	return (file);
+}
+
+t_links	*init_links(t_room *room_start, t_room *room_end)
+{
+	t_links	*links;
+
+	if ((links = (t_links *)malloc(sizeof(t_links))))
+	{
+		links->room_start = room_start;
+		links->room_end = room_end;
+		links->next = NULL;
+	}
+	return (links);
+}
+
+t_ants		*init_ants(t_path *cur_path)
+{
+	t_ants	*ants;
+
+	if ((ants = (t_ants *)malloc(sizeof(t_ants))))
+	{
+		ants->cur_path = cur_path;
+		if (cur_path == NULL)
+		{
+			ants->x = 0;
+			ants->y = 0;
+			ants->speed_x = 0;
+			ants->speed_y = 0;
+		}
+		else
+		{
+			ants->x = cur_path->room_path->x;
+			ants->y = cur_path->room_path->y;
+			ants->speed_x = (cur_path->next->room_path->x - cur_path->room_path->x) / SPEED;
+			ants->speed_y = (cur_path->next->room_path->y - cur_path->room_path->y) / SPEED;
+		}
+		ants->next = NULL;
+	}
+	return (ants);
 }
 
 t_room	*init_room(char *name, int x, int y)

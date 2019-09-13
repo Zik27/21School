@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   print_results.c                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: vurrigon <vurrigon@student.42.fr>          +#+  +:+       +#+        */
+/*   By: djast <djast@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/09/07 16:25:16 by vurrigon          #+#    #+#             */
-/*   Updated: 2019/09/10 12:34:30 by vurrigon         ###   ########.fr       */
+/*   Updated: 2019/09/11 11:45:30 by djast            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -46,6 +46,7 @@ t_path	*make_step(t_path *path, int id)
 
 void	print_solution(t_path *path, char **result)
 {
+	char *tmp;
 
 	while (path)
 	{

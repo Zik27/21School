@@ -51,7 +51,11 @@ COMMON_FILES =	count_ants.c \
 				optimize.c
 
 LEM_IN_FILES = lem_in.c
-VISUAL_FILES = visualize.c
+VISUAL_FILES = visualize.c \
+				draw.c\
+				SDL.c \
+				key.c \
+				print_result_sdl.c
 
 SRC_DIRECTORY = ./sources/
 SRC_COMMON_FILES = $(addprefix $(SRC_DIRECTORY), $(COMMON_FILES))
