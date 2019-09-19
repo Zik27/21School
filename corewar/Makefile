@@ -6,7 +6,7 @@
 #    By: vurrigon <vurrigon@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2019/02/15 17:18:06 by djast             #+#    #+#              #
-#    Updated: 2019/09/17 12:59:42 by vurrigon         ###   ########.fr        #
+#    Updated: 2019/09/19 16:43:50 by vurrigon         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -23,10 +23,12 @@ LIBFT_HEADER = $(LIBFT_FOLDER)/libft.h
 HEADERS_DIRECTORY = ./includes
 HEADERS = $(HEADERS_DIRECTORY)/corewar.h
 
-LIBS = -lft -L$(LIBFT_FOLDER)
+LIBS = -lft -L$(LIBFT_FOLDER) -lftprintf -L$(LIBFT_FOLDER)
 INCLUDES = -I$(HEADERS_DIRECTORY) -I$(LIBFT_FOLDER)
 
 COMMON_FILES =	asm.c \
+				error.c \
+				utils.c
 
 SRC_DIRECTORY = ./srcs/
 SRC_COMMON_FILES = $(addprefix $(SRC_DIRECTORY), $(COMMON_FILES))

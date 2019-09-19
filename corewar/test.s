@@ -1,4 +1,23 @@
-; dsda
-.name "My nam$ea"
-.comment "It's com$ment!"
+.comment "MY NAME!!"
+.name "MY NAME!!"
 ld %0, r3
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

@@ -6,7 +6,7 @@
 /*   By: vurrigon <vurrigon@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/11/23 14:17:41 by vurrigon          #+#    #+#             */
-/*   Updated: 2019/08/29 13:29:04 by vurrigon         ###   ########.fr       */
+/*   Updated: 2019/09/19 18:14:54 by vurrigon         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,7 +15,7 @@
 # include <string.h>
 # include <stdlib.h>
 # include <unistd.h>
-# define BUFF_SIZE 1
+# define BUFF_SIZE 72
 
 typedef struct	s_list
 {
