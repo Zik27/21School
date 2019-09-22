@@ -15,6 +15,7 @@
 # include "libft.h"
 # include "ft_printf.h"
 # include "op.h"
+# include "asm_operations.h"
 # include <sys/types.h>
 # include <sys/stat.h>
 # include <fcntl.h>
@@ -22,23 +23,29 @@
 # define OFFSET_CMD_COMMENT 8
 # define QUOTE 1
 
-// typedef struct		s_commands
-// {
-// 	char				*label;
-// 	char				*instruction;
-// 	char				*reg;
-// 	char				*direct_label;
-// 	char				*direct;
-// 	struct s_commands	*next;
-// }					t_commands;
+typedef struct				s_tokens
+{
+	char			*data;
+	unsigned short	size;
+	struct s_tokens	*next;
+}							t_tokens;
+
+typedef struct				s_instructions
+{
+	char					*label;
+	unsigned short			code_op;
+	struct s_tokens			*tokens;
+	int						sum_size_exec_code;
+	struct s_instructions	*next;
+}							t_instructions;
 
 typedef struct		s_player
 {
-	char				*name;
-	char				*comment;
-	int					num_row;
-	int					num_col;
-	//struct s_commands	*commands;
+	char					*name;
+	char					*comment;
+	int						num_row;
+	int						num_col;
+	struct s_instructions	*instr;
 }					t_player;
 
 void	error(char *str);

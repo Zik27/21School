@@ -124,17 +124,15 @@ void	search_comment_name(t_player *player, char *line)
 int		check_name_comment(int fd, t_player *player)
 {
 	char	*line;
-	//char	*find;
 
 	while (get_next_line(fd, &line) == 1)
 	{
 		player->num_row++;
-		if (!player->comment || !player->name)
-			search_comment_name(player, line);
-		else
-			return (1);
+		search_comment_name(player, line);
 		player->num_col = 0;
 		free(line);
+		if (player->comment && player->name)
+			return (1);
 	}
 	return (0);
 }
@@ -149,7 +147,7 @@ t_player	*init_player()
 	player->comment = NULL;
 	player->num_row = 0;
 	player->num_col = 0;
-	//player->commands = NULL;
+	player->instr = NULL;
 	return (player);
 }
 
