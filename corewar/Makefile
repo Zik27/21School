@@ -6,7 +6,7 @@
 #    By: djast <djast@student.42.fr>                +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2019/02/15 17:18:06 by djast             #+#    #+#              #
-#    Updated: 2019/09/23 13:35:09 by djast            ###   ########.fr        #
+#    Updated: 2019/09/25 14:07:31 by djast            ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -31,7 +31,12 @@ FILES_ASM =	asm.c \
 				error.c \
 				utils.c
 
-FILSE_COREWAR = corewar.c
+FILSE_COREWAR = corewar.c \
+				parse.c \
+				print.c \
+				check.c \
+				init.c \
+				get_champ.c
 
 SRC_DIRECTORY = ./srcs/
 SRC_DIRECTORY_ASM = $(SRC_DIRECTORY)asm/

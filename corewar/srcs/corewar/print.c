@@ -1,25 +1,26 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   corewar.c                                          :+:      :+:    :+:   */
+/*   print.c                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: djast <djast@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2019/09/23 13:11:12 by djast             #+#    #+#             */
-/*   Updated: 2019/09/25 13:21:43 by djast            ###   ########.fr       */
+/*   Created: 2019/09/25 13:20:31 by djast             #+#    #+#             */
+/*   Updated: 2019/09/25 13:47:37 by djast            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "vm.h"
 
-int		main(int argc, char **argv)
+void	cerror(char *message, char *error_file)
 {
-	if (argc < 2)
-	{
-		print_help(argv);
-		return (0);
-	}
-	parse_args(argc, argv);
+	ft_printf(message, error_file);
+	ft_printf("\n");
+	exit(-1);
+}
 
-	return (0);
+void	print_help(char **argv)
+{
+	ft_printf("Usage: ");
+	ft_printf("%s [-dump nbr_cycles] [[-n number] champion1.cor] ...\n", argv[0]);
 }
