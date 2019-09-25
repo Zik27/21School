@@ -6,7 +6,7 @@
 /*   By: djast <djast@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/09/25 14:07:20 by djast             #+#    #+#             */
-/*   Updated: 2019/09/25 16:17:04 by djast            ###   ########.fr       */
+/*   Updated: 2019/09/25 17:58:41 by djast            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,6 +33,8 @@ char	*get_champ_comment(int fd)
 	byte = ft_strnew(2048);
 	
 	size = read(fd, byte, 2048);
+	if (size != 2048)
+		return (NULL);
 	return (byte);
 }
 
@@ -45,6 +47,8 @@ int		get_champ_code_size(int fd)
 
 	byte = ft_strnew(4);
 	size = read(fd, byte, 4);
+	if (size != 4)
+		return (-1);
 	code_size = byte[3] + byte[2] * 16 * 16 + byte[1] * 16 * 16 * 16 * 16
 								+ byte[0] * 16 * 16 * 16 * 16 * 16 * 16;
 	return (code_size);
@@ -59,5 +63,7 @@ char	*get_champ_name(int fd)
 	byte = ft_strnew(128);
 	
 	size = read(fd, byte, 128);
+	if (size != 128)
+		return (NULL);
 	return (byte);
 }

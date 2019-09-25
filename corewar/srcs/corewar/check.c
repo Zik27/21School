@@ -6,7 +6,7 @@
 /*   By: djast <djast@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/09/25 13:38:07 by djast             #+#    #+#             */
-/*   Updated: 2019/09/25 16:23:19 by djast            ###   ########.fr       */
+/*   Updated: 2019/09/25 17:23:06 by djast            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,6 +21,8 @@ static int		check_magic_number(int fd)
 	byte = ft_strnew(4);
 	
 	size = read(fd, byte, 4);
+	if (size != 4)
+		return (0);
 	magic_number = (byte[3] & 0xFF) + (byte[2] & 0xFF) * 16 * 16
 			+ (byte[1] & 0xFF) * 16 * 16 * 16 * 16
 			+ (byte[0] & 0xFF) * 16 * 16 * 16 * 16 * 16 * 16;
@@ -40,6 +42,8 @@ static int		check_null(int fd, int size)
 
 	byte = ft_strnew(size);
 	size_read = read(fd, byte, size);
+	if (size_read != 4)
+		return (0);
 	if ((byte[0] & 0xFF) == 0x0 && (byte[1] & 0xFF) == 0x0 &&
 		(byte[2] & 0xFF) == 0x0 && (byte[3] & 0xFF) == 0x0)
 	{
@@ -60,7 +64,7 @@ t_champ			*check_file(char *arg, int id)
 		cerror("Can't read source file %s", arg);
 	if (!check_magic_number(fd))
 		cerror("Error: File %s has an invalid header", arg);
-	champ = init_charp(id);
+	champ = init_champ(id);
 	champ->name = get_champ_name(fd);
 	if (!check_null(fd, 4))
 		cerror("Error: File %s has an invalid header", arg);

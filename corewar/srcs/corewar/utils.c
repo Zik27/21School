@@ -1,35 +1,42 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   corewar.c                                          :+:      :+:    :+:   */
+/*   utils.c                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: djast <djast@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2019/09/23 13:11:12 by djast             #+#    #+#             */
-/*   Updated: 2019/09/25 18:49:00 by djast            ###   ########.fr       */
+/*   Created: 2019/09/25 16:51:08 by djast             #+#    #+#             */
+/*   Updated: 2019/09/25 18:41:51 by djast            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "vm.h"
 
-int		main(int argc, char **argv)
+int			get_player_count(t_champ *champs)
 {
-	t_champ		*champs;
-	t_vm_info	*info;
-	t_carriage	*carriages;
+	int count;
+	t_champ *cur_champ;
 
-	if (argc < 2)
+	count = 0;
+	cur_champ = champs;
+	while (cur_champ != NULL)
 	{
-		print_help(argv);
-		return (0);
+		count++;
+		cur_champ = cur_champ->next;
 	}
-	champs = parse_args(argc, argv);
-	info = init_vm_info(champs);
-	place_players_on_arena(champs, info);
-	carriages = init_carriages(champs, info);
+	return (count);
+}
 
-	introducing(champs, info);
-	print_carriages(carriages);
-	print_map(info->map);
-	return (0);
+t_champ		*find_player_by_id(t_champ *champs, int id)
+{
+	t_champ		*cur_champ;
+
+	cur_champ = champs;
+	while (cur_champ != NULL)
+	{
+		if (cur_champ->id == id)
+			return (cur_champ);
+		cur_champ = cur_champ->next;
+	}
+	return (NULL);
 }
