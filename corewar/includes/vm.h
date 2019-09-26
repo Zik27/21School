@@ -6,7 +6,7 @@
 /*   By: djast <djast@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/09/23 13:35:39 by djast             #+#    #+#             */
-/*   Updated: 2019/09/25 18:42:38 by djast            ###   ########.fr       */
+/*   Updated: 2019/09/26 16:18:20 by djast            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,7 +25,7 @@ typedef struct 			s_carriage
 {
 	int					id;
 	int					carry;
-	int					code_op;
+	int					op_code;
 	int					cycle_last_live;
 	int					op_steps;
 	int					cur_pos;
@@ -38,6 +38,7 @@ typedef struct			s_vm_info
 {
 	int					count_players;
 	int					cycles_to_die;
+	int					cycle;
 	t_carriage			*carriages;
 	char				*map;
 }						t_vm_info;
@@ -71,4 +72,5 @@ void			print_carriages(t_carriage *car);
 t_champ			*find_player_by_id(t_champ *champs, int id);
 void			introducing(t_champ	*champs, t_vm_info *info);
 t_champ			*find_player_by_id(t_champ *champs, int id);
+void			set_op_steps(t_carriage *carr);
 #endif

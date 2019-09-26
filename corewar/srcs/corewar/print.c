@@ -6,7 +6,7 @@
 /*   By: djast <djast@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/09/25 13:20:31 by djast             #+#    #+#             */
-/*   Updated: 2019/09/25 18:43:56 by djast            ###   ########.fr       */
+/*   Updated: 2019/09/26 17:34:55 by djast            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,6 +37,7 @@ void	print_map(char *map)
 		if ((symbol + 1) % 100 == 0)
 			printf("\n");
 	}
+	printf("\n");
 }
 
 void	print_carriages(t_carriage *car)
@@ -48,7 +49,7 @@ void	print_carriages(t_carriage *car)
 	{
 		ft_printf("---------------------------------\n");
 		ft_printf("Carriade %d:\nCarry: %d, op_code: %d\n", cur_car->id, cur_car->carry,
-														cur_car->code_op);
+														cur_car->op_code);
 		ft_printf("Cycle_last_live: %d, op_steps: %d\n", cur_car->cycle_last_live,
 															cur_car->op_steps);
 		ft_printf("Cur_pos: %d, reg[0]: %d\n", cur_car->cur_pos, cur_car->registers[0]); 

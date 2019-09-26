@@ -6,7 +6,7 @@
 /*   By: djast <djast@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/09/25 13:58:35 by djast             #+#    #+#             */
-/*   Updated: 2019/09/25 18:11:05 by djast            ###   ########.fr       */
+/*   Updated: 2019/09/26 16:15:47 by djast            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,7 +21,7 @@ t_carriage			*init_carriage(int id, t_champ *cur_player, t_vm_info *info)
 	new_carriage = (t_carriage *)malloc(sizeof(t_carriage));
 	new_carriage->id = id;
 	new_carriage->carry = 0;
-	new_carriage->code_op = -1;
+	new_carriage->op_code = -1;
 	new_carriage->cycle_last_live = -1;
 	new_carriage->op_steps = 0;
 	new_carriage->cur_pos = (id - 1) * (MEM_SIZE / info->count_players);
@@ -41,6 +41,7 @@ t_vm_info			*init_vm_info(t_champ *players)
 	info = (t_vm_info *)malloc(sizeof(t_vm_info));
 	info->count_players = get_player_count(players);
 	info->cycles_to_die = CYCLE_TO_DIE;
+	info->cycle = 0;
 	info->map = ft_strnew(MEM_SIZE);
 	return (info);
 }
