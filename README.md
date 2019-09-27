@@ -1,1 +1,2 @@
-# Repository for school 21 learning projects
+# 21School
+Repository for School 21 learning projects.
