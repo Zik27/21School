@@ -3,25 +3,30 @@
 /*                                                        :::      ::::::::   */
 /*   ft_strncmp.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: vurrigon <vurrigon@student.42.fr>          +#+  +:+       +#+        */
+/*   By: djast <djast@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2018/11/27 15:51:57 by vurrigon          #+#    #+#             */
-/*   Updated: 2018/12/11 15:44:39 by vurrigon         ###   ########.fr       */
+/*   Created: 2018/11/22 13:51:28 by djast             #+#    #+#             */
+/*   Updated: 2018/12/13 13:17:30 by djast            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-int	ft_strncmp(const char *s1, const char *s2, size_t n)
+int		ft_strncmp(const char *s1, const char *s2, size_t n)
 {
-	size_t	a;
+	const unsigned char	*p1 = (const unsigned char *)s1;
+	const unsigned char	*p2 = (const unsigned char *)s2;
 
-	a = 0;
-	while ((s1[a] || s2[a]) && a < n)
+	if (n == 0)
+		return (0);
+	while (*p1 == *p2 && n--)
 	{
-		if (s1[a] != s2[a])
-			return ((unsigned char)s1[a] - (unsigned char)s2[a]);
-		a++;
+		if (*p1 == '\0')
+			return (*p1 - *p2);
+		p1++;
+		p2++;
 	}
-	return (0);
+	if (n == 0)
+		return (*(--p1) - *(--p2));
+	return (*p1 - *p2);
 }

@@ -3,15 +3,14 @@
 /*                                                        :::      ::::::::   */
 /*   check_valid.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: vurrigon <vurrigon@student.42.fr>          +#+  +:+       +#+        */
+/*   By: djast <djast@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/12/29 16:26:52 by vurrigon          #+#    #+#             */
-/*   Updated: 2019/01/04 15:42:06 by vurrigon         ###   ########.fr       */
+/*   Updated: 2019/01/06 12:58:05 by djast            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "fillit.h"
-#include <stdio.h>
 
 int	check_neigh(char *square)
 {
@@ -90,12 +89,13 @@ int	check_size(char *square)
 ** Return 0 if error or Number - count of blocks
 */
 
-int	check_valid(char *file, tetriminos_fig **head)
+int	check_valid(char *file, t_tetriminos_fig **head)
 {
 	int		fd;
 	int		ret;
 	char	buf[BUFF_SIZE + 1];
 	int		count;
+	int		tmp;
 
 	count = 0;
 	if ((fd = open(file, O_RDONLY)) == -1)
@@ -103,15 +103,15 @@ int	check_valid(char *file, tetriminos_fig **head)
 	while ((ret = read(fd, buf, BUFF_SIZE)))
 	{
 		buf[ret] = '\0';
-		if (!check_symbols(buf) || !check_size(buf) || !check_neigh(buf))
+		if (!check_symbols(buf) || !check_size(buf) || !check_neigh(buf) ||
+		!prepare_data(buf, head))
+		{
+			close(fd);
 			return (0);
-		if(!prepare_data(buf, head))
-			return (0);
+		}
 		count++;
+		tmp = ret;
 	}
-	if (close(fd) == -1)
-		return (0);
-	if (count > 26 || count < 1)
-		return (0);
-	return (count);
+	return (tmp != 20 || close(fd) == -1 ||
+		count > 26 || count < 1) ? 0 : count;
 }

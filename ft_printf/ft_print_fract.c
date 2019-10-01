@@ -6,7 +6,7 @@
 /*   By: djast <djast@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/02/08 19:50:19 by djast             #+#    #+#             */
-/*   Updated: 2019/02/08 20:24:41 by djast            ###   ########.fr       */
+/*   Updated: 2019/02/11 11:44:36 by djast            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,7 +35,7 @@ char			*get_fract(char *fract, char *ans)
 		fract = shift_right(fract);
 		check_sub(s, 0);
 	}
-	ans = translate_to_int(s, ans);
+	ans = translate_to_int(s, ans, 1);
 	free(s);
 	return (ans);
 }

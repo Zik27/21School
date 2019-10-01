@@ -3,28 +3,27 @@
 /*                                                        :::      ::::::::   */
 /*   ft_strrchr.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: vurrigon <vurrigon@student.42.fr>          +#+  +:+       +#+        */
+/*   By: djast <djast@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2018/11/27 12:57:18 by vurrigon          #+#    #+#             */
-/*   Updated: 2018/12/06 12:04:08 by vurrigon         ###   ########.fr       */
+/*   Created: 2018/11/23 12:03:33 by djast             #+#    #+#             */
+/*   Updated: 2018/12/11 19:30:46 by djast            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-char	*ft_strrchr(const char *s, int c)
+char	*ft_strrchr(const char *string, int symbol)
 {
-	char	sym;
-	char	*tmp;
+	int	i;
 
-	sym = c;
-	tmp = NULL;
-	while (1)
+	i = 0;
+	while (string[i])
+		i++;
+	while (i != -1)
 	{
-		if (*s == sym)
-			tmp = (char *)s;
-		if (*s++ == '\0')
-			break ;
+		if (string[i] == symbol)
+			return ((char *)string + i);
+		i--;
 	}
-	return (tmp);
+	return (NULL);
 }

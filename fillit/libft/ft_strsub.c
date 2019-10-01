@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_strsub.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: vurrigon <vurrigon@student.42.fr>          +#+  +:+       +#+        */
+/*   By: djast <djast@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2018/11/30 12:42:52 by vurrigon          #+#    #+#             */
-/*   Updated: 2018/12/07 14:28:17 by vurrigon         ###   ########.fr       */
+/*   Created: 2018/12/06 10:48:20 by djast             #+#    #+#             */
+/*   Updated: 2018/12/11 19:22:39 by djast            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,16 +14,18 @@
 
 char	*ft_strsub(char const *s, unsigned int start, size_t len)
 {
-	char	*fresh;
-	int		i;
+	char	*buf;
+	int		copy_len;
 
-	i = 0;
-	if (!s)
+	buf = ft_strnew(len);
+	if (buf == NULL || s == NULL)
 		return (NULL);
-	fresh = ft_strnew(len);
-	if (!fresh)
-		return (NULL);
-	while (len--)
-		fresh[i++] = s[start++];
-	return (fresh);
+	s += start;
+	copy_len = 0;
+	while (len-- && *s != '\0')
+	{
+		*buf++ = *s++;
+		copy_len++;
+	}
+	return (buf - copy_len);
 }

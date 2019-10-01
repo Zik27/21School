@@ -3,44 +3,14 @@
 /*                                                        :::      ::::::::   */
 /*   print_result_sdl.c                                 :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: djast <djast@student.42.fr>                +#+  +:+       +#+        */
+/*   By: vurrigon <vurrigon@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/09/07 16:25:16 by vurrigon          #+#    #+#             */
-/*   Updated: 2019/09/13 15:59:03 by djast            ###   ########.fr       */
+/*   Updated: 2019/09/13 18:25:44 by vurrigon         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "lem_in.h"
-
-static t_path	*make_step_sdl(t_path *path, int id)
-{
-	int		tmp;
-	t_path	*end;
-
-	end = NULL;
-	if (path->room_path->ant_id == -1 && id != -1)
-	{
-		path->room_path->ant_id = id;
-		if (!path->next)
-			end = path;
-	}
-	else
-	{
-		tmp = path->room_path->ant_id;
-		path->room_path->ant_id = id;
-		path = path->next;
-		while (path)
-		{
-			ft_swap(&tmp, &path->room_path->ant_id);
-			if (id > 0 && tmp == -1)
-				break ;
-			if (!path->next)
-				end = path;
-			path = path->next;
-		}
-	}
-	return (end);
-}
 
 static void		add_to_ants(t_ants **ants, t_path *cur_path)
 {
@@ -51,8 +21,10 @@ static void		add_to_ants(t_ants **ants, t_path *cur_path)
 		(*ants)->cur_path = cur_path;
 		(*ants)->x = cur_path->room_path->x;
 		(*ants)->y = cur_path->room_path->y;
-		(*ants)->speed_x = (cur_path->next->room_path->x - cur_path->room_path->x) / SPEED;
-		(*ants)->speed_y = (cur_path->next->room_path->y - cur_path->room_path->y) / SPEED;
+		(*ants)->speed_x = (cur_path->next->room_path->x
+										- cur_path->room_path->x) / SPEED;
+		(*ants)->speed_y = (cur_path->next->room_path->y
+										- cur_path->room_path->y) / SPEED;
 	}
 	else
 	{
@@ -62,7 +34,7 @@ static void		add_to_ants(t_ants **ants, t_path *cur_path)
 	}
 }
 
-static void	animate_ants(t_sdl *sdl, t_ants *ants)
+static void		animate_ants(t_sdl *sdl, t_ants *ants)
 {
 	t_ants	*cur_ants;
 	int		steps;
@@ -81,11 +53,28 @@ static void	animate_ants(t_sdl *sdl, t_ants *ants)
 	}
 }
 
-static void	move_ants(t_ants *ants)
+static void		set_ant_speed(t_ants *cur_ants)
+{
+	if (cur_ants->cur_path->next != NULL)
+	{
+		cur_ants->speed_x = (cur_ants->cur_path->next->room_path->x
+							- cur_ants->cur_path->room_path->x) / SPEED;
+		cur_ants->speed_y = (cur_ants->cur_path->next->room_path->y
+							- cur_ants->cur_path->room_path->y) / SPEED;
+	}
+	else
+	{
+		cur_ants->speed_x = 0;
+		cur_ants->speed_y = 0;
+	}
+}
+
+static void		move_ants(t_sdl *sdl, t_ants *ants)
 {
 	t_ants	*cur_ants;
 	t_ants	*prev_ants;
 
+	animate_ants(sdl, ants);
 	cur_ants = ants;
 	prev_ants = NULL;
 	while (cur_ants != NULL)
@@ -95,52 +84,38 @@ static void	move_ants(t_ants *ants)
 			cur_ants->cur_path = cur_ants->cur_path->next;
 			cur_ants->x = cur_ants->cur_path->room_path->x;
 			cur_ants->y = cur_ants->cur_path->room_path->y;
-			if (cur_ants->cur_path->next != NULL)
-			{
-				cur_ants->speed_x = (cur_ants->cur_path->next->room_path->x - cur_ants->cur_path->room_path->x) / SPEED;
-				cur_ants->speed_y = (cur_ants->cur_path->next->room_path->y - cur_ants->cur_path->room_path->y) / SPEED;
-			}
-			else
-			{
-				cur_ants->speed_x = 0;
-				cur_ants->speed_y = 0;
-			}
+			set_ant_speed(cur_ants);
 		}
 		prev_ants = cur_ants;
 		cur_ants = cur_ants->next;
 	}
 }
 
-void	step_by_step_sdl(t_sdl *sdl, t_paths *paths, int count_ants,
-								int count_lines)
+void			step_by_step_sdl(t_sdl *sdl, t_paths *paths, t_map *map)
 {
-	int			id;
-	t_paths		*ways;
+	t_paths		*w;
 	t_path		*end;
 	t_ants		*ants;
 
 	ants = init_ants(NULL);
-	ways = paths;
-	id = 1;
-	while (count_lines)
+	w = paths;
+	while (map->count_line--)
 	{
-		while (ways)
+		while (w)
 		{
-			if (count_ants - id >= 0 && count_lines >= ways->size)
+			if (map->count_ant - map->id >= 0 && map->count_line + 1 >= w->size)
 			{
-				add_to_ants(&ants, ways->path);
-				end = make_step_sdl(ways->path->next, id++);
+				add_to_ants(&ants, w->path);
+				end = make_step(w->path->next, map->id++);
 			}
 			else
-				end = make_step_sdl(ways->path->next, -1);
+				end = make_step(w->path->next, -1);
 			if (end)
 				end->room_path->ant_id = -1;
-			ways = ways->next;
+			w = w->next;
 		}
-		animate_ants(sdl, ants);
-		move_ants(ants);
-		count_lines--;
-		ways = paths;
+		move_ants(sdl, ants);
+		w = paths;
 	}
 	free_ants(ants);
 }

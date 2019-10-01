@@ -3,82 +3,82 @@
 /*                                                        :::      ::::::::   */
 /*   ft_strsplit.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: vurrigon <vurrigon@student.42.fr>          +#+  +:+       +#+        */
+/*   By: djast <djast@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2018/11/30 14:56:13 by vurrigon          #+#    #+#             */
-/*   Updated: 2018/12/07 14:31:14 by vurrigon         ###   ########.fr       */
+/*   Created: 2018/12/06 11:56:43 by djast             #+#    #+#             */
+/*   Updated: 2018/12/18 15:30:45 by djast            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-static int		count_words(char const *s, char c)
+static int			count_word(char const *s, char c)
 {
-	int	count;
+	char	*s1;
+	int		count;
 
 	count = 0;
-	if (*s != '\0' && *s != c)
-		count++;
-	while (*s)
+	if (s == NULL)
+		return (0);
+	s1 = (char *)s;
+	while (*s1 != '\0')
 	{
-		if (*s == c && *(s + 1) != c && *(s + 1) != '\0')
+		while (*s1 == c && *s1 != '\0')
+			s1++;
+		if (*s1 != c && *s1 != '\0')
+		{
 			count++;
-		s++;
+			while (*s1 != c && *s1 != '\0')
+				s1++;
+		}
 	}
 	return (count);
 }
 
-static void		check_delimiter(char *s, char c, int *j)
+static char			**ft_del(char **buf, int size)
 {
-	while (s[*j] && s[*j] == c)
-		(*j)++;
-}
-
-static char		*ft_word(char *s, char c, int *j)
-{
-	char	*tmp;
-	int		len_word;
-	int		i;
-	int		tmp_j;
-
-	len_word = 0;
-	tmp = s;
-	tmp_j = *j;
-	while (tmp[tmp_j] != c && tmp[tmp_j])
-	{
-		len_word++;
-		tmp_j++;
-	}
-	tmp = (char *)malloc(sizeof(tmp) * len_word + 1);
-	if (!tmp)
-		return (NULL);
-	i = 0;
-	while (i < len_word)
-		tmp[i++] = s[(*j)++];
-	tmp[i] = '\0';
-	return (tmp);
-}
-
-char			**ft_strsplit(char const *s, char c)
-{
-	int		count;
-	char	**result;
-	int		i;
-	int		j;
+	int i;
 
 	i = 0;
-	j = 0;
-	if (!s)
-		return (NULL);
-	count = count_words(s, c);
-	result = (char **)malloc(sizeof(*result) * count + 1);
-	if (!result)
-		return (NULL);
-	while (i < count && s[i])
+	while (i != size)
+		free(buf[i++]);
+	free(buf);
+	return (NULL);
+}
+
+static char			**ft_fillarray(char *s1, char **buf, char c)
+{
+	int		end_word;
+	int		i;
+
+	i = 0;
+	while (*s1 != '\0')
 	{
-		check_delimiter((char *)s, c, &j);
-		result[i++] = ft_word((char *)s, c, &j);
+		end_word = 0;
+		while (*s1 == c && *s1 != '\0')
+			s1++;
+		if (*s1 == '\0')
+			break ;
+		while (*s1 != c && *s1 != '\0')
+			s1 = s1 + end_word++ * 0 + 1;
+		if ((buf[i] = ft_strnew(end_word)) == NULL)
+			return (ft_del(buf, count_word(s1, c)));
+		ft_strncpy(buf[i++], s1 - end_word, end_word);
 	}
-	result[i] = NULL;
-	return (result);
+	buf[i] = NULL;
+	return (buf);
+}
+
+char				**ft_strsplit(char const *s, char c)
+{
+	char	*s1;
+	char	**buf;
+
+	if (s == NULL)
+		return (NULL);
+	s1 = (char *)s;
+	if ((buf = (char **)malloc(sizeof(buf) * count_word(s, c) + 1)) == NULL)
+		return (NULL);
+	ft_fillarray(s1, buf, c);
+	return (buf);
 }

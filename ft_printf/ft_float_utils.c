@@ -6,7 +6,7 @@
 /*   By: djast <djast@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/02/08 19:52:44 by djast             #+#    #+#             */
-/*   Updated: 2019/02/08 20:54:16 by djast            ###   ########.fr       */
+/*   Updated: 2019/02/11 11:44:18 by djast            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -80,14 +80,14 @@ char			*round_fract(char *ans)
 	return (ft_strsub(start, 0, count - 1));
 }
 
-char			*translate_to_int(char *s, char *ans)
+char			*translate_to_int(char *s, char *ans, int flag)
 {
 	char *digit;
 	char *tmp;
 
 	digit = ft_strnew(2);
 	while ((*s - 48) * 8 + (*(s + 1) - 48) * 4 + (*(s + 2) - 48)
-		* 2 + (*(s + 3) - 48) == 0)
+		* 2 + (*(s + 3) - 48) == 0 && flag == 0)
 		s = s + 4;
 	while (*s)
 	{

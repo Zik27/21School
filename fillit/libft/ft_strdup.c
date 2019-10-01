@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_strdup.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: vurrigon <vurrigon@student.42.fr>          +#+  +:+       +#+        */
+/*   By: djast <djast@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2018/11/25 18:30:36 by vurrigon          #+#    #+#             */
-/*   Updated: 2018/12/07 14:23:57 by vurrigon         ###   ########.fr       */
+/*   Created: 2018/11/22 12:01:24 by djast             #+#    #+#             */
+/*   Updated: 2018/12/11 19:33:19 by djast            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,22 +14,18 @@
 
 char	*ft_strdup(const char *src)
 {
-	int		length;
-	int		i;
-	char	*str;
+	int		len_src;
+	char	*dest;
 
-	length = 0;
-	i = 0;
-	while (src[length])
-		length++;
-	str = (char *)malloc(length * sizeof(char) + 1);
-	if (str == NULL)
+	len_src = 0;
+	while (src[len_src])
+		len_src++;
+	dest = (char *)malloc(len_src * sizeof(char) + 1);
+	if (dest == NULL)
 		return (NULL);
-	while (i < length)
-	{
-		str[i] = src[i];
-		i++;
-	}
-	str[i] = '\0';
-	return (str);
+	len_src = 0;
+	while (src[len_src++])
+		dest[len_src - 1] = src[len_src - 1];
+	dest[len_src - 1] = '\0';
+	return (dest);
 }

@@ -6,7 +6,7 @@
 /*   By: vurrigon <vurrigon@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/03/28 15:29:11 by vurrigon          #+#    #+#             */
-/*   Updated: 2019/07/27 17:29:08 by vurrigon         ###   ########.fr       */
+/*   Updated: 2019/07/30 11:52:30 by vurrigon         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,7 +16,7 @@ int	main(int argc, char **argv)
 {
 	t_head *head;
 
-	if (argc < 2)
+	if (argc < 2 || (argc < 3 && ft_strcmp(argv[1], "-v") == 0))
 		return (0);
 	argc = ft_strcmp(argv[1], "-v") == 0 ? 1 : 0;
 	argv = argc ? &argv[2] : &argv[1];

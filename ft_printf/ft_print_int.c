@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_print_int.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: djast <djast@student.42.fr>                +#+  +:+       +#+        */
+/*   By: vurrigon <vurrigon@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/02/08 19:51:34 by djast             #+#    #+#             */
-/*   Updated: 2019/02/08 20:21:29 by djast            ###   ########.fr       */
+/*   Updated: 2019/02/11 12:20:54 by vurrigon         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,7 +20,7 @@ char			*get_int(char *decimal, char *ans)
 	count = ft_strlen(decimal) - 1;
 	s = ft_strnew(DD_SIZE);
 	s = ft_memset(s, '0', DD_SIZE);
-	while (count--)
+	while (count-- > 0)
 	{
 		s = shift_left(s);
 		s = push_digit(s, decimal[0]);
@@ -29,7 +29,7 @@ char			*get_int(char *decimal, char *ans)
 	}
 	s = shift_left(s);
 	s = push_digit(s, decimal[0]);
-	ans = translate_to_int(s, ans);
+	ans = translate_to_int(s, ans, 0);
 	free(s);
 	return (ans);
 }

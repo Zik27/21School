@@ -6,7 +6,7 @@
 #    By: vurrigon <vurrigon@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2019/03/28 15:07:54 by vurrigon          #+#    #+#              #
-#    Updated: 2019/07/27 17:18:41 by vurrigon         ###   ########.fr        #
+#    Updated: 2019/07/30 12:08:02 by vurrigon         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -26,22 +26,22 @@ all: $(NAME_PS) $(NAME_CHECK)
 
 
 $(NAME_CHECK): $(OBJECTS_CHECK)
-	$(CC) $(CFLAGS) $(OBJECTS_CHECK) -L$(PATH_LIB) -lft -L$(PATH_LIB) -lftprintf -o $(NAME_CHECK)
+	@$(CC) $(CFLAGS) $(OBJECTS_CHECK) -L$(PATH_LIB) -lft -L$(PATH_LIB) -lftprintf -o $(NAME_CHECK)
 
 $(NAME_PS): $(OBJECTS_PS)
-	$(CC) $(CFLAGS) $(OBJECTS_PS) -L$(PATH_LIB) -lft -L$(PATH_LIB) -lftprintf -o $(NAME_PS) 
+	@$(CC) $(CFLAGS) $(OBJECTS_PS) -L$(PATH_LIB) -lft -L$(PATH_LIB) -lftprintf -o $(NAME_PS) 
 
 $(OBJECTS): $(SRCS)
-	$(CC) $(CFLAGS) -c $(SRCS)
-	$(MAKE) -C $(PATH_LIB)
+	@$(CC) $(CFLAGS) -c $(SRCS)
+	@$(MAKE) -C $(PATH_LIB)
 
 clean:
-	$(MAKE) clean -C $(PATH_LIB)
-	/bin/rm -rf $(OBJECTS)
+	@$(MAKE) clean -C $(PATH_LIB)
+	@/bin/rm -rf $(OBJECTS)
 
 fclean: clean
-	$(MAKE) fclean -C $(PATH_LIB)
-	/bin/rm -rf $(NAME_CHECK) $(NAME_PS)
+	@$(MAKE) fclean -C $(PATH_LIB)
+	@/bin/rm -rf $(NAME_CHECK) $(NAME_PS)
 
 re: fclean all
 

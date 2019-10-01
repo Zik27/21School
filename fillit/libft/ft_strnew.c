@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_strnew.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: vurrigon <vurrigon@student.42.fr>          +#+  +:+       +#+        */
+/*   By: djast <djast@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2018/11/29 12:38:21 by vurrigon          #+#    #+#             */
-/*   Updated: 2018/11/30 18:25:45 by vurrigon         ###   ########.fr       */
+/*   Created: 2018/11/30 17:59:55 by djast             #+#    #+#             */
+/*   Updated: 2018/12/18 16:01:28 by djast            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,11 +14,11 @@
 
 char	*ft_strnew(size_t size)
 {
-	void	*buf;
+	char	*arr;
 
-	buf = (void *)malloc(size + 1);
-	if (!buf)
+	arr = (char *)malloc(size * sizeof(*arr) + 1);
+	if (arr == NULL)
 		return (NULL);
-	ft_bzero(buf, size + 1);
-	return ((char *)buf);
+	ft_bzero((void *)arr, size * sizeof(*arr) + 1);
+	return (arr);
 }

@@ -6,7 +6,7 @@
 /*   By: vurrigon <vurrigon@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/08/21 15:24:14 by vurrigon          #+#    #+#             */
-/*   Updated: 2019/09/11 18:27:47 by vurrigon         ###   ########.fr       */
+/*   Updated: 2019/09/13 16:47:46 by vurrigon         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,7 +31,7 @@ void		init_start_end(t_map *map, t_room *room)
 		map->start = room;
 	else if (map->prev_command == EXIT && !map->exit)
 		map->exit = room;
-	else if ((map->start || map->exit) && (map->prev_command == START || 
+	else if ((map->start || map->exit) && (map->prev_command == START ||
 		map->prev_command == EXIT))
 		error("Invalid start/exit");
 }
@@ -68,16 +68,13 @@ void		parse_rooms(char *str, t_map *map, t_room **rooms)
 		free_str_room(room, 1);
 		error("Invalid room name");
 	}
-	while (room[i])
-	{
-		if (!check_digits(room[i], WITH_NEG) || !check_intmax(room[i]))
+	while (room[i++])
+		if (!check_digits(room[i - 1], WITH_NEG) || !check_intmax(room[i - 1]))
 		{
 			free_str_room(room, 1);
 			error("Invalid coordinates");
 		}
-		i++;
-	}
-	if (i != 3)
+	if (i != 4)
 	{
 		free_str_room(room, 1);
 		error("Invalid room");

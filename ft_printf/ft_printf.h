@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_printf.h                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: vurrigon <vurrigon@student.42.fr>          +#+  +:+       +#+        */
+/*   By: djast <djast@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/01/23 18:32:21 by djast             #+#    #+#             */
-/*   Updated: 2019/02/10 16:17:44 by vurrigon         ###   ########.fr       */
+/*   Updated: 2019/02/11 11:44:29 by djast            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -140,7 +140,7 @@ int						size_fract(char *s);
 int						ft_int_size(char *ans);
 int						ft_fract_size(char *ans);
 char					*round_fract(char *ans);
-char					*translate_to_int(char *s, char *ans);
+char					*translate_to_int(char *s, char *ans, int flag);
 char					*get_int(char *decimal, char *ans);
 char					*add_one(char *s);
 int						check_sum(char *s, int flag);

@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   lem_in.h                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: djast <djast@student.42.fr>                +#+  +:+       +#+        */
+/*   By: vurrigon <vurrigon@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/08/20 14:24:28 by vurrigon          #+#    #+#             */
-/*   Updated: 2019/09/13 15:58:19 by djast            ###   ########.fr       */
+/*   Updated: 2019/09/13 19:38:08 by vurrigon         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,7 +22,6 @@
 # define ANTS_SIZE 100
 # define SPEED 200
 # include "libft.h"
-# include <stdio.h>
 # include <limits.h>
 # include <SDL.h>
 # include <SDL_ttf.h>
@@ -56,14 +55,22 @@ typedef struct			s_room
 */
 typedef struct			s_map
 {
-	int					count_ants;
+	int					count_ant;
 	int					count_rooms;
+	int					path;
+	int					min_lines;
+	int					min_steps;
+	int					is_best;
+	struct s_paths		*best_paths;
+	int					best_path_count;
 	struct s_room		*start;
 	struct s_room		*exit;
 	int					prev_command;
 	struct s_room		**array_rooms;
 	int					has_links:2;
-	int					count_out_line;
+	int					count_line;
+	int					id;
+	int					has_start_stop;
 	struct s_file_txt	*input;
 
 }						t_map;
@@ -143,7 +150,8 @@ void					free_rooms(t_room *rooms);
 void					free_map(t_map *map);
 t_file_txt				*init_input_file(char *text);
 void					bfs(t_map *map);
-t_paths					*get_all_paths(t_map *map, t_room *rooms, int status);
+t_paths					*get_all_paths_prepare(t_map *map, t_room *rooms,
+												int status);
 void					reverse_paths(t_paths **paths);
 t_map					*init(void);
 t_file_txt				*init_input_file(char *text);
@@ -162,6 +170,12 @@ void					create_link(t_room *room, t_room *link);
 void					print_paths(t_paths *paths);
 void					clear_bfs(t_room *room);
 void					free_input(t_file_txt *input);
+int						optimize(t_map *map, t_room *rooms);
+void					reading_links(char *line, t_map *map, t_room *rooms,
+													int count_rooms);
+void					reading_rooms(t_map *map, t_room **rooms);
+t_queue					*add_to_queue(t_queue *queue, t_room *room);
+t_room					*pop_from_queue(t_queue **queue);
 /*
 ** SDL
 */
@@ -175,10 +189,13 @@ void					put_text(t_sdl *sdl, char *message, SDL_Color color,
 						t_room *cur_room);
 void					pressed(int key);
 void					step_by_step_sdl(t_sdl *sdl, t_paths *paths,
-									int count_ants, int count_lines);
+											t_map *map);
 t_ants					*init_ants(t_path *cur_path);
 t_links					*init_links(t_room *room_start, t_room *room_end);
 void					redraw(t_sdl *sdl, t_ants *ants);
 void					free_links(t_links *links);
 void					free_ants(t_ants *ants);
+void					draw_link(t_sdl *sdl, t_room *room_start,
+									t_room *room_end, SDL_Color color);
+t_path					*make_step(t_path *path, int id);
 #endif

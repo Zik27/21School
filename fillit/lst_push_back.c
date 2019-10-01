@@ -3,19 +3,19 @@
 /*                                                        :::      ::::::::   */
 /*   lst_push_back.c                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: vurrigon <vurrigon@student.42.fr>          +#+  +:+       +#+        */
+/*   By: djast <djast@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/01/03 20:12:23 by vurrigon          #+#    #+#             */
-/*   Updated: 2019/01/04 16:29:50 by vurrigon         ###   ########.fr       */
+/*   Updated: 2019/01/05 20:10:52 by djast            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "fillit.h"
 
-void	free_lst(tetriminos_fig **head)
+void				free_lst(t_tetriminos_fig **head)
 {
-	tetriminos_fig *tmp;
-	tetriminos_fig *delete_tmp;
+	t_tetriminos_fig *tmp;
+	t_tetriminos_fig *delete_tmp;
 
 	delete_tmp = *head;
 	while (delete_tmp)
@@ -28,7 +28,7 @@ void	free_lst(tetriminos_fig **head)
 	*head = NULL;
 }
 
-int		*ft_intdup(int const *src)
+int					*ft_intdup(int const *src)
 {
 	int *dup;
 
@@ -38,11 +38,11 @@ int		*ft_intdup(int const *src)
 	return (dup);
 }
 
-tetriminos_fig	*ft_create_elem(int *data)
+t_tetriminos_fig	*ft_create_elem(int *data)
 {
-	tetriminos_fig	*list;
+	t_tetriminos_fig	*list;
 
-	if ((list = malloc(sizeof(tetriminos_fig))))
+	if ((list = malloc(sizeof(t_tetriminos_fig))))
 	{
 		if (!(list->data = ft_intdup(data)))
 			return (NULL);
@@ -52,9 +52,9 @@ tetriminos_fig	*ft_create_elem(int *data)
 	return (NULL);
 }
 
-int	lst_push_back(tetriminos_fig **head, int *data)
+int					lst_push_back(t_tetriminos_fig **head, int *data)
 {
-	tetriminos_fig	*current;
+	t_tetriminos_fig	*current;
 
 	if (*head)
 	{
@@ -65,7 +65,9 @@ int	lst_push_back(tetriminos_fig **head, int *data)
 			return (0);
 	}
 	else
+	{
 		if (!(*head = ft_create_elem(data)))
 			return (0);
+	}
 	return (1);
 }

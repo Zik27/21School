@@ -6,7 +6,7 @@
 /*   By: vurrigon <vurrigon@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/08/20 15:37:14 by vurrigon          #+#    #+#             */
-/*   Updated: 2019/08/22 14:39:41 by vurrigon         ###   ########.fr       */
+/*   Updated: 2019/09/13 17:46:04 by vurrigon         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -64,5 +64,5 @@ void	count_ants(char *line, t_map *map)
 	if (!check_digits(line, NO_NEG) || !check_intmax(line))
 		error("Invalid number of ants");
 	else
-		map->count_ants = ft_atoi(line);
+		map->count_ant = ft_atoi(line);
 }

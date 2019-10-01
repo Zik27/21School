@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_lstnew.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: vurrigon <vurrigon@student.42.fr>          +#+  +:+       +#+        */
+/*   By: djast <djast@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2018/12/06 12:16:22 by vurrigon          #+#    #+#             */
-/*   Updated: 2018/12/07 14:16:08 by vurrigon         ###   ########.fr       */
+/*   Created: 2018/12/13 11:14:16 by djast             #+#    #+#             */
+/*   Updated: 2018/12/13 14:01:09 by djast            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,10 +14,10 @@
 
 t_list	*ft_lstnew(void const *content, size_t content_size)
 {
-	t_list	*list;
+	t_list *list;
 
 	list = (t_list *)malloc(sizeof(*list));
-	if (!list)
+	if (list == NULL)
 		return (NULL);
 	if (content == NULL)
 	{
@@ -27,7 +27,7 @@ t_list	*ft_lstnew(void const *content, size_t content_size)
 	else
 	{
 		list->content = (void *)malloc(content_size);
-		if (!list->content)
+		if (list->content == NULL)
 		{
 			free(list);
 			return (NULL);

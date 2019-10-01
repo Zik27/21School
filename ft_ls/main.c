@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   main.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: vurrigon <vurrigon@student.42.fr>          +#+  +:+       +#+        */
+/*   By: djast <djast@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/02/27 18:41:23 by djast             #+#    #+#             */
-/*   Updated: 2019/03/14 16:54:22 by vurrigon         ###   ########.fr       */
+/*   Updated: 2019/03/18 18:38:37 by djast            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -46,6 +46,7 @@ int			main(int argc, char const *argv[])
 		{
 			ft_printf("ft_ls: illegal option -- %c\n", -error_code);
 			ft_printf("usage: ls [-AGSRaflnrt] [file ...]\n");
+			free(ls);
 			return (1);
 		}
 	}

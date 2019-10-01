@@ -6,7 +6,7 @@
 /*   By: vurrigon <vurrigon@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/09/07 14:52:57 by djast             #+#    #+#             */
-/*   Updated: 2019/09/13 15:33:00 by vurrigon         ###   ########.fr       */
+/*   Updated: 2019/09/13 18:49:46 by vurrigon         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,7 +18,7 @@ t_map		*init(void)
 
 	if ((map = (t_map *)malloc(sizeof(t_map))))
 	{
-		map->count_ants = 0;
+		map->count_ant = 0;
 		map->start = NULL;
 		map->exit = NULL;
 		map->prev_command = 0;
@@ -26,7 +26,8 @@ t_map		*init(void)
 		map->count_rooms = 0;
 		map->array_rooms = NULL;
 		map->input = NULL;
-		map->count_out_line = -1;
+		map->count_line = -1;
+		map->id = 1;
 	}
 	return (map);
 }

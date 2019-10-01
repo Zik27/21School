@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_strtrim.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: vurrigon <vurrigon@student.42.fr>          +#+  +:+       +#+        */
+/*   By: djast <djast@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2018/11/30 14:04:57 by vurrigon          #+#    #+#             */
-/*   Updated: 2018/12/07 14:29:11 by vurrigon         ###   ########.fr       */
+/*   Created: 2018/12/06 11:19:07 by djast             #+#    #+#             */
+/*   Updated: 2018/12/13 14:00:36 by djast            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,22 +14,22 @@
 
 char	*ft_strtrim(char const *s)
 {
-	int		begin;
-	int		len;
-	char	*fresh;
+	char	*s1;
+	int		size;
+	int		start;
 
-	if (!s)
+	if (s == NULL)
 		return (NULL);
-	begin = 0;
-	len = ft_strlen(s) - 1;
-	while (s[begin] == ' ' || s[begin] == '\t' || s[begin] == '\n')
-		begin++;
-	if (s[begin] == '\0')
-		return (ft_strdup(s + begin));
-	while ((s[len] == ' ' || s[len] == '\t' || s[len] == '\n') && len > 0)
-		len--;
-	fresh = ft_strsub(s, begin, len - begin + 1);
-	if (!fresh)
-		return (NULL);
-	return (fresh);
+	s1 = (char *)s;
+	start = 0;
+	while (*s1 == ' ' || *s1 == '\n' || *s1 == '\t')
+		s1 = s1 + start++ * 0 + 1;
+	if (*s1 == '\0')
+		return (s1 = ft_strnew(0));
+	size = ft_strlen(s1);
+	s1 += size - 1;
+	while (*s1 == ' ' || *s1 == '\n' || *s1 == '\t')
+		s1 = s1 + size-- * 0 - 1;
+	s1 = ft_strsub(s, start, size);
+	return (s1);
 }
