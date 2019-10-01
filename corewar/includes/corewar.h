@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   corewar.h                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: djast <djast@student.42.fr>                +#+  +:+       +#+        */
+/*   By: vurrigon <vurrigon@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/09/17 12:29:08 by vurrigon          #+#    #+#             */
-/*   Updated: 2019/09/26 17:50:23 by djast            ###   ########.fr       */
+/*   Updated: 2019/10/01 12:20:29 by vurrigon         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -52,5 +52,6 @@ void	error(char *str);
 void	error_file(char *str, int col, int row);
 char	*ft_strndup(const char *src, int i);
 int		is_comment(char *line, t_player *player);
+void	disassemble(int fd, char *full_name);
 
 #endif

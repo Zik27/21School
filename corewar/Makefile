@@ -3,10 +3,10 @@
 #                                                         :::      ::::::::    #
 #    Makefile                                           :+:      :+:    :+:    #
 #                                                     +:+ +:+         +:+      #
-#    By: djast <djast@student.42.fr>                +#+  +:+       +#+         #
+#    By: vurrigon <vurrigon@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2019/02/15 17:18:06 by djast             #+#    #+#              #
-#    Updated: 2019/09/25 17:27:23 by djast            ###   ########.fr        #
+#    Updated: 2019/10/01 12:19:19 by vurrigon         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -23,13 +23,21 @@ LIBFT_HEADER = $(LIBFT_FOLDER)/libft.h
 
 HEADERS_DIRECTORY = ./includes
 HEADERS = $(HEADERS_DIRECTORY)/corewar.h
+HEADER_DASM = $(HEADERS_DIRECTORY)/dasm.h
 
 LIBS = -lft -L$(LIBFT_FOLDER) -lftprintf -L$(LIBFT_FOLDER)
 INCLUDES = -I$(HEADERS_DIRECTORY) -I$(LIBFT_FOLDER)
 
-FILES_ASM =	asm.c \
+FILES_ASM =		asm.c \
 				error.c \
-				utils.c
+				utils.c \
+				dasm.c \
+				handle_args.c \
+				handle_commands.c \
+				init_dasm.c \
+				valid.c \
+				write_to_file.c \
+				utils_dasm.c
 
 FILSE_COREWAR = corewar.c \
 				parse.c \
@@ -64,7 +72,7 @@ RESET = \033[0m
 
 all: $(NAME_ASM) $(NAME_COREWAR)
 
-$(NAME_ASM): $(LIBFT) $(OBJ_DIRECTORY) $(OBJ_DIRECTORY_ASM) $(OBJ_ASM_FILES)
+$(NAME_ASM): $(LIBFT) $(OBJ_DIRECTORY) $(OBJ_DIRECTORY_ASM) $(OBJ_ASM_FILES) $(HEADER_DASM)
 	@$(CC) $(CFLAGS) $(LIBS) $(INCLUDES) $(OBJ_ASM_FILES)  -o $(NAME_ASM)
 	@echo "$(RED)$(NAME_ASM) $(GREEN)compiled successfully!$(RESET)"
 
