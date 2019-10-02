@@ -6,7 +6,7 @@
 #    By: djast <djast@student.42.fr>                +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2019/02/15 17:18:06 by djast             #+#    #+#              #
-#    Updated: 2019/10/02 15:07:23 by djast            ###   ########.fr        #
+#    Updated: 2019/10/02 18:09:41 by djast            ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -14,7 +14,7 @@ NAME_ASM = asm
 NAME_COREWAR = corewar
 
 CC = gcc
-CFLAGS = -Wall -Wextra -Werror
+CFLAGS = -Wall -Wextra -Werror -g
 
 LIBFT_FOLDER = ./libft
 LIBFT = $(LIBFT_FOLDER)/libft.a

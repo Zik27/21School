@@ -6,7 +6,7 @@
 /*   By: djast <djast@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/09/25 17:25:42 by djast             #+#    #+#             */
-/*   Updated: 2019/09/28 17:56:47 by djast            ###   ########.fr       */
+/*   Updated: 2019/10/02 18:13:00 by djast            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,7 +16,7 @@ void			set_op_steps(t_carriage *carr)
 {
 	if (carr->op_code == 1 || carr->op_code == 4 || carr->op_code == 5
 													|| carr->op_code == 13)
-		carr->op_steps = 10;
+		carr->op_steps = 1;
 	else if (carr->op_code == 2 || carr->op_code == 3)
 		carr->op_steps = 5;
 	else if (carr->op_code == 6 || carr->op_code == 7 || carr->op_code == 8)
@@ -51,6 +51,7 @@ t_carriage		*init_carriages(t_champ *champs, t_vm_info *info)
 	
 	while (cur_player != NULL)
 	{
+		//printf("cur_cur: %d\n", cur_player->id);
 		new_carriage = init_carriage(id, cur_player, info);
 		if (carriages == NULL)
 		{

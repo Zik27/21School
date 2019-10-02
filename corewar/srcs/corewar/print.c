@@ -6,7 +6,7 @@
 /*   By: djast <djast@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/09/25 13:20:31 by djast             #+#    #+#             */
-/*   Updated: 2019/09/26 17:34:55 by djast            ###   ########.fr       */
+/*   Updated: 2019/10/02 17:55:14 by djast            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -56,6 +56,7 @@ void	print_carriages(t_carriage *car)
 		
 		cur_car = cur_car->next;
 	}
+	ft_printf("---------------------------------\n");
 }
 
 void	introducing(t_champ	*champs, t_vm_info *info)

@@ -6,7 +6,7 @@
 /*   By: djast <djast@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/09/25 13:58:35 by djast             #+#    #+#             */
-/*   Updated: 2019/09/28 17:55:36 by djast            ###   ########.fr       */
+/*   Updated: 2019/10/02 18:13:12 by djast            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,12 +24,13 @@ t_carriage			*init_carriage(int id, t_champ *cur_player, t_vm_info *info)
 	new_carriage->op_code = -1;
 	new_carriage->cycle_last_live = -1;
 	new_carriage->op_steps = 0;
+	new_carriage->jump_size = 0;
 	new_carriage->cur_pos = (id - 1) * (MEM_SIZE / info->count_players);
-	new_carriage->size_jump = 0;
 	new_carriage->registers[0] = -cur_player->id;
 	i = 1;
 	while (i < REG_NUMBER)
 		new_carriage->registers[i++] = 0;
+	new_carriage->next = NULL;
 	return (new_carriage);
 }
 
@@ -43,6 +44,7 @@ t_vm_info			*init_vm_info(t_champ *players)
 	info->cycles_to_die = CYCLE_TO_DIE;
 	info->cycle = 0;
 	info->live = 0;
+	info->last_live_player = NULL;
 	info->map = ft_strnew(MEM_SIZE);
 	return (info);
 }
@@ -57,8 +59,7 @@ t_champ				*init_champ(int id)
 	champ->comment = NULL;
 	champ->code_size = -1;
 	champ->code = NULL;
-	champ->cur_lives = 0;
-	champ->prev_lives = 0;
+	champ->count_lives = 0;
 	champ->last_live = 0;
 	champ->next = NULL;
 	return (champ);

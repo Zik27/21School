@@ -6,7 +6,7 @@
 /*   By: djast <djast@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/09/23 13:11:12 by djast             #+#    #+#             */
-/*   Updated: 2019/10/02 15:07:44 by djast            ###   ########.fr       */
+/*   Updated: 2019/10/02 18:12:43 by djast            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,10 +32,10 @@
 // 		make_command_aff(info, carr);
 // }
 
-void	make_command(t_vm_info *info, t_carriage *carr)
+void	make_command(t_vm_info *info, t_champ *champs, t_carriage *carr)
 {
 	if (carr->op_code == 1)
-		make_command_live(info, carr);
+		make_command_live(info, champs, carr);
 	// else if (carr->op_code == 2)
 	// 	make_command_ld(info, carr);
 	// else if (carr->op_code == 3)
@@ -93,6 +93,7 @@ int		get_info_for_command(t_vm_info *info, t_carriage *carr)
 	char types;
 	int		args[3];
 
+	return (1);
 	if (carr->op_code < 1 || carr->op_code > 16)
 	{
 		carr->cur_pos = (carr->cur_pos + 1) % MEM_SIZE;
@@ -101,7 +102,7 @@ int		get_info_for_command(t_vm_info *info, t_carriage *carr)
 	types = info->map[carr->cur_pos + 1];
 	args[0] = ((unsigned char)types & 0b11000000) / 64;
 	args[1] = ((unsigned char)types & 0b110000) / 16;
-	args[2] = (unsigned char)types & 0b1100;
+	args[2] = (unsigned char)types & 0b1100 / 4;
 	if (check_command_args(carr, args) == 0)
 	{
 		skip_command(carr, args);
@@ -110,11 +111,12 @@ int		get_info_for_command(t_vm_info *info, t_carriage *carr)
 	return (1);
 }
 
-void	make_step_cycle(t_vm_info *info, t_carriage *carriages)
+void	make_step_cycle(t_vm_info *info, t_champ *champs, t_carriage *carriages)
 {
 	t_carriage *cur_carriage;
 
 	cur_carriage = carriages;
+
 	while (cur_carriage != NULL)
 	{
 		if (cur_carriage->op_steps == 0)
@@ -127,8 +129,10 @@ void	make_step_cycle(t_vm_info *info, t_carriage *carriages)
 		if (cur_carriage->op_steps == 0)
 		{
 			if (get_info_for_command(info, cur_carriage) == 1)
-				make_command(info, cur_carriage);
+				make_command(info, champs, cur_carriage);
 		}
+		cur_carriage->cur_pos += cur_carriage->jump_size;
+		cur_carriage->jump_size = 0;
 		cur_carriage = cur_carriage->next;
 	}
 }
@@ -138,11 +142,13 @@ void	start_corewar(t_champ *champs, t_vm_info *info, t_carriage *carriages)
 	(void) champs;
 	int i = 10;
 	
+	//print_map(info->map);
 	while (i-- != 0)
 	{
-		// print_carriages(carriages);
+		//print_carriages(carriages);
+		//printf("\n\n");
 		// print_map(info->map);
-		make_step_cycle(info, carriages);
+		make_step_cycle(info, champs, carriages);
 		info->cycle++;
 	}
 

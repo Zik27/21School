@@ -6,7 +6,7 @@
 /*   By: djast <djast@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/09/23 13:35:39 by djast             #+#    #+#             */
-/*   Updated: 2019/09/28 18:28:46 by djast            ###   ########.fr       */
+/*   Updated: 2019/10/02 18:00:06 by djast            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,20 +29,12 @@ typedef struct 			s_carriage
 	int					cycle_last_live;
 	int					op_steps;
 	int					cur_pos;
-	int					size_jump;
+	int					jump_size;
 	int					registers[REG_NUMBER];
+	int					args_types[3];
+	int					args[3];
 	struct s_carriage	*next;
 }						t_carriage;
-
-typedef struct			s_vm_info
-{
-	int					count_players;
-	int					cycles_to_die;
-	int					cycle;
-	int					live;
-	t_carriage			*carriages;
-	char				*map;
-}						t_vm_info;
 
 typedef struct			s_champ
 {
@@ -51,11 +43,23 @@ typedef struct			s_champ
 	char				*comment;
 	int					code_size;
 	char				*code;
-	int					cur_lives;
-	int					prev_lives;
+	int					count_lives;
 	int					last_live;
 	struct s_champ		*next;
 }						t_champ;
+
+typedef struct			s_vm_info
+{
+	int					count_players;
+	int					cycles_to_die;
+	int					cycle;
+	int					live;
+	t_carriage			*carriages;
+	t_champ				*last_live_player;
+	char				*map;
+}						t_vm_info;
+
+
 
 void			cerror(char *message, char *error_file);
 void			print_help(char **argv);
@@ -77,8 +81,9 @@ t_champ			*find_player_by_id(t_champ *champs, int id);
 void			introducing(t_champ	*champs, t_vm_info *info);
 t_champ			*find_player_by_id(t_champ *champs, int id);
 void			set_op_steps(t_carriage *carr);
+int				bytecode_to_int(unsigned char *buf, int count_bytes);
 
-void			make_command_live(t_vm_info *info, t_carriage *carr);
+void			make_command_live(t_vm_info *info, t_champ *champs, t_carriage *carr);
 void			make_command_ld(t_vm_info *info, t_carriage *carr);
 void			make_command_st(t_vm_info *info, t_carriage *carr);
 void			make_command_add(t_vm_info *info, t_carriage *carr);
