@@ -6,7 +6,7 @@
 /*   By: vurrigon <vurrigon@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/09/07 19:57:54 by djast             #+#    #+#             */
-/*   Updated: 2019/09/13 15:22:51 by vurrigon         ###   ########.fr       */
+/*   Updated: 2019/09/13 17:09:15 by vurrigon         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -67,6 +67,6 @@ int				choose_path(int ants, t_paths *paths, t_map *map)
 			break ;
 		count_paths++;
 	}
-	map->count_out_line = min_steps;
+	map->count_line = min_steps;
 	return (count_paths - 1);
 }

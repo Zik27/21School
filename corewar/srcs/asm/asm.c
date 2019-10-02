@@ -6,7 +6,7 @@
 /*   By: vurrigon <vurrigon@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/09/17 11:50:59 by vurrigon          #+#    #+#             */
-/*   Updated: 2019/09/19 18:20:29 by vurrigon         ###   ########.fr       */
+/*   Updated: 2019/10/01 12:20:15 by vurrigon         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,8 +22,10 @@ int		check_extension(char *filename)
 	tmp = ft_strsplit(filename, '.');
 	while (tmp[i + 1])
 		i++;
-	if (ft_strcmp(tmp[i], "s") == 0)
+	if (!ft_strcmp(tmp[i], "s"))
 		return (1);
+	else if (!ft_strcmp(tmp[i], "cor"))
+		return (-1);
 	return (0);
 }
 
@@ -151,7 +153,7 @@ t_player	*init_player()
 	return (player);
 }
 
-void	read_champion(int fd)
+void	assemble(int fd)
 {
 	t_player *header;
 
@@ -164,17 +166,21 @@ void	read_champion(int fd)
 int	main(int argc, char **argv)
 {
 	int	fd;
+	int	exten;
 
 	if (argc != 2)
-		error("Usage: ./asm <sourcefile.s>");
-	else if (!check_extension(argv[1]))
+		error("Usage: ./asm <sourcefile.s> | <sourcefile.cor>");
+	else if (!(exten = check_extension(argv[1])))
 		error("Invalid file extension");
 	else
 	{
 		fd = open(argv[1], O_RDONLY);
 		if (fd == -1)
 			error("File name missing.");
-		read_champion(fd);
+		if (exten == 1)
+			assemble(fd);
+		else
+			disassemble(fd, argv[1]);
 	}
 	return (0);
 }

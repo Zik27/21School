@@ -3,37 +3,32 @@
 /*                                                        :::      ::::::::   */
 /*   ft_atoi.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: vurrigon <vurrigon@student.42.fr>          +#+  +:+       +#+        */
+/*   By: djast <djast@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2018/11/27 16:13:10 by vurrigon          #+#    #+#             */
-/*   Updated: 2018/12/07 15:43:55 by vurrigon         ###   ########.fr       */
+/*   Created: 2018/11/23 10:47:46 by djast             #+#    #+#             */
+/*   Updated: 2018/12/13 11:09:17 by djast            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "libft.h"
-
 int	ft_atoi(const char *str)
 {
-	int			size;
-	int			result;
-	int			sign;
+	int	size;
+	int	result;
+	int	neg;
 
 	result = 0;
 	size = 0;
-	sign = 1;
-	while (str[size] == ' ' || str[size] == '\t' || str[size] == '\n' ||\
-	str[size] == '\v' || str[size] == '\f' || str[size] == '\r')
+	neg = 0;
+	while (str[size] == ' ' || (str[size] >= 9 && str[size] <= 13))
 		size++;
 	if (str[size] == '-')
-		sign = -1;
+		neg = 1;
 	if (str[size] == '-' || str[size] == '+')
-	{
 		size++;
-	}
 	while (str[size] >= 48 && str[size] <= 57)
-	{
-		result = result * 10 + (str[size] - 48);
-		size++;
-	}
-	return (sign * result);
+		result = result * 10 + (str[size++] - 48);
+	if (neg)
+		return (-result);
+	else
+		return (result);
 }

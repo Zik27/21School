@@ -3,29 +3,48 @@
 /*                                                        :::      ::::::::   */
 /*   ft_putnbr.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: vurrigon <vurrigon@student.42.fr>          +#+  +:+       +#+        */
+/*   By: djast <djast@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2018/11/30 15:21:35 by vurrigon          #+#    #+#             */
-/*   Updated: 2018/12/07 14:18:02 by vurrigon         ###   ########.fr       */
+/*   Created: 2018/12/11 17:31:57 by djast             #+#    #+#             */
+/*   Updated: 2018/12/11 19:34:09 by djast            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-void	ft_putnbr(int n)
+static int	ft_num_size(int n)
 {
-	if (n < 0)
+	int	count;
+
+	count = 0;
+	while ((n = n / 10) != 0)
+		count++;
+	return (count + 1);
+}
+
+static int	ft_recursive_power(int nb, int power)
+{
+	if (power < 0)
+		return (0);
+	if (power == 0)
+		return (1);
+	if (power == 1)
+		return (nb);
+	return (nb * ft_recursive_power(nb, power - 1));
+}
+
+void		ft_putnbr(int n)
+{
+	int	size;
+	int	mno;
+
+	size = ft_num_size(n) - 1;
+	mno = ft_recursive_power(10, size);
+	n < 0 ? ft_putchar('-') : NULL;
+	while (mno != 0)
 	{
-		ft_putchar('-');
-		if (n <= -10)
-			ft_putnbr(n / -10);
-		ft_putchar(-(n % 10) + '0');
-	}
-	else if (n < 10 && n >= 0)
-		ft_putchar(n + '0');
-	else
-	{
-		ft_putnbr(n / 10);
-		ft_putchar((n % 10) + '0');
+		ft_putchar(n > 0 ? n / mno + 48 : -(n / mno) + 48);
+		n %= mno;
+		mno /= 10;
 	}
 }

@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   SDL.c                                              :+:      :+:    :+:   */
+/*   sdl.c                                              :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: djast <djast@student.42.fr>                +#+  +:+       +#+        */
+/*   By: vurrigon <vurrigon@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/09/11 12:25:28 by djast             #+#    #+#             */
-/*   Updated: 2019/09/13 15:58:53 by djast            ###   ########.fr       */
+/*   Updated: 2019/09/13 19:04:20 by vurrigon         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,18 +35,20 @@ t_sdl		*create_window(void)
 	return (sdl);
 }
 
-void				put_text(t_sdl *sdl, char *message, SDL_Color color, t_room *cur_room)
+void		put_text(t_sdl *sdl, char *message, SDL_Color color,
+						t_room *cur_room)
 {
-	SDL_Rect	r;
-	SDL_Surface* surfaceMessage;
-	SDL_Texture* Message;
+	SDL_Rect		r;
+	SDL_Surface		*surface_message;
+	SDL_Texture		*message_texture;
 
-	surfaceMessage = TTF_RenderText_Solid(sdl->sans, message, color);
-	Message = SDL_CreateTextureFromSurface(sdl->renderer, surfaceMessage);
-	SDL_FreeSurface(surfaceMessage);
+	surface_message = TTF_RenderText_Solid(sdl->sans, message, color);
+	message_texture = SDL_CreateTextureFromSurface(sdl->renderer,
+														surface_message);
+	SDL_FreeSurface(surface_message);
 	r.x = cur_room->x - ROOM_SIZE / 2;
 	r.y = cur_room->y - ROOM_SIZE - 5;
 	r.h = 2 * ROOM_SIZE / 3;
 	r.w = ROOM_SIZE;
-	SDL_RenderCopy(sdl->renderer, Message, NULL, &r);
+	SDL_RenderCopy(sdl->renderer, message_texture, NULL, &r);
 }

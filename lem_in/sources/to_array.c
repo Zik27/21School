@@ -6,13 +6,13 @@
 /*   By: vurrigon <vurrigon@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/08/30 16:38:56 by vurrigon          #+#    #+#             */
-/*   Updated: 2019/09/07 19:21:11 by vurrigon         ###   ########.fr       */
+/*   Updated: 2019/09/13 16:17:52 by vurrigon         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "lem_in.h"
 
-void	list_to_array(t_map *map, t_room *rooms, int count_rooms)
+void			list_to_array(t_map *map, t_room *rooms, int count_rooms)
 {
 	t_room	*tmp;
 	t_room	**array;
@@ -30,7 +30,7 @@ void	list_to_array(t_map *map, t_room *rooms, int count_rooms)
 	map->array_rooms = array;
 }
 
-int		room_cmp(char *a, char *b)
+int				room_cmp(char *a, char *b)
 {
 	int		cmp;
 
@@ -39,7 +39,7 @@ int		room_cmp(char *a, char *b)
 	return (cmp);
 }
 
-static void	swap_rooms(t_room **a, t_room **b)
+static void		swap_rooms(t_room **a, t_room **b)
 {
 	t_room	*tmp;
 
@@ -48,7 +48,7 @@ static void	swap_rooms(t_room **a, t_room **b)
 	*b = tmp;
 }
 
-int		sort_pass(t_room **array, int size)
+int				sort_pass(t_room **array, int size)
 {
 	int		res;
 	int		pos;
@@ -57,7 +57,6 @@ int		sort_pass(t_room **array, int size)
 	pos = 0;
 	while (pos < size - 1)
 	{
-		//printf("OTLADKA === %s %s\n", (array[pos])->name, (array[pos + 1])->name);
 		if (room_cmp((array[pos])->name, (array[pos + 1])->name) > 0)
 		{
 			res = 0;
@@ -68,7 +67,7 @@ int		sort_pass(t_room **array, int size)
 	return (res);
 }
 
-void	sort_array_by_name(t_map **map, int size)
+void			sort_array_by_name(t_map **map, int size)
 {
 	t_room	**array;
 	int		position;

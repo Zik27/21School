@@ -6,7 +6,7 @@
 /*   By: vurrigon <vurrigon@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/08/22 16:02:42 by vurrigon          #+#    #+#             */
-/*   Updated: 2019/09/11 14:47:30 by vurrigon         ###   ########.fr       */
+/*   Updated: 2019/09/13 16:18:38 by vurrigon         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -67,6 +67,7 @@ void	reverse_paths(t_paths **paths)
 void	path_removal(t_paths *paths, int count_paths)
 {
 	t_paths		*tmp;
+
 	while (paths)
 	{
 		if (!count_paths)

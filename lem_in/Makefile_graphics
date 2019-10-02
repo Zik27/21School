@@ -39,7 +39,6 @@ COMMON_FILES =	count_ants.c \
 				parse_comment.c \
 				parse_links.c \
 				parse_rooms.c \
-				solver.c \
 				to_array.c \
 				utils.c \
 				free.c \
@@ -48,15 +47,18 @@ COMMON_FILES =	count_ants.c \
 				init.c \
 				choose_path.c \
 				print_results.c \
-				optimize.c
+				optimize.c \
+				reading.c \
+				queue.c
 
 LEM_IN_FILES = lem_in.c
 VISUAL_FILES = visualize.c \
 				draw.c\
-				SDL.c \
+				sdl.c \
 				key.c \
 				print_result_sdl.c \
-				free_sdl.c
+				free_sdl.c \
+				draw_rooms.c
 
 SRC_DIRECTORY = ./sources/
 SRC_COMMON_FILES = $(addprefix $(SRC_DIRECTORY), $(COMMON_FILES))

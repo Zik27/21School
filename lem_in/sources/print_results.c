@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   print_results.c                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: djast <djast@student.42.fr>                +#+  +:+       +#+        */
+/*   By: vurrigon <vurrigon@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/09/07 16:25:16 by vurrigon          #+#    #+#             */
-/*   Updated: 2019/09/11 11:45:30 by djast            ###   ########.fr       */
+/*   Updated: 2019/09/13 16:34:41 by vurrigon         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,15 +14,14 @@
 
 t_path	*make_step(t_path *path, int id)
 {
-	int	tmp;
+	int		tmp;
 	t_path	*end;
 
 	end = NULL;
 	if (path->room_path->ant_id == -1 && id != -1)
 	{
 		path->room_path->ant_id = id;
-		if (!path->next)
-			end = path;
+		end = path->next == NULL ? path : end;
 	}
 	else
 	{
@@ -34,19 +33,38 @@ t_path	*make_step(t_path *path, int id)
 			ft_swap(&tmp, &path->room_path->ant_id);
 			if (id > 0 && tmp == -1)
 				break ;
-			if (!path->next)
-				end = path;
+			end = path->next == NULL ? path : end;
 			path = path->next;
 		}
 	}
 	return (end);
 }
 
-void	print_solution(t_path *path, char **result)
+void	create_result_str(t_path *path, char **result)
 {
 	char *tmp;
 	char *free_str;
 
+	free_str = ft_itoa(path->room_path->ant_id);
+	tmp = ft_strjoin("L", free_str);
+	free(free_str);
+	free_str = ft_strjoin(tmp, "-");
+	free(tmp);
+	tmp = free_str;
+	free_str = ft_strjoin(tmp, path->room_path->name);
+	free(tmp);
+	tmp = free_str;
+	free_str = ft_strjoin(tmp, " ");
+	free(tmp);
+	tmp = *result;
+	*result = ft_strjoin(free_str, tmp);
+	if (ft_strcmp(tmp, ""))
+		free(tmp);
+	free(free_str);
+}
+
+void	print_solution(t_path *path, char **result)
+{
 	while (path)
 	{
 		if (path->room_path->ant_id == -1)
@@ -54,22 +72,7 @@ void	print_solution(t_path *path, char **result)
 			path = path->next;
 			continue ;
 		}
-		free_str = ft_itoa(path->room_path->ant_id);
-		tmp = ft_strjoin("L", free_str);
-		free(free_str);
-		free_str = ft_strjoin(tmp, "-");
-		free(tmp);
-		tmp = free_str;
-		free_str = ft_strjoin(tmp, path->room_path->name);
-		free(tmp);
-		tmp = free_str;
-		free_str = ft_strjoin(tmp, " ");
-		free(tmp);
-		tmp = *result;
-		*result = ft_strjoin(free_str, tmp);
-		if (ft_strcmp(tmp, ""))
-			free(tmp);
-		free(free_str);
+		create_result_str(path, result);
 		path = path->next;
 	}
 }
@@ -83,15 +86,13 @@ void	step_by_step(t_paths *paths, int count_ants, int count_lines)
 
 	ways = paths;
 	id = 1;
-	while (count_lines)
+	while (count_lines--)
 	{
 		while (ways)
 		{
 			result = "";
-			if (count_ants - id >= 0 && count_lines >= ways->size)
-				end = make_step(ways->path->next, id++);
-			else
-				end = make_step(ways->path->next, -1);
+			end = count_ants - id >= 0 && count_lines + 1 >= ways->size ?
+		make_step(ways->path->next, id++) : make_step(ways->path->next, -1);
 			print_solution(ways->path, &result);
 			if (end)
 				end->room_path->ant_id = -1;
@@ -100,14 +101,13 @@ void	step_by_step(t_paths *paths, int count_ants, int count_lines)
 				free(result);
 			ways = ways->next;
 		}
-		count_lines--;
 		ways = paths;
 		ft_putchar('\n');
-		result = "";
 	}
 }
 
-void	print_out(t_file_txt *input, t_paths *paths, int count_ants, int count_lines)
+void	print_out(t_file_txt *input, t_paths *paths, int count_ants,
+														int count_lines)
 {
 	while (input)
 	{

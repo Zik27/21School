@@ -6,12 +6,12 @@
 /*   By: vurrigon <vurrigon@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/12/06 11:56:43 by djast             #+#    #+#             */
-/*   Updated: 2019/03/14 15:51:55 by vurrigon         ###   ########.fr       */
+/*   Updated: 2019/03/18 11:24:42 by vurrigon         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
-#include <stdio.h>
+
 static int			count_word(char const *s, char c)
 {
 	char	*s1;
@@ -65,7 +65,6 @@ static char			**ft_fillarray(char *s1, char **buf, char c)
 			return (ft_del(buf, count_word(s1, c)));
 		ft_strncpy(buf[i++], s1 - end_word, end_word);
 	}
-	//printf("AAAAAA = %s\n", buf[i]);
 	buf[i] = NULL;
 	return (buf);
 }

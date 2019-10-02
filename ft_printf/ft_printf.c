@@ -6,11 +6,19 @@
 /*   By: vurrigon <vurrigon@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/01/23 14:31:01 by djast             #+#    #+#             */
-/*   Updated: 2019/02/10 16:37:09 by vurrigon         ###   ########.fr       */
+/*   Updated: 2019/02/11 12:20:29 by vurrigon         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_printf.h"
+
+char		*ft_check_undef_beh(char *str)
+{
+	while ((*(str + 1) == 'l' || *(str + 1) == 'h' ||
+	*(str + 1) == 'L' || *(str + 1) == 'j' || *(str + 1) == 'z'))
+		str++;
+	return (str);
+}
 
 void		ft_init_qual(t_qual **qual)
 {
@@ -34,8 +42,12 @@ char		*ft_check_percent(char *str, va_list *args, int *printed)
 	ft_init_qual(&qual);
 	str = ft_check_flags(str, &qual);
 	str = ft_check_width(str, &qual, args);
+	str = ft_check_flags(str, &qual);
 	str = ft_check_precision(str, &qual, args);
+	str = ft_check_flags(str, &qual);
 	str = ft_check_lenght(str, &qual);
+	str = ft_check_flags(str, &qual);
+	str = ft_check_undef_beh(str);
 	if (ft_isdigit(*(str + 1)))
 	{
 		QW = *(str + 1) - 48;

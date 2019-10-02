@@ -6,48 +6,13 @@
 /*   By: vurrigon <vurrigon@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/09/11 12:23:20 by djast             #+#    #+#             */
-/*   Updated: 2019/09/13 15:49:52 by djast            ###   ########.fr       */
+/*   Updated: 2019/09/13 18:23:39 by vurrigon         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "lem_in.h"
 
-void				draw_rooms(t_sdl *sdl, t_room *rooms, t_map *map)
-{
-	t_room		*cur_room;
-	SDL_Rect	r;
-	SDL_Color	color;
-
-	cur_room = rooms;
-	while (cur_room != NULL)
-	{
-		r.x = cur_room->x - ROOM_SIZE / 2;
-		r.y = cur_room->y - ROOM_SIZE / 2;
-		r.h = ROOM_SIZE;
-		r.w = ROOM_SIZE;
-		SDL_SetRenderDrawColor(sdl->renderer, 128, 128, 128, 255);
-		SDL_RenderFillRect(sdl->renderer, &r);
-		if (cur_room == map->start)
-		{
-			color.r = 0;
-			color.g = 255;
-			color.b = 0;
-			color.a = 255;
-			put_text(sdl, "Start", color, cur_room);
-		}
-		else if (cur_room == map->exit)
-		{
-			color.r = 255;
-			color.g = 0;
-			color.b = 0;
-			color.a = 255;
-			put_text(sdl, "End", color, cur_room);
-		}
-		cur_room = cur_room->next;
-	}
-}
-
-static void			draw_link(t_sdl *sdl, t_room *room_start, t_room *room_end,
+void				draw_link(t_sdl *sdl, t_room *room_start, t_room *room_end,
 								SDL_Color color)
 {
 	SDL_SetRenderDrawColor(sdl->renderer, color.r, color.g, color.b, color.a);
@@ -133,34 +98,4 @@ void				highlight_paths(t_sdl *sdl, t_paths *paths, int path)
 		}
 		cur_path = cur_path->next;
 	}
-}
-
-void				draw_ants(t_sdl *sdl, t_ants *ants)
-{
-	t_ants		*cur_ants;
-	SDL_Rect	r;
-
-	cur_ants = ants;
-	while (cur_ants != NULL)
-	{
-		r.x = cur_ants->x - ANTS_SIZE / 2;
-		r.y = cur_ants->y - ANTS_SIZE / 2;
-		r.h = ANTS_SIZE;
-		r.w = ANTS_SIZE;
-		SDL_RenderCopy(sdl->renderer, sdl->ant, NULL, &r);
-		cur_ants = cur_ants->next;
-	}
-}
-
-void				redraw(t_sdl *sdl, t_ants *ants)
-{
-	SDL_SetRenderDrawColor(sdl->renderer, 0, 0, 0, 255);
-	SDL_RenderClear(sdl->renderer);
-	SDL_RenderCopy(sdl->renderer, sdl->background, NULL, NULL);
-	draw_rooms(sdl, sdl->rooms, sdl->map);
-	draw_links(sdl, sdl->links);
-	highlight_paths(sdl, sdl->best_paths, sdl->best_paths_count);
-	if (ants != NULL)
-		draw_ants(sdl, ants);
-	SDL_RenderPresent(sdl->renderer);
 }

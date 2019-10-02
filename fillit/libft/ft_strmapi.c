@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_strmapi.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: vurrigon <vurrigon@student.42.fr>          +#+  +:+       +#+        */
+/*   By: djast <djast@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2018/11/30 12:13:07 by vurrigon          #+#    #+#             */
-/*   Updated: 2018/12/07 14:24:36 by vurrigon         ###   ########.fr       */
+/*   Created: 2018/11/30 19:07:43 by djast             #+#    #+#             */
+/*   Updated: 2018/12/11 19:20:56 by djast            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,19 +14,24 @@
 
 char	*ft_strmapi(char const *s, char (*f)(unsigned int, char))
 {
-	char	*fresh;
-	int		index;
+	char	*arr;
+	size_t	i;
+	size_t	count;
 
-	index = 0;
-	if (!s)
+	if (s == NULL || f == NULL)
 		return (NULL);
-	fresh = ft_strnew(ft_strlen(s));
-	if (!fresh)
+	i = 0;
+	count = 0;
+	while (s[i++] != '\0')
+		if (f(i - 1, s[i - 1]))
+			count++;
+	i = 0;
+	arr = ft_strnew(count);
+	if (arr == NULL)
 		return (NULL);
-	while (*(s + index))
-	{
-		*(fresh + index) = f(index, *(s + index));
-		index++;
-	}
-	return (fresh);
+	count = 0;
+	while (s[i++] != '\0')
+		if (f(i - 1, s[i - 1]))
+			arr[count++] = f(i - 1, s[i - 1]);
+	return (arr);
 }
