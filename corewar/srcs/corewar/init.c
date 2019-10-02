@@ -6,7 +6,7 @@
 /*   By: djast <djast@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/09/25 13:58:35 by djast             #+#    #+#             */
-/*   Updated: 2019/09/26 16:15:47 by djast            ###   ########.fr       */
+/*   Updated: 2019/09/28 17:55:36 by djast            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -42,6 +42,7 @@ t_vm_info			*init_vm_info(t_champ *players)
 	info->count_players = get_player_count(players);
 	info->cycles_to_die = CYCLE_TO_DIE;
 	info->cycle = 0;
+	info->live = 0;
 	info->map = ft_strnew(MEM_SIZE);
 	return (info);
 }
@@ -56,6 +57,9 @@ t_champ				*init_champ(int id)
 	champ->comment = NULL;
 	champ->code_size = -1;
 	champ->code = NULL;
+	champ->cur_lives = 0;
+	champ->prev_lives = 0;
+	champ->last_live = 0;
 	champ->next = NULL;
 	return (champ);
 }

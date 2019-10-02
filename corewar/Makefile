@@ -6,7 +6,7 @@
 #    By: djast <djast@student.42.fr>                +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2019/02/15 17:18:06 by djast             #+#    #+#              #
-#    Updated: 2019/09/25 17:27:23 by djast            ###   ########.fr        #
+#    Updated: 2019/10/02 14:54:18 by djast            ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -39,7 +39,8 @@ FILSE_COREWAR = corewar.c \
 				get_champ.c \
 				utils.c \
 				put_players.c \
-				carriage.c
+				carriage.c \
+				op_1.c
 
 SRC_DIRECTORY = ./srcs/
 SRC_DIRECTORY_ASM = $(SRC_DIRECTORY)asm/

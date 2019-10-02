@@ -6,7 +6,7 @@
 /*   By: djast <djast@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/09/23 13:35:39 by djast             #+#    #+#             */
-/*   Updated: 2019/09/26 16:18:20 by djast            ###   ########.fr       */
+/*   Updated: 2019/09/28 18:28:46 by djast            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,6 +39,7 @@ typedef struct			s_vm_info
 	int					count_players;
 	int					cycles_to_die;
 	int					cycle;
+	int					live;
 	t_carriage			*carriages;
 	char				*map;
 }						t_vm_info;
@@ -50,6 +51,9 @@ typedef struct			s_champ
 	char				*comment;
 	int					code_size;
 	char				*code;
+	int					cur_lives;
+	int					prev_lives;
+	int					last_live;
 	struct s_champ		*next;
 }						t_champ;
 
@@ -73,4 +77,22 @@ t_champ			*find_player_by_id(t_champ *champs, int id);
 void			introducing(t_champ	*champs, t_vm_info *info);
 t_champ			*find_player_by_id(t_champ *champs, int id);
 void			set_op_steps(t_carriage *carr);
+
+void			make_command_live(t_vm_info *info, t_carriage *carr);
+void			make_command_ld(t_vm_info *info, t_carriage *carr);
+void			make_command_st(t_vm_info *info, t_carriage *carr);
+void			make_command_add(t_vm_info *info, t_carriage *carr);
+void			make_command_sub(t_vm_info *info, t_carriage *carr);
+void			make_command_and(t_vm_info *info, t_carriage *carr);
+void			make_command_or(t_vm_info *info, t_carriage *carr);
+void			make_command_xor(t_vm_info *info, t_carriage *carr);
+void			make_command_zjmp(t_vm_info *info, t_carriage *carr);
+void			make_command_ldi(t_vm_info *info, t_carriage *carr);
+void			make_command_sti(t_vm_info *info, t_carriage *carr);
+void			make_command_fork(t_vm_info *info, t_carriage *carr);
+void			make_command_lld(t_vm_info *info, t_carriage *carr);
+void			make_command_lldi(t_vm_info *info, t_carriage *carr);
+void			make_command_lfork(t_vm_info *info, t_carriage *carr);
+void			make_command_aff(t_vm_info *info, t_carriage *carr);
+
 #endif
