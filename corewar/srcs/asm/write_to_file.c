@@ -6,7 +6,7 @@
 /*   By: vurrigon <vurrigon@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/10/01 11:11:32 by vurrigon          #+#    #+#             */
-/*   Updated: 2019/10/01 12:12:04 by vurrigon         ###   ########.fr       */
+/*   Updated: 2019/10/09 15:34:38 by vurrigon         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,11 +15,13 @@
 int		create_new_fd(t_dasm *dasm)
 {
 	char	*new_name;
+	char	*tmp;
 	int		fd;
 
 	new_name = ft_strstr(dasm->full_name_file, ".cor");
-	new_name = ft_strsub(dasm->full_name_file, 0, new_name - dasm->full_name_file);
-	new_name = ft_strjoin(new_name, ".s");
+	tmp = ft_strsub(dasm->full_name_file, 0, new_name - dasm->full_name_file);
+	new_name = ft_strjoin(tmp, ".s");
+	free(tmp);
 	fd = open(new_name, O_WRONLY);
     if (fd == -1)
     {

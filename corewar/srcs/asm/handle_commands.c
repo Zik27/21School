@@ -6,7 +6,7 @@
 /*   By: vurrigon <vurrigon@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/10/01 11:15:44 by vurrigon          #+#    #+#             */
-/*   Updated: 2019/10/01 11:28:05 by vurrigon         ###   ########.fr       */
+/*   Updated: 2019/10/09 12:51:20 by vurrigon         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -53,6 +53,7 @@ void	handling_command(int fd, t_dasm *dasm)
 			dasm->size--;
 		}
 		handle_args(fd, dasm, code_op);
+		free(dasm->arg_types);
 		dasm->arg_types = NULL;
 	}
 	if ((ret = read(fd, buf, 1)))

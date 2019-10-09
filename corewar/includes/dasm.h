@@ -6,7 +6,7 @@
 /*   By: vurrigon <vurrigon@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/10/01 11:26:22 by vurrigon          #+#    #+#             */
-/*   Updated: 2019/10/01 12:19:07 by vurrigon         ###   ########.fr       */
+/*   Updated: 2019/10/09 13:43:52 by vurrigon         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -63,5 +63,6 @@ void	add_ins_dasm(t_dasm *dasm, t_inst_dasm *instr);
 void	handle_args(int fd, t_dasm *dasm, int code_op);
 void	get_types(t_dasm *dasm, unsigned char types);
 int		count_args(unsigned char types);
+void	free_dasm(t_dasm *dasm);
 
 #endif

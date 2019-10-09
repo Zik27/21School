@@ -6,7 +6,7 @@
 /*   By: vurrigon <vurrigon@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/09/17 11:50:59 by vurrigon          #+#    #+#             */
-/*   Updated: 2019/10/01 12:20:15 by vurrigon         ###   ########.fr       */
+/*   Updated: 2019/10/09 13:04:49 by vurrigon         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,9 +23,16 @@ int		check_extension(char *filename)
 	while (tmp[i + 1])
 		i++;
 	if (!ft_strcmp(tmp[i], "s"))
+	{
+		free_split(tmp);
 		return (1);
+	}
 	else if (!ft_strcmp(tmp[i], "cor"))
+	{
+		free_split(tmp);
 		return (-1);
+	}
+	free_split(tmp);
 	return (0);
 }
 

@@ -3,10 +3,10 @@
 #                                                         :::      ::::::::    #
 #    Makefile                                           :+:      :+:    :+:    #
 #                                                     +:+ +:+         +:+      #
-#    By: djast <djast@student.42.fr>                +#+  +:+       +#+         #
+#    By: vurrigon <vurrigon@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2019/02/15 17:18:06 by djast             #+#    #+#              #
-#    Updated: 2019/10/09 11:58:11 by djast            ###   ########.fr        #
+#    Updated: 2019/10/09 12:33:44 by vurrigon         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -37,7 +37,8 @@ FILES_ASM =		asm.c \
 				init_dasm.c \
 				valid.c \
 				write_to_file.c \
-				utils_dasm.c
+				utils_dasm.c \
+				free_dasm.c
 
 FILSE_COREWAR = corewar.c \
 				parse.c \

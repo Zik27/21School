@@ -6,7 +6,7 @@
 /*   By: vurrigon <vurrigon@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/09/19 16:40:19 by vurrigon          #+#    #+#             */
-/*   Updated: 2019/10/01 12:16:12 by vurrigon         ###   ########.fr       */
+/*   Updated: 2019/10/09 13:06:20 by vurrigon         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,4 +34,14 @@ int	is_comment(char *line, t_player *player)
 			line[player->num_col] == COMMENT_CHAR)
 		return (1);
 	return (0);
+}
+
+void	free_split(char **str)
+{
+	int	i;
+
+	i = 0;
+	while (str[i])
+		free(str[i++]);
+	free(str);
 }
