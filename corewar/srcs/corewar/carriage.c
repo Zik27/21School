@@ -6,7 +6,7 @@
 /*   By: djast <djast@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/09/25 17:25:42 by djast             #+#    #+#             */
-/*   Updated: 2019/10/09 10:44:37 by djast            ###   ########.fr       */
+/*   Updated: 2019/10/09 18:15:55 by djast            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,7 +36,7 @@ void			set_op_steps(t_carriage *carr)
 	else
 	{
 		carr->op_steps = 0;
-		carr->jump_size = 1;
+		carr->cur_pos++;
 	}
 }
 
@@ -58,4 +58,36 @@ t_carriage		*init_carriages(t_champ *champs, t_vm_info *info)
 		cur_player = cur_player->next;
 	}
 	return (carriages);
+}
+
+void			delete_carriage(t_vm_info *info, t_carriage **prev, t_carriage *cur, t_carriage *next)
+{
+	if (*prev == NULL)
+		info->carriages = next;
+	else
+		(*prev)->next = next;
+	free (cur);
+}
+
+void			delete_death_carr(t_vm_info *info, t_carriage *carr)
+{
+	t_carriage *prev_carr;
+	t_carriage *cur_carr;
+	t_carriage *next_carr;
+	
+	prev_carr = NULL;
+	cur_carr = carr;
+	if (carr != NULL)
+		next_carr = cur_carr->next;
+	while (cur_carr != NULL)
+	{
+		printf("%d %d %d\n", info->cycle, info->cycles_to_die, carr->cycle_last_live);
+		if (info->cycle - info->cycles_to_die > carr->cycle_last_live)
+			delete_carriage(info, &prev_carr, cur_carr, next_carr);
+		prev_carr = cur_carr;
+		cur_carr = cur_carr->next;
+		if (next_carr != NULL)
+			next_carr = next_carr->next;
+	}
+
 }

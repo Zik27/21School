@@ -6,7 +6,7 @@
 /*   By: djast <djast@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/10/09 09:40:38 by djast             #+#    #+#             */
-/*   Updated: 2019/10/09 10:46:56 by djast            ###   ########.fr       */
+/*   Updated: 2019/10/09 17:46:09 by djast            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,6 +14,7 @@
 
 void			make_command_fork(t_vm_info *info, t_carriage *carr)
 {
+	printf("fork\n");
 	ft_bzero(carr->args_types, 3 * sizeof(int));
 	carr->args_types[0] = T_DIR;
 	get_op_arg(info, carr, carr->op_code);
@@ -24,6 +25,7 @@ void			make_command_fork(t_vm_info *info, t_carriage *carr)
 
 void			make_command_lfork(t_vm_info *info, t_carriage *carr)
 {
+	printf("lfork\n");
 	ft_bzero(carr->args_types, 3 * sizeof(int));
 	carr->args_types[0] = T_DIR;
 	get_op_arg(info, carr, carr->op_code);

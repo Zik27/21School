@@ -6,7 +6,7 @@
 /*   By: djast <djast@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/09/23 13:35:39 by djast             #+#    #+#             */
-/*   Updated: 2019/10/09 10:28:07 by djast            ###   ########.fr       */
+/*   Updated: 2019/10/09 13:07:03 by djast            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -91,6 +91,8 @@ void			get_op_arg(t_vm_info *info, t_carriage *carr, int cmd);
 void			calc_jump_size(t_carriage *carr);
 char			*int_to_bytecode(int value, int size);
 void			create_carr_copy(t_vm_info *info, t_carriage *carr);
+void			check_cycle_to_die(t_vm_info *info);
+void			delete_death_carr(t_vm_info *info, t_carriage *carr);
 
 void			make_command_live(t_vm_info *info, t_champ *champs, t_carriage *carr);
 void			make_command_ld(t_vm_info *info, t_carriage *carr);

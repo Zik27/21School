@@ -6,7 +6,7 @@
 /*   By: djast <djast@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/10/09 09:21:36 by djast             #+#    #+#             */
-/*   Updated: 2019/10/09 10:46:40 by djast            ###   ########.fr       */
+/*   Updated: 2019/10/09 18:12:55 by djast            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,6 +14,7 @@
 
 void	make_command_ld(t_vm_info *info, t_carriage *carr)
 {
+	printf("ld\n");
 	ft_bzero(carr->args_types, 3 * sizeof(int));
 	get_op_arg_type(info, carr);
 	//printf("pos: %d\n", carr->cur_pos);
@@ -35,6 +36,7 @@ void	make_command_ldi(t_vm_info *info, t_carriage *carr)
 {
 	int res;
 
+	printf("ldi\n");
 	ft_bzero(carr->args_types, 3 * sizeof(int));
 	get_op_arg_type(info, carr);
 	//printf("pos: %d\n", carr->cur_pos);
@@ -58,6 +60,7 @@ void	make_command_ldi(t_vm_info *info, t_carriage *carr)
 
 void	make_command_lld(t_vm_info *info, t_carriage *carr)
 {
+	printf("lld\n");
 	ft_bzero(carr->args_types, 3 * sizeof(int));
 	get_op_arg_type(info, carr);
 	//printf("pos: %d\n", carr->cur_pos);
@@ -79,6 +82,7 @@ void	make_command_lldi(t_vm_info *info, t_carriage *carr)
 {
 	int res;
 
+	printf("lldi\n");
 	ft_bzero(carr->args_types, 3 * sizeof(int));
 	get_op_arg_type(info, carr);
 	//printf("pos: %d\n", carr->cur_pos);

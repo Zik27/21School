@@ -6,7 +6,7 @@
 /*   By: djast <djast@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/10/09 09:18:50 by djast             #+#    #+#             */
-/*   Updated: 2019/10/09 09:29:26 by djast            ###   ########.fr       */
+/*   Updated: 2019/10/09 17:48:53 by djast            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,6 +14,7 @@
 
 void	make_command_and(t_vm_info *info, t_carriage *carr)
 {
+	printf("and\n");
 	ft_bzero(carr->args_types, 3 * sizeof(int));
 	get_op_arg_type(info, carr);
 	get_op_arg(info, carr, carr->op_code);
@@ -27,6 +28,7 @@ void	make_command_and(t_vm_info *info, t_carriage *carr)
 
 void	make_command_or(t_vm_info *info, t_carriage *carr)
 {
+	printf("or\n");
 	ft_bzero(carr->args_types, 3 * sizeof(int));
 	get_op_arg_type(info, carr);
 	get_op_arg(info, carr, carr->op_code);
@@ -40,6 +42,7 @@ void	make_command_or(t_vm_info *info, t_carriage *carr)
 
 void	make_command_xor(t_vm_info *info, t_carriage *carr)
 {
+	printf("xor\n");
 	ft_bzero(carr->args_types, 3 * sizeof(int));
 	get_op_arg_type(info, carr);
 	get_op_arg(info, carr, carr->op_code);

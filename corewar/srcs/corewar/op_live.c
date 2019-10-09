@@ -6,7 +6,7 @@
 /*   By: djast <djast@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/10/09 09:20:37 by djast             #+#    #+#             */
-/*   Updated: 2019/10/09 09:21:09 by djast            ###   ########.fr       */
+/*   Updated: 2019/10/09 18:04:23 by djast            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,6 +16,7 @@ void	make_command_live(t_vm_info *info, t_champ *champs, t_carriage *carr)
 {
 	t_champ *champ;
 
+	printf("live\n");
 	ft_bzero(carr->args_types, 3 * sizeof(int));
 	carr->args_types[0] = DIR_CODE;
 	get_op_arg(info, carr, carr->op_code);

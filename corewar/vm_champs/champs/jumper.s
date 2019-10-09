@@ -370,3 +370,6 @@ sti r1,%:boucle,%9
 sti r1,%:boucle,%17
 sti r1,%:boucle,%25
 
+01101000
+11000000
+

@@ -6,7 +6,7 @@
 /*   By: djast <djast@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/09/23 13:11:12 by djast             #+#    #+#             */
-/*   Updated: 2019/10/09 12:07:26 by djast            ###   ########.fr       */
+/*   Updated: 2019/10/09 18:25:58 by djast            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,6 +34,8 @@ void	make_command_next(t_vm_info *info, t_carriage *carr)
 
 void	make_command(t_vm_info *info, t_champ *champs, t_carriage *carr)
 {
+	//printf("code: %d\n", carr->op_code);
+	printf("%d ", info->cycle);
 	if (carr->op_code == 1)
 		make_command_live(info, champs, carr);
 	else if (carr->op_code == 2)
@@ -59,11 +61,14 @@ int		check_command_args(t_carriage *carr, int args[3])
 	int cmd;
 	int i;
 
-	cmd = carr->op_code;
 
+	cmd = carr->op_code;
+	if (g_instr[cmd - 1].args_types_code == 0)
+		return (1);
 	i = 0;
 	while (i < 3)
 	{
+		//printf("%d %d\n", g_instr[cmd - 1].args_types[i], args[i]);
 		if (args[i] == T_IND)
 			args[i] += 1;
 		if (g_instr[cmd - 1].args_types[i] == 0)
@@ -97,13 +102,13 @@ void	skip_command(t_carriage *carr, int args[3])
 
 int		get_info_for_command(t_vm_info *info, t_carriage *carr)
 {
-	char types;
+	char	types;
 	int		args[3];
 
 	types = info->map[carr->cur_pos + 1];
 	args[0] = ((unsigned char)types & 0b11000000) / 64;
 	args[1] = ((unsigned char)types & 0b110000) / 16;
-	args[2] = (unsigned char)types & 0b1100 / 4;
+	args[2] = ((unsigned char)types & 0b1100) / 4;
 
 	if (check_command_args(carr, args) == 0)
 	{
@@ -117,8 +122,15 @@ void	make_step_cycle(t_vm_info *info, t_champ *champs, t_carriage *carriages)
 {
 	t_carriage *cur_carriage;
 
+	if (info->cycle != 0 && info->cycle % info->cycles_to_die == 0)
+	{
+		check_cycle_to_die(info);
+		if (info->live >= NBR_LIVE)
+			info->cycles_to_die -= CYCLE_DELTA;
+		print_carriages(info->carriages);
+		printf("\n\n");
+	}
 	cur_carriage = carriages;
-
 	while (cur_carriage != NULL)
 	{
 		if (cur_carriage->op_steps == 0)
@@ -133,6 +145,7 @@ void	make_step_cycle(t_vm_info *info, t_champ *champs, t_carriage *carriages)
 			if (get_info_for_command(info, cur_carriage) == 1)
 				make_command(info, champs, cur_carriage);
 		}
+		//printf("jump: %d\n", cur_carriage->jump_size);
 		cur_carriage->cur_pos += cur_carriage->jump_size;
 		cur_carriage->jump_size = 0;
 		cur_carriage = cur_carriage->next;
@@ -142,20 +155,24 @@ void	make_step_cycle(t_vm_info *info, t_champ *champs, t_carriage *carriages)
 void	start_corewar(t_champ *champs, t_vm_info *info)
 {
 	(void) champs;
-	int i = 11;
 	
 	print_map(info->map);
-	print_carriages(info->carriages);
-	printf("\n\n");
-	while (i-- != 0)
+	// print_carriages(info->carriages);
+	// printf("\n\n");
+	while (info->cycle < 100)
 	{
 		// print_map(info->map);
 		make_step_cycle(info, champs, info->carriages);
-		print_carriages(info->carriages);
-		printf("\n\n");
+		// if (info->cycle % 2 == 0)
+		// {
+			// print_carriages(info->carriages);
+			// printf("\n\n");
+		//}
 		info->cycle++;
+		if (info->cycle == 10000)
+			break ;
 	}
-	print_map(info->map);
+	//print_map(info->map);
 }
 
 

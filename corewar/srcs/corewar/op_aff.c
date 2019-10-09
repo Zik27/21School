@@ -6,7 +6,7 @@
 /*   By: djast <djast@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/10/09 10:47:02 by djast             #+#    #+#             */
-/*   Updated: 2019/10/09 11:58:18 by djast            ###   ########.fr       */
+/*   Updated: 2019/10/09 17:48:58 by djast            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,6 +14,7 @@
 
 void	make_command_aff(t_vm_info *info, t_carriage *carr)
 {
+	printf("aff\n");
 	ft_bzero(carr->args_types, 3 * sizeof(int));
 
 	carr->args_types[0] = REG_CODE;

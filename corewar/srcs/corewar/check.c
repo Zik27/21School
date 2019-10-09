@@ -6,7 +6,7 @@
 /*   By: djast <djast@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/09/25 13:38:07 by djast             #+#    #+#             */
-/*   Updated: 2019/09/25 17:23:06 by djast            ###   ########.fr       */
+/*   Updated: 2019/10/09 17:42:57 by djast            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -81,4 +81,12 @@ t_champ			*check_file(char *arg, int id)
 		exit(-1);
 	}
 	return (champ);
+}
+
+void	check_cycle_to_die(t_vm_info *info)
+{
+	(void) info;
+	//printf("%d\n", info->cycle);
+	
+	delete_death_carr(info, info->carriages);
 }
