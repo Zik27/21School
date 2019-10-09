@@ -6,7 +6,7 @@
 /*   By: djast <djast@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/09/25 13:21:23 by djast             #+#    #+#             */
-/*   Updated: 2019/10/02 18:11:27 by djast            ###   ########.fr       */
+/*   Updated: 2019/10/09 09:53:40 by djast            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,6 +18,7 @@ t_champ		*parse_args(int argc, char **argv)
 	char *find;
 	t_champ *champs;
 	t_champ *tmp;
+	t_champ *cur_champ;
 
 	i = 1;
 	champs = NULL;
@@ -26,12 +27,15 @@ t_champ		*parse_args(int argc, char **argv)
 		if ((find = ft_strstr(argv[i], ".cor")) != NULL && find[4] == '\0')
 		{
 			if (champs == NULL)
+			{
 				champs = check_file(argv[i], i);
+				cur_champ = champs;
+			}
 			else
 			{
 				tmp = check_file(argv[i], i);
-				tmp->next = champs;
-				champs = tmp;
+				cur_champ->next = tmp;
+				cur_champ = cur_champ->next;
 			}
 
 		}

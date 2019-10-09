@@ -6,7 +6,7 @@
 /*   By: djast <djast@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/09/25 16:51:08 by djast             #+#    #+#             */
-/*   Updated: 2019/10/08 18:42:23 by djast            ###   ########.fr       */
+/*   Updated: 2019/10/09 10:35:09 by djast            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -79,19 +79,20 @@ char	*int_to_bytecode(int value, int size)
 	return (data);
 }
 
-void	rewrite(t_vm_info *info, int addr, int number)
+void	create_carr_copy(t_vm_info *info, t_carriage *carr)
 {
-	int i;
-	char *data;
+ 	t_carriage *new_carr;
+ 	int i;
 
-	i = 4;
-	data = int_to_bytecode(number, 4);
-	printf("%s\n", data);
-	while (i != 0)
-	{
-		info->map[addr + i - 1] = data[i - 1];
-		i--;
-	}
-	free(data);
+ 	new_carr = init_carriage(carr->champ, info);
+
+	i = 0;
+	while (i++ < REG_NUMBER)
+		new_carr->registers[i - 1] = carr->registers[i - 1];
+
+	new_carr->carry = carr->carry;
+	new_carr->cycle_last_live = carr->cycle_last_live;
+
+	new_carr->next = info->carriages;
+	info->carriages = new_carr;
 }
-

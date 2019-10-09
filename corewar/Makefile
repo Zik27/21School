@@ -6,7 +6,7 @@
 #    By: djast <djast@student.42.fr>                +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2019/02/15 17:18:06 by djast             #+#    #+#              #
-#    Updated: 2019/10/02 18:09:41 by djast            ###   ########.fr        #
+#    Updated: 2019/10/09 11:58:11 by djast            ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -48,7 +48,15 @@ FILSE_COREWAR = corewar.c \
 				utils.c \
 				put_players.c \
 				carriage.c \
-				op_1.c
+				op_add_sub.c \
+				op_aff.c \
+				op_and_or_xor.c \
+				op_fork_lfork.c \
+				op_ld_ldi_lld_lldi.c \
+				op_live.c \
+				op_st_sti.c\
+				op_utils.c \
+				op_zjmp.c
 
 SRC_DIRECTORY = ./srcs/
 SRC_DIRECTORY_ASM = $(SRC_DIRECTORY)asm/

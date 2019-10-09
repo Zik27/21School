@@ -6,13 +6,12 @@
 /*   By: djast <djast@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/09/26 15:13:08 by djast             #+#    #+#             */
-/*   Updated: 2019/10/09 09:23:20 by djast            ###   ########.fr       */
+/*   Updated: 2019/10/09 12:03:13 by djast            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "vm.h"
-
-static void		get_op_arg_type(t_vm_info *info, t_carriage *carr)
+void		get_op_arg_type(t_vm_info *info, t_carriage *carr)
 {
 	int types;
 
@@ -22,7 +21,7 @@ static void		get_op_arg_type(t_vm_info *info, t_carriage *carr)
 	carr->args_types[2] = (unsigned char)types & 0b1100 / 4;
 }
 
-static void		get_op_arg(t_vm_info *info, t_carriage *carr, int cmd)
+void		get_op_arg(t_vm_info *info, t_carriage *carr, int cmd)
 {
 	int i;
 
@@ -49,7 +48,7 @@ static void		get_op_arg(t_vm_info *info, t_carriage *carr, int cmd)
 	}
 }
 
-static void		calc_jump_size(t_carriage *carr)
+void		calc_jump_size(t_carriage *carr)
 {
 	int i;
 
@@ -65,4 +64,19 @@ static void		calc_jump_size(t_carriage *carr)
 			carr->jump_size += 2;
 		i++;
 	}
+}
+
+void	rewrite(t_vm_info *info, int addr, int number)
+{
+	int i;
+	char *data;
+
+	i = 4;
+	data = int_to_bytecode(number, 4);
+	while (i != 0)
+	{
+		info->map[addr + i - 1] = data[i - 1];
+		i--;
+	}
+	free(data);
 }

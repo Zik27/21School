@@ -6,7 +6,7 @@
 /*   By: djast <djast@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/09/25 17:06:18 by djast             #+#    #+#             */
-/*   Updated: 2019/10/02 17:55:59 by djast            ###   ########.fr       */
+/*   Updated: 2019/10/09 09:57:19 by djast            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,13 +30,13 @@ void			place_players_on_arena(t_champ *champs, t_vm_info *info)
 	int place;
 	t_champ *cur_champ;
 
-	place = info->count_players - 1;
+	place = 0;
 	cur_champ = champs;
-	while (place != -1)
+	while (place != info->count_players)
 	{
 		put_player(place * (MEM_SIZE / info->count_players), cur_champ,
 																info->map);
 		cur_champ = cur_champ->next;
-		place--;
+		place++;
 	}
 }

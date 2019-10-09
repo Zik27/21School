@@ -6,7 +6,7 @@
 /*   By: djast <djast@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/09/25 17:25:42 by djast             #+#    #+#             */
-/*   Updated: 2019/10/08 16:25:43 by djast            ###   ########.fr       */
+/*   Updated: 2019/10/09 10:44:37 by djast            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,7 +18,7 @@ void			set_op_steps(t_carriage *carr)
 													|| carr->op_code == 13)
 		carr->op_steps = 10;
 	else if (carr->op_code == 2 || carr->op_code == 3)
-		carr->op_steps = 2;
+		carr->op_steps = 5;
 	else if (carr->op_code == 6 || carr->op_code == 7 || carr->op_code == 8)
 		carr->op_steps = 6;
 	else if (carr->op_code == 9)
@@ -34,7 +34,10 @@ void			set_op_steps(t_carriage *carr)
 	else if (carr->op_code == 16)
 		carr->op_steps = 2;
 	else
+	{
 		carr->op_steps = 0;
+		carr->jump_size = 1;
+	}
 }
 
 t_carriage		*init_carriages(t_champ *champs, t_vm_info *info)
@@ -43,28 +46,16 @@ t_carriage		*init_carriages(t_champ *champs, t_vm_info *info)
 	t_carriage	*cur_carriage;
 	t_carriage	*new_carriage;
 	t_champ		*cur_player;
-	int			id;
 
 	cur_player = champs;
 	carriages = NULL;
-	id = info->count_players;
-	
 	while (cur_player != NULL)
 	{
-		//printf("cur_cur: %d\n", cur_player->id);
-		new_carriage = init_carriage(id, cur_player, info);
-		if (carriages == NULL)
-		{
-			carriages = new_carriage;
-			cur_carriage = carriages;
-		}
-		else
-		{
-			cur_carriage->next = new_carriage;
-			cur_carriage = cur_carriage->next;
-		}
+		new_carriage = init_carriage(cur_player, info);
+		cur_carriage = carriages;
+		carriages = new_carriage;
+		carriages->next = cur_carriage;
 		cur_player = cur_player->next;
-		id--;
 	}
 	return (carriages);
 }

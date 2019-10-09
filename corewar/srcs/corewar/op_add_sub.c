@@ -6,16 +6,15 @@
 /*   By: djast <djast@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/10/09 09:19:57 by djast             #+#    #+#             */
-/*   Updated: 2019/10/09 09:20:24 by djast            ###   ########.fr       */
+/*   Updated: 2019/10/09 09:29:10 by djast            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "vm.h"
 
-void	make_command_add(t_vm_info *info, t_champ *champs, t_carriage *carr)
+void	make_command_add(t_vm_info *info, t_carriage *carr)
 {
 	int sum;
-	(void) champs;
 
 	ft_bzero(carr->args_types, 3 * sizeof(int));
 	get_op_arg_type(info, carr);
@@ -29,10 +28,9 @@ void	make_command_add(t_vm_info *info, t_champ *champs, t_carriage *carr)
 		carr->carry = 0;
 }
 
-void	make_command_sub(t_vm_info *info, t_champ *champs, t_carriage *carr)
+void	make_command_sub(t_vm_info *info, t_carriage *carr)
 {
 	int sub;
-	(void) champs;
 
 	ft_bzero(carr->args_types, 3 * sizeof(int));
 	get_op_arg_type(info, carr);
