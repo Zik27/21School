@@ -6,7 +6,7 @@
 /*   By: djast <djast@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/09/23 13:11:12 by djast             #+#    #+#             */
-/*   Updated: 2019/10/02 18:12:43 by djast            ###   ########.fr       */
+/*   Updated: 2019/10/08 18:43:33 by djast            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,10 +36,10 @@ void	make_command(t_vm_info *info, t_champ *champs, t_carriage *carr)
 {
 	if (carr->op_code == 1)
 		make_command_live(info, champs, carr);
-	// else if (carr->op_code == 2)
-	// 	make_command_ld(info, carr);
-	// else if (carr->op_code == 3)
-	// 	make_command_st(info, carr);
+	else if (carr->op_code == 2)
+	 	make_command_ld(info, champs, carr);
+	else if (carr->op_code == 3)
+	 	make_command_st(info, champs, carr);
 	// else if (carr->op_code == 4)
 	// 	make_command_add(info, carr);
 	// else if (carr->op_code == 5)
@@ -140,18 +140,21 @@ void	make_step_cycle(t_vm_info *info, t_champ *champs, t_carriage *carriages)
 void	start_corewar(t_champ *champs, t_vm_info *info, t_carriage *carriages)
 {
 	(void) champs;
-	int i = 10;
+	int i = 11;
 	
-	//print_map(info->map);
+	print_map(info->map);
+	print_carriages(carriages);
+	printf("\n\n");
 	while (i-- != 0)
 	{
-		//print_carriages(carriages);
-		//printf("\n\n");
+		
 		// print_map(info->map);
 		make_step_cycle(info, champs, carriages);
+		print_carriages(carriages);
+		printf("\n\n");
 		info->cycle++;
 	}
-
+	print_map(info->map);
 }
 
 

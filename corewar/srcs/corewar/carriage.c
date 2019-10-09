@@ -6,7 +6,7 @@
 /*   By: djast <djast@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/09/25 17:25:42 by djast             #+#    #+#             */
-/*   Updated: 2019/10/02 18:13:00 by djast            ###   ########.fr       */
+/*   Updated: 2019/10/08 16:25:43 by djast            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,9 +16,9 @@ void			set_op_steps(t_carriage *carr)
 {
 	if (carr->op_code == 1 || carr->op_code == 4 || carr->op_code == 5
 													|| carr->op_code == 13)
-		carr->op_steps = 1;
+		carr->op_steps = 10;
 	else if (carr->op_code == 2 || carr->op_code == 3)
-		carr->op_steps = 5;
+		carr->op_steps = 2;
 	else if (carr->op_code == 6 || carr->op_code == 7 || carr->op_code == 8)
 		carr->op_steps = 6;
 	else if (carr->op_code == 9)

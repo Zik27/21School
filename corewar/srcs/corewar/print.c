@@ -6,7 +6,7 @@
 /*   By: djast <djast@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/09/25 13:20:31 by djast             #+#    #+#             */
-/*   Updated: 2019/10/02 17:55:14 by djast            ###   ########.fr       */
+/*   Updated: 2019/10/08 18:32:35 by djast            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -52,8 +52,8 @@ void	print_carriages(t_carriage *car)
 														cur_car->op_code);
 		ft_printf("Cycle_last_live: %d, op_steps: %d\n", cur_car->cycle_last_live,
 															cur_car->op_steps);
-		ft_printf("Cur_pos: %d, reg[0]: %d\n", cur_car->cur_pos, cur_car->registers[0]); 
-		
+		ft_printf("Cur_pos: %d, reg1: %d\n", cur_car->cur_pos, cur_car->registers[0]); 
+		ft_printf("reg2: %d, reg2: %d, reg3: %d\n", cur_car->registers[1], cur_car->registers[2], cur_car->registers[3]);
 		cur_car = cur_car->next;
 	}
 	ft_printf("---------------------------------\n");
