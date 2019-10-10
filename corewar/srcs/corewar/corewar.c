@@ -6,7 +6,7 @@
 /*   By: djast <djast@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/09/23 13:11:12 by djast             #+#    #+#             */
-/*   Updated: 2019/10/09 18:25:58 by djast            ###   ########.fr       */
+/*   Updated: 2019/10/10 19:25:55 by djast            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,7 +35,7 @@ void	make_command_next(t_vm_info *info, t_carriage *carr)
 void	make_command(t_vm_info *info, t_champ *champs, t_carriage *carr)
 {
 	//printf("code: %d\n", carr->op_code);
-	printf("%d ", info->cycle);
+	printf("%d | %d ", carr->id, info->cycle);
 	if (carr->op_code == 1)
 		make_command_live(info, champs, carr);
 	else if (carr->op_code == 2)
@@ -105,7 +105,7 @@ int		get_info_for_command(t_vm_info *info, t_carriage *carr)
 	char	types;
 	int		args[3];
 
-	types = info->map[carr->cur_pos + 1];
+	types = info->map[(carr->cur_pos + 1) % MEM_SIZE];
 	args[0] = ((unsigned char)types & 0b11000000) / 64;
 	args[1] = ((unsigned char)types & 0b110000) / 16;
 	args[2] = ((unsigned char)types & 0b1100) / 4;
@@ -126,7 +126,11 @@ void	make_step_cycle(t_vm_info *info, t_champ *champs, t_carriage *carriages)
 	{
 		check_cycle_to_die(info);
 		if (info->live >= NBR_LIVE)
+		{
+			printf("cycle_to_die down: %d\n", info->cycles_to_die);
 			info->cycles_to_die -= CYCLE_DELTA;
+		}
+		info->live = 0;
 		print_carriages(info->carriages);
 		printf("\n\n");
 	}
@@ -146,7 +150,7 @@ void	make_step_cycle(t_vm_info *info, t_champ *champs, t_carriage *carriages)
 				make_command(info, champs, cur_carriage);
 		}
 		//printf("jump: %d\n", cur_carriage->jump_size);
-		cur_carriage->cur_pos += cur_carriage->jump_size;
+		cur_carriage->cur_pos = (cur_carriage->cur_pos + cur_carriage->jump_size) % MEM_SIZE;
 		cur_carriage->jump_size = 0;
 		cur_carriage = cur_carriage->next;
 	}
@@ -159,17 +163,17 @@ void	start_corewar(t_champ *champs, t_vm_info *info)
 	print_map(info->map);
 	// print_carriages(info->carriages);
 	// printf("\n\n");
-	while (info->cycle < 100)
+	while (1)
 	{
 		// print_map(info->map);
 		make_step_cycle(info, champs, info->carriages);
-		// if (info->cycle % 2 == 0)
-		// {
-			// print_carriages(info->carriages);
-			// printf("\n\n");
-		//}
+		if (info->cycle >= 1251 && info->cycle <= 1281)
+		{
+			print_carriages(info->carriages);
+			printf("\n\n");
+		}
 		info->cycle++;
-		if (info->cycle == 10000)
+		if (info->cycle == 24800)
 			break ;
 	}
 	//print_map(info->map);

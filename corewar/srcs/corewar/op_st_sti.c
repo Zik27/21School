@@ -6,7 +6,7 @@
 /*   By: djast <djast@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/10/09 09:22:05 by djast             #+#    #+#             */
-/*   Updated: 2019/10/09 17:45:22 by djast            ###   ########.fr       */
+/*   Updated: 2019/10/10 18:51:06 by djast            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,7 +24,7 @@ void	make_command_st(t_vm_info *info, t_carriage *carr)
 	if (carr->args_types[1] == REG_CODE)
 		carr->registers[carr->args[1] - 1] = carr->registers[carr->args[0] - 1];
 	else
-		rewrite(info, carr->cur_pos + (carr->args[1] % IDX_MOD), carr->registers[carr->args[0] - 1]);
+		rewrite(info, (carr->cur_pos + (carr->args[1] % IDX_MOD)) % MEM_SIZE, carr->registers[carr->args[0] - 1]);
 	calc_jump_size(carr);
 }
 
@@ -45,11 +45,11 @@ void	make_command_sti(t_vm_info *info, t_carriage *carr)
 	else if (carr->args_types[1] == DIR_CODE)
 		res += carr->args[1];
 	else if (carr->args_types[1] == IND_CODE)
-		res += bytecode_to_int((unsigned char *)(info->map + carr->cur_pos + (carr->args[0] % IDX_MOD)), 4);
+		res += bytecode_to_int((unsigned char *)(info->map + (carr->cur_pos + (carr->args[0] % IDX_MOD)) % MEM_SIZE), 4);
 	if (carr->args_types[2] == REG_CODE)
 		res += carr->registers[carr->args[2] - 1];
 	else if (carr->args_types[2] == DIR_CODE)
 		res += carr->args[2];
-	rewrite(info, carr->cur_pos + (res % IDX_MOD), carr->registers[carr->args[0] - 1]);
+	rewrite(info, (carr->cur_pos + (res % IDX_MOD)) % MEM_SIZE, carr->registers[carr->args[0] - 1]);
 	calc_jump_size(carr);
 }

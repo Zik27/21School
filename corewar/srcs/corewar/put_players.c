@@ -6,20 +6,20 @@
 /*   By: djast <djast@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/09/25 17:06:18 by djast             #+#    #+#             */
-/*   Updated: 2019/10/09 09:57:19 by djast            ###   ########.fr       */
+/*   Updated: 2019/10/10 19:28:03 by djast            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "vm.h"
 
-static void		put_player(int pos, t_champ *player, char *map)
+static void		put_player(int pos, t_champ *player, t_vm_info *info)
 {
 	int index;
 
 	index = 0;
 	while (index != player->code_size)
 	{
-		map[pos + index] = player->code[index] & 0xFF;
+		info->map[pos + index] = player->code[index] & 0xFF;
 		index++;
 	}
 }
@@ -35,7 +35,7 @@ void			place_players_on_arena(t_champ *champs, t_vm_info *info)
 	while (place != info->count_players)
 	{
 		put_player(place * (MEM_SIZE / info->count_players), cur_champ,
-																info->map);
+																info);
 		cur_champ = cur_champ->next;
 		place++;
 	}

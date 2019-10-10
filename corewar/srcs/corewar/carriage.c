@@ -6,7 +6,7 @@
 /*   By: djast <djast@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/09/25 17:25:42 by djast             #+#    #+#             */
-/*   Updated: 2019/10/09 18:15:55 by djast            ###   ########.fr       */
+/*   Updated: 2019/10/10 18:38:17 by djast            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,7 +24,7 @@ void			set_op_steps(t_carriage *carr)
 	else if (carr->op_code == 9)
 		carr->op_steps = 20;
 	else if (carr->op_code == 10 || carr->op_code == 11)
-		carr->op_steps = 15;
+		carr->op_steps = 25;
 	else if (carr->op_code == 12)
 		carr->op_steps = 800;
 	else if (carr->op_code == 14)
@@ -36,7 +36,7 @@ void			set_op_steps(t_carriage *carr)
 	else
 	{
 		carr->op_steps = 0;
-		carr->cur_pos++;
+		carr->cur_pos = (carr->cur_pos + 1) % MEM_SIZE;
 	}
 }
 
@@ -60,13 +60,14 @@ t_carriage		*init_carriages(t_champ *champs, t_vm_info *info)
 	return (carriages);
 }
 
-void			delete_carriage(t_vm_info *info, t_carriage **prev, t_carriage *cur, t_carriage *next)
+void			delete_carriage(t_vm_info *info, t_carriage *prev, t_carriage **cur, t_carriage *next)
 {
-	if (*prev == NULL)
+	if (prev == NULL)
 		info->carriages = next;
 	else
-		(*prev)->next = next;
-	free (cur);
+		prev->next = next;
+	free (*cur);
+	*cur = prev;
 }
 
 void			delete_death_carr(t_vm_info *info, t_carriage *carr)
@@ -82,10 +83,13 @@ void			delete_death_carr(t_vm_info *info, t_carriage *carr)
 	while (cur_carr != NULL)
 	{
 		printf("%d %d %d\n", info->cycle, info->cycles_to_die, carr->cycle_last_live);
-		if (info->cycle - info->cycles_to_die > carr->cycle_last_live)
-			delete_carriage(info, &prev_carr, cur_carr, next_carr);
+		if (info->cycle - info->cycles_to_die > cur_carr->cycle_last_live)
+			delete_carriage(info, prev_carr, &cur_carr, next_carr);
 		prev_carr = cur_carr;
-		cur_carr = cur_carr->next;
+		if (cur_carr == NULL)
+			cur_carr = info->carriages;
+		else
+			cur_carr = prev_carr->next;
 		if (next_carr != NULL)
 			next_carr = next_carr->next;
 	}

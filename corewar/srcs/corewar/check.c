@@ -6,7 +6,7 @@
 /*   By: djast <djast@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/09/25 13:38:07 by djast             #+#    #+#             */
-/*   Updated: 2019/10/09 17:42:57 by djast            ###   ########.fr       */
+/*   Updated: 2019/10/10 18:39:43 by djast            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -87,6 +87,11 @@ void	check_cycle_to_die(t_vm_info *info)
 {
 	(void) info;
 	//printf("%d\n", info->cycle);
-	
+	printf("DELETING\n");
 	delete_death_carr(info, info->carriages);
+	if (info->carriages == NULL)
+	{
+		printf("ENDGAME\n");
+		exit(0);
+	}
 }
