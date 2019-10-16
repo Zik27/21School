@@ -6,7 +6,7 @@
 /*   By: djast <djast@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/09/25 13:58:35 by djast             #+#    #+#             */
-/*   Updated: 2019/10/16 16:51:17 by djast            ###   ########.fr       */
+/*   Updated: 2019/10/16 18:09:11 by djast            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,7 +38,6 @@ t_carriage			*init_carriage(t_champ *cur_player, t_vm_info *info)
 	return (new_carriage);
 }
 
-
 t_vm_info			*init_vm_info(t_champ *players)
 {
 	t_vm_info *info;
@@ -46,7 +45,7 @@ t_vm_info			*init_vm_info(t_champ *players)
 	info = (t_vm_info *)malloc(sizeof(t_vm_info));
 	info->count_players = get_player_count(players);
 	info->cycles_to_die = CYCLE_TO_DIE;
-	info->cycles_after_check = 0;
+	info->cycles_after_check = 1;
 	info->checks = 0;
 	info->cycle = 1;
 	info->live = 0;

@@ -6,7 +6,7 @@
 /*   By: djast <djast@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/10/09 09:19:57 by djast             #+#    #+#             */
-/*   Updated: 2019/10/16 13:46:54 by djast            ###   ########.fr       */
+/*   Updated: 2019/10/16 18:30:55 by djast            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,11 +22,12 @@ void	make_command_add(t_vm_info *info, t_carriage *carr)
 	get_op_arg(info, carr, carr->op_code);
 	sum = carr->registers[carr->args[0] - 1] + carr->registers[carr->args[1] - 1];
 	carr->registers[carr->args[2] - 1] = sum;
-
+	calc_jump_size(carr);
 	if (sum == 0)
 		carr->carry = 1;
 	else
 		carr->carry = 0;
+
 }
 
 void	make_command_sub(t_vm_info *info, t_carriage *carr)

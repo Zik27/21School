@@ -6,7 +6,7 @@
 /*   By: djast <djast@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/10/09 09:21:36 by djast             #+#    #+#             */
-/*   Updated: 2019/10/16 17:03:00 by djast            ###   ########.fr       */
+/*   Updated: 2019/10/16 18:05:07 by djast            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,13 +14,13 @@
 
 void	make_command_ld(t_vm_info *info, t_carriage *carr)
 {
-	ft_printf("ld\n");
+	ft_printf("ld ");
 	ft_bzero(carr->args_types, 3 * sizeof(int));
 	get_op_arg_type(info, carr);
 	//printf("pos: %d\n", carr->cur_pos);
 	//printf("%d %d %d\n", carr->args_types[0], carr->args_types[1], carr->args_types[2]);
 	get_op_arg(info, carr, carr->op_code);
-	//printf("args: %x %x\n", carr->args[0], carr->args[1]);
+	ft_printf("%d %d\n", carr->args[0], carr->args[1]);
 	if (carr->args_types[0] == DIR_CODE)
 		carr->registers[carr->args[1] - 1] = carr->args[0];
 	else

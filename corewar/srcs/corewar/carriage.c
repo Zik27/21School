@@ -6,7 +6,7 @@
 /*   By: djast <djast@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/09/25 17:25:42 by djast             #+#    #+#             */
-/*   Updated: 2019/10/16 13:45:53 by djast            ###   ########.fr       */
+/*   Updated: 2019/10/16 17:47:50 by djast            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -66,7 +66,9 @@ void			delete_carriage(t_vm_info *info, t_carriage *prev, t_carriage **cur, t_ca
 		info->carriages = next;
 	else
 		prev->next = next;
-	free (*cur);
+	free((*cur)->args_types);
+	free((*cur)->args);
+	free(*cur);
 	*cur = prev;
 }
 
@@ -82,7 +84,8 @@ void			delete_death_carr(t_vm_info *info, t_carriage *carr)
 		next_carr = cur_carr->next;
 	while (cur_carr != NULL)
 	{
-		ft_printf("%d %d %d\n", info->cycle, info->cycles_to_die, carr->cycle_last_live);
+		printf("%p\n", cur_carr);
+		ft_printf("%d %d %d\n", info->cycle, info->cycles_to_die, cur_carr->cycle_last_live);
 		if (info->cycle - info->cycles_to_die > cur_carr->cycle_last_live)
 			delete_carriage(info, prev_carr, &cur_carr, next_carr);
 		prev_carr = cur_carr;
@@ -93,5 +96,4 @@ void			delete_death_carr(t_vm_info *info, t_carriage *carr)
 		if (next_carr != NULL)
 			next_carr = next_carr->next;
 	}
-
 }
