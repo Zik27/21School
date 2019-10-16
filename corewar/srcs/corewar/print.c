@@ -6,7 +6,7 @@
 /*   By: djast <djast@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/09/25 13:20:31 by djast             #+#    #+#             */
-/*   Updated: 2019/10/09 18:22:50 by djast            ###   ########.fr       */
+/*   Updated: 2019/10/16 15:47:29 by djast            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,9 +35,9 @@ void	print_map(char *map)
 		ft_printf("%.2x ", map[symbol] & 0xFF);
 		symbol++;
 		if ((symbol) % 64 == 0)
-			printf("\n");
+			ft_printf("\n");
 	}
-	printf("\n");
+	ft_printf("\n");
 }
 
 void	print_carriages(t_carriage *car)

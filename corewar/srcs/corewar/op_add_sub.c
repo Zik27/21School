@@ -6,7 +6,7 @@
 /*   By: djast <djast@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/10/09 09:19:57 by djast             #+#    #+#             */
-/*   Updated: 2019/10/09 17:49:07 by djast            ###   ########.fr       */
+/*   Updated: 2019/10/16 13:46:54 by djast            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,7 +15,7 @@
 void	make_command_add(t_vm_info *info, t_carriage *carr)
 {
 	int sum;
-	printf("add\n");
+	ft_printf("add\n");
 
 	ft_bzero(carr->args_types, 3 * sizeof(int));
 	get_op_arg_type(info, carr);
@@ -33,7 +33,7 @@ void	make_command_sub(t_vm_info *info, t_carriage *carr)
 {
 	int sub;
 
-	printf("sub\n");
+	ft_printf("sub\n");
 	ft_bzero(carr->args_types, 3 * sizeof(int));
 	get_op_arg_type(info, carr);
 	get_op_arg(info, carr, carr->op_code);

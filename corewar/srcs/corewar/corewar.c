@@ -6,7 +6,7 @@
 /*   By: djast <djast@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/09/23 13:11:12 by djast             #+#    #+#             */
-/*   Updated: 2019/10/10 19:25:55 by djast            ###   ########.fr       */
+/*   Updated: 2019/10/16 17:02:33 by djast            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,8 +34,9 @@ void	make_command_next(t_vm_info *info, t_carriage *carr)
 
 void	make_command(t_vm_info *info, t_champ *champs, t_carriage *carr)
 {
+	(void) champs;
 	//printf("code: %d\n", carr->op_code);
-	printf("%d | %d ", carr->id, info->cycle);
+	ft_printf("%d | %d ", carr->id, info->cycle);
 	if (carr->op_code == 1)
 		make_command_live(info, champs, carr);
 	else if (carr->op_code == 2)
@@ -109,7 +110,6 @@ int		get_info_for_command(t_vm_info *info, t_carriage *carr)
 	args[0] = ((unsigned char)types & 0b11000000) / 64;
 	args[1] = ((unsigned char)types & 0b110000) / 16;
 	args[2] = ((unsigned char)types & 0b1100) / 4;
-
 	if (check_command_args(carr, args) == 0)
 	{
 		skip_command(carr, args);
@@ -118,21 +118,32 @@ int		get_info_for_command(t_vm_info *info, t_carriage *carr)
 	return (1);
 }
 
-void	make_step_cycle(t_vm_info *info, t_champ *champs, t_carriage *carriages)
+int		make_step_cycle(t_vm_info *info, t_champ *champs, t_carriage *carriages)
 {
 	t_carriage *cur_carriage;
 
-	if (info->cycle != 0 && info->cycle % info->cycles_to_die == 0)
+	if (info->cycle <= 0 || info->cycles_after_check == info->cycles_to_die)
 	{
-		check_cycle_to_die(info);
+		if (check_cycle_to_die(info) == 1)
+			return (1);
 		if (info->live >= NBR_LIVE)
 		{
-			printf("cycle_to_die down: %d\n", info->cycles_to_die);
+			info->checks = 0;
+			info->cycles_after_check = 0;
+			info->cycles_to_die -= CYCLE_DELTA;
+			//ft_printf("Cycle to die is now %d\n", info->cycles_to_die);
+		}
+		else
+			info->checks++;
+		if (info->checks == MAX_CHECKS)
+		{
+			info->checks = 0;
+			info->cycles_after_check = 0;
 			info->cycles_to_die -= CYCLE_DELTA;
 		}
 		info->live = 0;
 		print_carriages(info->carriages);
-		printf("\n\n");
+		ft_printf("\n\n");
 	}
 	cur_carriage = carriages;
 	while (cur_carriage != NULL)
@@ -154,6 +165,7 @@ void	make_step_cycle(t_vm_info *info, t_champ *champs, t_carriage *carriages)
 		cur_carriage->jump_size = 0;
 		cur_carriage = cur_carriage->next;
 	}
+	return (0);
 }
 
 void	start_corewar(t_champ *champs, t_vm_info *info)
@@ -165,14 +177,21 @@ void	start_corewar(t_champ *champs, t_vm_info *info)
 	// printf("\n\n");
 	while (1)
 	{
+		//ft_printf("b: %p\n", champs->comment);
 		// print_map(info->map);
-		make_step_cycle(info, champs, info->carriages);
-		if (info->cycle >= 1251 && info->cycle <= 1281)
-		{
-			print_carriages(info->carriages);
-			printf("\n\n");
-		}
+		ft_printf("It is now cycle %d\n", info->cycle);
+		//ft_printf("%p", info->carriages->args);
+		if (make_step_cycle(info, champs, info->carriages) == 1)
+			return ;
+		// if (info->cycle >= 1251 && info->cycle <= 1281)
+		// {
+		// 	print_carriages(info->carriages);
+		// 	ft_printf("\n\n");
+		// }
+		//ft_printf("It is now cycle before %d\n", info->cycle);
 		info->cycle++;
+		//ft_printf("It is now cycle after %d\n", info->cycle);
+		info->cycles_after_check++;
 		if (info->cycle == 24800)
 			break ;
 	}
@@ -195,6 +214,8 @@ int		main(int argc, char **argv)
 	place_players_on_arena(champs, info);
 	info->carriages = init_carriages(champs, info);
 	introducing(champs, info);
+	ft_printf("a: %p\n", champs->comment);
 	start_corewar(champs, info);
+	//free_all(info, champs);
 	return (0);
 }

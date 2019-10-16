@@ -6,7 +6,7 @@
 /*   By: djast <djast@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/09/23 13:35:39 by djast             #+#    #+#             */
-/*   Updated: 2019/10/10 19:25:58 by djast            ###   ########.fr       */
+/*   Updated: 2019/10/16 16:46:51 by djast            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -45,8 +45,8 @@ typedef struct 			s_carriage
 	int					jump_size;
 	int					registers[REG_NUMBER];
 	t_champ				*champ;
-	int					args_types[3];
-	int					args[3];
+	int					*args_types;
+	int					*args;
 	struct s_carriage	*next;
 }						t_carriage;
 
@@ -55,6 +55,8 @@ typedef struct			s_vm_info
 {
 	int					count_players;
 	int					cycles_to_die;
+	int					cycles_after_check;
+	int					checks;
 	int					cycle;
 	int					live;
 	t_carriage			*carriages;
@@ -91,8 +93,9 @@ void			get_op_arg(t_vm_info *info, t_carriage *carr, int cmd);
 void			calc_jump_size(t_carriage *carr);
 char			*int_to_bytecode(int value, int size);
 void			create_carr_copy(t_vm_info *info, t_carriage *carr);
-void			check_cycle_to_die(t_vm_info *info);
+int				check_cycle_to_die(t_vm_info *info);
 void			delete_death_carr(t_vm_info *info, t_carriage *carr);
+void			free_all(t_vm_info *info, t_champ *champs);
 
 void			make_command_live(t_vm_info *info, t_champ *champs, t_carriage *carr);
 void			make_command_ld(t_vm_info *info, t_carriage *carr);

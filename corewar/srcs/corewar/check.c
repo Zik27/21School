@@ -6,7 +6,7 @@
 /*   By: djast <djast@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/09/25 13:38:07 by djast             #+#    #+#             */
-/*   Updated: 2019/10/10 18:39:43 by djast            ###   ########.fr       */
+/*   Updated: 2019/10/16 15:37:56 by djast            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -83,15 +83,16 @@ t_champ			*check_file(char *arg, int id)
 	return (champ);
 }
 
-void	check_cycle_to_die(t_vm_info *info)
+int		check_cycle_to_die(t_vm_info *info)
 {
 	(void) info;
 	//printf("%d\n", info->cycle);
-	printf("DELETING\n");
+	ft_printf("DELETING\n");
 	delete_death_carr(info, info->carriages);
 	if (info->carriages == NULL)
 	{
-		printf("ENDGAME\n");
-		exit(0);
+		ft_printf("ENDGAME\n");
+		return (1);
 	}
+	return (0);
 }

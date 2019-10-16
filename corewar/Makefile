@@ -3,10 +3,10 @@
 #                                                         :::      ::::::::    #
 #    Makefile                                           :+:      :+:    :+:    #
 #                                                     +:+ +:+         +:+      #
-#    By: vurrigon <vurrigon@student.42.fr>          +#+  +:+       +#+         #
+#    By: djast <djast@student.42.fr>                +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2019/02/15 17:18:06 by djast             #+#    #+#              #
-#    Updated: 2019/10/09 12:33:44 by vurrigon         ###   ########.fr        #
+#    Updated: 2019/10/16 15:29:40 by djast            ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -57,7 +57,8 @@ FILSE_COREWAR = corewar.c \
 				op_live.c \
 				op_st_sti.c\
 				op_utils.c \
-				op_zjmp.c
+				op_zjmp.c \
+				free.c
 
 SRC_DIRECTORY = ./srcs/
 SRC_DIRECTORY_ASM = $(SRC_DIRECTORY)asm/
