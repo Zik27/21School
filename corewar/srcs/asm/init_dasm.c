@@ -6,7 +6,7 @@
 /*   By: vurrigon <vurrigon@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/10/01 11:13:53 by vurrigon          #+#    #+#             */
-/*   Updated: 2019/10/01 11:15:54 by vurrigon         ###   ########.fr       */
+/*   Updated: 2019/10/16 17:10:52 by vurrigon         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,7 +16,7 @@ t_dasm	*init_dasm(char	*full_name)
 {
 	t_dasm *dasm;
 
-	if (!(dasm = malloc(sizeof(t_dasm))))
+	if (!(dasm = (t_dasm *)malloc(sizeof(t_dasm))))
 		return (NULL);
 	dasm->name = NULL;
 	dasm->comment = NULL;
@@ -30,7 +30,7 @@ t_dasm	*init_dasm(char	*full_name)
 t_inst_dasm	*init_ins_dasm(char *name)
 {
 	t_inst_dasm *op;
-	if (!(op = malloc(sizeof(t_inst_dasm))))
+	if (!(op = (t_inst_dasm *)malloc(sizeof(t_inst_dasm))))
 		return (NULL);
 	op->name = name;
 	op->args = NULL;
@@ -42,7 +42,7 @@ t_args_dasm	*init_arg(char *name)
 {
 	t_args_dasm *argument;
 
-	if (!(argument = malloc(sizeof(t_args_dasm))))
+	if (!(argument = (t_args_dasm *)malloc(sizeof(t_args_dasm))))
 		return (NULL);
 	argument->data = name;
 	argument->size = 0;
