@@ -6,7 +6,7 @@
 /*   By: djast <djast@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/09/23 13:11:12 by djast             #+#    #+#             */
-/*   Updated: 2019/10/16 19:03:45 by djast            ###   ########.fr       */
+/*   Updated: 2019/10/20 17:15:49 by djast            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -55,6 +55,39 @@ void	make_command(t_vm_info *info, t_champ *champs, t_carriage *carr)
 		make_command_xor(info, carr);
 	else
 		make_command_next(info, carr);
+}
+
+int		check_registers(t_vm_info *info, t_carriage *carr)
+{
+	int i;
+	int step;
+	int reg;
+	int types;
+	int args[3];
+
+	types = info->map[(carr->cur_pos + 1) % MEM_SIZE];
+	args[0] = ((unsigned char)types & 0b11000000) / 64;
+	args[1] = ((unsigned char)types & 0b110000) / 16;
+	args[2] = ((unsigned char)types & 0b1100) / 4;
+	i = 0;
+	step = 0;
+	while (i < 3)
+	{
+		if (args[i] == REG_CODE)
+		{
+			reg = info->map[(carr->cur_pos + step + 1 + 1) % MEM_SIZE];
+			printf("REGISTER_CHECK: %d\n", reg);
+			if (reg < 1 || reg > 16)
+				return (0);
+			step += 1;
+		}
+		else if (args[i] == DIR_CODE)
+			step += g_instr[carr->op_code - 1].t_dir_size;
+		else if (args[i] == IND_CODE)
+			step += 2;
+		i++;
+	}
+	return (1);
 }
 
 int		check_command_args(t_carriage *carr, int args[3])
@@ -110,7 +143,7 @@ int		get_info_for_command(t_vm_info *info, t_carriage *carr)
 	args[0] = ((unsigned char)types & 0b11000000) / 64;
 	args[1] = ((unsigned char)types & 0b110000) / 16;
 	args[2] = ((unsigned char)types & 0b1100) / 4;
-	if (check_command_args(carr, args) == 0)
+	if (check_command_args(carr, args) == 0 || check_registers(info, carr) == 0)
 	{
 		skip_command(carr, args);
 		return (0);
