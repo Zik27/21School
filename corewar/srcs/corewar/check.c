@@ -6,7 +6,7 @@
 /*   By: djast <djast@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/09/25 13:38:07 by djast             #+#    #+#             */
-/*   Updated: 2019/10/16 15:37:56 by djast            ###   ########.fr       */
+/*   Updated: 2019/10/20 18:03:34 by djast            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -92,6 +92,7 @@ int		check_cycle_to_die(t_vm_info *info)
 	if (info->carriages == NULL)
 	{
 		ft_printf("ENDGAME\n");
+		ft_printf("Winner: %s\n", info->last_live_player->name);
 		return (1);
 	}
 	return (0);
