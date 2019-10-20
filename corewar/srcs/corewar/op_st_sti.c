@@ -6,7 +6,7 @@
 /*   By: djast <djast@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/10/09 09:22:05 by djast             #+#    #+#             */
-/*   Updated: 2019/10/16 17:00:59 by djast            ###   ########.fr       */
+/*   Updated: 2019/10/20 17:41:49 by djast            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,6 +25,7 @@ void	make_command_st(t_vm_info *info, t_carriage *carr)
 		carr->registers[carr->args[1] - 1] = carr->registers[carr->args[0] - 1];
 	else
 		rewrite(info, (carr->cur_pos + (carr->args[1] % IDX_MOD)) % MEM_SIZE, carr->registers[carr->args[0] - 1]);
+	printf("%d\n", carr->registers[carr->args[0] - 1]);
 	calc_jump_size(carr);
 }
 
@@ -51,6 +52,7 @@ void	make_command_sti(t_vm_info *info, t_carriage *carr)
 	else if (carr->args_types[2] == DIR_CODE)
 		res += carr->args[2];
 	printf("cur_pos: %d\n", res);
+	printf("STI args: %d\n", carr->args[0] - 1);
 	rewrite(info, (carr->cur_pos + (res % IDX_MOD)) % MEM_SIZE, carr->registers[carr->args[0] - 1]);
 	calc_jump_size(carr);
 }

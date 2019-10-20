@@ -6,7 +6,7 @@
 /*   By: djast <djast@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/09/23 13:11:12 by djast             #+#    #+#             */
-/*   Updated: 2019/10/20 16:43:41 by djast            ###   ########.fr       */
+/*   Updated: 2019/10/20 17:22:59 by djast            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -194,32 +194,43 @@ void	start_corewar(t_champ *champs, t_vm_info *info, t_sdl *sdl)
 				else if (sdl->window_event.type == SDL_KEYDOWN && SDLK_ESCAPE ==
 							sdl->window_event.key.keysym.sym)
 					exit(0);
-				// else if (sdl->window_event.type == SDL_KEYDOWN && SDLK_w ==
-				// 			sdl->window_event.key.keysym.sym)
-				// {
-					// while (i < sdl->speed)
-					// {
-					// 	//ft_printf("It is now cycle %d, %d\n", info->cycle, info->cycles_after_check);
-					// 	if (make_step_cycle(info, champs) == 1)
-					// 		return ;
-					// 	info->cycle++;
-					// 	info->cycles_after_check++;
-					// 	i++;
-					// }
-					// draw(sdl, info);
-				//}
-				
+				else if (sdl->window_event.type == SDL_KEYDOWN && SDLK_w ==
+							sdl->window_event.key.keysym.sym)
+				{
+					while (i < sdl->speed)
+					{
+						//ft_printf("It is now cycle %d, %d\n", info->cycle, info->cycles_after_check);
+						if (make_step_cycle(info, champs) == 1)
+							return ;
+						info->cycle++;
+						info->cycles_after_check++;
+						i++;
+					}
+					draw(sdl, info);
+				}
+				else if(sdl->window_event.type == SDL_KEYDOWN && SDLK_a ==
+							sdl->window_event.key.keysym.sym)
+				{
+					sdl->speed += 1;
+					printf("Now speed: %d\n", sdl->speed);
+				}
+				else if(sdl->window_event.type == SDL_KEYDOWN && SDLK_z ==
+							sdl->window_event.key.keysym.sym)
+				{
+					sdl->speed -= 1;
+					printf("Now speed: %d\n", sdl->speed);
+				}
 			}
-			while (i < sdl->speed)
-			{
-				//ft_printf("It is now cycle %d, %d\n", info->cycle, info->cycles_after_check);
-				if (make_step_cycle(info, champs) == 1)
-					return ;
-				info->cycle++;
-				info->cycles_after_check++;
-				i++;
-			}
-			draw(sdl, info);
+			// while (i < sdl->speed)
+			// {
+			// 	//ft_printf("It is now cycle %d, %d\n", info->cycle, info->cycles_after_check);
+			// 	if (make_step_cycle(info, champs) == 1)
+			// 		return ;
+			// 	info->cycle++;
+			// 	info->cycles_after_check++;
+			// 	i++;
+			// }
+			// draw(sdl, info);
 		}
 		else
 		{

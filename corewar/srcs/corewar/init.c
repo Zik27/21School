@@ -6,7 +6,7 @@
 /*   By: djast <djast@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/09/25 13:58:35 by djast             #+#    #+#             */
-/*   Updated: 2019/10/20 15:33:29 by djast            ###   ########.fr       */
+/*   Updated: 2019/10/20 17:28:05 by djast            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,7 +32,7 @@ t_carriage			*init_carriage(t_champ *cur_player, t_vm_info *info)
 	new_carriage->args = (int *)malloc(sizeof(int) * 3);
 	i = 1;
 	while (i < REG_NUMBER)
-		new_carriage->registers[i++] = -1;
+		new_carriage->registers[i++] = 0;
 	new_carriage->next = NULL;
 	return (new_carriage);
 }
