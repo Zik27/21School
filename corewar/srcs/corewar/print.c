@@ -6,7 +6,7 @@
 /*   By: djast <djast@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/09/25 13:20:31 by djast             #+#    #+#             */
-/*   Updated: 2019/10/16 15:47:29 by djast            ###   ########.fr       */
+/*   Updated: 2019/10/20 12:48:03 by djast            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -69,6 +69,8 @@ void	introducing(t_champ	*champs, t_vm_info *info)
 	while (count != info->count_players + 1)
 	{
 		player = find_player_by_id(champs, count);
+		if (player == NULL)
+			cerror("Error with player id - player not found", NULL);
 		ft_printf("* Player %d, weighing %d bytes, \"%s\" (\"%s\") !\n",
 				player->id, player->code_size, player->name, player->comment);
 		count++;

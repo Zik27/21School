@@ -6,7 +6,7 @@
 /*   By: djast <djast@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/09/26 15:13:08 by djast             #+#    #+#             */
-/*   Updated: 2019/10/16 17:03:45 by djast            ###   ########.fr       */
+/*   Updated: 2019/10/20 16:37:06 by djast            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -78,6 +78,7 @@ void	rewrite(t_vm_info *info, int addr, int number)
 	while (i != 0)
 	{
 		info->map[(addr + i - 1) % MEM_SIZE] = data[i - 1];
+		//info->color_map[(addr + i - 1) % MEM_SIZE] = player->id;
 		i--;
 	}
 	free(data);

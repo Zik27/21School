@@ -6,12 +6,11 @@
 /*   By: djast <djast@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/09/25 13:58:35 by djast             #+#    #+#             */
-/*   Updated: 2019/10/16 18:09:11 by djast            ###   ########.fr       */
+/*   Updated: 2019/10/20 15:33:29 by djast            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "vm.h"
-
 
 t_carriage			*init_carriage(t_champ *cur_player, t_vm_info *info)
 {
@@ -51,6 +50,8 @@ t_vm_info			*init_vm_info(t_champ *players)
 	info->live = 0;
 	info->last_live_player = NULL;
 	info->map = ft_strnew(MEM_SIZE);
+	info->color_map = (int *)malloc(sizeof(int) * MEM_SIZE);
+	ft_bzero(info->color_map, MEM_SIZE * sizeof(int));
 	return (info);
 }
 
@@ -68,4 +69,21 @@ t_champ				*init_champ(int id)
 	champ->last_live = 0;
 	champ->next = NULL;
 	return (champ);
+}
+
+t_sdl				*init_sdl()
+{
+	t_sdl *sdl;
+
+	sdl = (t_sdl *)malloc(sizeof(t_sdl));
+	TTF_Init();
+	SDL_Init(SDL_INIT_VIDEO);
+	sdl->window = SDL_CreateWindow("Corewar", SDL_WINDOWPOS_UNDEFINED,
+					SDL_WINDOWPOS_UNDEFINED, SIZE_WIN_X, 1300,
+					SDL_WINDOW_OPENGL);
+	sdl->renderer = SDL_CreateRenderer(sdl->window, -1,
+					SDL_RENDERER_ACCELERATED);
+	sdl->font = TTF_OpenFont("TNR.ttf", 16);
+	sdl->speed = 40;
+	return (sdl);
 }

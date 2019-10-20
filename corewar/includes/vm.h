@@ -6,13 +6,16 @@
 /*   By: djast <djast@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/09/23 13:35:39 by djast             #+#    #+#             */
-/*   Updated: 2019/10/16 16:46:51 by djast            ###   ########.fr       */
+/*   Updated: 2019/10/20 16:32:00 by djast            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef VM_H
 # define VM_H
 
+
+# include <SDL.h>
+# include <SDL_ttf.h>
 # include "libft.h"
 # include "ft_printf.h"
 # include "op.h"
@@ -20,6 +23,22 @@
 # include <sys/types.h>
 # include <sys/stat.h>
 # include <fcntl.h>
+
+# define SIZE_WIN_X 1700
+# define SIZE_WIN_Y 1300
+# define SYMBOL_SIZE 18
+# define SPACE_SIZE 2
+
+typedef struct		s_sdl
+{
+	SDL_Window		*window;
+	SDL_Renderer	*renderer;
+	SDL_Event		window_event;
+	TTF_Font		*font;
+	SDL_Texture		*text;
+	SDL_Surface		*surface;
+	int				speed;
+}					t_sdl;
 
 typedef struct			s_champ
 {
@@ -62,13 +81,14 @@ typedef struct			s_vm_info
 	t_carriage			*carriages;
 	t_champ				*last_live_player;
 	char				*map;
+	int					*color_map;
 }						t_vm_info;
 
 
 
 void			cerror(char *message, char *error_file);
 void			print_help(char **argv);
-t_champ			*parse_args(int argc, char **argv);
+t_champ			*parse_args(int argc, char **argv, t_sdl **sdl);
 t_champ			*check_file(char *arg, int id);
 t_champ			*init_champ(int id);
 char 			*get_champ_name(int fd);
@@ -84,7 +104,6 @@ t_carriage		*init_carriage(t_champ *cur_player, t_vm_info *info);
 void			print_carriages(t_carriage *car);
 t_champ			*find_player_by_id(t_champ *champs, int id);
 void			introducing(t_champ	*champs, t_vm_info *info);
-t_champ			*find_player_by_id(t_champ *champs, int id);
 void			set_op_steps(t_carriage *carr);
 int				bytecode_to_int(unsigned char *buf, int count_bytes);
 void			rewrite(t_vm_info *info, int addr, int number);
@@ -96,6 +115,11 @@ void			create_carr_copy(t_vm_info *info, t_carriage *carr);
 int				check_cycle_to_die(t_vm_info *info);
 void			delete_death_carr(t_vm_info *info, t_carriage *carr);
 void			free_all(t_vm_info *info, t_champ *champs);
+char			*hex_to_charhex(int value);
+
+t_sdl			*init_sdl();
+void			draw(t_sdl *sdl, t_vm_info *info);
+
 
 void			make_command_live(t_vm_info *info, t_champ *champs, t_carriage *carr);
 void			make_command_ld(t_vm_info *info, t_carriage *carr);

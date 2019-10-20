@@ -6,7 +6,7 @@
 /*   By: djast <djast@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/09/23 13:11:12 by djast             #+#    #+#             */
-/*   Updated: 2019/10/16 19:03:45 by djast            ###   ########.fr       */
+/*   Updated: 2019/10/20 16:43:41 by djast            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -172,21 +172,69 @@ int		make_step_cycle(t_vm_info *info, t_champ *champs)
 	return (0);
 }
 
-void	start_corewar(t_champ *champs, t_vm_info *info)
+void	start_corewar(t_champ *champs, t_vm_info *info, t_sdl *sdl)
 {
 	(void) champs;
 	
-	print_map(info->map);
+	int i;
+	//print_map(info->map);
 	// print_carriages(info->carriages);
 	// printf("\n\n");
+	if (sdl != NULL)
+		draw(sdl, info);
 	while (1)
 	{
+		i = 0;
+		if (sdl != NULL)
+		{
+			if (SDL_PollEvent(&(sdl->window_event)))
+			{
+				if (SDL_QUIT == sdl->window_event.type)
+					exit(0);
+				else if (sdl->window_event.type == SDL_KEYDOWN && SDLK_ESCAPE ==
+							sdl->window_event.key.keysym.sym)
+					exit(0);
+				// else if (sdl->window_event.type == SDL_KEYDOWN && SDLK_w ==
+				// 			sdl->window_event.key.keysym.sym)
+				// {
+					// while (i < sdl->speed)
+					// {
+					// 	//ft_printf("It is now cycle %d, %d\n", info->cycle, info->cycles_after_check);
+					// 	if (make_step_cycle(info, champs) == 1)
+					// 		return ;
+					// 	info->cycle++;
+					// 	info->cycles_after_check++;
+					// 	i++;
+					// }
+					// draw(sdl, info);
+				//}
+				
+			}
+			while (i < sdl->speed)
+			{
+				//ft_printf("It is now cycle %d, %d\n", info->cycle, info->cycles_after_check);
+				if (make_step_cycle(info, champs) == 1)
+					return ;
+				info->cycle++;
+				info->cycles_after_check++;
+				i++;
+			}
+			draw(sdl, info);
+		}
+		else
+		{
+			ft_printf("It is now cycle %d, %d\n", info->cycle, info->cycles_after_check);
+			if (make_step_cycle(info, champs) == 1)
+					return ;
+			info->cycle++;
+			info->cycles_after_check++;
+		}
 		//ft_printf("b: %p\n", champs->comment);
 		// print_map(info->map);
-		ft_printf("It is now cycle %d, %d\n", info->cycle, info->cycles_after_check);
+		
 		//ft_printf("%p", info->carriages->args);
-		if (make_step_cycle(info, champs) == 1)
-			return ;
+		// if (make_step_cycle(info, champs) == 1)
+		// 	return ;
 		// if (info->cycle >= 3563 && info->cycle <= 3566)
 		// {
 		// 	print_map(info->map);
@@ -194,9 +242,7 @@ void	start_corewar(t_champ *champs, t_vm_info *info)
 		// 	ft_printf("\n\n");
 		// }
 		//ft_printf("It is now cycle before %d\n", info->cycle);
-		info->cycle++;
-		//ft_printf("It is now cycle after %d\n", info->cycle);
-		info->cycles_after_check++;
+		
 		// if (info->cycle == 3569)
 		//  	break ;
 	}
@@ -208,18 +254,21 @@ int		main(int argc, char **argv)
 {
 	t_champ		*champs;
 	t_vm_info	*info;
+	t_sdl		*sdl;
 
 	if (argc < 2 || argc > 5)
 	{
 		print_help(argv);
 		return (0);
 	}
-	champs = parse_args(argc, argv);
+	sdl = NULL;
+	champs = parse_args(argc, argv, &sdl);
 	info = init_vm_info(champs);
 	place_players_on_arena(champs, info);
 	info->carriages = init_carriages(champs, info);
-	introducing(champs, info);
-	start_corewar(champs, info);
+	if (sdl == NULL)
+		introducing(champs, info);
+	start_corewar(champs, info, sdl);
 	//free_all(info, champs);
 	return (0);
 }

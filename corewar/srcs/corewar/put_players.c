@@ -6,7 +6,7 @@
 /*   By: djast <djast@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/09/25 17:06:18 by djast             #+#    #+#             */
-/*   Updated: 2019/10/16 14:47:26 by djast            ###   ########.fr       */
+/*   Updated: 2019/10/20 15:14:54 by djast            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,6 +20,7 @@ static void		put_player(int pos, t_champ *player, t_vm_info *info)
 	while (index != player->code_size)
 	{
 		info->map[pos + index] = player->code[index] & 0xFF;
+		info->color_map[pos + index] = player->id;
 		index++;
 	}
 }

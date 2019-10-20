@@ -6,7 +6,7 @@
 /*   By: djast <djast@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/09/25 16:51:08 by djast             #+#    #+#             */
-/*   Updated: 2019/10/10 17:56:59 by djast            ###   ########.fr       */
+/*   Updated: 2019/10/20 15:32:55 by djast            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -95,4 +95,14 @@ void	create_carr_copy(t_vm_info *info, t_carriage *carr)
 
 	new_carr->next = info->carriages;
 	info->carriages = new_carr;
+}
+
+char 		*hex_to_charhex(int value)
+{
+	char *data;
+
+	data = ft_strnew(2);
+	data[0] = value / 16 + '0';
+	data[1] = value % 16 + '0';
+	return (data);
 }
