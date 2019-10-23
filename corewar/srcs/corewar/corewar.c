@@ -6,7 +6,7 @@
 /*   By: djast <djast@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/09/23 13:11:12 by djast             #+#    #+#             */
-/*   Updated: 2019/10/23 16:23:59 by djast            ###   ########.fr       */
+/*   Updated: 2019/10/23 16:42:09 by djast            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -269,7 +269,7 @@ void	start_corewar(t_champ *champs, t_vm_info *info, t_sdl *sdl)
 		}
 		else
 		{
-			ft_printf("It is now cycle %d, %d\n", info->cycle, info->cycles_after_check);
+			//ft_printf("It is now cycle %d, %d\n", info->cycle, info->cycles_after_check);
 			if (make_step_cycle(info, champs) == 1)
 					return ;
 			info->cycle++;

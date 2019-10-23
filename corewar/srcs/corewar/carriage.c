@@ -6,7 +6,7 @@
 /*   By: djast <djast@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/09/25 17:25:42 by djast             #+#    #+#             */
-/*   Updated: 2019/10/23 14:44:07 by djast            ###   ########.fr       */
+/*   Updated: 2019/10/23 16:40:24 by djast            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,10 +34,7 @@ void			set_op_steps(t_carriage *carr)
 	else if (carr->op_code == 16)
 		carr->op_steps = 2;
 	else
-	{
 		carr->op_steps = 0;
-		carr->cur_pos = (carr->cur_pos + 1) % MEM_SIZE;
-	}
 }
 
 t_carriage		*init_carriages(t_champ *champs, t_vm_info *info)
