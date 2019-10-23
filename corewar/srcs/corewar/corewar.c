@@ -6,7 +6,7 @@
 /*   By: djast <djast@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/09/23 13:11:12 by djast             #+#    #+#             */
-/*   Updated: 2019/10/23 17:02:45 by djast            ###   ########.fr       */
+/*   Updated: 2019/10/23 17:43:54 by djast            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -67,6 +67,8 @@ int		check_registers(t_vm_info *info, t_carriage *carr)
 	int types;
 	int args[3];
 
+	if (g_instr[carr->op_code - 1].args_types_code == 0)
+		return (1);
 	types = info->map[(carr->cur_pos + 1) % MEM_SIZE];
 	args[0] = ((unsigned char)types & 0b11000000) / 64;
 	args[1] = ((unsigned char)types & 0b110000) / 16;
@@ -222,12 +224,12 @@ void	start_corewar(t_champ *champs, t_vm_info *info)
 		//ft_printf("%p", info->carriages->args);
 		if (make_step_cycle(info, champs) == 1)
 			return ;
-		if (info->cycle == 5622)
-		{
-			print_map(info->map);
-			// print_carriages(info->carriages);
-			// ft_printf("\n\n");
-		}
+		// if (info->cycle == 13232)
+		// {
+		// 	print_map(info->map);
+		// 	print_carriages(info->carriages);
+		// 	ft_printf("\n\n");
+		// }
 		//ft_printf("It is now cycle before %d\n", info->cycle);
 		info->cycle++;
 		//ft_printf("It is now cycle after %d\n", info->cycle);
