@@ -6,7 +6,7 @@
 /*   By: djast <djast@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/09/23 13:11:12 by djast             #+#    #+#             */
-/*   Updated: 2019/10/20 18:07:53 by djast            ###   ########.fr       */
+/*   Updated: 2019/10/23 16:23:59 by djast            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,13 +30,15 @@ void	make_command_next(t_vm_info *info, t_carriage *carr)
 		make_command_lfork(info, carr);
 	else if (carr->op_code == 16)
 		make_command_aff(info, carr);
+	else
+		carr->cur_pos = (carr->cur_pos + 1) % MEM_SIZE;
 }
 
 void	make_command(t_vm_info *info, t_champ *champs, t_carriage *carr)
 {
 	(void) champs;
-	//ft_printf("code: %d\n", carr->op_code);
-	ft_printf("%d | %d ", carr->id, info->cycle);
+	if (carr->op_code > 0 && carr->op_code < 17)
+		ft_printf("P %4d | ", carr->id);
 	if (carr->op_code == 1)
 		make_command_live(info, champs, carr);
 	else if (carr->op_code == 2)
@@ -102,8 +104,7 @@ int		check_command_args(t_carriage *carr, int args[3])
 	i = 0;
 	while (i < 3)
 	{
-		//printf("%d %d\n", g_instr[cmd - 1].args_types[i], args[i]);
-		if (args[i] == T_IND)
+		if (args[i] == IND_CODE)
 			args[i] += 1;
 		if (g_instr[cmd - 1].args_types[i] == 0)
 			return (1);
@@ -157,6 +158,7 @@ int		make_step_cycle(t_vm_info *info, t_champ *champs)
 
 	if (info->cycles_to_die <= 0 || info->cycles_after_check >= info->cycles_to_die)
 	{
+		//ft_printf("DEAD\n");
 		if (check_cycle_to_die(info) == 1)
 			return (1);
 		if (info->live >= NBR_LIVE)
@@ -209,23 +211,23 @@ void	start_corewar(t_champ *champs, t_vm_info *info)
 {
 	(void) champs;
 	
-	print_map(info->map);
+	//print_map(info->map);
 	// print_carriages(info->carriages);
 	// printf("\n\n");
 	while (1)
 	{
 		//ft_printf("b: %p\n", champs->comment);
 		// print_map(info->map);
-	//	ft_printf("It is now cycle %d, %d\n", info->cycle, info->cycles_after_check);
+		ft_printf("It is now cycle %d, %d\n", info->cycle, info->cycles_after_check);
 		//ft_printf("%p", info->carriages->args);
 		if (make_step_cycle(info, champs) == 1)
 			return ;
-		// if (info->cycle >= 3563 && info->cycle <= 3566)
-		// {
-		// 	print_map(info->map);
-		// 	print_carriages(info->carriages);
-		// 	ft_printf("\n\n");
-		// }
+		if (info->cycle == 5622)
+		{
+			print_map(info->map);
+			// print_carriages(info->carriages);
+			// ft_printf("\n\n");
+		}
 		//ft_printf("It is now cycle before %d\n", info->cycle);
 		info->cycle++;
 		//ft_printf("It is now cycle after %d\n", info->cycle);
