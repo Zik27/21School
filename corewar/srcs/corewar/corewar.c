@@ -6,7 +6,7 @@
 /*   By: djast <djast@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/09/23 13:11:12 by djast             #+#    #+#             */
-/*   Updated: 2019/10/23 16:42:09 by djast            ###   ########.fr       */
+/*   Updated: 2019/10/23 18:55:06 by djast            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,8 +30,7 @@ void	make_command_next(t_vm_info *info, t_carriage *carr)
 		make_command_lfork(info, carr);
 	else if (carr->op_code == 16)
 		make_command_aff(info, carr);
-	else
-		carr->cur_pos = (carr->cur_pos + 1) % MEM_SIZE;
+
 }
 
 void	make_command(t_vm_info *info, t_champ *champs, t_carriage *carr)
@@ -196,7 +195,9 @@ int		make_step_cycle(t_vm_info *info, t_champ *champs)
 		}
 		if (cur_carriage->op_steps > 0)
 			cur_carriage->op_steps--;
-		if (cur_carriage->op_steps == 0)
+		if (cur_carriage->op_code < 1 || cur_carriage->op_code > 16)
+		 	cur_carriage->cur_pos = (cur_carriage->cur_pos + 1) % MEM_SIZE;
+		else if (cur_carriage->op_steps == 0)
 		{
 			if (get_info_for_command(info, cur_carriage) == 1)
 				make_command(info, champs, cur_carriage);
@@ -236,7 +237,7 @@ void	start_corewar(t_champ *champs, t_vm_info *info, t_sdl *sdl)
 				{
 					while (i < sdl->speed)
 					{
-						//ft_printf("It is now cycle %d, %d\n", info->cycle, info->cycles_after_check);
+						ft_printf("It is now cycle %d, %d\n", info->cycle, info->cycles_after_check);
 						if (make_step_cycle(info, champs) == 1)
 							return ;
 						info->cycle++;
