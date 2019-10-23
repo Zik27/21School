@@ -6,7 +6,7 @@
 /*   By: djast <djast@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/09/23 13:11:12 by djast             #+#    #+#             */
-/*   Updated: 2019/10/20 17:22:59 by djast            ###   ########.fr       */
+/*   Updated: 2019/10/23 16:23:59 by djast            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,13 +30,15 @@ void	make_command_next(t_vm_info *info, t_carriage *carr)
 		make_command_lfork(info, carr);
 	else if (carr->op_code == 16)
 		make_command_aff(info, carr);
+	else
+		carr->cur_pos = (carr->cur_pos + 1) % MEM_SIZE;
 }
 
 void	make_command(t_vm_info *info, t_champ *champs, t_carriage *carr)
 {
 	(void) champs;
-	ft_printf("code: %d\n", carr->op_code);
-	ft_printf("%d | %d ", carr->id, info->cycle);
+	if (carr->op_code > 0 && carr->op_code < 17)
+		ft_printf("P %4d | ", carr->id);
 	if (carr->op_code == 1)
 		make_command_live(info, champs, carr);
 	else if (carr->op_code == 2)
@@ -57,6 +59,39 @@ void	make_command(t_vm_info *info, t_champ *champs, t_carriage *carr)
 		make_command_next(info, carr);
 }
 
+int		check_registers(t_vm_info *info, t_carriage *carr)
+{
+	int i;
+	int step;
+	int reg;
+	int types;
+	int args[3];
+
+	types = info->map[(carr->cur_pos + 1) % MEM_SIZE];
+	args[0] = ((unsigned char)types & 0b11000000) / 64;
+	args[1] = ((unsigned char)types & 0b110000) / 16;
+	args[2] = ((unsigned char)types & 0b1100) / 4;
+	i = 0;
+	step = 0;
+	while (i < 3)
+	{
+		if (args[i] == REG_CODE)
+		{
+			reg = info->map[(carr->cur_pos + step + 1 + 1) % MEM_SIZE];
+			//printf("REGISTER_CHECK: %d\n", reg);
+			if (reg < 1 || reg > 16)
+				return (0);
+			step += 1;
+		}
+		else if (args[i] == DIR_CODE)
+			step += g_instr[carr->op_code - 1].t_dir_size;
+		else if (args[i] == IND_CODE)
+			step += 2;
+		i++;
+	}
+	return (1);
+}
+
 int		check_command_args(t_carriage *carr, int args[3])
 {
 	int cmd;
@@ -69,8 +104,7 @@ int		check_command_args(t_carriage *carr, int args[3])
 	i = 0;
 	while (i < 3)
 	{
-		//printf("%d %d\n", g_instr[cmd - 1].args_types[i], args[i]);
-		if (args[i] == T_IND)
+		if (args[i] == IND_CODE)
 			args[i] += 1;
 		if (g_instr[cmd - 1].args_types[i] == 0)
 			return (1);
@@ -110,7 +144,7 @@ int		get_info_for_command(t_vm_info *info, t_carriage *carr)
 	args[0] = ((unsigned char)types & 0b11000000) / 64;
 	args[1] = ((unsigned char)types & 0b110000) / 16;
 	args[2] = ((unsigned char)types & 0b1100) / 4;
-	if (check_command_args(carr, args) == 0)
+	if (check_command_args(carr, args) == 0 || check_registers(info, carr) == 0)
 	{
 		skip_command(carr, args);
 		return (0);
@@ -124,6 +158,7 @@ int		make_step_cycle(t_vm_info *info, t_champ *champs)
 
 	if (info->cycles_to_die <= 0 || info->cycles_after_check >= info->cycles_to_die)
 	{
+		//ft_printf("DEAD\n");
 		if (check_cycle_to_die(info) == 1)
 			return (1);
 		if (info->live >= NBR_LIVE)
@@ -131,12 +166,12 @@ int		make_step_cycle(t_vm_info *info, t_champ *champs)
 			info->checks = 0;
 			info->cycles_after_check = 0;
 			info->cycles_to_die -= CYCLE_DELTA;
-			ft_printf("Cycle to die is now %d\n", info->cycles_to_die);
+		//	ft_printf("Cycle to die is now %d\n", info->cycles_to_die);
 		}
 		else
 		{
 			info->checks++;
-			printf("CHECKS: %d\n", info->checks);
+		//	printf("CHECKS: %d\n", info->checks);
 			info->cycles_after_check = 0;
 		}
 		if (info->checks >= MAX_CHECKS)
@@ -146,8 +181,8 @@ int		make_step_cycle(t_vm_info *info, t_champ *champs)
 			info->cycles_to_die -= CYCLE_DELTA;
 		}
 		info->live = 0;
-		print_carriages(info->carriages);
-		ft_printf("\n\n");
+	//	print_carriages(info->carriages);
+	//	ft_printf("\n\n");
 	}
 	cur_carriage = info->carriages;
 	while (cur_carriage != NULL)
