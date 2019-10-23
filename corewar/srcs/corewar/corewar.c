@@ -67,6 +67,8 @@ int		check_registers(t_vm_info *info, t_carriage *carr)
 	int types;
 	int args[3];
 
+	if (g_instr[carr->op_code - 1].args_types_code == 0)
+		return (1);
 	types = info->map[(carr->cur_pos + 1) % MEM_SIZE];
 	args[0] = ((unsigned char)types & 0b11000000) / 64;
 	args[1] = ((unsigned char)types & 0b110000) / 16;
