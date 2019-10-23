@@ -6,7 +6,7 @@
 /*   By: djast <djast@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/09/23 13:11:12 by djast             #+#    #+#             */
-/*   Updated: 2019/10/20 17:15:49 by djast            ###   ########.fr       */
+/*   Updated: 2019/10/20 18:07:53 by djast            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,7 +35,7 @@ void	make_command_next(t_vm_info *info, t_carriage *carr)
 void	make_command(t_vm_info *info, t_champ *champs, t_carriage *carr)
 {
 	(void) champs;
-	ft_printf("code: %d\n", carr->op_code);
+	//ft_printf("code: %d\n", carr->op_code);
 	ft_printf("%d | %d ", carr->id, info->cycle);
 	if (carr->op_code == 1)
 		make_command_live(info, champs, carr);
@@ -76,7 +76,7 @@ int		check_registers(t_vm_info *info, t_carriage *carr)
 		if (args[i] == REG_CODE)
 		{
 			reg = info->map[(carr->cur_pos + step + 1 + 1) % MEM_SIZE];
-			printf("REGISTER_CHECK: %d\n", reg);
+			//printf("REGISTER_CHECK: %d\n", reg);
 			if (reg < 1 || reg > 16)
 				return (0);
 			step += 1;
@@ -164,12 +164,12 @@ int		make_step_cycle(t_vm_info *info, t_champ *champs)
 			info->checks = 0;
 			info->cycles_after_check = 0;
 			info->cycles_to_die -= CYCLE_DELTA;
-			ft_printf("Cycle to die is now %d\n", info->cycles_to_die);
+		//	ft_printf("Cycle to die is now %d\n", info->cycles_to_die);
 		}
 		else
 		{
 			info->checks++;
-			printf("CHECKS: %d\n", info->checks);
+		//	printf("CHECKS: %d\n", info->checks);
 			info->cycles_after_check = 0;
 		}
 		if (info->checks >= MAX_CHECKS)
@@ -179,8 +179,8 @@ int		make_step_cycle(t_vm_info *info, t_champ *champs)
 			info->cycles_to_die -= CYCLE_DELTA;
 		}
 		info->live = 0;
-		print_carriages(info->carriages);
-		ft_printf("\n\n");
+	//	print_carriages(info->carriages);
+	//	ft_printf("\n\n");
 	}
 	cur_carriage = info->carriages;
 	while (cur_carriage != NULL)
@@ -216,7 +216,7 @@ void	start_corewar(t_champ *champs, t_vm_info *info)
 	{
 		//ft_printf("b: %p\n", champs->comment);
 		// print_map(info->map);
-		ft_printf("It is now cycle %d, %d\n", info->cycle, info->cycles_after_check);
+	//	ft_printf("It is now cycle %d, %d\n", info->cycle, info->cycles_after_check);
 		//ft_printf("%p", info->carriages->args);
 		if (make_step_cycle(info, champs) == 1)
 			return ;
