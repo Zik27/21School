@@ -6,7 +6,7 @@
 /*   By: djast <djast@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/09/23 13:11:12 by djast             #+#    #+#             */
-/*   Updated: 2019/10/23 18:55:06 by djast            ###   ########.fr       */
+/*   Updated: 2019/10/24 13:11:03 by djast            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -129,7 +129,7 @@ void	skip_command(t_carriage *carr, int args[3])
 			step += 1;
 		else if (args[i] == DIR_CODE)
 			step += g_instr[carr->op_code - 1].t_dir_size;
-		else if (args[i] == IND_CODE)
+		else if (args[i] == T_IND)
 			step += 2;
 		i++;
 	}
@@ -141,6 +141,11 @@ int		get_info_for_command(t_vm_info *info, t_carriage *carr)
 	char	types;
 	int		args[3];
 
+	if (carr->op_code < 1 || carr->op_code > 16)
+	{
+		 	carr->cur_pos = (carr->cur_pos + 1) % MEM_SIZE;
+		 	return (0);
+	}
 	types = info->map[(carr->cur_pos + 1) % MEM_SIZE];
 	args[0] = ((unsigned char)types & 0b11000000) / 64;
 	args[1] = ((unsigned char)types & 0b110000) / 16;
@@ -157,6 +162,26 @@ int		make_step_cycle(t_vm_info *info, t_champ *champs)
 {
 	t_carriage *cur_carriage;
 
+	cur_carriage = info->carriages;
+	while (cur_carriage != NULL)
+	{
+		if (cur_carriage->op_steps == 0)
+		{
+			cur_carriage->op_code = info->map[cur_carriage->cur_pos];
+			set_op_steps(cur_carriage);
+		}
+		if (cur_carriage->op_steps > 0)
+			cur_carriage->op_steps--;
+		if (cur_carriage->op_steps == 0)
+		{
+			if (get_info_for_command(info, cur_carriage) == 1)
+				make_command(info, champs, cur_carriage);
+		}
+		//printf("jump: %d\n", cur_carriage->jump_size);
+		cur_carriage->cur_pos = (cur_carriage->cur_pos + cur_carriage->jump_size) % MEM_SIZE;
+		cur_carriage->jump_size = 0;
+		cur_carriage = cur_carriage->next;
+	}
 	if (info->cycles_to_die <= 0 || info->cycles_after_check >= info->cycles_to_die)
 	{
 		//ft_printf("DEAD\n");
@@ -167,7 +192,7 @@ int		make_step_cycle(t_vm_info *info, t_champ *champs)
 			info->checks = 0;
 			info->cycles_after_check = 0;
 			info->cycles_to_die -= CYCLE_DELTA;
-		//	ft_printf("Cycle to die is now %d\n", info->cycles_to_die);
+			ft_printf("Cycle to die is now %d\n", info->cycles_to_die);
 		}
 		else
 		{
@@ -184,28 +209,6 @@ int		make_step_cycle(t_vm_info *info, t_champ *champs)
 		info->live = 0;
 	//	print_carriages(info->carriages);
 	//	ft_printf("\n\n");
-	}
-	cur_carriage = info->carriages;
-	while (cur_carriage != NULL)
-	{
-		if (cur_carriage->op_steps == 0)
-		{
-			cur_carriage->op_code = info->map[cur_carriage->cur_pos];
-			set_op_steps(cur_carriage);
-		}
-		if (cur_carriage->op_steps > 0)
-			cur_carriage->op_steps--;
-		if (cur_carriage->op_code < 1 || cur_carriage->op_code > 16)
-		 	cur_carriage->cur_pos = (cur_carriage->cur_pos + 1) % MEM_SIZE;
-		else if (cur_carriage->op_steps == 0)
-		{
-			if (get_info_for_command(info, cur_carriage) == 1)
-				make_command(info, champs, cur_carriage);
-		}
-		//printf("jump: %d\n", cur_carriage->jump_size);
-		cur_carriage->cur_pos = (cur_carriage->cur_pos + cur_carriage->jump_size) % MEM_SIZE;
-		cur_carriage->jump_size = 0;
-		cur_carriage = cur_carriage->next;
 	}
 	return (0);
 }
@@ -237,7 +240,7 @@ void	start_corewar(t_champ *champs, t_vm_info *info, t_sdl *sdl)
 				{
 					while (i < sdl->speed)
 					{
-						ft_printf("It is now cycle %d, %d\n", info->cycle, info->cycles_after_check);
+						ft_printf("It is now cycle %d\n", info->cycle);
 						if (make_step_cycle(info, champs) == 1)
 							return ;
 						info->cycle++;
@@ -272,7 +275,7 @@ void	start_corewar(t_champ *champs, t_vm_info *info, t_sdl *sdl)
 		}
 		else
 		{
-			//ft_printf("It is now cycle %d, %d\n", info->cycle, info->cycles_after_check);
+			ft_printf("It is now cycle %d\n", info->cycle);
 			if (make_step_cycle(info, champs) == 1)
 					return ;
 			info->cycle++;
