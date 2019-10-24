@@ -6,7 +6,7 @@
 /*   By: djast <djast@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/09/23 13:11:12 by djast             #+#    #+#             */
-/*   Updated: 2019/10/24 19:21:53 by djast            ###   ########.fr       */
+/*   Updated: 2019/10/24 19:27:27 by djast            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -124,6 +124,8 @@ void	skip_command(t_carriage *carr, int args[3])
 	i = 0;
 	while (i < 3)
 	{
+		if (g_instr[carr->op_code - 1].args_types[i] == 0)
+			break ;
 		if (args[i] == REG_CODE)
 			step += 1;
 		else if (args[i] == DIR_CODE)
