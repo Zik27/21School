@@ -6,7 +6,7 @@
 /*   By: djast <djast@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/09/25 17:25:42 by djast             #+#    #+#             */
-/*   Updated: 2019/10/23 17:05:52 by djast            ###   ########.fr       */
+/*   Updated: 2019/10/24 14:54:17 by djast            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -81,7 +81,7 @@ void			delete_death_carr(t_vm_info *info, t_carriage *carr)
 		next_carr = cur_carr->next;
 	while (cur_carr != NULL)
 	{
-		if (info->cycle - info->cycles_to_die > cur_carr->cycle_last_live)
+		if (info->cycle - info->cycles_to_die >= cur_carr->cycle_last_live)
 			delete_carriage(info, prev_carr, &cur_carr, next_carr);
 		prev_carr = cur_carr;
 		if (cur_carr == NULL)

@@ -6,7 +6,7 @@
 /*   By: djast <djast@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/09/23 13:11:12 by djast             #+#    #+#             */
-/*   Updated: 2019/10/24 13:29:13 by djast            ###   ########.fr       */
+/*   Updated: 2019/10/24 14:54:20 by djast            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -201,6 +201,7 @@ int		make_step_cycle(t_vm_info *info, t_champ *champs)
 			info->checks = 0;
 			info->cycles_after_check = 0;
 			info->cycles_to_die -= CYCLE_DELTA;
+			ft_printf("Cycle to die is now %d\n", info->cycles_to_die);
 		}
 		info->live = 0;
 	//	print_carriages(info->carriages);
@@ -224,9 +225,9 @@ void	start_corewar(t_champ *champs, t_vm_info *info)
 		//ft_printf("%p", info->carriages->args);
 		if (make_step_cycle(info, champs) == 1)
 			return ;
-		// if (info->cycle == 13232)
+		// if (info->cycle == 23870)
 		// {
-		// 	print_map(info->map);
+		// 	//print_map(info->map);
 		// 	print_carriages(info->carriages);
 		// 	ft_printf("\n\n");
 		// }
