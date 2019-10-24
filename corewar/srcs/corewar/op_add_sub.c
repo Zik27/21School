@@ -6,7 +6,7 @@
 /*   By: djast <djast@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/10/09 09:19:57 by djast             #+#    #+#             */
-/*   Updated: 2019/10/20 16:52:40 by djast            ###   ########.fr       */
+/*   Updated: 2019/10/24 16:16:13 by djast            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,12 +15,12 @@
 void	make_command_add(t_vm_info *info, t_carriage *carr)
 {
 	int sum;
-	ft_printf("add\n");
+	ft_printf("add ");
 
 	ft_bzero(carr->args_types, 3 * sizeof(int));
 	get_op_arg_type(info, carr);
 	get_op_arg(info, carr, carr->op_code);
-	printf("%d\n", carr->args[0]);
+	ft_printf("r%d r%d r%d\n", carr->args[0], carr->args[1], carr->args[2]);
 	sum = carr->registers[carr->args[0] - 1] + carr->registers[carr->args[1] - 1];
 	carr->registers[carr->args[2] - 1] = sum;
 	calc_jump_size(carr);
@@ -34,10 +34,11 @@ void	make_command_sub(t_vm_info *info, t_carriage *carr)
 {
 	int sub;
 
-	ft_printf("sub\n");
+	ft_printf("sub ");
 	ft_bzero(carr->args_types, 3 * sizeof(int));
 	get_op_arg_type(info, carr);
 	get_op_arg(info, carr, carr->op_code);
+	ft_printf("r%d r%d r%d\n", carr->args[0], carr->args[1], carr->args[2]);
 	sub = carr->registers[carr->args[0] - 1] - carr->registers[carr->args[1] - 1];
 	carr->registers[carr->args[2] - 1] = sub;
 	calc_jump_size(carr);
