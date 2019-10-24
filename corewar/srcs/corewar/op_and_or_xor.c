@@ -6,7 +6,7 @@
 /*   By: djast <djast@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/10/09 09:18:50 by djast             #+#    #+#             */
-/*   Updated: 2019/10/16 18:57:59 by djast            ###   ########.fr       */
+/*   Updated: 2019/10/24 15:56:07 by djast            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,7 @@
 
 void	make_command_and(t_vm_info *info, t_carriage *carr)
 {
-	ft_printf("and\n");
+	ft_printf("and ");
 	ft_bzero(carr->args_types, 3 * sizeof(int));
 	get_op_arg_type(info, carr);
 	get_op_arg(info, carr, carr->op_code);
@@ -70,7 +70,7 @@ void	make_command_xor(t_vm_info *info, t_carriage *carr)
 		carr->args[0] = carr->registers[carr->args[0] - 1];
 	if (carr->args_types[1] == REG_CODE)
 		carr->args[1] = carr->registers[carr->args[1] - 1];
-	ft_printf("%d %d %d\n", carr->args[0], carr->args[1], carr->args[2]);
+	ft_printf("%d %d r%d\n", carr->args[0], carr->args[1], carr->args[2]);
 	carr->registers[carr->args[2] - 1] = carr->args[0] ^ carr->args[1];
 	if (carr->registers[carr->args[2] - 1] == 0)
 		carr->carry = 1;

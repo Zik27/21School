@@ -6,7 +6,7 @@
 /*   By: djast <djast@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/10/09 09:22:05 by djast             #+#    #+#             */
-/*   Updated: 2019/10/24 15:06:54 by djast            ###   ########.fr       */
+/*   Updated: 2019/10/24 15:53:31 by djast            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -62,7 +62,7 @@ void			make_command_sti(t_vm_info *info, t_carriage *carr)
 	get_op_arg(info, carr, carr->op_code);
 	//printf("args: %x %x\n", carr->args[0], carr->args[1]);
 	res = 0;
-	ft_printf("r%d ", carr->args_types[0]);
+	ft_printf("r%d", carr->args[0]);
 	if (carr->args_types[1] == REG_CODE)
 		res += carr->registers[carr->args[1] - 1];
 	else if (carr->args_types[1] == DIR_CODE)
