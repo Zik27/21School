@@ -6,7 +6,7 @@
 /*   By: djast <djast@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/10/09 09:21:36 by djast             #+#    #+#             */
-/*   Updated: 2019/10/24 16:21:23 by djast            ###   ########.fr       */
+/*   Updated: 2019/10/24 18:57:19 by djast            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,6 +36,7 @@ static void		print_debug_ldi(t_vm_info *info, t_carriage *carr, int res)
 {
 	int a;
 	int b;
+	int pc;
 
 	a = 0;
 	b = 0;
@@ -51,7 +52,8 @@ static void		print_debug_ldi(t_vm_info *info, t_carriage *carr, int res)
 		b = carr->args[1];
 
 	ft_printf("%d %d r%d\n", a, b, carr->args[2]);
-	ft_printf("       | -> load from %d + %d = %d (with pc and mod %d)\n", a, b, res, carr->cur_pos + res);
+	pc = carr->cur_pos + (res % IDX_MOD);
+	ft_printf("       | -> load from %d + %d = %d (with pc and mod %d)\n", a, b, res, pc);
 }
 
 void	make_command_ldi(t_vm_info *info, t_carriage *carr)

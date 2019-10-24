@@ -6,7 +6,7 @@
 /*   By: djast <djast@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/10/20 13:37:36 by djast             #+#    #+#             */
-/*   Updated: 2019/10/20 15:32:58 by djast            ###   ########.fr       */
+/*   Updated: 2019/10/24 17:41:49 by djast            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -77,13 +77,14 @@ static void		draw_map(t_sdl *sdl, t_vm_info *info)
 	while (i + (j * 64) < MEM_SIZE)
 	{
 		if (info->color_map[i + j * 64] == 1)
-			c = create_sdl_color(173, 0, 0, 0);
-		else if (info->color_map[i + j * 64] == 2)
-			c = create_sdl_color(0, 173, 0, 0);
-		else if (info->color_map[i + j * 64] == 3)
 			c = create_sdl_color(0, 0, 173, 0);
+		else if (info->color_map[i + j * 64] == 2)
+			c = create_sdl_color(173, 0, 0, 0);
+		else if (info->color_map[i + j * 64] == 3)
+			c = create_sdl_color(0, 173, 0, 0);
+			
 		else
-			c = create_sdl_color(255, 255, 255, 0);
+			c = create_sdl_color(128, 128, 128, 0);
 		r = create_sdl_rect(10 + i * (SYMBOL_SIZE + SPACE_SIZE), 10 + j * (SYMBOL_SIZE + SPACE_SIZE), SYMBOL_SIZE, SYMBOL_SIZE);
 		draw_text(sdl, info->map[i + j * 64], *r, *c);
 		i++;
@@ -109,11 +110,11 @@ static void		draw_carriages(t_sdl *sdl, t_vm_info *info)
 	{
 		r = create_sdl_rect(10 + carr->cur_pos % 64 * (SYMBOL_SIZE + SPACE_SIZE), 10 + carr->cur_pos / 64 * (SYMBOL_SIZE + SPACE_SIZE), SYMBOL_SIZE, SYMBOL_SIZE);
 		if (info->color_map[carr->cur_pos] == 1)
-			SDL_SetRenderDrawColor(sdl->renderer, 255, 64, 64, 0);
-		else if (info->color_map[carr->cur_pos] == 2)
-			SDL_SetRenderDrawColor(sdl->renderer, 64, 255, 64, 0);
-		else if (info->color_map[carr->cur_pos] == 3)
 			SDL_SetRenderDrawColor(sdl->renderer, 64, 64, 255, 0);
+		else if (info->color_map[carr->cur_pos] == 2)
+			SDL_SetRenderDrawColor(sdl->renderer, 255, 64, 64, 0);
+		else if (info->color_map[carr->cur_pos] == 3)
+			SDL_SetRenderDrawColor(sdl->renderer, 64, 255, 64, 0);
 		else
 			SDL_SetRenderDrawColor(sdl->renderer, 255, 255, 255, 0);
 		SDL_RenderFillRect(sdl->renderer, r);

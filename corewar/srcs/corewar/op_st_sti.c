@@ -6,7 +6,7 @@
 /*   By: djast <djast@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/10/09 09:22:05 by djast             #+#    #+#             */
-/*   Updated: 2019/10/24 15:53:31 by djast            ###   ########.fr       */
+/*   Updated: 2019/10/24 18:57:33 by djast            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,7 +24,7 @@ void			make_command_st(t_vm_info *info, t_carriage *carr)
 	if (carr->args_types[1] == REG_CODE)
 		carr->registers[carr->args[1] - 1] = carr->registers[carr->args[0] - 1];
 	else
-		rewrite(info, (carr->cur_pos + (carr->args[1] % IDX_MOD)) % MEM_SIZE, carr->registers[carr->args[0] - 1]);
+		rewrite(info, carr->champ, (carr->cur_pos + (carr->args[1] % IDX_MOD)) % MEM_SIZE, carr->registers[carr->args[0] - 1]);
 	calc_jump_size(carr);
 }
 
@@ -32,6 +32,7 @@ static void		print_debug_sti(t_vm_info *info, t_carriage *carr, int res)
 {
 	int a;
 	int b;
+	int pc;
 
 	a = 0;
 	b = 0;
@@ -47,7 +48,8 @@ static void		print_debug_sti(t_vm_info *info, t_carriage *carr, int res)
 		b = carr->args[2];
 
 	ft_printf(" %d %d\n", a, b);
-	ft_printf("       | -> store to %d + %d = %d (with pc and mod %d)\n", a, b, res, carr->cur_pos + res);
+	pc = carr->cur_pos + (res % IDX_MOD);
+	ft_printf("       | -> store to %d + %d = %d (with pc and mod %d)\n", a, b, res, pc);
 }
 
 void			make_command_sti(t_vm_info *info, t_carriage *carr)
@@ -74,6 +76,6 @@ void			make_command_sti(t_vm_info *info, t_carriage *carr)
 	else if (carr->args_types[2] == DIR_CODE)
 		res += carr->args[2];
 	print_debug_sti(info, carr, res);
-	rewrite(info, (carr->cur_pos + (res % IDX_MOD)) % MEM_SIZE, carr->registers[carr->args[0] - 1]);
+	rewrite(info, carr->champ, (carr->cur_pos + (res % IDX_MOD)) % MEM_SIZE, carr->registers[carr->args[0] - 1]);
 	calc_jump_size(carr);
 }

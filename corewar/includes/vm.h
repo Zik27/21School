@@ -6,7 +6,7 @@
 /*   By: djast <djast@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/09/23 13:35:39 by djast             #+#    #+#             */
-/*   Updated: 2019/10/20 16:32:00 by djast            ###   ########.fr       */
+/*   Updated: 2019/10/24 16:46:24 by djast            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -106,7 +106,7 @@ t_champ			*find_player_by_id(t_champ *champs, int id);
 void			introducing(t_champ	*champs, t_vm_info *info);
 void			set_op_steps(t_carriage *carr);
 int				bytecode_to_int(unsigned char *buf, int count_bytes);
-void			rewrite(t_vm_info *info, int addr, int number);
+void			rewrite(t_vm_info *info, t_champ *player, int addr, int number);
 void			get_op_arg_type(t_vm_info *info, t_carriage *carr);
 void			get_op_arg(t_vm_info *info, t_carriage *carr, int cmd);
 void			calc_jump_size(t_carriage *carr);
