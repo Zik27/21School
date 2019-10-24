@@ -6,7 +6,7 @@
 /*   By: djast <djast@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/10/09 09:22:05 by djast             #+#    #+#             */
-/*   Updated: 2019/10/24 15:53:31 by djast            ###   ########.fr       */
+/*   Updated: 2019/10/24 19:22:16 by djast            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,6 +32,7 @@ static void		print_debug_sti(t_vm_info *info, t_carriage *carr, int res)
 {
 	int a;
 	int b;
+	int pc;
 
 	a = 0;
 	b = 0;
@@ -47,7 +48,8 @@ static void		print_debug_sti(t_vm_info *info, t_carriage *carr, int res)
 		b = carr->args[2];
 
 	ft_printf(" %d %d\n", a, b);
-	ft_printf("       | -> store to %d + %d = %d (with pc and mod %d)\n", a, b, res, carr->cur_pos + res);
+	pc = carr->cur_pos + (res % IDX_MOD);
+	ft_printf("       | -> store to %d + %d = %d (with pc and mod %d)\n", a, b, res, pc);
 }
 
 void			make_command_sti(t_vm_info *info, t_carriage *carr)

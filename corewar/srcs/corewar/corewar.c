@@ -6,7 +6,7 @@
 /*   By: djast <djast@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/09/23 13:11:12 by djast             #+#    #+#             */
-/*   Updated: 2019/10/24 14:54:20 by djast            ###   ########.fr       */
+/*   Updated: 2019/10/24 19:21:53 by djast            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,8 +30,6 @@ void	make_command_next(t_vm_info *info, t_carriage *carr)
 		make_command_lfork(info, carr);
 	else if (carr->op_code == 16)
 		make_command_aff(info, carr);
-	else
-		carr->cur_pos = (carr->cur_pos + 1) % MEM_SIZE;
 }
 
 void	make_command(t_vm_info *info, t_champ *champs, t_carriage *carr)
@@ -130,7 +128,7 @@ void	skip_command(t_carriage *carr, int args[3])
 			step += 1;
 		else if (args[i] == DIR_CODE)
 			step += g_instr[carr->op_code - 1].t_dir_size;
-		else if (args[i] == T_IND)
+		else if (args[i] == IND_CODE || args[i] == T_IND)
 			step += 2;
 		i++;
 	}
@@ -142,7 +140,12 @@ int		get_info_for_command(t_vm_info *info, t_carriage *carr)
 	char	types;
 	int		args[3];
 
-	types = info->map[(carr->cur_pos + 1) % MEM_SIZE];
+	if (carr->op_code < 1 || carr->op_code > 16)
+    {
+    	carr->cur_pos = (carr->cur_pos + 1) % MEM_SIZE;
+        return (0);
+    }
+    types = (info->map[(carr->cur_pos + 1) % MEM_SIZE]) & 0xFF;
 	args[0] = ((unsigned char)types & 0b11000000) / 64;
 	args[1] = ((unsigned char)types & 0b110000) / 16;
 	args[2] = ((unsigned char)types & 0b1100) / 4;
