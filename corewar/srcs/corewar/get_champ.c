@@ -6,7 +6,7 @@
 /*   By: djast <djast@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/09/25 14:07:20 by djast             #+#    #+#             */
-/*   Updated: 2019/10/16 16:37:20 by djast            ###   ########.fr       */
+/*   Updated: 2019/11/06 16:24:20 by djast            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -47,11 +47,11 @@ char	*get_champ_comment(int fd)
 
 int		get_champ_code_size(int fd)
 {
-	char *byte;
+	unsigned char *byte;
 	int size;
 	int code_size;
 
-	byte = ft_strnew(4);
+	byte = (unsigned char *)ft_strnew(4);
 	size = read(fd, byte, 4);
 	if (size != 4)
 		return (-1);

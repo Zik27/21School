@@ -6,7 +6,7 @@
 /*   By: djast <djast@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/10/09 09:18:50 by djast             #+#    #+#             */
-/*   Updated: 2019/11/06 15:59:37 by djast            ###   ########.fr       */
+/*   Updated: 2019/11/06 16:26:55 by djast            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,6 +27,7 @@ void	make_command_and(t_vm_info *info, t_carriage *carr)
 	if (carr->args_types[1] == REG_CODE)
 		carr->args[1] = carr->registers[carr->args[1] - 1];
 	carr->registers[carr->args[2] - 1] = carr->args[0] & carr->args[1];
+	ft_printf("%d %d r%d\n", carr->args[0], carr->args[1], carr->args[2]);
 	if (carr->registers[carr->args[2] - 1] == 0)
 		carr->carry = 1;
 	else
@@ -36,7 +37,7 @@ void	make_command_and(t_vm_info *info, t_carriage *carr)
 
 void	make_command_or(t_vm_info *info, t_carriage *carr)
 {
-	ft_printf("or\n");
+	ft_printf("or ");
 	ft_bzero(carr->args_types, 3 * sizeof(int));
 	get_op_arg_type(info, carr);
 	get_op_arg(info, carr, carr->op_code);
@@ -49,6 +50,7 @@ void	make_command_or(t_vm_info *info, t_carriage *carr)
 	if (carr->args_types[1] == REG_CODE)
 		carr->args[1] = carr->registers[carr->args[1] - 1];
 	carr->registers[carr->args[2] - 1] = carr->args[0] | carr->args[1];
+	ft_printf("%d %d r%d\n", carr->args[0], carr->args[1], carr->args[2]);
 	if (carr->registers[carr->args[2] - 1] == 0)
 		carr->carry = 1;
 	else
