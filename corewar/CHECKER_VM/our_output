@@ -1,0 +1,5655 @@
+Introducing contestants...
+* Player 1, weighing 325 bytes, "Celebration Funebre v0.99pl42" ("Jour J") !
+* Player 2, weighing 325 bytes, "Celebration Funebre v0.99pl42" ("Jour J") !
+P    2 | ld 0 r3
+P    1 | ld 0 r3
+P    2 | zjmp 80 OK
+P    1 | zjmp 80 OK
+P    2 | sti r1 -74 1
+       | -> store to -74 + 1 = -73 (with pc and mod 2062)
+P    1 | sti r1 -74 1
+       | -> store to -74 + 1 = -73 (with pc and mod 14)
+P    2 | sti r1 -81 15
+       | -> store to -81 + 15 = -66 (with pc and mod 2076)
+P    1 | sti r1 -81 15
+       | -> store to -81 + 15 = -66 (with pc and mod 28)
+P    2 | sti r1 -88 29
+       | -> store to -88 + 29 = -59 (with pc and mod 2090)
+P    1 | sti r1 -88 29
+       | -> store to -88 + 29 = -59 (with pc and mod 42)
+P    2 | sti r1 -95 43
+       | -> store to -95 + 43 = -52 (with pc and mod 2104)
+P    1 | sti r1 -95 43
+       | -> store to -95 + 43 = -52 (with pc and mod 56)
+P    2 | sti r1 -102 57
+       | -> store to -102 + 57 = -45 (with pc and mod 2118)
+P    1 | sti r1 -102 57
+       | -> store to -102 + 57 = -45 (with pc and mod 70)
+P    2 | sti r1 -109 71
+       | -> store to -109 + 71 = -38 (with pc and mod 2132)
+P    1 | sti r1 -109 71
+       | -> store to -109 + 71 = -38 (with pc and mod 84)
+P    2 | ld 393216 r4
+P    1 | ld 393216 r4
+P    2 | ld 917504 r12
+P    1 | ld 917504 r12
+P    2 | ld 1 r11
+P    1 | ld 1 r11
+P    2 | ld 6 r10
+P    1 | ld 6 r10
+P    2 | live 42
+P    1 | live 42
+P    2 | sti r4 -155 1
+       | -> store to -155 + 1 = -154 (with pc and mod 2056)
+P    1 | sti r4 -155 1
+       | -> store to -155 + 1 = -154 (with pc and mod 8)
+P    2 | add r4 r12 r4
+P    1 | add r4 r12 r4
+P    2 | sub r10 r11 r10
+P    1 | sub r10 r11 r10
+P    2 | zjmp -50 FAILED
+P    1 | zjmp -50 FAILED
+P    2 | fork -25 (2205)
+P    1 | fork -25 (157)
+P    4 | live 42
+P    3 | live 42
+P    2 | live 3
+P    1 | live 3
+P    4 | sti r4 -155 1
+       | -> store to -155 + 1 = -154 (with pc and mod 8)
+P    3 | sti r4 -155 1
+       | -> store to -155 + 1 = -154 (with pc and mod 2056)
+P    4 | add r4 r12 r4
+P    3 | add r4 r12 r4
+P    4 | sub r10 r11 r10
+P    3 | sub r10 r11 r10
+P    4 | zjmp -50 FAILED
+P    3 | zjmp -50 FAILED
+P    2 | fork 40 (2278)
+P    1 | fork 40 (230)
+P    6 | live 42
+P    5 | live 42
+P    2 | live 4
+P    1 | live 4
+P    4 | fork -25 (157)
+P    3 | fork -25 (2205)
+P    8 | live 42
+P    7 | live 42
+P    4 | live 3
+P    3 | live 3
+P    8 | sti r4 -155 1
+       | -> store to -155 + 1 = -154 (with pc and mod 2056)
+P    7 | sti r4 -155 1
+       | -> store to -155 + 1 = -154 (with pc and mod 8)
+P    8 | add r4 r12 r4
+P    7 | add r4 r12 r4
+P    8 | sub r10 r11 r10
+P    7 | sub r10 r11 r10
+P    8 | zjmp -50 FAILED
+P    7 | zjmp -50 FAILED
+P    6 | fork 61 (296)
+P    5 | fork 61 (2344)
+P    2 | fork 69 (2315)
+P    1 | fork 69 (267)
+P   12 | live 42
+P   11 | live 42
+P   10 | live 42
+P    9 | live 42
+P    6 | live 42
+P    5 | live 42
+P    2 | live 42
+P    1 | live 42
+P   12 | ldi 12 -259 r15
+       | -> load from 12 + -259 = -247 (with pc and mod 25)
+P   11 | ldi 12 -259 r15
+       | -> load from 12 + -259 = -247 (with pc and mod 2073)
+P   10 | ldi 0 -288 r15
+       | -> load from 0 + -288 = -288 (with pc and mod 2061)
+P    9 | ldi 0 -288 r15
+       | -> load from 0 + -288 = -288 (with pc and mod 13)
+P    6 | ldi 4 -230 r15
+       | -> load from 4 + -230 = -226 (with pc and mod 17)
+P    5 | ldi 4 -230 r15
+       | -> load from 4 + -230 = -226 (with pc and mod 2065)
+P    2 | ldi 8 -193 r15
+       | -> load from 8 + -193 = -185 (with pc and mod 2069)
+P    1 | ldi 8 -193 r15
+       | -> load from 8 + -193 = -185 (with pc and mod 21)
+P   12 | ld -182 r14
+P   11 | ld -182 r14
+P   10 | ld -194 r14
+P    9 | ld -194 r14
+P    6 | ld -190 r14
+P    5 | ld -190 r14
+P    2 | ld -186 r14
+P    1 | ld -186 r14
+P   12 | ld 0 r2
+P   11 | ld 0 r2
+P   10 | ld 0 r2
+P    9 | ld 0 r2
+P    6 | ld 0 r2
+P    5 | ld 0 r2
+P    2 | ld 0 r2
+P    1 | ld 0 r2
+P   12 | zjmp -286 OK
+P   11 | zjmp -286 OK
+P   10 | zjmp -315 OK
+P    9 | zjmp -315 OK
+P    6 | zjmp -257 OK
+P    5 | zjmp -257 OK
+P    4 | fork 40 (230)
+P    3 | fork 40 (2278)
+P    2 | zjmp -220 OK
+P    1 | zjmp -220 OK
+P   14 | live 42
+P   13 | live 42
+P    4 | live 4
+P    3 | live 4
+P   12 | zjmp 34 OK
+P   11 | zjmp 34 OK
+P   10 | zjmp 34 OK
+P    9 | zjmp 34 OK
+P    6 | zjmp 34 OK
+P    5 | zjmp 34 OK
+P    2 | zjmp 34 OK
+P    1 | zjmp 34 OK
+P   12 | live -1
+P   11 | live -2
+P   10 | live -2
+P    9 | live -1
+P    6 | live -1
+P    5 | live -2
+P    2 | live -2
+P    1 | live -1
+P   12 | sti r15 0 -182
+       | -> store to 0 + -182 = -182 (with pc and mod -136)
+P   11 | sti r15 0 -182
+       | -> store to 0 + -182 = -182 (with pc and mod 1912)
+P   10 | sti r15 0 -194
+       | -> store to 0 + -194 = -194 (with pc and mod 1900)
+P    9 | sti r15 0 -194
+       | -> store to 0 + -194 = -194 (with pc and mod -148)
+P    6 | sti r15 0 -190
+       | -> store to 0 + -190 = -190 (with pc and mod -144)
+P    5 | sti r15 0 -190
+       | -> store to 0 + -190 = -190 (with pc and mod 1904)
+P    2 | sti r15 0 -186
+       | -> store to 0 + -186 = -186 (with pc and mod 1908)
+P    1 | sti r15 0 -186
+       | -> store to 0 + -186 = -186 (with pc and mod -140)
+P    8 | fork -25 (2205)
+P    7 | fork -25 (157)
+P   16 | live 42
+P   15 | live 42
+P   12 | zjmp -200 OK
+P   11 | zjmp -200 OK
+P   10 | zjmp -200 OK
+P    9 | zjmp -200 OK
+P    8 | live 3
+P    7 | live 3
+P    6 | zjmp -200 OK
+P    5 | zjmp -200 OK
+P    2 | zjmp -200 OK
+P    1 | zjmp -200 OK
+P   12 | live -1
+P   11 | live -2
+P   10 | live -2
+P    9 | live -1
+P    6 | live -1
+P    5 | live -2
+P    2 | live -2
+P    1 | live -1
+P   16 | sti r4 -155 1
+       | -> store to -155 + 1 = -154 (with pc and mod 8)
+P   15 | sti r4 -155 1
+       | -> store to -155 + 1 = -154 (with pc and mod 2056)
+P   16 | add r4 r12 r4
+P   15 | add r4 r12 r4
+P   12 | sti r15 0 -182
+       | -> store to 0 + -182 = -182 (with pc and mod 3771)
+P   11 | sti r15 0 -182
+       | -> store to 0 + -182 = -182 (with pc and mod 1723)
+P   10 | sti r15 0 -194
+       | -> store to 0 + -194 = -194 (with pc and mod 1711)
+P    9 | sti r15 0 -194
+       | -> store to 0 + -194 = -194 (with pc and mod 3759)
+P    6 | sti r15 0 -190
+       | -> store to 0 + -190 = -190 (with pc and mod 3763)
+P    5 | sti r15 0 -190
+       | -> store to 0 + -190 = -190 (with pc and mod 1715)
+P    2 | sti r15 0 -186
+       | -> store to 0 + -186 = -186 (with pc and mod 1719)
+P    1 | sti r15 0 -186
+       | -> store to 0 + -186 = -186 (with pc and mod 3767)
+P   16 | sub r10 r11 r10
+P   15 | sub r10 r11 r10
+P   12 | zjmp -200 OK
+P   11 | zjmp -200 OK
+P   10 | zjmp -200 OK
+P    9 | zjmp -200 OK
+P    6 | zjmp -200 OK
+P    5 | zjmp -200 OK
+P    2 | zjmp -200 OK
+P    1 | zjmp -200 OK
+P   16 | zjmp -50 FAILED
+P   15 | zjmp -50 FAILED
+P   12 | live -1
+P   11 | live -2
+P   10 | live -2
+P    9 | live -1
+P    6 | live -1
+P    5 | live -2
+P    2 | live -2
+P    1 | live -1
+P   12 | sti r15 0 -182
+       | -> store to 0 + -182 = -182 (with pc and mod 3582)
+P   11 | sti r15 0 -182
+       | -> store to 0 + -182 = -182 (with pc and mod 1534)
+P   10 | sti r15 0 -194
+       | -> store to 0 + -194 = -194 (with pc and mod 1522)
+P    9 | sti r15 0 -194
+       | -> store to 0 + -194 = -194 (with pc and mod 3570)
+P    6 | sti r15 0 -190
+       | -> store to 0 + -190 = -190 (with pc and mod 3574)
+P    5 | sti r15 0 -190
+       | -> store to 0 + -190 = -190 (with pc and mod 1526)
+P    2 | sti r15 0 -186
+       | -> store to 0 + -186 = -186 (with pc and mod 1530)
+P    1 | sti r15 0 -186
+       | -> store to 0 + -186 = -186 (with pc and mod 3578)
+P   12 | zjmp -200 OK
+P   11 | zjmp -200 OK
+P   10 | zjmp -200 OK
+P    9 | zjmp -200 OK
+P    6 | zjmp -200 OK
+P    5 | zjmp -200 OK
+P    2 | zjmp -200 OK
+P    1 | zjmp -200 OK
+P   12 | live -1
+P   11 | live -2
+P   10 | live -2
+P    9 | live -1
+P    6 | live -1
+P    5 | live -2
+P    2 | live -2
+P    1 | live -1
+P   12 | sti r15 0 -182
+       | -> store to 0 + -182 = -182 (with pc and mod 3393)
+P   11 | sti r15 0 -182
+       | -> store to 0 + -182 = -182 (with pc and mod 1345)
+P   10 | sti r15 0 -194
+       | -> store to 0 + -194 = -194 (with pc and mod 1333)
+P    9 | sti r15 0 -194
+       | -> store to 0 + -194 = -194 (with pc and mod 3381)
+P    6 | sti r15 0 -190
+       | -> store to 0 + -190 = -190 (with pc and mod 3385)
+P    5 | sti r15 0 -190
+       | -> store to 0 + -190 = -190 (with pc and mod 1337)
+P    2 | sti r15 0 -186
+       | -> store to 0 + -186 = -186 (with pc and mod 1341)
+P    1 | sti r15 0 -186
+       | -> store to 0 + -186 = -186 (with pc and mod 3389)
+P   12 | zjmp -200 OK
+P   11 | zjmp -200 OK
+P   10 | zjmp -200 OK
+P    9 | zjmp -200 OK
+P    6 | zjmp -200 OK
+P    5 | zjmp -200 OK
+P    2 | zjmp -200 OK
+P    1 | zjmp -200 OK
+P   12 | live -1
+P   11 | live -2
+P   10 | live -2
+P    9 | live -1
+P    6 | live -1
+P    5 | live -2
+P    2 | live -2
+P    1 | live -1
+P   12 | sti r15 0 -182
+       | -> store to 0 + -182 = -182 (with pc and mod 3204)
+P   11 | sti r15 0 -182
+       | -> store to 0 + -182 = -182 (with pc and mod 1156)
+P   10 | sti r15 0 -194
+       | -> store to 0 + -194 = -194 (with pc and mod 1144)
+P    9 | sti r15 0 -194
+       | -> store to 0 + -194 = -194 (with pc and mod 3192)
+P    6 | sti r15 0 -190
+       | -> store to 0 + -190 = -190 (with pc and mod 3196)
+P    5 | sti r15 0 -190
+       | -> store to 0 + -190 = -190 (with pc and mod 1148)
+P    2 | sti r15 0 -186
+       | -> store to 0 + -186 = -186 (with pc and mod 1152)
+P    1 | sti r15 0 -186
+       | -> store to 0 + -186 = -186 (with pc and mod 3200)
+P   12 | zjmp -200 OK
+P   11 | zjmp -200 OK
+P   10 | zjmp -200 OK
+P    9 | zjmp -200 OK
+P    6 | zjmp -200 OK
+P    5 | zjmp -200 OK
+P    2 | zjmp -200 OK
+P    1 | zjmp -200 OK
+P   12 | live -1
+P   11 | live -2
+P   10 | live -2
+P    9 | live -1
+P    6 | live -1
+P    5 | live -2
+P    2 | live -2
+P    1 | live -1
+P   12 | sti r15 0 -182
+       | -> store to 0 + -182 = -182 (with pc and mod 3015)
+P   11 | sti r15 0 -182
+       | -> store to 0 + -182 = -182 (with pc and mod 967)
+P   10 | sti r15 0 -194
+       | -> store to 0 + -194 = -194 (with pc and mod 955)
+P    9 | sti r15 0 -194
+       | -> store to 0 + -194 = -194 (with pc and mod 3003)
+P    6 | sti r15 0 -190
+       | -> store to 0 + -190 = -190 (with pc and mod 3007)
+P    5 | sti r15 0 -190
+       | -> store to 0 + -190 = -190 (with pc and mod 959)
+P    2 | sti r15 0 -186
+       | -> store to 0 + -186 = -186 (with pc and mod 963)
+P    1 | sti r15 0 -186
+       | -> store to 0 + -186 = -186 (with pc and mod 3011)
+P   12 | zjmp -200 OK
+P   11 | zjmp -200 OK
+P   10 | zjmp -200 OK
+P    9 | zjmp -200 OK
+P    6 | zjmp -200 OK
+P    5 | zjmp -200 OK
+P    2 | zjmp -200 OK
+P    1 | zjmp -200 OK
+P   12 | live -1
+P   11 | live -2
+P   10 | live -2
+P    9 | live -1
+P    6 | live -1
+P    5 | live -2
+P    2 | live -2
+P    1 | live -1
+P   12 | sti r15 0 -182
+       | -> store to 0 + -182 = -182 (with pc and mod 2826)
+P   11 | sti r15 0 -182
+       | -> store to 0 + -182 = -182 (with pc and mod 778)
+P   10 | sti r15 0 -194
+       | -> store to 0 + -194 = -194 (with pc and mod 766)
+P    9 | sti r15 0 -194
+       | -> store to 0 + -194 = -194 (with pc and mod 2814)
+P    6 | sti r15 0 -190
+       | -> store to 0 + -190 = -190 (with pc and mod 2818)
+P    5 | sti r15 0 -190
+       | -> store to 0 + -190 = -190 (with pc and mod 770)
+P    2 | sti r15 0 -186
+       | -> store to 0 + -186 = -186 (with pc and mod 774)
+P    1 | sti r15 0 -186
+       | -> store to 0 + -186 = -186 (with pc and mod 2822)
+P   12 | zjmp -200 OK
+P   11 | zjmp -200 OK
+P   10 | zjmp -200 OK
+P    9 | zjmp -200 OK
+P    6 | zjmp -200 OK
+P    5 | zjmp -200 OK
+P    2 | zjmp -200 OK
+P    1 | zjmp -200 OK
+P   12 | live -1
+P   11 | live -2
+P   10 | live -2
+P    9 | live -1
+P    6 | live -1
+P    5 | live -2
+P    2 | live -2
+P    1 | live -1
+P   12 | sti r15 0 -182
+       | -> store to 0 + -182 = -182 (with pc and mod 2637)
+P   11 | sti r15 0 -182
+       | -> store to 0 + -182 = -182 (with pc and mod 589)
+P   10 | sti r15 0 -194
+       | -> store to 0 + -194 = -194 (with pc and mod 577)
+P    9 | sti r15 0 -194
+       | -> store to 0 + -194 = -194 (with pc and mod 2625)
+P    6 | sti r15 0 -190
+       | -> store to 0 + -190 = -190 (with pc and mod 2629)
+P    5 | sti r15 0 -190
+       | -> store to 0 + -190 = -190 (with pc and mod 581)
+P    2 | sti r15 0 -186
+       | -> store to 0 + -186 = -186 (with pc and mod 585)
+P    1 | sti r15 0 -186
+       | -> store to 0 + -186 = -186 (with pc and mod 2633)
+P   12 | zjmp -200 OK
+P   11 | zjmp -200 OK
+P   10 | zjmp -200 OK
+P    9 | zjmp -200 OK
+P    6 | zjmp -200 OK
+P    5 | zjmp -200 OK
+P    2 | zjmp -200 OK
+P    1 | zjmp -200 OK
+P   12 | live -1
+P   11 | live -2
+P   10 | live -2
+P    9 | live -1
+P    6 | live -1
+P    5 | live -2
+P    2 | live -2
+P    1 | live -1
+P   12 | sti r15 0 -182
+       | -> store to 0 + -182 = -182 (with pc and mod 2448)
+P   11 | sti r15 0 -182
+       | -> store to 0 + -182 = -182 (with pc and mod 400)
+P   10 | sti r15 0 -194
+       | -> store to 0 + -194 = -194 (with pc and mod 388)
+P    9 | sti r15 0 -194
+       | -> store to 0 + -194 = -194 (with pc and mod 2436)
+P    6 | sti r15 0 -190
+       | -> store to 0 + -190 = -190 (with pc and mod 2440)
+P    5 | sti r15 0 -190
+       | -> store to 0 + -190 = -190 (with pc and mod 392)
+P    2 | sti r15 0 -186
+       | -> store to 0 + -186 = -186 (with pc and mod 396)
+P    1 | sti r15 0 -186
+       | -> store to 0 + -186 = -186 (with pc and mod 2444)
+P   12 | zjmp -200 OK
+P   11 | zjmp -200 OK
+P   10 | zjmp -200 OK
+P    9 | zjmp -200 OK
+P    6 | zjmp -200 OK
+P    5 | zjmp -200 OK
+P    2 | zjmp -200 OK
+P    1 | zjmp -200 OK
+P   12 | live -1
+P   11 | live -2
+P   10 | live -2
+P    9 | live -1
+P    6 | live -1
+P    5 | live -2
+P    2 | live -2
+P    1 | live -1
+P   12 | sti r15 0 -182
+       | -> store to 0 + -182 = -182 (with pc and mod 2259)
+P   11 | sti r15 0 -182
+       | -> store to 0 + -182 = -182 (with pc and mod 211)
+P   10 | sti r15 0 -194
+       | -> store to 0 + -194 = -194 (with pc and mod 199)
+P    9 | sti r15 0 -194
+       | -> store to 0 + -194 = -194 (with pc and mod 2247)
+P    6 | sti r15 0 -190
+       | -> store to 0 + -190 = -190 (with pc and mod 2251)
+P    5 | sti r15 0 -190
+       | -> store to 0 + -190 = -190 (with pc and mod 203)
+P    2 | sti r15 0 -186
+       | -> store to 0 + -186 = -186 (with pc and mod 207)
+P    1 | sti r15 0 -186
+       | -> store to 0 + -186 = -186 (with pc and mod 2255)
+P   12 | zjmp -200 OK
+P   11 | zjmp -200 OK
+P   10 | zjmp -200 OK
+P    9 | zjmp -200 OK
+P    6 | zjmp -200 OK
+P    5 | zjmp -200 OK
+P    2 | zjmp -200 OK
+P    1 | zjmp -200 OK
+P   12 | live -1
+P   11 | live -2
+P   10 | live -2
+P    9 | live -1
+P    6 | live -1
+P    5 | live -2
+P    2 | live -2
+P    1 | live -1
+P   12 | sti r15 0 -182
+       | -> store to 0 + -182 = -182 (with pc and mod 2070)
+P   11 | sti r15 0 -182
+       | -> store to 0 + -182 = -182 (with pc and mod 22)
+P   10 | sti r15 0 -194
+       | -> store to 0 + -194 = -194 (with pc and mod 10)
+P    9 | sti r15 0 -194
+       | -> store to 0 + -194 = -194 (with pc and mod 2058)
+P    6 | sti r15 0 -190
+       | -> store to 0 + -190 = -190 (with pc and mod 2062)
+P    5 | sti r15 0 -190
+       | -> store to 0 + -190 = -190 (with pc and mod 14)
+P    2 | sti r15 0 -186
+       | -> store to 0 + -186 = -186 (with pc and mod 18)
+P    1 | sti r15 0 -186
+       | -> store to 0 + -186 = -186 (with pc and mod 2066)
+P   12 | zjmp -200 OK
+P   11 | zjmp -200 OK
+P   10 | zjmp -200 OK
+P    9 | zjmp -200 OK
+P    6 | zjmp -200 OK
+P    5 | zjmp -200 OK
+P    2 | zjmp -200 OK
+P    1 | zjmp -200 OK
+P   12 | live -1
+P   11 | live -2
+P   10 | live -2
+P    9 | live -1
+P    6 | live -1
+P    5 | live -2
+P    2 | live -2
+P    1 | live -1
+P   12 | sti r15 0 -182
+       | -> store to 0 + -182 = -182 (with pc and mod 1881)
+P   11 | sti r15 0 -182
+       | -> store to 0 + -182 = -182 (with pc and mod -167)
+P   10 | sti r15 0 -194
+       | -> store to 0 + -194 = -194 (with pc and mod -179)
+P    9 | sti r15 0 -194
+       | -> store to 0 + -194 = -194 (with pc and mod 1869)
+P    6 | sti r15 0 -190
+       | -> store to 0 + -190 = -190 (with pc and mod 1873)
+P    5 | sti r15 0 -190
+       | -> store to 0 + -190 = -190 (with pc and mod -175)
+P    2 | sti r15 0 -186
+       | -> store to 0 + -186 = -186 (with pc and mod -171)
+P    1 | sti r15 0 -186
+       | -> store to 0 + -186 = -186 (with pc and mod 1877)
+P   12 | zjmp -200 OK
+P   11 | zjmp -200 OK
+P   10 | zjmp -200 OK
+P    9 | zjmp -200 OK
+P    6 | zjmp -200 OK
+P    5 | zjmp -200 OK
+P    2 | zjmp -200 OK
+P    1 | zjmp -200 OK
+P   12 | live -1
+P   11 | live -2
+P   10 | live -2
+P    9 | live -1
+P    6 | live -1
+P    5 | live -2
+P    2 | live -2
+P    1 | live -1
+P   12 | sti r15 0 -182
+       | -> store to 0 + -182 = -182 (with pc and mod 1692)
+P   11 | sti r15 0 -182
+       | -> store to 0 + -182 = -182 (with pc and mod 3740)
+P   10 | sti r15 0 -194
+       | -> store to 0 + -194 = -194 (with pc and mod 3728)
+P    9 | sti r15 0 -194
+       | -> store to 0 + -194 = -194 (with pc and mod 1680)
+P    6 | sti r15 0 -190
+       | -> store to 0 + -190 = -190 (with pc and mod 1684)
+P    5 | sti r15 0 -190
+       | -> store to 0 + -190 = -190 (with pc and mod 3732)
+P    2 | sti r15 0 -186
+       | -> store to 0 + -186 = -186 (with pc and mod 3736)
+P    1 | sti r15 0 -186
+       | -> store to 0 + -186 = -186 (with pc and mod 1688)
+P   12 | zjmp -200 OK
+P   11 | zjmp -200 OK
+P   10 | zjmp -200 OK
+P    9 | zjmp -200 OK
+P    6 | zjmp -200 OK
+P    5 | zjmp -200 OK
+P    2 | zjmp -200 OK
+P    1 | zjmp -200 OK
+P   12 | live -1
+P   11 | live -2
+P   10 | live -2
+P    9 | live -1
+P    6 | live -1
+P    5 | live -2
+P    2 | live -2
+P    1 | live -1
+P   12 | sti r15 0 -182
+       | -> store to 0 + -182 = -182 (with pc and mod 1503)
+P   11 | sti r15 0 -182
+       | -> store to 0 + -182 = -182 (with pc and mod 3551)
+P   10 | sti r15 0 -194
+       | -> store to 0 + -194 = -194 (with pc and mod 3539)
+P    9 | sti r15 0 -194
+       | -> store to 0 + -194 = -194 (with pc and mod 1491)
+P    6 | sti r15 0 -190
+       | -> store to 0 + -190 = -190 (with pc and mod 1495)
+P    5 | sti r15 0 -190
+       | -> store to 0 + -190 = -190 (with pc and mod 3543)
+P    2 | sti r15 0 -186
+       | -> store to 0 + -186 = -186 (with pc and mod 3547)
+P    1 | sti r15 0 -186
+       | -> store to 0 + -186 = -186 (with pc and mod 1499)
+P   12 | zjmp -200 OK
+P   11 | zjmp -200 OK
+P   10 | zjmp -200 OK
+P    9 | zjmp -200 OK
+P    6 | zjmp -200 OK
+P    5 | zjmp -200 OK
+P    2 | zjmp -200 OK
+P    1 | zjmp -200 OK
+P   12 | live -1
+P   11 | live -2
+P   10 | live -2
+P    9 | live -1
+P    6 | live -1
+P    5 | live -2
+P    2 | live -2
+P    1 | live -1
+P   14 | fork 61 (2344)
+P   13 | fork 61 (296)
+P    4 | fork 511 (709)
+P    3 | fork 511 (2757)
+P   18 | live 42
+P   17 | live 42
+P   14 | live 42
+P   13 | live 42
+P   12 | sti r15 0 -182
+       | -> store to 0 + -182 = -182 (with pc and mod 1314)
+P   11 | sti r15 0 -182
+       | -> store to 0 + -182 = -182 (with pc and mod 3362)
+P   10 | sti r15 0 -194
+       | -> store to 0 + -194 = -194 (with pc and mod 3350)
+P    9 | sti r15 0 -194
+       | -> store to 0 + -194 = -194 (with pc and mod 1302)
+P    6 | sti r15 0 -190
+       | -> store to 0 + -190 = -190 (with pc and mod 1306)
+P    5 | sti r15 0 -190
+       | -> store to 0 + -190 = -190 (with pc and mod 3354)
+P    2 | sti r15 0 -186
+       | -> store to 0 + -186 = -186 (with pc and mod 3358)
+P    1 | sti r15 0 -186
+       | -> store to 0 + -186 = -186 (with pc and mod 1310)
+P    4 | sti r15 0 0
+       | -> store to 0 + 0 = 0 (with pc and mod 204)
+P    3 | sti r15 0 0
+       | -> store to 0 + 0 = 0 (with pc and mod 2252)
+P   18 | ldi 0 -288 r15
+       | -> load from 0 + -288 = -288 (with pc and mod 13)
+P   17 | ldi 0 -288 r15
+       | -> load from 0 + -288 = -288 (with pc and mod 2061)
+P   14 | ldi 4 -230 r15
+       | -> load from 4 + -230 = -226 (with pc and mod 2065)
+P   13 | ldi 4 -230 r15
+       | -> load from 4 + -230 = -226 (with pc and mod 17)
+P   12 | zjmp -200 OK
+P   11 | zjmp -200 OK
+P   10 | zjmp -200 OK
+P    9 | zjmp -200 OK
+P    6 | zjmp -200 OK
+P    5 | zjmp -200 OK
+P    2 | zjmp -200 OK
+P    1 | zjmp -200 OK
+P   18 | ld -194 r14
+P   17 | ld -194 r14
+P   14 | ld -190 r14
+P   13 | ld -190 r14
+P   18 | ld 0 r2
+P   17 | ld 0 r2
+P   14 | ld 0 r2
+P   13 | ld 0 r2
+P   12 | live -1
+P   11 | live -2
+P   10 | live -2
+P    9 | live -1
+P    6 | live -1
+P    5 | live -2
+P    2 | live -2
+P    1 | live -1
+P    4 | zjmp -200 FAILED
+P    3 | zjmp -200 FAILED
+P    4 | live -1
+P    3 | live -1
+P   18 | zjmp -315 OK
+P   17 | zjmp -315 OK
+P   14 | zjmp -257 OK
+P   13 | zjmp -257 OK
+P    8 | fork 40 (2278)
+P    7 | fork 40 (230)
+P   20 | live -1
+P   19 | live -2
+P   12 | sti r15 0 -182
+       | -> store to 0 + -182 = -182 (with pc and mod 1125)
+P   11 | sti r15 0 -182
+       | -> store to 0 + -182 = -182 (with pc and mod 3173)
+P   10 | sti r15 0 -194
+       | -> store to 0 + -194 = -194 (with pc and mod 3161)
+P    9 | sti r15 0 -194
+       | -> store to 0 + -194 = -194 (with pc and mod 1113)
+P    6 | sti r15 0 -190
+       | -> store to 0 + -190 = -190 (with pc and mod 1117)
+P    5 | sti r15 0 -190
+       | -> store to 0 + -190 = -190 (with pc and mod 3165)
+P    2 | sti r15 0 -186
+       | -> store to 0 + -186 = -186 (with pc and mod 3169)
+P    1 | sti r15 0 -186
+       | -> store to 0 + -186 = -186 (with pc and mod 1121)
+P   22 | live 42
+P   21 | live 42
+P    8 | live 4
+P    7 | live 4
+P   18 | zjmp 48 OK
+P   17 | zjmp 48 OK
+P   14 | zjmp 48 OK
+P   13 | zjmp 48 OK
+P   12 | zjmp -200 OK
+P   11 | zjmp -200 OK
+P   10 | zjmp -200 OK
+P    9 | zjmp -200 OK
+P    6 | zjmp -200 OK
+P    5 | zjmp -200 OK
+P    2 | zjmp -200 OK
+P    1 | zjmp -200 OK
+P   20 | sti r15 0 0
+       | -> store to 0 + 0 = 0 (with pc and mod 2819)
+P   19 | sti r15 0 0
+       | -> store to 0 + 0 = 0 (with pc and mod 771)
+P   18 | live -1
+P   17 | live -2
+P   14 | live -2
+P   13 | live -1
+P   12 | live -1
+P   11 | live -2
+P   10 | live -2
+P    9 | live -1
+P    6 | live -1
+P    5 | live -2
+P    2 | live -2
+P    1 | live -1
+P   20 | zjmp -200 FAILED
+P   19 | zjmp -200 FAILED
+P   18 | sti r15 0 -194
+       | -> store to 0 + -194 = -194 (with pc and mod -134)
+P   17 | sti r15 0 -194
+       | -> store to 0 + -194 = -194 (with pc and mod 1914)
+P   14 | sti r15 0 -190
+       | -> store to 0 + -190 = -190 (with pc and mod 1918)
+P   13 | sti r15 0 -190
+       | -> store to 0 + -190 = -190 (with pc and mod -130)
+P   20 | live -16777216
+P   19 | live -16777216
+P   12 | sti r15 0 -182
+       | -> store to 0 + -182 = -182 (with pc and mod 936)
+P   11 | sti r15 0 -182
+       | -> store to 0 + -182 = -182 (with pc and mod 2984)
+P   10 | sti r15 0 -194
+       | -> store to 0 + -194 = -194 (with pc and mod 2972)
+P    9 | sti r15 0 -194
+       | -> store to 0 + -194 = -194 (with pc and mod 924)
+P    6 | sti r15 0 -190
+       | -> store to 0 + -190 = -190 (with pc and mod 928)
+P    5 | sti r15 0 -190
+       | -> store to 0 + -190 = -190 (with pc and mod 2976)
+P    2 | sti r15 0 -186
+       | -> store to 0 + -186 = -186 (with pc and mod 2980)
+P    1 | sti r15 0 -186
+       | -> store to 0 + -186 = -186 (with pc and mod 932)
+P   16 | fork -25 (157)
+P   15 | fork -25 (2205)
+P    4 | live 42
+P    3 | live 42
+P   24 | live 42
+P   23 | live 42
+P   18 | zjmp -200 OK
+P   17 | zjmp -200 OK
+P   16 | live 3
+P   15 | live 3
+P   14 | zjmp -200 OK
+P   13 | zjmp -200 OK
+P   12 | zjmp -200 OK
+P   11 | zjmp -200 OK
+P   10 | zjmp -200 OK
+P    9 | zjmp -200 OK
+P    6 | zjmp -200 OK
+P    5 | zjmp -200 OK
+P    2 | zjmp -200 OK
+P    1 | zjmp -200 OK
+P   12 | live -1
+P   11 | live -2
+P   10 | live -2
+P    9 | live -1
+P    6 | live -1
+P    5 | live -2
+P    2 | live -2
+P    1 | live -1
+P   24 | sti r4 -155 1
+       | -> store to -155 + 1 = -154 (with pc and mod 2056)
+P   23 | sti r4 -155 1
+       | -> store to -155 + 1 = -154 (with pc and mod 8)
+P   18 | sti r15 0 -194
+       | -> store to 0 + -194 = -194 (with pc and mod 3770)
+P   17 | sti r15 0 -194
+       | -> store to 0 + -194 = -194 (with pc and mod 1722)
+P   14 | sti r15 0 -190
+       | -> store to 0 + -190 = -190 (with pc and mod 1726)
+P   13 | sti r15 0 -190
+       | -> store to 0 + -190 = -190 (with pc and mod 3774)
+P   24 | add r4 r12 r4
+P   23 | add r4 r12 r4
+P   12 | sti r15 0 -182
+       | -> store to 0 + -182 = -182 (with pc and mod 747)
+P   11 | sti r15 0 -182
+       | -> store to 0 + -182 = -182 (with pc and mod 2795)
+P   10 | sti r15 0 -194
+       | -> store to 0 + -194 = -194 (with pc and mod 2783)
+P    9 | sti r15 0 -194
+       | -> store to 0 + -194 = -194 (with pc and mod 735)
+P    6 | sti r15 0 -190
+       | -> store to 0 + -190 = -190 (with pc and mod 739)
+P    5 | sti r15 0 -190
+       | -> store to 0 + -190 = -190 (with pc and mod 2787)
+P    2 | sti r15 0 -186
+       | -> store to 0 + -186 = -186 (with pc and mod 2791)
+P    1 | sti r15 0 -186
+       | -> store to 0 + -186 = -186 (with pc and mod 743)
+P   24 | sub r10 r11 r10
+P   23 | sub r10 r11 r10
+P   12 | zjmp -200 OK
+P   11 | zjmp -200 OK
+P   10 | zjmp -200 OK
+P    9 | zjmp -200 OK
+P    6 | zjmp -200 OK
+P    5 | zjmp -200 OK
+P    2 | zjmp -200 OK
+P    1 | zjmp -200 OK
+P   24 | zjmp -50 FAILED
+P   23 | zjmp -50 FAILED
+P   12 | live -1
+P   11 | live -2
+P   10 | live -2
+P    9 | live -1
+P    6 | live -1
+P    5 | live -2
+P    2 | live -2
+P    1 | live -1
+P   12 | sti r15 0 -182
+       | -> store to 0 + -182 = -182 (with pc and mod 558)
+P   11 | sti r15 0 -182
+       | -> store to 0 + -182 = -182 (with pc and mod 2606)
+P   10 | sti r15 0 -194
+       | -> store to 0 + -194 = -194 (with pc and mod 2594)
+P    9 | sti r15 0 -194
+       | -> store to 0 + -194 = -194 (with pc and mod 546)
+P    6 | sti r15 0 -190
+       | -> store to 0 + -190 = -190 (with pc and mod 550)
+P    5 | sti r15 0 -190
+       | -> store to 0 + -190 = -190 (with pc and mod 2598)
+P    2 | sti r15 0 -186
+       | -> store to 0 + -186 = -186 (with pc and mod 2602)
+P    1 | sti r15 0 -186
+       | -> store to 0 + -186 = -186 (with pc and mod 554)
+P   12 | zjmp -200 OK
+P   11 | zjmp -200 OK
+P   10 | zjmp -200 OK
+P    9 | zjmp -200 OK
+P    6 | zjmp -200 OK
+P    5 | zjmp -200 OK
+P    2 | zjmp -200 OK
+P    1 | zjmp -200 OK
+P   12 | live -1
+P   11 | live -2
+P   10 | live -2
+P    9 | live -1
+P    6 | live -1
+P    5 | live -2
+P    2 | live -2
+P    1 | live -1
+P   20 | live -2
+P   19 | live -1
+P   12 | sti r15 0 -182
+       | -> store to 0 + -182 = -182 (with pc and mod 369)
+P   11 | sti r15 0 -182
+       | -> store to 0 + -182 = -182 (with pc and mod 2417)
+P   10 | sti r15 0 -194
+       | -> store to 0 + -194 = -194 (with pc and mod 2405)
+P    9 | sti r15 0 -194
+       | -> store to 0 + -194 = -194 (with pc and mod 357)
+P    6 | sti r15 0 -190
+       | -> store to 0 + -190 = -190 (with pc and mod 361)
+P    5 | sti r15 0 -190
+       | -> store to 0 + -190 = -190 (with pc and mod 2409)
+P    2 | sti r15 0 -186
+       | -> store to 0 + -186 = -186 (with pc and mod 2413)
+P    1 | sti r15 0 -186
+       | -> store to 0 + -186 = -186 (with pc and mod 365)
+P   20 | sti r15 0 0
+       | -> store to 0 + 0 = 0 (with pc and mod 2977)
+P   19 | sti r15 0 0
+       | -> store to 0 + 0 = 0 (with pc and mod 929)
+P   18 | ld 0 r3
+P   17 | ld 0 r3
+P   14 | ld 0 r3
+P   13 | ld 0 r3
+P   12 | zjmp -200 OK
+P   11 | zjmp -200 OK
+P   10 | zjmp -200 OK
+P    9 | zjmp -200 OK
+P    6 | zjmp -200 OK
+P    5 | zjmp -200 OK
+P    2 | zjmp -200 OK
+P    1 | zjmp -200 OK
+P   20 | zjmp -200 FAILED
+P   19 | zjmp -200 FAILED
+P   18 | zjmp 62 OK
+P   17 | zjmp 62 OK
+P   14 | zjmp 62 OK
+P   13 | zjmp 62 OK
+P   12 | live -1
+P   11 | live -2
+P   10 | live -2
+P    9 | live -1
+P    6 | live -1
+P    5 | live -2
+P    2 | live -2
+P    1 | live -1
+P   20 | live -16777216
+P   19 | live -16777216
+P   12 | sti r15 0 -182
+       | -> store to 0 + -182 = -182 (with pc and mod 180)
+P   11 | sti r15 0 -182
+       | -> store to 0 + -182 = -182 (with pc and mod 2228)
+P   10 | sti r15 0 -194
+       | -> store to 0 + -194 = -194 (with pc and mod 2216)
+P    9 | sti r15 0 -194
+       | -> store to 0 + -194 = -194 (with pc and mod 168)
+P    6 | sti r15 0 -190
+       | -> store to 0 + -190 = -190 (with pc and mod 172)
+P    5 | sti r15 0 -190
+       | -> store to 0 + -190 = -190 (with pc and mod 2220)
+P    2 | sti r15 0 -186
+       | -> store to 0 + -186 = -186 (with pc and mod 2224)
+P    1 | sti r15 0 -186
+       | -> store to 0 + -186 = -186 (with pc and mod 176)
+P   20 | live -1
+P   19 | live -2
+P   12 | zjmp -200 OK
+P   11 | zjmp -200 OK
+P   10 | zjmp -200 OK
+P    9 | zjmp -200 OK
+P    6 | zjmp -200 OK
+P    5 | zjmp -200 OK
+P    2 | zjmp -200 OK
+P    1 | zjmp -200 OK
+P   18 | sti r15 0 -194
+       | -> store to 0 + -194 = -194 (with pc and mod -116)
+P   17 | sti r15 0 -194
+       | -> store to 0 + -194 = -194 (with pc and mod 1932)
+P   14 | sti r15 0 -190
+       | -> store to 0 + -190 = -190 (with pc and mod 1936)
+P   13 | sti r15 0 -190
+       | -> store to 0 + -190 = -190 (with pc and mod -112)
+P   20 | sti r15 0 0
+       | -> store to 0 + 0 = 0 (with pc and mod 3008)
+P   19 | sti r15 0 0
+       | -> store to 0 + 0 = 0 (with pc and mod 960)
+P   12 | live -1
+P   11 | live -2
+P   10 | live -2
+P    9 | live -1
+P    6 | live -1
+P    5 | live -2
+P    2 | live -2
+P    1 | live -1
+P   18 | live -4849663
+P   17 | live -4849663
+P   14 | live -4849663
+P   13 | live -4849663
+P   20 | zjmp -200 FAILED
+P   19 | zjmp -200 FAILED
+P   12 | sti r15 0 -182
+       | -> store to 0 + -182 = -182 (with pc and mod -9)
+P   11 | sti r15 0 -182
+       | -> store to 0 + -182 = -182 (with pc and mod 2039)
+P   10 | sti r15 0 -194
+       | -> store to 0 + -194 = -194 (with pc and mod 2027)
+P    9 | sti r15 0 -194
+       | -> store to 0 + -194 = -194 (with pc and mod -21)
+P    6 | sti r15 0 -190
+       | -> store to 0 + -190 = -190 (with pc and mod -17)
+P    5 | sti r15 0 -190
+       | -> store to 0 + -190 = -190 (with pc and mod 2031)
+P    2 | sti r15 0 -186
+       | -> store to 0 + -186 = -186 (with pc and mod 2035)
+P    1 | sti r15 0 -186
+       | -> store to 0 + -186 = -186 (with pc and mod -13)
+P   20 | live -16777216
+P   19 | live -16777216
+P   18 | sti r1 -81 15
+       | -> store to -81 + 15 = -66 (with pc and mod 28)
+P   17 | sti r1 -81 15
+       | -> store to -81 + 15 = -66 (with pc and mod 2076)
+P   14 | sti r1 -81 15
+       | -> store to -81 + 15 = -66 (with pc and mod 2076)
+P   13 | sti r1 -81 15
+       | -> store to -81 + 15 = -66 (with pc and mod 28)
+P   12 | zjmp -200 OK
+P   11 | zjmp -200 OK
+P   10 | zjmp -200 OK
+P    9 | zjmp -200 OK
+P    6 | zjmp -200 OK
+P    5 | zjmp -200 OK
+P    2 | zjmp -200 OK
+P    1 | zjmp -200 OK
+P   12 | live -1
+P   11 | live -2
+P   10 | live -2
+P    9 | live -1
+P    6 | live -1
+P    5 | live -2
+P    2 | live -2
+P    1 | live -1
+P   18 | sti r1 -88 29
+       | -> store to -88 + 29 = -59 (with pc and mod 42)
+P   17 | sti r1 -88 29
+       | -> store to -88 + 29 = -59 (with pc and mod 2090)
+P   14 | sti r1 -88 29
+       | -> store to -88 + 29 = -59 (with pc and mod 2090)
+P   13 | sti r1 -88 29
+       | -> store to -88 + 29 = -59 (with pc and mod 42)
+P   12 | sti r15 0 -182
+       | -> store to 0 + -182 = -182 (with pc and mod 3898)
+P   11 | sti r15 0 -182
+       | -> store to 0 + -182 = -182 (with pc and mod 1850)
+P   10 | sti r15 0 -194
+       | -> store to 0 + -194 = -194 (with pc and mod 1838)
+P    9 | sti r15 0 -194
+       | -> store to 0 + -194 = -194 (with pc and mod 3886)
+P    6 | sti r15 0 -190
+       | -> store to 0 + -190 = -190 (with pc and mod 3890)
+P    5 | sti r15 0 -190
+       | -> store to 0 + -190 = -190 (with pc and mod 1842)
+P    2 | sti r15 0 -186
+       | -> store to 0 + -186 = -186 (with pc and mod 1846)
+P    1 | sti r15 0 -186
+       | -> store to 0 + -186 = -186 (with pc and mod 3894)
+P   18 | sti r1 -95 43
+       | -> store to -95 + 43 = -52 (with pc and mod 56)
+P   17 | sti r1 -95 43
+       | -> store to -95 + 43 = -52 (with pc and mod 2104)
+P   14 | sti r1 -95 43
+       | -> store to -95 + 43 = -52 (with pc and mod 2104)
+P   13 | sti r1 -95 43
+       | -> store to -95 + 43 = -52 (with pc and mod 56)
+P   12 | zjmp -200 OK
+P   11 | zjmp -200 OK
+P   10 | zjmp -200 OK
+P    9 | zjmp -200 OK
+P    6 | zjmp -200 OK
+P    5 | zjmp -200 OK
+P    2 | zjmp -200 OK
+P    1 | zjmp -200 OK
+P   18 | sti r1 -102 57
+       | -> store to -102 + 57 = -45 (with pc and mod 70)
+P   17 | sti r1 -102 57
+       | -> store to -102 + 57 = -45 (with pc and mod 2118)
+P   14 | sti r1 -102 57
+       | -> store to -102 + 57 = -45 (with pc and mod 2118)
+P   13 | sti r1 -102 57
+       | -> store to -102 + 57 = -45 (with pc and mod 70)
+P   12 | live -1
+P   11 | live -2
+P   10 | live -2
+P    9 | live -1
+P    6 | live -1
+P    5 | live -2
+P    2 | live -2
+P    1 | live -1
+P   18 | sti r1 -109 71
+       | -> store to -109 + 71 = -38 (with pc and mod 84)
+P   17 | sti r1 -109 71
+       | -> store to -109 + 71 = -38 (with pc and mod 2132)
+P   14 | sti r1 -109 71
+       | -> store to -109 + 71 = -38 (with pc and mod 2132)
+P   13 | sti r1 -109 71
+       | -> store to -109 + 71 = -38 (with pc and mod 84)
+P   12 | sti r15 0 -182
+       | -> store to 0 + -182 = -182 (with pc and mod 3709)
+P   11 | sti r15 0 -182
+       | -> store to 0 + -182 = -182 (with pc and mod 1661)
+P   10 | sti r15 0 -194
+       | -> store to 0 + -194 = -194 (with pc and mod 1649)
+P    9 | sti r15 0 -194
+       | -> store to 0 + -194 = -194 (with pc and mod 3697)
+P    6 | sti r15 0 -190
+       | -> store to 0 + -190 = -190 (with pc and mod 3701)
+P    5 | sti r15 0 -190
+       | -> store to 0 + -190 = -190 (with pc and mod 1653)
+P    2 | sti r15 0 -186
+       | -> store to 0 + -186 = -186 (with pc and mod 1657)
+P    1 | sti r15 0 -186
+       | -> store to 0 + -186 = -186 (with pc and mod 3705)
+P   18 | ld 393216 r4
+P   17 | ld 393216 r4
+P   14 | ld 393216 r4
+P   13 | ld 393216 r4
+P   18 | ld 917504 r12
+P   17 | ld 917504 r12
+P   14 | ld 917504 r12
+P   13 | ld 917504 r12
+P   18 | ld 1 r11
+P   17 | ld 1 r11
+P   14 | ld 1 r11
+P   13 | ld 1 r11
+P   18 | ld 6 r10
+P   17 | ld 6 r10
+P   14 | ld 6 r10
+P   13 | ld 6 r10
+P   12 | zjmp -200 OK
+P   11 | zjmp -200 OK
+P   10 | zjmp -200 OK
+P    9 | zjmp -200 OK
+P    6 | zjmp -200 OK
+P    5 | zjmp -200 OK
+P    2 | zjmp -200 OK
+P    1 | zjmp -200 OK
+P   18 | live 42
+P   17 | live 42
+P   14 | live 42
+P   13 | live 42
+P   12 | live -1
+P   11 | live -2
+P   10 | live -2
+P    9 | live -1
+P    6 | live -1
+P    5 | live -2
+P    2 | live -2
+P    1 | live -1
+P   20 | live -2
+P   19 | live -1
+P   18 | sti r4 -155 1
+       | -> store to -155 + 1 = -154 (with pc and mod 8)
+P   17 | sti r4 -155 1
+       | -> store to -155 + 1 = -154 (with pc and mod 2056)
+P   14 | sti r4 -155 1
+       | -> store to -155 + 1 = -154 (with pc and mod 2056)
+P   13 | sti r4 -155 1
+       | -> store to -155 + 1 = -154 (with pc and mod 8)
+P   12 | sti r15 0 -182
+       | -> store to 0 + -182 = -182 (with pc and mod 3520)
+P   11 | sti r15 0 -182
+       | -> store to 0 + -182 = -182 (with pc and mod 1472)
+P   10 | sti r15 0 -194
+       | -> store to 0 + -194 = -194 (with pc and mod 1460)
+P    9 | sti r15 0 -194
+       | -> store to 0 + -194 = -194 (with pc and mod 3508)
+P    6 | sti r15 0 -190
+       | -> store to 0 + -190 = -190 (with pc and mod 3512)
+P    5 | sti r15 0 -190
+       | -> store to 0 + -190 = -190 (with pc and mod 1464)
+P    2 | sti r15 0 -186
+       | -> store to 0 + -186 = -186 (with pc and mod 1468)
+P    1 | sti r15 0 -186
+       | -> store to 0 + -186 = -186 (with pc and mod 3516)
+P   20 | sti r15 0 0
+       | -> store to 0 + 0 = 0 (with pc and mod 3166)
+P   19 | sti r15 0 0
+       | -> store to 0 + 0 = 0 (with pc and mod 1118)
+P   12 | zjmp -200 OK
+P   11 | zjmp -200 OK
+P   10 | zjmp -200 OK
+P    9 | zjmp -200 OK
+P    6 | zjmp -200 OK
+P    5 | zjmp -200 OK
+P    2 | zjmp -200 OK
+P    1 | zjmp -200 OK
+P   18 | sti r15 0 -194
+       | -> store to 0 + -194 = -194 (with pc and mod -21)
+P   17 | sti r15 0 -194
+       | -> store to 0 + -194 = -194 (with pc and mod 2027)
+P   14 | sti r15 0 -190
+       | -> store to 0 + -190 = -190 (with pc and mod 2031)
+P   13 | sti r15 0 -190
+       | -> store to 0 + -190 = -190 (with pc and mod -17)
+P   12 | live -1
+P   11 | live -2
+P   10 | live -2
+P    9 | live -1
+P    6 | live -1
+P    5 | live -2
+P    2 | live -2
+P    1 | live -1
+P   20 | zjmp -200 FAILED
+P   19 | zjmp -200 FAILED
+P   20 | live -16777216
+P   19 | live -16777216
+P   18 | zjmp -200 FAILED
+P   17 | zjmp -200 FAILED
+P   14 | zjmp -200 FAILED
+P   13 | zjmp -200 FAILED
+P   12 | sti r15 0 -182
+       | -> store to 0 + -182 = -182 (with pc and mod 3331)
+P   11 | sti r15 0 -182
+       | -> store to 0 + -182 = -182 (with pc and mod 1283)
+P   10 | sti r15 0 -194
+       | -> store to 0 + -194 = -194 (with pc and mod 1271)
+P    9 | sti r15 0 -194
+       | -> store to 0 + -194 = -194 (with pc and mod 3319)
+P    6 | sti r15 0 -190
+       | -> store to 0 + -190 = -190 (with pc and mod 3323)
+P    5 | sti r15 0 -190
+       | -> store to 0 + -190 = -190 (with pc and mod 1275)
+P    2 | sti r15 0 -186
+       | -> store to 0 + -186 = -186 (with pc and mod 1279)
+P    1 | sti r15 0 -186
+       | -> store to 0 + -186 = -186 (with pc and mod 3327)
+P   18 | live -1638144
+P   17 | live -1638144
+P   14 | live -1638144
+P   13 | live -1638144
+P   20 | live -1
+P   19 | live -2
+P   12 | zjmp -200 OK
+P   11 | zjmp -200 OK
+P   10 | zjmp -200 OK
+P    9 | zjmp -200 OK
+P    6 | zjmp -200 OK
+P    5 | zjmp -200 OK
+P    2 | zjmp -200 OK
+P    1 | zjmp -200 OK
+P   18 | live 4
+P   17 | live 4
+P   14 | live 4
+P   13 | live 4
+P   12 | live -1
+P   11 | live -2
+P   10 | live -2
+P    9 | live -1
+P    6 | live -1
+P    5 | live -2
+P    2 | live -2
+P    1 | live -1
+P   20 | sti r15 0 0
+       | -> store to 0 + 0 = 0 (with pc and mod 3197)
+P   19 | sti r15 0 0
+       | -> store to 0 + 0 = 0 (with pc and mod 1149)
+P   20 | zjmp -200 FAILED
+P   19 | zjmp -200 FAILED
+P   12 | sti r15 0 -182
+       | -> store to 0 + -182 = -182 (with pc and mod 3142)
+P   11 | sti r15 0 -182
+       | -> store to 0 + -182 = -182 (with pc and mod 1094)
+P   10 | sti r15 0 -194
+       | -> store to 0 + -194 = -194 (with pc and mod 1082)
+P    9 | sti r15 0 -194
+       | -> store to 0 + -194 = -194 (with pc and mod 3130)
+P    6 | sti r15 0 -190
+       | -> store to 0 + -190 = -190 (with pc and mod 3134)
+P    5 | sti r15 0 -190
+       | -> store to 0 + -190 = -190 (with pc and mod 1086)
+P    2 | sti r15 0 -186
+       | -> store to 0 + -186 = -186 (with pc and mod 1090)
+P    1 | sti r15 0 -186
+       | -> store to 0 + -186 = -186 (with pc and mod 3138)
+P   20 | live -16777216
+P   19 | live -16777216
+P   12 | zjmp -200 OK
+P   11 | zjmp -200 OK
+P   10 | zjmp -200 OK
+P    9 | zjmp -200 OK
+P    6 | zjmp -200 OK
+P    5 | zjmp -200 OK
+P    2 | zjmp -200 OK
+P    1 | zjmp -200 OK
+P   12 | live -1
+P   11 | live -2
+P   10 | live -2
+P    9 | live -1
+P    6 | live -1
+P    5 | live -2
+P    2 | live -2
+P    1 | live -1
+P   12 | sti r15 0 -182
+       | -> store to 0 + -182 = -182 (with pc and mod 2953)
+P   11 | sti r15 0 -182
+       | -> store to 0 + -182 = -182 (with pc and mod 905)
+P   10 | sti r15 0 -194
+       | -> store to 0 + -194 = -194 (with pc and mod 893)
+P    9 | sti r15 0 -194
+       | -> store to 0 + -194 = -194 (with pc and mod 2941)
+P    6 | sti r15 0 -190
+       | -> store to 0 + -190 = -190 (with pc and mod 2945)
+P    5 | sti r15 0 -190
+       | -> store to 0 + -190 = -190 (with pc and mod 897)
+P    2 | sti r15 0 -186
+       | -> store to 0 + -186 = -186 (with pc and mod 901)
+P    1 | sti r15 0 -186
+       | -> store to 0 + -186 = -186 (with pc and mod 2949)
+P   12 | zjmp -200 OK
+P   11 | zjmp -200 OK
+P   10 | zjmp -200 OK
+P    9 | zjmp -200 OK
+P    6 | zjmp -200 OK
+P    5 | zjmp -200 OK
+P    2 | zjmp -200 OK
+P    1 | zjmp -200 OK
+P   12 | live -1
+P   11 | live -2
+P   10 | live -2
+P    9 | live -1
+P    6 | live -1
+P    5 | live -2
+P    2 | live -2
+P    1 | live -1
+P   12 | sti r15 0 -182
+       | -> store to 0 + -182 = -182 (with pc and mod 2764)
+P   11 | sti r15 0 -182
+       | -> store to 0 + -182 = -182 (with pc and mod 716)
+P   10 | sti r15 0 -194
+       | -> store to 0 + -194 = -194 (with pc and mod 704)
+P    9 | sti r15 0 -194
+       | -> store to 0 + -194 = -194 (with pc and mod 2752)
+P    6 | sti r15 0 -190
+       | -> store to 0 + -190 = -190 (with pc and mod 2756)
+P    5 | sti r15 0 -190
+       | -> store to 0 + -190 = -190 (with pc and mod 708)
+P    2 | sti r15 0 -186
+       | -> store to 0 + -186 = -186 (with pc and mod 712)
+P    1 | sti r15 0 -186
+       | -> store to 0 + -186 = -186 (with pc and mod 2760)
+P   20 | live -1
+P   19 | live -2
+P   12 | zjmp -200 OK
+P   11 | zjmp -200 OK
+P   10 | zjmp -200 OK
+P    9 | zjmp -200 OK
+P    6 | zjmp -200 OK
+P    5 | zjmp -200 OK
+P    2 | zjmp -200 OK
+P    1 | zjmp -200 OK
+P   12 | live -1
+P   11 | live -2
+P   10 | live -2
+P    9 | live -1
+P    6 | live -1
+P    5 | live -2
+P    2 | live -2
+P    1 | live -1
+P   20 | sti r15 0 0
+       | -> store to 0 + 0 = 0 (with pc and mod 3324)
+P   19 | sti r15 0 0
+       | -> store to 0 + 0 = 0 (with pc and mod 1276)
+P   12 | sti r15 0 -182
+       | -> store to 0 + -182 = -182 (with pc and mod 2575)
+P   11 | sti r15 0 -182
+       | -> store to 0 + -182 = -182 (with pc and mod 527)
+P   10 | sti r15 0 -194
+       | -> store to 0 + -194 = -194 (with pc and mod 515)
+P    9 | sti r15 0 -194
+       | -> store to 0 + -194 = -194 (with pc and mod 2563)
+P    6 | sti r15 0 -190
+       | -> store to 0 + -190 = -190 (with pc and mod 2567)
+P    5 | sti r15 0 -190
+       | -> store to 0 + -190 = -190 (with pc and mod 519)
+P    2 | sti r15 0 -186
+       | -> store to 0 + -186 = -186 (with pc and mod 523)
+P    1 | sti r15 0 -186
+       | -> store to 0 + -186 = -186 (with pc and mod 2571)
+P   20 | zjmp -200 FAILED
+P   19 | zjmp -200 FAILED
+P   20 | live -16777216
+P   19 | live -16777216
+P   12 | zjmp -200 OK
+P   11 | zjmp -200 OK
+P   10 | zjmp -200 OK
+P    9 | zjmp -200 OK
+P    6 | zjmp -200 OK
+P    5 | zjmp -200 OK
+P    2 | zjmp -200 OK
+P    1 | zjmp -200 OK
+P   12 | live -1
+P   11 | live -2
+P   10 | live -2
+P    9 | live -1
+P    6 | live -1
+P    5 | live -2
+P    2 | live -2
+P    1 | live -1
+P   22 | fork 61 (296)
+P   21 | fork 61 (2344)
+P    8 | fork 511 (2757)
+P    7 | fork 511 (709)
+P   20 | live -2
+P   19 | live -1
+P   26 | live 42
+P   25 | live 42
+P   22 | live 42
+P   21 | live 42
+P   12 | sti r15 0 -182
+       | -> store to 0 + -182 = -182 (with pc and mod 2386)
+P   11 | sti r15 0 -182
+       | -> store to 0 + -182 = -182 (with pc and mod 338)
+P   10 | sti r15 0 -194
+       | -> store to 0 + -194 = -194 (with pc and mod 326)
+P    9 | sti r15 0 -194
+       | -> store to 0 + -194 = -194 (with pc and mod 2374)
+P    6 | sti r15 0 -190
+       | -> store to 0 + -190 = -190 (with pc and mod 2378)
+P    5 | sti r15 0 -190
+       | -> store to 0 + -190 = -190 (with pc and mod 330)
+P    2 | sti r15 0 -186
+       | -> store to 0 + -186 = -186 (with pc and mod 334)
+P    1 | sti r15 0 -186
+       | -> store to 0 + -186 = -186 (with pc and mod 2382)
+P   28 | sti r15 0 0
+       | -> store to 0 + 0 = 0 (with pc and mod 709)
+P   27 | sti r15 0 0
+       | -> store to 0 + 0 = 0 (with pc and mod 2757)
+P   20 | sti r15 0 0
+       | -> store to 0 + 0 = 0 (with pc and mod 3355)
+P   19 | sti r15 0 0
+       | -> store to 0 + 0 = 0 (with pc and mod 1307)
+P   26 | ldi 0 -288 r15
+       | -> load from 0 + -288 = -288 (with pc and mod 2061)
+P   25 | ldi 0 -288 r15
+       | -> load from 0 + -288 = -288 (with pc and mod 13)
+P   22 | ldi 4 -230 r15
+       | -> load from 4 + -230 = -226 (with pc and mod 17)
+P   21 | ldi 4 -230 r15
+       | -> load from 4 + -230 = -226 (with pc and mod 2065)
+P   26 | ld -194 r14
+P   25 | ld -194 r14
+P   22 | ld -190 r14
+P   21 | ld -190 r14
+P   12 | zjmp -200 OK
+P   11 | zjmp -200 OK
+P   10 | zjmp -200 OK
+P    9 | zjmp -200 OK
+P    6 | zjmp -200 OK
+P    5 | zjmp -200 OK
+P    2 | zjmp -200 OK
+P    1 | zjmp -200 OK
+P   28 | zjmp -200 FAILED
+P   27 | zjmp -200 FAILED
+P   26 | ld 0 r2
+P   25 | ld 0 r2
+P   22 | ld 0 r2
+P   21 | ld 0 r2
+P   20 | zjmp -200 FAILED
+P   19 | zjmp -200 FAILED
+P   12 | live -1
+P   11 | live -2
+P   10 | live -2
+P    9 | live -1
+P    6 | live -1
+P    5 | live -2
+P    2 | live -2
+P    1 | live -1
+P   28 | live -16777216
+P   27 | live -16777216
+P    4 | fork 61 (296)
+P    3 | fork 61 (2344)
+P   20 | live -16777216
+P   19 | live -16777216
+P   26 | zjmp -315 OK
+P   25 | zjmp -315 OK
+P   22 | zjmp -257 OK
+P   21 | zjmp -257 OK
+P   16 | fork 40 (230)
+P   15 | fork 40 (2278)
+P   30 | live 42
+P   29 | live 42
+P    4 | live 42
+P    3 | live 42
+P    8 | live -1
+P    7 | live -1
+P   32 | live 42
+P   31 | live 42
+P   16 | live 4
+P   15 | live 4
+P   12 | sti r15 0 -182
+       | -> store to 0 + -182 = -182 (with pc and mod 2197)
+P   11 | sti r15 0 -182
+       | -> store to 0 + -182 = -182 (with pc and mod 149)
+P   10 | sti r15 0 -194
+       | -> store to 0 + -194 = -194 (with pc and mod 137)
+P    9 | sti r15 0 -194
+       | -> store to 0 + -194 = -194 (with pc and mod 2185)
+P    6 | sti r15 0 -190
+       | -> store to 0 + -190 = -190 (with pc and mod 2189)
+P    5 | sti r15 0 -190
+       | -> store to 0 + -190 = -190 (with pc and mod 141)
+P    2 | sti r15 0 -186
+       | -> store to 0 + -186 = -186 (with pc and mod 145)
+P    1 | sti r15 0 -186
+       | -> store to 0 + -186 = -186 (with pc and mod 2193)
+P   28 | live -1
+P   27 | live -2
+P   20 | live -1
+P   19 | live -2
+P   26 | zjmp 6 OK
+P   25 | zjmp 6 OK
+P   22 | zjmp 6 OK
+P   21 | zjmp 6 OK
+P   30 | ldi 0 -288 r15
+       | -> load from 0 + -288 = -288 (with pc and mod 2061)
+P   29 | ldi 0 -288 r15
+       | -> load from 0 + -288 = -288 (with pc and mod 13)
+P    4 | ldi 4 -230 r15
+       | -> load from 4 + -230 = -226 (with pc and mod 17)
+P    3 | ldi 4 -230 r15
+       | -> load from 4 + -230 = -226 (with pc and mod 2065)
+P   12 | zjmp -200 OK
+P   11 | zjmp -200 OK
+P   10 | zjmp -200 OK
+P    9 | zjmp -200 OK
+P    6 | zjmp -200 OK
+P    5 | zjmp -200 OK
+P    2 | zjmp -200 OK
+P    1 | zjmp -200 OK
+P   30 | ld -194 r14
+P   29 | ld -194 r14
+P    4 | ld -190 r14
+P    3 | ld -190 r14
+P   30 | ld 0 r2
+P   29 | ld 0 r2
+P    4 | ld 0 r2
+P    3 | ld 0 r2
+P   28 | sti r15 0 0
+       | -> store to 0 + 0 = 0 (with pc and mod 740)
+P   27 | sti r15 0 0
+       | -> store to 0 + 0 = 0 (with pc and mod 2788)
+P   12 | live -1
+P   11 | live -2
+P   10 | live -2
+P    9 | live -1
+P    6 | live -1
+P    5 | live -2
+P    2 | live -2
+P    1 | live -1
+P   20 | sti r15 0 0
+       | -> store to 0 + 0 = 0 (with pc and mod 3386)
+P   19 | sti r15 0 0
+       | -> store to 0 + 0 = 0 (with pc and mod 1338)
+P   26 | sti r15 0 -194
+       | -> store to 0 + -194 = -194 (with pc and mod 1869)
+P   25 | sti r15 0 -194
+       | -> store to 0 + -194 = -194 (with pc and mod -179)
+P   22 | sti r15 0 -190
+       | -> store to 0 + -190 = -190 (with pc and mod -175)
+P   21 | sti r15 0 -190
+       | -> store to 0 + -190 = -190 (with pc and mod 1873)
+P   30 | zjmp -315 OK
+P   29 | zjmp -315 OK
+P    4 | zjmp -257 OK
+P    3 | zjmp -257 OK
+P   28 | zjmp -200 FAILED
+P   27 | zjmp -200 FAILED
+P   20 | zjmp -200 FAILED
+P   19 | zjmp -200 FAILED
+P   24 | fork -25 (2205)
+P   23 | fork -25 (157)
+P   12 | sti r15 0 -182
+       | -> store to 0 + -182 = -182 (with pc and mod 2008)
+P   11 | sti r15 0 -182
+       | -> store to 0 + -182 = -182 (with pc and mod -40)
+P   10 | sti r15 0 -194
+       | -> store to 0 + -194 = -194 (with pc and mod -52)
+P    9 | sti r15 0 -194
+       | -> store to 0 + -194 = -194 (with pc and mod 1996)
+P    6 | sti r15 0 -190
+       | -> store to 0 + -190 = -190 (with pc and mod 2000)
+P    5 | sti r15 0 -190
+       | -> store to 0 + -190 = -190 (with pc and mod -48)
+P    2 | sti r15 0 -186
+       | -> store to 0 + -186 = -186 (with pc and mod -44)
+P    1 | sti r15 0 -186
+       | -> store to 0 + -186 = -186 (with pc and mod 2004)
+P   28 | live -16777216
+P   27 | live -16777216
+P   26 | zjmp -200 OK
+P   25 | zjmp -200 OK
+P   22 | zjmp -200 OK
+P   21 | zjmp -200 OK
+P   20 | live -16777216
+P   19 | live -16777216
+P   34 | live 42
+P   33 | live 42
+P   24 | live 3
+P   23 | live 3
+P   30 | zjmp 6 OK
+P   29 | zjmp 6 OK
+P    8 | live 42
+P    7 | live 42
+P    4 | zjmp 6 OK
+P    3 | zjmp 6 OK
+P   12 | zjmp -200 OK
+P   11 | zjmp -200 OK
+P   10 | zjmp -200 OK
+P    9 | zjmp -200 OK
+P    6 | zjmp -200 OK
+P    5 | zjmp -200 OK
+P    2 | zjmp -200 OK
+P    1 | zjmp -200 OK
+P   28 | live -2
+P   27 | live -1
+P   26 | sti r15 0 -194
+       | -> store to 0 + -194 = -194 (with pc and mod 1677)
+P   25 | sti r15 0 -194
+       | -> store to 0 + -194 = -194 (with pc and mod 3725)
+P   22 | sti r15 0 -190
+       | -> store to 0 + -190 = -190 (with pc and mod 3729)
+P   21 | sti r15 0 -190
+       | -> store to 0 + -190 = -190 (with pc and mod 1681)
+P   12 | live -1
+P   11 | live -2
+P   10 | live -2
+P    9 | live -1
+P    6 | live -1
+P    5 | live -2
+P    2 | live -2
+P    1 | live -1
+P   34 | sti r4 -155 1
+       | -> store to -155 + 1 = -154 (with pc and mod 8)
+P   33 | sti r4 -155 1
+       | -> store to -155 + 1 = -154 (with pc and mod 2056)
+P   30 | sti r15 0 -194
+       | -> store to 0 + -194 = -194 (with pc and mod 1869)
+P   29 | sti r15 0 -194
+       | -> store to 0 + -194 = -194 (with pc and mod -179)
+P    4 | sti r15 0 -190
+       | -> store to 0 + -190 = -190 (with pc and mod -175)
+P    3 | sti r15 0 -190
+       | -> store to 0 + -190 = -190 (with pc and mod 1873)
+P   12 | sti r15 0 -182
+       | -> store to 0 + -182 = -182 (with pc and mod 1819)
+P   11 | sti r15 0 -182
+       | -> store to 0 + -182 = -182 (with pc and mod 3867)
+P   10 | sti r15 0 -194
+       | -> store to 0 + -194 = -194 (with pc and mod 3855)
+P    9 | sti r15 0 -194
+       | -> store to 0 + -194 = -194 (with pc and mod 1807)
+P    6 | sti r15 0 -190
+       | -> store to 0 + -190 = -190 (with pc and mod 1811)
+P    5 | sti r15 0 -190
+       | -> store to 0 + -190 = -190 (with pc and mod 3859)
+P    2 | sti r15 0 -186
+       | -> store to 0 + -186 = -186 (with pc and mod 3863)
+P    1 | sti r15 0 -186
+       | -> store to 0 + -186 = -186 (with pc and mod 1815)
+P   30 | zjmp -200 OK
+P   29 | zjmp -200 OK
+P    4 | zjmp -200 OK
+P    3 | zjmp -200 OK
+P   34 | sti r15 0 0
+       | -> store to 0 + 0 = 0 (with pc and mod 173)
+P   33 | sti r15 0 0
+       | -> store to 0 + 0 = 0 (with pc and mod 2221)
+P   12 | zjmp -200 OK
+P   11 | zjmp -200 OK
+P   10 | zjmp -200 OK
+P    9 | zjmp -200 OK
+P    6 | zjmp -200 OK
+P    5 | zjmp -200 OK
+P    2 | zjmp -200 OK
+P    1 | zjmp -200 OK
+P   34 | zjmp -200 FAILED
+P   33 | zjmp -200 FAILED
+P   30 | sti r15 0 -194
+       | -> store to 0 + -194 = -194 (with pc and mod 1677)
+P   29 | sti r15 0 -194
+       | -> store to 0 + -194 = -194 (with pc and mod 3725)
+P   12 | live -1
+P   11 | live -2
+P   10 | live -2
+P    9 | live -1
+P    6 | live -1
+P    5 | live -2
+P    4 | sti r15 0 -190
+       | -> store to 0 + -190 = -190 (with pc and mod 3729)
+P    3 | sti r15 0 -190
+       | -> store to 0 + -190 = -190 (with pc and mod 1681)
+P    2 | live -2
+P    1 | live -1
+P   28 | live -16777216
+P   27 | live -16777216
+P   26 | live -16777216
+P   25 | live -16777216
+P   22 | live -16777216
+P   21 | live -16777216
+P   34 | live -1638144
+P   33 | live -1638144
+P   12 | sti r15 0 -182
+       | -> store to 0 + -182 = -182 (with pc and mod 1630)
+P   11 | sti r15 0 -182
+       | -> store to 0 + -182 = -182 (with pc and mod 3678)
+P   10 | sti r15 0 -194
+       | -> store to 0 + -194 = -194 (with pc and mod 3666)
+P    9 | sti r15 0 -194
+       | -> store to 0 + -194 = -194 (with pc and mod 1618)
+P    6 | sti r15 0 -190
+       | -> store to 0 + -190 = -190 (with pc and mod 1622)
+P    5 | sti r15 0 -190
+       | -> store to 0 + -190 = -190 (with pc and mod 3670)
+P    2 | sti r15 0 -186
+       | -> store to 0 + -186 = -186 (with pc and mod 3674)
+P    1 | sti r15 0 -186
+       | -> store to 0 + -186 = -186 (with pc and mod 1626)
+P   34 | live 4
+P   33 | live 4
+P   26 | live -2
+P   25 | live -1
+P   22 | live -1
+P   21 | live -2
+P   20 | live -1
+P   19 | live -2
+P   12 | zjmp -200 OK
+P   11 | zjmp -200 OK
+P   10 | zjmp -200 OK
+P    9 | zjmp -200 OK
+P    6 | zjmp -200 OK
+P    5 | zjmp -200 OK
+P    2 | zjmp -200 OK
+P    1 | zjmp -200 OK
+P   26 | sti r15 0 -194
+       | -> store to 0 + -194 = -194 (with pc and mod 1711)
+P   25 | sti r15 0 -194
+       | -> store to 0 + -194 = -194 (with pc and mod 3759)
+P   22 | sti r15 0 -190
+       | -> store to 0 + -190 = -190 (with pc and mod 3763)
+P   21 | sti r15 0 -190
+       | -> store to 0 + -190 = -190 (with pc and mod 1715)
+P   12 | live -1
+P   11 | live -2
+P   10 | live -2
+P    9 | live -1
+P    6 | live -1
+P    5 | live -2
+P    2 | live -2
+P    1 | live -1
+P   30 | live -16777216
+P   29 | live -16777216
+P    4 | live -16777216
+P    3 | live -16777216
+P   20 | sti r15 0 0
+       | -> store to 0 + 0 = 0 (with pc and mod 3513)
+P   19 | sti r15 0 0
+       | -> store to 0 + 0 = 0 (with pc and mod 1465)
+P   26 | zjmp -200 OK
+P   25 | zjmp -200 OK
+P   22 | zjmp -200 OK
+P   21 | zjmp -200 OK
+P   12 | sti r15 0 -182
+       | -> store to 0 + -182 = -182 (with pc and mod 1441)
+P   11 | sti r15 0 -182
+       | -> store to 0 + -182 = -182 (with pc and mod 3489)
+P   10 | sti r15 0 -194
+       | -> store to 0 + -194 = -194 (with pc and mod 3477)
+P    9 | sti r15 0 -194
+       | -> store to 0 + -194 = -194 (with pc and mod 1429)
+P    6 | sti r15 0 -190
+       | -> store to 0 + -190 = -190 (with pc and mod 1433)
+P    5 | sti r15 0 -190
+       | -> store to 0 + -190 = -190 (with pc and mod 3481)
+P    2 | sti r15 0 -186
+       | -> store to 0 + -186 = -186 (with pc and mod 3485)
+P    1 | sti r15 0 -186
+       | -> store to 0 + -186 = -186 (with pc and mod 1437)
+P   30 | live -2
+P   29 | live -1
+P   20 | zjmp -200 FAILED
+P   19 | zjmp -200 FAILED
+P    4 | live -1
+P    3 | live -2
+P   20 | live -16777216
+P   19 | live -16777216
+P   26 | sti r15 0 -194
+       | -> store to 0 + -194 = -194 (with pc and mod 1519)
+P   25 | sti r15 0 -194
+       | -> store to 0 + -194 = -194 (with pc and mod 3567)
+P   22 | sti r15 0 -190
+       | -> store to 0 + -190 = -190 (with pc and mod 3571)
+P   21 | sti r15 0 -190
+       | -> store to 0 + -190 = -190 (with pc and mod 1523)
+P   12 | zjmp -200 OK
+P   11 | zjmp -200 OK
+P   10 | zjmp -200 OK
+P    9 | zjmp -200 OK
+P    6 | zjmp -200 OK
+P    5 | zjmp -200 OK
+P    2 | zjmp -200 OK
+P    1 | zjmp -200 OK
+P   30 | sti r15 0 -194
+       | -> store to 0 + -194 = -194 (with pc and mod 1711)
+P   29 | sti r15 0 -194
+       | -> store to 0 + -194 = -194 (with pc and mod 3759)
+P    4 | sti r15 0 -190
+       | -> store to 0 + -190 = -190 (with pc and mod 3763)
+P    3 | sti r15 0 -190
+       | -> store to 0 + -190 = -190 (with pc and mod 1715)
+P   12 | live -1
+P   11 | live -2
+P   10 | live -2
+P    9 | live -1
+P    6 | live -1
+P    5 | live -2
+P    2 | live -2
+P    1 | live -1
+P   20 | live -2
+P   19 | live -1
+P   28 | live -2
+P   27 | live -1
+P   30 | zjmp -200 OK
+P   29 | zjmp -200 OK
+P    4 | zjmp -200 OK
+P    3 | zjmp -200 OK
+P   12 | sti r15 0 -182
+       | -> store to 0 + -182 = -182 (with pc and mod 1252)
+P   11 | sti r15 0 -182
+       | -> store to 0 + -182 = -182 (with pc and mod 3300)
+P   10 | sti r15 0 -194
+       | -> store to 0 + -194 = -194 (with pc and mod 3288)
+P    9 | sti r15 0 -194
+       | -> store to 0 + -194 = -194 (with pc and mod 1240)
+P    6 | sti r15 0 -190
+       | -> store to 0 + -190 = -190 (with pc and mod 1244)
+P    5 | sti r15 0 -190
+       | -> store to 0 + -190 = -190 (with pc and mod 3292)
+P    2 | sti r15 0 -186
+       | -> store to 0 + -186 = -186 (with pc and mod 3296)
+P    1 | sti r15 0 -186
+       | -> store to 0 + -186 = -186 (with pc and mod 1248)
+P   20 | sti r15 0 0
+       | -> store to 0 + 0 = 0 (with pc and mod 3544)
+P   19 | sti r15 0 0
+       | -> store to 0 + 0 = 0 (with pc and mod 1496)
+P   28 | sti r15 0 0
+       | -> store to 0 + 0 = 0 (with pc and mod 898)
+P   27 | sti r15 0 0
+       | -> store to 0 + 0 = 0 (with pc and mod 2946)
+P   12 | zjmp -200 OK
+P   11 | zjmp -200 OK
+P   10 | zjmp -200 OK
+P    9 | zjmp -200 OK
+P    6 | zjmp -200 OK
+P    5 | zjmp -200 OK
+P    2 | zjmp -200 OK
+P    1 | zjmp -200 OK
+P   30 | sti r15 0 -194
+       | -> store to 0 + -194 = -194 (with pc and mod 1519)
+P   29 | sti r15 0 -194
+       | -> store to 0 + -194 = -194 (with pc and mod 3567)
+P    4 | sti r15 0 -190
+       | -> store to 0 + -190 = -190 (with pc and mod 3571)
+P    3 | sti r15 0 -190
+       | -> store to 0 + -190 = -190 (with pc and mod 1523)
+P   20 | zjmp -200 FAILED
+P   19 | zjmp -200 FAILED
+P   12 | live -1
+P   11 | live -2
+P   10 | live -2
+P    9 | live -1
+P    6 | live -1
+P    5 | live -2
+P    2 | live -2
+P    1 | live -1
+P   28 | zjmp -200 FAILED
+P   27 | zjmp -200 FAILED
+P   20 | live -16777216
+P   19 | live -16777216
+P   28 | live -16777216
+P   27 | live -16777216
+P   12 | sti r15 0 -182
+       | -> store to 0 + -182 = -182 (with pc and mod 1063)
+P   11 | sti r15 0 -182
+       | -> store to 0 + -182 = -182 (with pc and mod 3111)
+P   10 | sti r15 0 -194
+       | -> store to 0 + -194 = -194 (with pc and mod 3099)
+P    9 | sti r15 0 -194
+       | -> store to 0 + -194 = -194 (with pc and mod 1051)
+P    6 | sti r15 0 -190
+       | -> store to 0 + -190 = -190 (with pc and mod 1055)
+P    5 | sti r15 0 -190
+       | -> store to 0 + -190 = -190 (with pc and mod 3103)
+P    2 | sti r15 0 -186
+       | -> store to 0 + -186 = -186 (with pc and mod 3107)
+P    1 | sti r15 0 -186
+       | -> store to 0 + -186 = -186 (with pc and mod 1059)
+P   28 | live -1
+P   27 | live -2
+P   20 | sti r15 0 0
+       | -> store to 0 + 0 = 0 (with pc and mod 3569)
+P   19 | sti r15 0 0
+       | -> store to 0 + 0 = 0 (with pc and mod 1521)
+P   12 | zjmp -200 OK
+P   11 | zjmp -200 OK
+P   10 | zjmp -200 OK
+P    9 | zjmp -200 OK
+P    6 | zjmp -200 OK
+P    5 | zjmp -200 OK
+P    2 | zjmp -200 OK
+P    1 | zjmp -200 OK
+P   12 | live -1
+P   11 | live -2
+P   10 | live -2
+P    9 | live -1
+P    6 | live -1
+P    5 | live -2
+P    2 | live -2
+P    1 | live -1
+P   20 | sti r15 0 0
+       | -> store to 0 + 0 = 0 (with pc and mod 3575)
+P   19 | sti r15 0 0
+       | -> store to 0 + 0 = 0 (with pc and mod 1527)
+P   12 | sti r15 0 -182
+       | -> store to 0 + -182 = -182 (with pc and mod 874)
+P   11 | sti r15 0 -182
+       | -> store to 0 + -182 = -182 (with pc and mod 2922)
+P   10 | sti r15 0 -194
+       | -> store to 0 + -194 = -194 (with pc and mod 2910)
+P    9 | sti r15 0 -194
+       | -> store to 0 + -194 = -194 (with pc and mod 862)
+P    6 | sti r15 0 -190
+       | -> store to 0 + -190 = -190 (with pc and mod 866)
+P    5 | sti r15 0 -190
+       | -> store to 0 + -190 = -190 (with pc and mod 2914)
+P    2 | sti r15 0 -186
+       | -> store to 0 + -186 = -186 (with pc and mod 2918)
+P    1 | sti r15 0 -186
+       | -> store to 0 + -186 = -186 (with pc and mod 870)
+P   20 | zjmp -200 FAILED
+P   19 | zjmp -200 FAILED
+P   20 | live -16777216
+P   19 | live -16777216
+P   28 | live -16777216
+P   27 | live -16777216
+P   12 | zjmp -200 OK
+P   11 | zjmp -200 OK
+P   10 | zjmp -200 OK
+P    9 | zjmp -200 OK
+P    6 | zjmp -200 OK
+P    5 | zjmp -200 OK
+P    2 | zjmp -200 OK
+P    1 | zjmp -200 OK
+P   12 | live -1
+P   11 | live -2
+P   10 | live -2
+P    9 | live -1
+P    6 | live -1
+P    5 | live -2
+P    2 | live -2
+P    1 | live -1
+P   28 | live -2
+P   27 | live -1
+P   26 | live -1
+P   25 | live -2
+P   22 | live -2
+P   21 | live -1
+P   12 | sti r15 0 -182
+       | -> store to 0 + -182 = -182 (with pc and mod 685)
+P   11 | sti r15 0 -182
+       | -> store to 0 + -182 = -182 (with pc and mod 2733)
+P   10 | sti r15 0 -194
+       | -> store to 0 + -194 = -194 (with pc and mod 2721)
+P    9 | sti r15 0 -194
+       | -> store to 0 + -194 = -194 (with pc and mod 673)
+P    6 | sti r15 0 -190
+       | -> store to 0 + -190 = -190 (with pc and mod 677)
+P    5 | sti r15 0 -190
+       | -> store to 0 + -190 = -190 (with pc and mod 2725)
+P    2 | sti r15 0 -186
+       | -> store to 0 + -186 = -186 (with pc and mod 2729)
+P    1 | sti r15 0 -186
+       | -> store to 0 + -186 = -186 (with pc and mod 681)
+P   26 | sti r15 0 -194
+       | -> store to 0 + -194 = -194 (with pc and mod 1618)
+P   25 | sti r15 0 -194
+       | -> store to 0 + -194 = -194 (with pc and mod 3666)
+P   22 | sti r15 0 -190
+       | -> store to 0 + -190 = -190 (with pc and mod 3670)
+P   21 | sti r15 0 -190
+       | -> store to 0 + -190 = -190 (with pc and mod 1622)
+P   12 | zjmp -200 OK
+P   11 | zjmp -200 OK
+P   10 | zjmp -200 OK
+P    9 | zjmp -200 OK
+P    6 | zjmp -200 OK
+P    5 | zjmp -200 OK
+P    2 | zjmp -200 OK
+P    1 | zjmp -200 OK
+P   12 | live -1
+P   11 | live -2
+P   10 | live -2
+P    9 | live -1
+P    6 | live -1
+P    5 | live -2
+P    2 | live -2
+P    1 | live -1
+P   26 | zjmp -200 OK
+P   25 | zjmp -200 OK
+P   22 | zjmp -200 OK
+P   21 | zjmp -200 OK
+P   30 | live -1
+P   29 | live -2
+P    4 | live -2
+P    3 | live -1
+P   28 | live -16777216
+P   27 | live -16777216
+P   18 | fork 511 (709)
+P   17 | fork 511 (2757)
+P   14 | fork 511 (2757)
+P   13 | fork 511 (709)
+P   12 | sti r15 0 -182
+       | -> store to 0 + -182 = -182 (with pc and mod 496)
+P   11 | sti r15 0 -182
+       | -> store to 0 + -182 = -182 (with pc and mod 2544)
+P   10 | sti r15 0 -194
+       | -> store to 0 + -194 = -194 (with pc and mod 2532)
+P    9 | sti r15 0 -194
+       | -> store to 0 + -194 = -194 (with pc and mod 484)
+P    6 | sti r15 0 -190
+       | -> store to 0 + -190 = -190 (with pc and mod 488)
+P    5 | sti r15 0 -190
+       | -> store to 0 + -190 = -190 (with pc and mod 2536)
+P    2 | sti r15 0 -186
+       | -> store to 0 + -186 = -186 (with pc and mod 2540)
+P    1 | sti r15 0 -186
+       | -> store to 0 + -186 = -186 (with pc and mod 492)
+P   26 | sti r15 0 -194
+       | -> store to 0 + -194 = -194 (with pc and mod 1426)
+P   25 | sti r15 0 -194
+       | -> store to 0 + -194 = -194 (with pc and mod 3474)
+P   22 | sti r15 0 -190
+       | -> store to 0 + -190 = -190 (with pc and mod 3478)
+P   21 | sti r15 0 -190
+       | -> store to 0 + -190 = -190 (with pc and mod 1430)
+P   20 | sti r15 0 0
+       | -> store to 0 + 0 = 0 (with pc and mod 3668)
+P   19 | sti r15 0 0
+       | -> store to 0 + 0 = 0 (with pc and mod 1620)
+P   30 | sti r15 0 -194
+       | -> store to 0 + -194 = -194 (with pc and mod 1618)
+P   29 | sti r15 0 -194
+       | -> store to 0 + -194 = -194 (with pc and mod 3666)
+P    4 | sti r15 0 -190
+       | -> store to 0 + -190 = -190 (with pc and mod 3670)
+P    3 | sti r15 0 -190
+       | -> store to 0 + -190 = -190 (with pc and mod 1622)
+P   12 | zjmp -200 OK
+P   11 | zjmp -200 OK
+P   10 | zjmp -200 OK
+P    9 | zjmp -200 OK
+P    6 | zjmp -200 OK
+P    5 | zjmp -200 OK
+P    2 | zjmp -200 OK
+P    1 | zjmp -200 OK
+P   12 | live -1
+P   11 | live -2
+P   10 | live -2
+P    9 | live -1
+P    6 | live -1
+P    5 | live -2
+P    2 | live -2
+P    1 | live -1
+P   30 | zjmp -200 OK
+P   29 | zjmp -200 OK
+P    4 | zjmp -200 OK
+P    3 | zjmp -200 OK
+P   12 | sti r15 0 -182
+       | -> store to 0 + -182 = -182 (with pc and mod 307)
+P   11 | sti r15 0 -182
+       | -> store to 0 + -182 = -182 (with pc and mod 2355)
+P   10 | sti r15 0 -194
+       | -> store to 0 + -194 = -194 (with pc and mod 2343)
+P    9 | sti r15 0 -194
+       | -> store to 0 + -194 = -194 (with pc and mod 295)
+P    6 | sti r15 0 -190
+       | -> store to 0 + -190 = -190 (with pc and mod 299)
+P    5 | sti r15 0 -190
+       | -> store to 0 + -190 = -190 (with pc and mod 2347)
+P    2 | sti r15 0 -186
+       | -> store to 0 + -186 = -186 (with pc and mod 2351)
+P    1 | sti r15 0 -186
+       | -> store to 0 + -186 = -186 (with pc and mod 303)
+P   30 | sti r15 0 -194
+       | -> store to 0 + -194 = -194 (with pc and mod 1426)
+P   29 | sti r15 0 -194
+       | -> store to 0 + -194 = -194 (with pc and mod 3474)
+P    4 | sti r15 0 -190
+       | -> store to 0 + -190 = -190 (with pc and mod 3478)
+P    3 | sti r15 0 -190
+       | -> store to 0 + -190 = -190 (with pc and mod 1430)
+P   38 | live -16777216
+P   37 | live -16777216
+P   36 | live -16777216
+P   35 | live -16777216
+P   18 | live -1
+P   17 | live -1
+P   14 | live -1
+P   13 | live -1
+P   26 | live -16777216
+P   25 | live -16777216
+P   22 | live -16777216
+P   21 | live -16777216
+P   20 | live -16777216
+P   19 | live -16777216
+P   12 | zjmp -200 OK
+P   11 | zjmp -200 OK
+P   10 | zjmp -200 OK
+P    9 | zjmp -200 OK
+P    6 | zjmp -200 OK
+P    5 | zjmp -200 OK
+P    2 | zjmp -200 OK
+P    1 | zjmp -200 OK
+P   28 | live -1
+P   27 | live -2
+P   38 | live -1
+P   37 | live -2
+P   36 | live -2
+P   35 | live -1
+P   12 | live -1
+P   11 | live -2
+P   10 | live -2
+P    9 | live -1
+P    6 | live -1
+P    5 | live -2
+P    2 | live -2
+P    1 | live -1
+P   26 | live -2
+P   25 | live -1
+P   22 | live -1
+P   21 | live -2
+P   20 | live -1
+P   19 | live -2
+P   28 | sti r15 0 0
+       | -> store to 0 + 0 = 0 (with pc and mod 1056)
+P   27 | sti r15 0 0
+       | -> store to 0 + 0 = 0 (with pc and mod 3104)
+P   12 | sti r15 0 -182
+       | -> store to 0 + -182 = -182 (with pc and mod 118)
+P   11 | sti r15 0 -182
+       | -> store to 0 + -182 = -182 (with pc and mod 2166)
+P   10 | sti r15 0 -194
+       | -> store to 0 + -194 = -194 (with pc and mod 2154)
+P    9 | sti r15 0 -194
+       | -> store to 0 + -194 = -194 (with pc and mod 106)
+P    6 | sti r15 0 -190
+       | -> store to 0 + -190 = -190 (with pc and mod 110)
+P    5 | sti r15 0 -190
+       | -> store to 0 + -190 = -190 (with pc and mod 2158)
+P    2 | sti r15 0 -186
+       | -> store to 0 + -186 = -186 (with pc and mod 2162)
+P    1 | sti r15 0 -186
+       | -> store to 0 + -186 = -186 (with pc and mod 114)
+P   26 | sti r15 0 -194
+       | -> store to 0 + -194 = -194 (with pc and mod 1460)
+P   25 | sti r15 0 -194
+       | -> store to 0 + -194 = -194 (with pc and mod 3508)
+P   22 | sti r15 0 -190
+       | -> store to 0 + -190 = -190 (with pc and mod 3512)
+P   21 | sti r15 0 -190
+       | -> store to 0 + -190 = -190 (with pc and mod 1464)
+P   20 | sti r15 0 0
+       | -> store to 0 + 0 = 0 (with pc and mod 3702)
+P   19 | sti r15 0 0
+       | -> store to 0 + 0 = 0 (with pc and mod 1654)
+P   30 | live -16777216
+P   29 | live -16777216
+P    4 | live -16777216
+P    3 | live -16777216
+P   28 | zjmp -200 FAILED
+P   27 | zjmp -200 FAILED
+P   12 | zjmp -200 OK
+P   11 | zjmp -200 OK
+P   10 | zjmp -200 OK
+P    9 | zjmp -200 OK
+P    6 | zjmp -200 OK
+P    5 | zjmp -200 OK
+P    2 | zjmp -200 OK
+P    1 | zjmp -200 OK
+P   26 | zjmp -200 OK
+P   25 | zjmp -200 OK
+P   22 | zjmp -200 OK
+P   21 | zjmp -200 OK
+P   28 | live -16777216
+P   27 | live -16777216
+P   18 | live 42
+P   17 | live 42
+P   14 | live 42
+P   13 | live 42
+P   20 | zjmp -200 FAILED
+P   19 | zjmp -200 FAILED
+P   12 | live -1
+P   11 | live -2
+P   10 | live -2
+P    9 | live -1
+P    6 | live -1
+P    5 | live -2
+P    2 | live -2
+P    1 | live -1
+P   30 | live -2
+P   29 | live -1
+P    4 | live -1
+P    3 | live -2
+P   38 | live -16777216
+P   37 | live -16777216
+P   36 | live -16777216
+P   35 | live -16777216
+P   20 | live -16777216
+P   19 | live -16777216
+P   28 | live -2
+P   27 | live -1
+P   26 | sti r15 0 -194
+       | -> store to 0 + -194 = -194 (with pc and mod 1268)
+P   25 | sti r15 0 -194
+       | -> store to 0 + -194 = -194 (with pc and mod 3316)
+P   22 | sti r15 0 -190
+       | -> store to 0 + -190 = -190 (with pc and mod 3320)
+P   21 | sti r15 0 -190
+       | -> store to 0 + -190 = -190 (with pc and mod 1272)
+P   12 | sti r15 0 -182
+       | -> store to 0 + -182 = -182 (with pc and mod -71)
+P   11 | sti r15 0 -182
+       | -> store to 0 + -182 = -182 (with pc and mod 1977)
+P   10 | sti r15 0 -194
+       | -> store to 0 + -194 = -194 (with pc and mod 1965)
+P    9 | sti r15 0 -194
+       | -> store to 0 + -194 = -194 (with pc and mod -83)
+P    6 | sti r15 0 -190
+       | -> store to 0 + -190 = -190 (with pc and mod -79)
+P    5 | sti r15 0 -190
+       | -> store to 0 + -190 = -190 (with pc and mod 1969)
+P    2 | sti r15 0 -186
+       | -> store to 0 + -186 = -186 (with pc and mod 1973)
+P    1 | sti r15 0 -186
+       | -> store to 0 + -186 = -186 (with pc and mod -75)
+P   38 | live -2
+P   37 | live -1
+P   36 | live -1
+P   35 | live -2
+P   28 | sti r15 0 0
+       | -> store to 0 + 0 = 0 (with pc and mod 1087)
+P   27 | sti r15 0 0
+       | -> store to 0 + 0 = 0 (with pc and mod 3135)
+P   12 | zjmp -200 OK
+P   11 | zjmp -200 OK
+P   10 | zjmp -200 OK
+P    9 | zjmp -200 OK
+P    6 | zjmp -200 OK
+P    5 | zjmp -200 OK
+P    2 | zjmp -200 OK
+P    1 | zjmp -200 OK
+P   20 | sti r15 0 0
+       | -> store to 0 + 0 = 0 (with pc and mod 3727)
+P   19 | sti r15 0 0
+       | -> store to 0 + 0 = 0 (with pc and mod 1679)
+P   12 | live -1
+P   11 | live -2
+P   10 | live -2
+P    9 | live -1
+P    6 | live -1
+P    5 | live -2
+P    2 | live -2
+P    1 | live -1
+P   28 | zjmp -200 FAILED
+P   27 | zjmp -200 FAILED
+P   30 | live -16777216
+P   29 | live -16777216
+P    4 | live -16777216
+P    3 | live -16777216
+P   20 | sti r15 0 0
+       | -> store to 0 + 0 = 0 (with pc and mod 3733)
+P   19 | sti r15 0 0
+       | -> store to 0 + 0 = 0 (with pc and mod 1685)
+P   28 | live -16777216
+P   27 | live -16777216
+P   12 | sti r15 0 -182
+       | -> store to 0 + -182 = -182 (with pc and mod 3836)
+P   11 | sti r15 0 -182
+       | -> store to 0 + -182 = -182 (with pc and mod 1788)
+P   10 | sti r15 0 -194
+       | -> store to 0 + -194 = -194 (with pc and mod 1776)
+P    9 | sti r15 0 -194
+       | -> store to 0 + -194 = -194 (with pc and mod 3824)
+P    6 | sti r15 0 -190
+       | -> store to 0 + -190 = -190 (with pc and mod 3828)
+P    5 | sti r15 0 -190
+       | -> store to 0 + -190 = -190 (with pc and mod 1780)
+P    2 | sti r15 0 -186
+       | -> store to 0 + -186 = -186 (with pc and mod 1784)
+P    1 | sti r15 0 -186
+       | -> store to 0 + -186 = -186 (with pc and mod 3832)
+P   26 | live -16777216
+P   25 | live -16777216
+P   22 | live -16777216
+P   21 | live -16777216
+P   20 | zjmp -200 FAILED
+P   19 | zjmp -200 FAILED
+P   38 | live -16777216
+P   37 | live -16777216
+P   36 | live -16777216
+P   35 | live -16777216
+P   28 | live -1
+P   27 | live -2
+P   12 | zjmp -200 OK
+P   11 | zjmp -200 OK
+P   10 | zjmp -200 OK
+P    9 | zjmp -200 OK
+P    6 | zjmp -200 OK
+P    5 | zjmp -200 OK
+P    2 | zjmp -200 OK
+P    1 | zjmp -200 OK
+P   20 | live -16777216
+P   19 | live -16777216
+P   26 | live -1
+P   25 | live -2
+P   22 | live -2
+P   21 | live -1
+P   12 | live -1
+P   11 | live -2
+P   10 | live -2
+P    9 | live -1
+P    6 | live -1
+P    5 | live -2
+P    2 | live -2
+P    1 | live -1
+P   12 | sti r15 0 -182
+       | -> store to 0 + -182 = -182 (with pc and mod 3647)
+P   11 | sti r15 0 -182
+       | -> store to 0 + -182 = -182 (with pc and mod 1599)
+P   10 | sti r15 0 -194
+       | -> store to 0 + -194 = -194 (with pc and mod 1587)
+P    9 | sti r15 0 -194
+       | -> store to 0 + -194 = -194 (with pc and mod 3635)
+P    6 | sti r15 0 -190
+       | -> store to 0 + -190 = -190 (with pc and mod 3639)
+P    5 | sti r15 0 -190
+       | -> store to 0 + -190 = -190 (with pc and mod 1591)
+P    2 | sti r15 0 -186
+       | -> store to 0 + -186 = -186 (with pc and mod 1595)
+P    1 | sti r15 0 -186
+       | -> store to 0 + -186 = -186 (with pc and mod 3643)
+P   20 | sti r15 0 0
+       | -> store to 0 + 0 = 0 (with pc and mod 3761)
+P   19 | sti r15 0 0
+       | -> store to 0 + 0 = 0 (with pc and mod 1713)
+P   12 | zjmp -200 OK
+P   11 | zjmp -200 OK
+P   10 | zjmp -200 OK
+P    9 | zjmp -200 OK
+P    6 | zjmp -200 OK
+P    5 | zjmp -200 OK
+P    2 | zjmp -200 OK
+P    1 | zjmp -200 OK
+P   28 | live -16777216
+P   27 | live -16777216
+P   32 | fork 61 (2344)
+P   31 | fork 61 (296)
+P   16 | fork 511 (709)
+P   15 | fork 511 (2757)
+P   12 | live -1
+P   11 | live -2
+P   10 | live -2
+P    9 | live -1
+P    6 | live -1
+P    5 | live -2
+P    2 | live -2
+P    1 | live -1
+P   26 | live -16777216
+P   25 | live -16777216
+P   22 | live -16777216
+P   21 | live -16777216
+P   32 | live 42
+P   31 | live 42
+P   38 | live -1
+P   37 | live -2
+P   36 | live -2
+P   35 | live -1
+P   28 | live -2
+P   27 | live -1
+P   12 | sti r15 0 -182
+       | -> store to 0 + -182 = -182 (with pc and mod 3458)
+P   11 | sti r15 0 -182
+       | -> store to 0 + -182 = -182 (with pc and mod 1410)
+P   10 | sti r15 0 -194
+       | -> store to 0 + -194 = -194 (with pc and mod 1398)
+P    9 | sti r15 0 -194
+       | -> store to 0 + -194 = -194 (with pc and mod 3446)
+P    6 | sti r15 0 -190
+       | -> store to 0 + -190 = -190 (with pc and mod 3450)
+P    5 | sti r15 0 -190
+       | -> store to 0 + -190 = -190 (with pc and mod 1402)
+P    2 | sti r15 0 -186
+       | -> store to 0 + -186 = -186 (with pc and mod 1406)
+P    1 | sti r15 0 -186
+       | -> store to 0 + -186 = -186 (with pc and mod 3454)
+P   40 | sti r15 0 0
+       | -> store to 0 + 0 = 0 (with pc and mod 300)
+P   39 | sti r15 0 0
+       | -> store to 0 + 0 = 0 (with pc and mod 2348)
+P   32 | ldi 4 -230 r15
+       | -> load from 4 + -230 = -226 (with pc and mod 2065)
+P   31 | ldi 4 -230 r15
+       | -> load from 4 + -230 = -226 (with pc and mod 17)
+P   30 | live -16777216
+P   29 | live -16777216
+P    4 | live -16777216
+P    3 | live -16777216
+P   32 | ld -190 r14
+P   31 | ld -190 r14
+P   38 | sti r15 0 -190
+       | -> store to 0 + -190 = -190 (with pc and mod 677)
+P   37 | sti r15 0 -190
+       | -> store to 0 + -190 = -190 (with pc and mod 2725)
+P   36 | sti r15 0 -194
+       | -> store to 0 + -194 = -194 (with pc and mod 2721)
+P   35 | sti r15 0 -194
+       | -> store to 0 + -194 = -194 (with pc and mod 673)
+P   32 | ld 0 r2
+P   31 | ld 0 r2
+P   12 | zjmp -200 OK
+P   11 | zjmp -200 OK
+P   10 | zjmp -200 OK
+P    9 | zjmp -200 OK
+P    6 | zjmp -200 OK
+P    5 | zjmp -200 OK
+P    2 | zjmp -200 OK
+P    1 | zjmp -200 OK
+P   40 | zjmp -200 FAILED
+P   39 | zjmp -200 FAILED
+P   12 | live -1
+P   11 | live -2
+P   10 | live -2
+P    9 | live -1
+P    6 | live -1
+P    5 | live -2
+P    2 | live -2
+P    1 | live -1
+P   40 | live -194
+P   39 | live -194
+P   38 | zjmp -200 FAILED
+P   37 | zjmp -200 FAILED
+P   36 | zjmp -200 FAILED
+P   35 | zjmp -200 FAILED
+P   42 | live -16777216
+P   41 | live -16777216
+P   32 | zjmp -257 OK
+P   31 | zjmp -257 OK
+P   24 | fork 40 (2278)
+P   23 | fork 40 (230)
+P    8 | fork 61 (2344)
+P    7 | fork 61 (296)
+P   16 | live -1
+P   15 | live -1
+P   38 | live -16777216
+P   37 | live -16777216
+P   36 | live -16777216
+P   35 | live -16777216
+P   44 | live 42
+P   43 | live 42
+P   24 | live 4
+P   23 | live 4
+P    8 | live 42
+P    7 | live 42
+P   12 | sti r15 0 -182
+       | -> store to 0 + -182 = -182 (with pc and mod 3269)
+P   11 | sti r15 0 -182
+       | -> store to 0 + -182 = -182 (with pc and mod 1221)
+P   10 | sti r15 0 -194
+       | -> store to 0 + -194 = -194 (with pc and mod 1209)
+P    9 | sti r15 0 -194
+       | -> store to 0 + -194 = -194 (with pc and mod 3257)
+P    6 | sti r15 0 -190
+       | -> store to 0 + -190 = -190 (with pc and mod 3261)
+P    5 | sti r15 0 -190
+       | -> store to 0 + -190 = -190 (with pc and mod 1213)
+P    2 | sti r15 0 -186
+       | -> store to 0 + -186 = -186 (with pc and mod 1217)
+P    1 | sti r15 0 -186
+       | -> store to 0 + -186 = -186 (with pc and mod 3265)
+P   28 | live -16777216
+P   27 | live -16777216
+P   32 | zjmp 76 OK
+P   31 | zjmp 76 OK
+P   42 | live -2
+P   41 | live -1
+P   38 | live -2
+P   37 | live -1
+P   36 | live -1
+P   35 | live -2
+P   12 | zjmp -200 OK
+P   11 | zjmp -200 OK
+P   10 | zjmp -200 OK
+P    9 | zjmp -200 OK
+P    6 | zjmp -200 OK
+P    5 | zjmp -200 OK
+P    2 | zjmp -200 OK
+P    1 | zjmp -200 OK
+P    8 | ldi 4 -230 r15
+       | -> load from 4 + -230 = -226 (with pc and mod 2065)
+P    7 | ldi 4 -230 r15
+       | -> load from 4 + -230 = -226 (with pc and mod 17)
+P    8 | ld -190 r14
+P    7 | ld -190 r14
+P   12 | live -1
+P   11 | live -2
+P   10 | live -2
+P    9 | live -1
+P    6 | live -1
+P    5 | live -2
+P    2 | live -2
+P    1 | live -1
+P    8 | ld 0 r2
+P    7 | ld 0 r2
+P    8 | zjmp -257 OK
+P    7 | zjmp -257 OK
+P   40 | live -2
+P   39 | live -1
+P   20 | live -1
+P   19 | live -2
+P   46 | live -194
+P   45 | live -194
+P   26 | live -16777216
+P   25 | live -16777216
+P   22 | live -16777216
+P   21 | live -16777216
+P   12 | sti r15 0 -182
+       | -> store to 0 + -182 = -182 (with pc and mod 3080)
+P   11 | sti r15 0 -182
+       | -> store to 0 + -182 = -182 (with pc and mod 1032)
+P   10 | sti r15 0 -194
+       | -> store to 0 + -194 = -194 (with pc and mod 1020)
+P    9 | sti r15 0 -194
+       | -> store to 0 + -194 = -194 (with pc and mod 3068)
+P    6 | sti r15 0 -190
+       | -> store to 0 + -190 = -190 (with pc and mod 3072)
+P    5 | sti r15 0 -190
+       | -> store to 0 + -190 = -190 (with pc and mod 1024)
+P    2 | sti r15 0 -186
+       | -> store to 0 + -186 = -186 (with pc and mod 1028)
+P    1 | sti r15 0 -186
+       | -> store to 0 + -186 = -186 (with pc and mod 3076)
+P   28 | live -2
+P   27 | live -1
+P   16 | live 42
+P   15 | live 42
+P   32 | live 191365631
+P   31 | live 191365631
+P    8 | zjmp 76 OK
+P    7 | zjmp 76 OK
+P   42 | live -16777216
+P   41 | live -16777216
+P   12 | zjmp -200 OK
+P   11 | zjmp -200 OK
+P   10 | zjmp -200 OK
+P    9 | zjmp -200 OK
+P    6 | zjmp -200 OK
+P    5 | zjmp -200 OK
+P    2 | zjmp -200 OK
+P    1 | zjmp -200 OK
+P   40 | sti r15 0 0
+       | -> store to 0 + 0 = 0 (with pc and mod 331)
+P   39 | sti r15 0 0
+       | -> store to 0 + 0 = 0 (with pc and mod 2379)
+P   20 | sti r15 0 0
+       | -> store to 0 + 0 = 0 (with pc and mod 3829)
+P   19 | sti r15 0 0
+       | -> store to 0 + 0 = 0 (with pc and mod 1781)
+P   38 | live -16777216
+P   37 | live -16777216
+P   36 | live -16777216
+P   35 | live -16777216
+P   28 | sti r15 0 0
+       | -> store to 0 + 0 = 0 (with pc and mod 1214)
+P   27 | sti r15 0 0
+       | -> store to 0 + 0 = 0 (with pc and mod 3262)
+P   12 | live -1
+P   11 | live -2
+P   10 | live -2
+P    9 | live -1
+P    6 | live -1
+P    5 | live -2
+P    2 | live -2
+P    1 | live -1
+P   34 | fork 511 (709)
+P   33 | fork 511 (2757)
+P   42 | live -1
+P   41 | live -2
+P   40 | zjmp -200 FAILED
+P   39 | zjmp -200 FAILED
+P   20 | zjmp -200 FAILED
+P   19 | zjmp -200 FAILED
+P   38 | live -1
+P   37 | live -2
+P   36 | live -2
+P   35 | live -1
+P   28 | zjmp -200 FAILED
+P   27 | zjmp -200 FAILED
+P   40 | live -16777216
+P   39 | live -16777216
+P   20 | live -16777216
+P   19 | live -16777216
+P   12 | sti r15 0 -182
+       | -> store to 0 + -182 = -182 (with pc and mod 2891)
+P   11 | sti r15 0 -182
+       | -> store to 0 + -182 = -182 (with pc and mod 843)
+P   10 | sti r15 0 -194
+       | -> store to 0 + -194 = -194 (with pc and mod 831)
+P    9 | sti r15 0 -194
+       | -> store to 0 + -194 = -194 (with pc and mod 2879)
+P    6 | sti r15 0 -190
+       | -> store to 0 + -190 = -190 (with pc and mod 2883)
+P    5 | sti r15 0 -190
+       | -> store to 0 + -190 = -190 (with pc and mod 835)
+P    2 | sti r15 0 -186
+       | -> store to 0 + -186 = -186 (with pc and mod 839)
+P    1 | sti r15 0 -186
+       | -> store to 0 + -186 = -186 (with pc and mod 2887)
+P   26 | live -2
+P   25 | live -1
+P   22 | live -1
+P   21 | live -2
+P   28 | live -16777216
+P   27 | live -16777216
+P   46 | live -2
+P   45 | live -1
+P   40 | live -1
+P   39 | live -2
+P   20 | live -2
+P   19 | live -1
+P   12 | zjmp -200 OK
+P   11 | zjmp -200 OK
+P   10 | zjmp -200 OK
+P    9 | zjmp -200 OK
+P    6 | zjmp -200 OK
+P    5 | zjmp -200 OK
+P    2 | zjmp -200 OK
+P    1 | zjmp -200 OK
+P    8 | live 191365631
+P    7 | live 191365631
+P   26 | sti r15 0 -194
+       | -> store to 0 + -194 = -194 (with pc and mod 1398)
+P   25 | sti r15 0 -194
+       | -> store to 0 + -194 = -194 (with pc and mod 3446)
+P   22 | sti r15 0 -190
+       | -> store to 0 + -190 = -190 (with pc and mod 3450)
+P   21 | sti r15 0 -190
+       | -> store to 0 + -190 = -190 (with pc and mod 1402)
+P   28 | live -1
+P   27 | live -2
+P   12 | live -1
+P   11 | live -2
+P   10 | live -2
+P    9 | live -1
+P    6 | live -1
+P    5 | live -2
+P    2 | live -2
+P    1 | live -1
+P   48 | live -16777216
+P   47 | live -16777216
+P   40 | sti r15 0 0
+       | -> store to 0 + 0 = 0 (with pc and mod 362)
+P   39 | sti r15 0 0
+       | -> store to 0 + 0 = 0 (with pc and mod 2410)
+P   20 | sti r15 0 0
+       | -> store to 0 + 0 = 0 (with pc and mod 3860)
+P   19 | sti r15 0 0
+       | -> store to 0 + 0 = 0 (with pc and mod 1812)
+P   34 | live -1
+P   33 | live -1
+P   26 | zjmp -200 OK
+P   25 | zjmp -200 OK
+P   22 | zjmp -200 OK
+P   21 | zjmp -200 OK
+P   42 | live -16777216
+P   41 | live -16777216
+P   28 | sti r15 0 0
+       | -> store to 0 + 0 = 0 (with pc and mod 1245)
+P   27 | sti r15 0 0
+       | -> store to 0 + 0 = 0 (with pc and mod 3293)
+P   12 | sti r15 0 -182
+       | -> store to 0 + -182 = -182 (with pc and mod 2702)
+P   11 | sti r15 0 -182
+       | -> store to 0 + -182 = -182 (with pc and mod 654)
+P   10 | sti r15 0 -194
+       | -> store to 0 + -194 = -194 (with pc and mod 642)
+P    9 | sti r15 0 -194
+       | -> store to 0 + -194 = -194 (with pc and mod 2690)
+P    6 | sti r15 0 -190
+       | -> store to 0 + -190 = -190 (with pc and mod 2694)
+P    5 | sti r15 0 -190
+       | -> store to 0 + -190 = -190 (with pc and mod 646)
+P    2 | sti r15 0 -186
+       | -> store to 0 + -186 = -186 (with pc and mod 650)
+P    1 | sti r15 0 -186
+       | -> store to 0 + -186 = -186 (with pc and mod 2698)
+P   38 | live -16777216
+P   37 | live -16777216
+P   36 | live -16777216
+P   35 | live -16777216
+P   40 | zjmp -200 FAILED
+P   39 | zjmp -200 FAILED
+P   20 | zjmp -200 FAILED
+P   19 | zjmp -200 FAILED
+P   48 | live -2
+P   47 | live -1
+P   30 | live -2
+P   29 | live -1
+P    4 | live -1
+P    3 | live -2
+P   28 | zjmp -200 FAILED
+P   27 | zjmp -200 FAILED
+P   26 | sti r15 0 -194
+       | -> store to 0 + -194 = -194 (with pc and mod 1206)
+P   25 | sti r15 0 -194
+       | -> store to 0 + -194 = -194 (with pc and mod 3254)
+P   22 | sti r15 0 -190
+       | -> store to 0 + -190 = -190 (with pc and mod 3258)
+P   21 | sti r15 0 -190
+       | -> store to 0 + -190 = -190 (with pc and mod 1210)
+P   40 | live -16777216
+P   39 | live -16777216
+P   20 | live -16777216
+P   19 | live -16777216
+P   12 | zjmp -200 OK
+P   11 | zjmp -200 OK
+P   10 | zjmp -200 OK
+P    9 | zjmp -200 OK
+P    6 | zjmp -200 OK
+P    5 | zjmp -200 OK
+P    2 | zjmp -200 OK
+P    1 | zjmp -200 OK
+P   38 | live -2
+P   37 | live -1
+P   36 | live -1
+P   35 | live -2
+P   28 | live -16777216
+P   27 | live -16777216
+P   46 | live -16777216
+P   45 | live -16777216
+P   12 | live -1
+P   11 | live -2
+P   10 | live -2
+P    9 | live -1
+P    6 | live -1
+P    5 | live -2
+P    2 | live -2
+P    1 | live -1
+P   40 | live -2
+P   39 | live -1
+P   20 | live -1
+P   19 | live -2
+P   46 | live -1
+P   45 | live -2
+P   42 | live -1
+P   41 | live -2
+P   12 | sti r15 0 -182
+       | -> store to 0 + -182 = -182 (with pc and mod 2513)
+P   11 | sti r15 0 -182
+       | -> store to 0 + -182 = -182 (with pc and mod 465)
+P   10 | sti r15 0 -194
+       | -> store to 0 + -194 = -194 (with pc and mod 453)
+P    9 | sti r15 0 -194
+       | -> store to 0 + -194 = -194 (with pc and mod 2501)
+P    6 | sti r15 0 -190
+       | -> store to 0 + -190 = -190 (with pc and mod 2505)
+P    5 | sti r15 0 -190
+       | -> store to 0 + -190 = -190 (with pc and mod 457)
+P    2 | sti r15 0 -186
+       | -> store to 0 + -186 = -186 (with pc and mod 461)
+P    1 | sti r15 0 -186
+       | -> store to 0 + -186 = -186 (with pc and mod 2509)
+P   28 | sti r15 0 0
+       | -> store to 0 + 0 = 0 (with pc and mod 1270)
+P   27 | sti r15 0 0
+       | -> store to 0 + 0 = 0 (with pc and mod 3318)
+P   34 | live 42
+P   33 | live 42
+P   40 | sti r15 0 0
+       | -> store to 0 + 0 = 0 (with pc and mod 393)
+P   39 | sti r15 0 0
+       | -> store to 0 + 0 = 0 (with pc and mod 2441)
+P   20 | sti r15 0 0
+       | -> store to 0 + 0 = 0 (with pc and mod 3891)
+P   19 | sti r15 0 0
+       | -> store to 0 + 0 = 0 (with pc and mod 1843)
+P   48 | live -16777216
+P   47 | live -16777216
+P   42 | sti r15 0 0
+       | -> store to 0 + 0 = 0 (with pc and mod 2884)
+P   41 | sti r15 0 0
+       | -> store to 0 + 0 = 0 (with pc and mod 836)
+P   12 | zjmp -200 OK
+P   11 | zjmp -200 OK
+P   10 | zjmp -200 OK
+P    9 | zjmp -200 OK
+P    6 | zjmp -200 OK
+P    5 | zjmp -200 OK
+P    2 | zjmp -200 OK
+P    1 | zjmp -200 OK
+P   30 | live -16777216
+P   29 | live -16777216
+P   26 | live -16777216
+P   25 | live -16777216
+P   22 | live -16777216
+P   21 | live -16777216
+P    4 | live -16777216
+P    3 | live -16777216
+P   12 | live -1
+P   11 | live -2
+P   10 | live -2
+P    9 | live -1
+P    6 | live -1
+P    5 | live -2
+P    2 | live -2
+P    1 | live -1
+P   40 | zjmp -200 FAILED
+P   39 | zjmp -200 FAILED
+P   20 | zjmp -200 FAILED
+P   19 | zjmp -200 FAILED
+P   38 | live -16777216
+P   37 | live -16777216
+P   36 | live -16777216
+P   35 | live -16777216
+P   42 | zjmp -200 FAILED
+P   41 | zjmp -200 FAILED
+P   40 | live -16777216
+P   39 | live -16777216
+P   20 | live -16777216
+P   19 | live -16777216
+P   48 | live -1
+P   47 | live -2
+P   30 | live -1
+P   29 | live -2
+P    4 | live -2
+P    3 | live -1
+P   42 | live -16777216
+P   41 | live -16777216
+P   12 | sti r15 0 -182
+       | -> store to 0 + -182 = -182 (with pc and mod 2324)
+P   11 | sti r15 0 -182
+       | -> store to 0 + -182 = -182 (with pc and mod 276)
+P   10 | sti r15 0 -194
+       | -> store to 0 + -194 = -194 (with pc and mod 264)
+P    9 | sti r15 0 -194
+       | -> store to 0 + -194 = -194 (with pc and mod 2312)
+P    6 | sti r15 0 -190
+       | -> store to 0 + -190 = -190 (with pc and mod 2316)
+P    5 | sti r15 0 -190
+       | -> store to 0 + -190 = -190 (with pc and mod 268)
+P    2 | sti r15 0 -186
+       | -> store to 0 + -186 = -186 (with pc and mod 272)
+P    1 | sti r15 0 -186
+       | -> store to 0 + -186 = -186 (with pc and mod 2320)
+P   46 | live -16777216
+P   45 | live -16777216
+P   26 | sti r15 0 -194
+       | -> store to 0 + -194 = -194 (with pc and mod 1234)
+P   25 | sti r15 0 -194
+       | -> store to 0 + -194 = -194 (with pc and mod 3282)
+P   22 | sti r15 0 -190
+       | -> store to 0 + -190 = -190 (with pc and mod 3286)
+P   21 | sti r15 0 -190
+       | -> store to 0 + -190 = -190 (with pc and mod 1238)
+P   42 | live -2
+P   41 | live -1
+P   28 | live -16777216
+P   27 | live -16777216
+P   12 | zjmp -200 OK
+P   11 | zjmp -200 OK
+P   10 | zjmp -200 OK
+P    9 | zjmp -200 OK
+P    6 | zjmp -200 OK
+P    5 | zjmp -200 OK
+P    2 | zjmp -200 OK
+P    1 | zjmp -200 OK
+P   20 | sti r15 0 0
+       | -> store to 0 + 0 = 0 (with pc and mod 3919)
+P   19 | sti r15 0 0
+       | -> store to 0 + 0 = 0 (with pc and mod 1871)
+P   46 | live -2
+P   45 | live -1
+P   12 | live -1
+P   11 | live -2
+P   10 | live -2
+P    9 | live -1
+P    6 | live -1
+P    5 | live -2
+P    2 | live -2
+P    1 | live -1
+P   26 | sti r15 0 -194
+       | -> store to 0 + -194 = -194 (with pc and mod 1240)
+P   25 | sti r15 0 -194
+       | -> store to 0 + -194 = -194 (with pc and mod 3288)
+P   22 | sti r15 0 -190
+       | -> store to 0 + -190 = -190 (with pc and mod 3292)
+P   21 | sti r15 0 -190
+       | -> store to 0 + -190 = -190 (with pc and mod 1244)
+P   38 | live -2
+P   37 | live -1
+P   36 | live -1
+P   35 | live -2
+P   28 | live -1
+P   27 | live -2
+P   42 | sti r15 0 0
+       | -> store to 0 + 0 = 0 (with pc and mod 2915)
+P   41 | sti r15 0 0
+       | -> store to 0 + 0 = 0 (with pc and mod 867)
+P   40 | live -2
+P   39 | live -1
+P   26 | zjmp -200 OK
+P   25 | zjmp -200 OK
+P   22 | zjmp -200 OK
+P   21 | zjmp -200 OK
+P   48 | live -16777216
+P   47 | live -16777216
+P   12 | sti r15 0 -182
+       | -> store to 0 + -182 = -182 (with pc and mod 2135)
+P   11 | sti r15 0 -182
+       | -> store to 0 + -182 = -182 (with pc and mod 87)
+P   10 | sti r15 0 -194
+       | -> store to 0 + -194 = -194 (with pc and mod 75)
+P    9 | sti r15 0 -194
+       | -> store to 0 + -194 = -194 (with pc and mod 2123)
+P    6 | sti r15 0 -190
+       | -> store to 0 + -190 = -190 (with pc and mod 2127)
+P    5 | sti r15 0 -190
+       | -> store to 0 + -190 = -190 (with pc and mod 79)
+P    2 | sti r15 0 -186
+       | -> store to 0 + -186 = -186 (with pc and mod 83)
+P    1 | sti r15 0 -186
+       | -> store to 0 + -186 = -186 (with pc and mod 2131)
+P   30 | live -16777216
+P   29 | live -16777216
+P    4 | live -16777216
+P    3 | live -16777216
+P   38 | sti r15 0 -190
+       | -> store to 0 + -190 = -190 (with pc and mod 835)
+P   37 | sti r15 0 -190
+       | -> store to 0 + -190 = -190 (with pc and mod 2883)
+P   36 | sti r15 0 -194
+       | -> store to 0 + -194 = -194 (with pc and mod 2879)
+P   35 | sti r15 0 -194
+       | -> store to 0 + -194 = -194 (with pc and mod 831)
+P   42 | zjmp -200 FAILED
+P   41 | zjmp -200 FAILED
+P   40 | sti r15 0 0
+       | -> store to 0 + 0 = 0 (with pc and mod 458)
+P   39 | sti r15 0 0
+       | -> store to 0 + 0 = 0 (with pc and mod 2506)
+P   42 | live -16777216
+P   41 | live -16777216
+P   12 | zjmp -200 OK
+P   11 | zjmp -200 OK
+P   10 | zjmp -200 OK
+P    9 | zjmp -200 OK
+P    6 | zjmp -200 OK
+P    5 | zjmp -200 OK
+P    2 | zjmp -200 OK
+P    1 | zjmp -200 OK
+P   26 | sti r15 0 -194
+       | -> store to 0 + -194 = -194 (with pc and mod 1048)
+P   25 | sti r15 0 -194
+       | -> store to 0 + -194 = -194 (with pc and mod 3096)
+P   22 | sti r15 0 -190
+       | -> store to 0 + -190 = -190 (with pc and mod 3100)
+P   21 | sti r15 0 -190
+       | -> store to 0 + -190 = -190 (with pc and mod 1052)
+P   30 | live -2
+P   29 | live -1
+P    4 | live -1
+P    3 | live -2
+P   38 | zjmp -200 FAILED
+P   37 | zjmp -200 FAILED
+P   36 | zjmp -200 FAILED
+P   35 | zjmp -200 FAILED
+P   12 | live -1
+P   11 | live -2
+P   10 | live -2
+P    9 | live -1
+P    6 | live -1
+P    5 | live -2
+P    2 | live -2
+P    1 | live -1
+P   40 | zjmp -200 FAILED
+P   39 | zjmp -200 FAILED
+P   20 | live -16777216
+P   19 | live -16777216
+P   38 | live -16777216
+P   37 | live -16777216
+P   36 | live -16777216
+P   35 | live -16777216
+P   46 | live -16777216
+P   45 | live -16777216
+P   42 | live -1
+P   41 | live -2
+P   40 | live -16777216
+P   39 | live -16777216
+P   28 | live -16777216
+P   27 | live -16777216
+P   20 | live -1
+P   19 | live -2
+P   12 | sti r15 0 -182
+       | -> store to 0 + -182 = -182 (with pc and mod 1946)
+P   11 | sti r15 0 -182
+       | -> store to 0 + -182 = -182 (with pc and mod -102)
+P   10 | sti r15 0 -194
+       | -> store to 0 + -194 = -194 (with pc and mod -114)
+P    9 | sti r15 0 -194
+       | -> store to 0 + -194 = -194 (with pc and mod 1934)
+P    6 | sti r15 0 -190
+       | -> store to 0 + -190 = -190 (with pc and mod 1938)
+P    5 | sti r15 0 -190
+       | -> store to 0 + -190 = -190 (with pc and mod -110)
+P    2 | sti r15 0 -186
+       | -> store to 0 + -186 = -186 (with pc and mod -106)
+P    1 | sti r15 0 -186
+       | -> store to 0 + -186 = -186 (with pc and mod 1942)
+P   40 | live -1
+P   39 | live -2
+P   48 | sti r15 0 0
+       | -> store to 0 + 0 = 0 (with pc and mod 2881)
+P   47 | sti r15 0 0
+       | -> store to 0 + 0 = 0 (with pc and mod 833)
+P   38 | sti r15 0 -190
+       | -> store to 0 + -190 = -190 (with pc and mod 860)
+P   37 | sti r15 0 -190
+       | -> store to 0 + -190 = -190 (with pc and mod 2908)
+P   36 | sti r15 0 -194
+       | -> store to 0 + -194 = -194 (with pc and mod 2904)
+P   35 | sti r15 0 -194
+       | -> store to 0 + -194 = -194 (with pc and mod 856)
+P   28 | live -2
+P   27 | live -1
+P   12 | zjmp -200 OK
+P   11 | zjmp -200 OK
+P   10 | zjmp -200 OK
+P    9 | zjmp -200 OK
+P    6 | zjmp -200 OK
+P    5 | zjmp -200 OK
+P    2 | zjmp -200 OK
+P    1 | zjmp -200 OK
+P   20 | sti r15 0 0
+       | -> store to 0 + 0 = 0 (with pc and mod 3953)
+P   19 | sti r15 0 0
+       | -> store to 0 + 0 = 0 (with pc and mod 1905)
+P   26 | live -16777216
+P   25 | live -16777216
+P   22 | live -16777216
+P   21 | live -16777216
+P   12 | live -1
+P   11 | live -2
+P   10 | live -2
+P    9 | live -1
+P    6 | live -1
+P    5 | live -2
+P    2 | live -2
+P    1 | live -1
+P   40 | sti r15 0 0
+       | -> store to 0 + 0 = 0 (with pc and mod 489)
+P   39 | sti r15 0 0
+       | -> store to 0 + 0 = 0 (with pc and mod 2537)
+P   30 | live -16777216
+P   29 | live -16777216
+P    4 | live -16777216
+P    3 | live -16777216
+P   46 | live -2
+P   45 | live -1
+P   20 | zjmp -200 FAILED
+P   19 | zjmp -200 FAILED
+P   42 | live -16777216
+P   41 | live -16777216
+P   40 | zjmp -200 FAILED
+P   39 | zjmp -200 FAILED
+P   12 | sti r15 0 -182
+       | -> store to 0 + -182 = -182 (with pc and mod 1757)
+P   11 | sti r15 0 -182
+       | -> store to 0 + -182 = -182 (with pc and mod 3805)
+P   10 | sti r15 0 -194
+       | -> store to 0 + -194 = -194 (with pc and mod 3793)
+P    9 | sti r15 0 -194
+       | -> store to 0 + -194 = -194 (with pc and mod 1745)
+P    6 | sti r15 0 -190
+       | -> store to 0 + -190 = -190 (with pc and mod 1749)
+P    5 | sti r15 0 -190
+       | -> store to 0 + -190 = -190 (with pc and mod 3797)
+P    2 | sti r15 0 -186
+       | -> store to 0 + -186 = -186 (with pc and mod 3801)
+P    1 | sti r15 0 -186
+       | -> store to 0 + -186 = -186 (with pc and mod 1753)
+P   40 | live -16777216
+P   39 | live -16777216
+P   42 | live -2
+P   41 | live -1
+P   20 | sti r15 0 0
+       | -> store to 0 + 0 = 0 (with pc and mod 3964)
+P   19 | sti r15 0 0
+       | -> store to 0 + 0 = 0 (with pc and mod 1916)
+P   12 | zjmp -200 OK
+P   11 | zjmp -200 OK
+P   10 | zjmp -200 OK
+P    9 | zjmp -200 OK
+P    6 | zjmp -200 OK
+P    5 | zjmp -200 OK
+P    2 | zjmp -200 OK
+P    1 | zjmp -200 OK
+P   48 | live -16777216
+P   47 | live -16777216
+P   38 | live -16777216
+P   37 | live -16777216
+P   36 | live -16777216
+P   35 | live -16777216
+P   28 | live -16777216
+P   27 | live -16777216
+P   12 | live -1
+P   11 | live -2
+P   10 | live -2
+P    9 | live -1
+P    6 | live -1
+P    5 | live -2
+P    2 | live -2
+P    1 | live -1
+P   40 | live -2
+P   39 | live -1
+P   20 | live -2
+P   19 | live -1
+P   46 | live -16777216
+P   45 | live -16777216
+P   38 | live -2
+P   37 | live -1
+P   36 | live -1
+P   35 | live -2
+P   48 | sti r15 0 0
+       | -> store to 0 + 0 = 0 (with pc and mod 2906)
+P   47 | sti r15 0 0
+       | -> store to 0 + 0 = 0 (with pc and mod 858)
+P   12 | sti r15 0 -182
+       | -> store to 0 + -182 = -182 (with pc and mod 1568)
+P   11 | sti r15 0 -182
+       | -> store to 0 + -182 = -182 (with pc and mod 3616)
+P   10 | sti r15 0 -194
+       | -> store to 0 + -194 = -194 (with pc and mod 3604)
+P    9 | sti r15 0 -194
+       | -> store to 0 + -194 = -194 (with pc and mod 1556)
+P    6 | sti r15 0 -190
+       | -> store to 0 + -190 = -190 (with pc and mod 1560)
+P    5 | sti r15 0 -190
+       | -> store to 0 + -190 = -190 (with pc and mod 3608)
+P    2 | sti r15 0 -186
+       | -> store to 0 + -186 = -186 (with pc and mod 3612)
+P    1 | sti r15 0 -186
+       | -> store to 0 + -186 = -186 (with pc and mod 1564)
+P   40 | sti r15 0 0
+       | -> store to 0 + 0 = 0 (with pc and mod 520)
+P   39 | sti r15 0 0
+       | -> store to 0 + 0 = 0 (with pc and mod 2568)
+P   20 | sti r15 0 0
+       | -> store to 0 + 0 = 0 (with pc and mod 3987)
+P   19 | sti r15 0 0
+       | -> store to 0 + 0 = 0 (with pc and mod 1939)
+P   46 | live -1
+P   45 | live -2
+P   12 | zjmp -200 OK
+P   11 | zjmp -200 OK
+P   10 | zjmp -200 OK
+P    9 | zjmp -200 OK
+P    6 | zjmp -200 OK
+P    5 | zjmp -200 OK
+P    2 | zjmp -200 OK
+P    1 | zjmp -200 OK
+P   40 | zjmp -200 FAILED
+P   39 | zjmp -200 FAILED
+P   42 | live -16777216
+P   41 | live -16777216
+P   20 | zjmp -200 FAILED
+P   19 | zjmp -200 FAILED
+P   12 | live -1
+P   11 | live -2
+P   10 | live -2
+P    9 | live -1
+P    6 | live -1
+P    5 | live -2
+P    2 | live -2
+P    1 | live -1
+P   40 | live -16777216
+P   39 | live -16777216
+P   20 | live -16777216
+P   19 | live -16777216
+P   28 | sti r15 0 0
+       | -> store to 0 + 0 = 0 (with pc and mod 1400)
+P   27 | sti r15 0 0
+       | -> store to 0 + 0 = 0 (with pc and mod 3448)
+P   42 | live -1
+P   41 | live -2
+P   26 | live -16777216
+P   25 | live -16777216
+P   22 | live -16777216
+P   21 | live -16777216
+P   40 | live -1
+P   39 | live -2
+P   30 | live -16777216
+P   29 | live -16777216
+P    4 | live -16777216
+P    3 | live -16777216
+P   12 | sti r15 0 -182
+       | -> store to 0 + -182 = -182 (with pc and mod 1379)
+P   11 | sti r15 0 -182
+       | -> store to 0 + -182 = -182 (with pc and mod 3427)
+P   10 | sti r15 0 -194
+       | -> store to 0 + -194 = -194 (with pc and mod 3415)
+P    9 | sti r15 0 -194
+       | -> store to 0 + -194 = -194 (with pc and mod 1367)
+P    6 | sti r15 0 -190
+       | -> store to 0 + -190 = -190 (with pc and mod 1371)
+P    5 | sti r15 0 -190
+       | -> store to 0 + -190 = -190 (with pc and mod 3419)
+P    2 | sti r15 0 -186
+       | -> store to 0 + -186 = -186 (with pc and mod 3423)
+P    1 | sti r15 0 -186
+       | -> store to 0 + -186 = -186 (with pc and mod 1375)
+P   38 | live -16777216
+P   37 | live -16777216
+P   36 | live -16777216
+P   35 | live -16777216
+P   18 | fork 61 (296)
+P   17 | fork 61 (2344)
+P   14 | fork 61 (2344)
+P   13 | fork 61 (296)
+P   20 | live -1
+P   19 | live -2
+P   48 | live -16777216
+P   47 | live -16777216
+P   18 | live 42
+P   17 | live 42
+P   14 | live 42
+P   13 | live 42
+P   26 | live -1
+P   25 | live -2
+P   22 | live -2
+P   21 | live -1
+P   12 | zjmp -200 OK
+P   11 | zjmp -200 OK
+P   10 | zjmp -200 OK
+P    9 | zjmp -200 OK
+P    6 | zjmp -200 OK
+P    5 | zjmp -200 OK
+P    2 | zjmp -200 OK
+P    1 | zjmp -200 OK
+P   30 | live -2
+P   29 | live -1
+P    4 | live -1
+P    3 | live -2
+P   40 | sti r15 0 0
+       | -> store to 0 + 0 = 0 (with pc and mod 551)
+P   39 | sti r15 0 0
+       | -> store to 0 + 0 = 0 (with pc and mod 2599)
+P   46 | live -16777216
+P   45 | live -16777216
+P   38 | live -1
+P   37 | live -2
+P   36 | live -2
+P   35 | live -1
+P   20 | sti r15 0 0
+       | -> store to 0 + 0 = 0 (with pc and mod 4018)
+P   19 | sti r15 0 0
+       | -> store to 0 + 0 = 0 (with pc and mod 1970)
+P   12 | live -1
+P   11 | live -2
+P   10 | live -2
+P    9 | live -1
+P    6 | live -1
+P    5 | live -2
+P    2 | live -2
+P    1 | live -1
+P   48 | live -1
+P   47 | live -2
+P   18 | ldi 4 -230 r15
+       | -> load from 4 + -230 = -226 (with pc and mod 17)
+P   17 | ldi 4 -230 r15
+       | -> load from 4 + -230 = -226 (with pc and mod 2065)
+P   14 | ldi 4 -230 r15
+       | -> load from 4 + -230 = -226 (with pc and mod 2065)
+P   13 | ldi 4 -230 r15
+       | -> load from 4 + -230 = -226 (with pc and mod 17)
+P   40 | zjmp -200 FAILED
+P   39 | zjmp -200 FAILED
+P   18 | ld -190 r14
+P   17 | ld -190 r14
+P   14 | ld -190 r14
+P   13 | ld -190 r14
+P   46 | live -2
+P   45 | live -1
+P   18 | ld 0 r2
+P   17 | ld 0 r2
+P   14 | ld 0 r2
+P   13 | ld 0 r2
+P   20 | zjmp -200 FAILED
+P   19 | zjmp -200 FAILED
+P   28 | live -16777216
+P   27 | live -16777216
+P   40 | live -16777216
+P   39 | live -16777216
+P   12 | sti r15 0 -182
+       | -> store to 0 + -182 = -182 (with pc and mod 1190)
+P   11 | sti r15 0 -182
+       | -> store to 0 + -182 = -182 (with pc and mod 3238)
+P   10 | sti r15 0 -194
+       | -> store to 0 + -194 = -194 (with pc and mod 3226)
+P    9 | sti r15 0 -194
+       | -> store to 0 + -194 = -194 (with pc and mod 1178)
+P    6 | sti r15 0 -190
+       | -> store to 0 + -190 = -190 (with pc and mod 1182)
+P    5 | sti r15 0 -190
+       | -> store to 0 + -190 = -190 (with pc and mod 3230)
+P    2 | sti r15 0 -186
+       | -> store to 0 + -186 = -186 (with pc and mod 3234)
+P    1 | sti r15 0 -186
+       | -> store to 0 + -186 = -186 (with pc and mod 1186)
+P   42 | live -16777216
+P   41 | live -16777216
+P   18 | live -2
+P   17 | live -1
+P   14 | live -1
+P   13 | live -2
+P   20 | live -16777216
+P   19 | live -16777216
+P   52 | live -194
+P   51 | live -194
+P   50 | live -194
+P   49 | live -194
+P   40 | live -2
+P   39 | live -1
+P   12 | zjmp -200 OK
+P   11 | zjmp -200 OK
+P   10 | zjmp -200 OK
+P    9 | zjmp -200 OK
+P    6 | zjmp -200 OK
+P    5 | zjmp -200 OK
+P    2 | zjmp -200 OK
+P    1 | zjmp -200 OK
+P   26 | live -16777216
+P   25 | live -16777216
+P   22 | live -16777216
+P   21 | live -16777216
+P   20 | live -2
+P   19 | live -1
+P   18 | sti r15 0 -190
+       | -> store to 0 + -190 = -190 (with pc and mod 79)
+P   17 | sti r15 0 -190
+       | -> store to 0 + -190 = -190 (with pc and mod 2127)
+P   14 | sti r15 0 -190
+       | -> store to 0 + -190 = -190 (with pc and mod 2127)
+P   13 | sti r15 0 -190
+       | -> store to 0 + -190 = -190 (with pc and mod 79)
+P   12 | live -1
+P   11 | live -2
+P   10 | live -2
+P    9 | live -1
+P    6 | live -1
+P    5 | live -2
+P    2 | live -2
+P    1 | live -1
+P   28 | sti r15 0 0
+       | -> store to 0 + 0 = 0 (with pc and mod 1428)
+P   27 | sti r15 0 0
+       | -> store to 0 + 0 = 0 (with pc and mod 3476)
+P   38 | live -16777216
+P   37 | live -16777216
+P   36 | live -16777216
+P   35 | live -16777216
+P   48 | live -16777216
+P   47 | live -16777216
+P   40 | sti r15 0 0
+       | -> store to 0 + 0 = 0 (with pc and mod 582)
+P   39 | sti r15 0 0
+       | -> store to 0 + 0 = 0 (with pc and mod 2630)
+P   18 | zjmp -200 OK
+P   17 | zjmp -200 OK
+P   14 | zjmp -200 OK
+P   13 | zjmp -200 OK
+P   26 | live -2
+P   25 | live -1
+P   22 | live -1
+P   21 | live -2
+P   20 | sti r15 0 0
+       | -> store to 0 + 0 = 0 (with pc and mod 4049)
+P   19 | sti r15 0 0
+       | -> store to 0 + 0 = 0 (with pc and mod 2001)
+P   12 | sti r15 0 -182
+       | -> store to 0 + -182 = -182 (with pc and mod 1001)
+P   11 | sti r15 0 -182
+       | -> store to 0 + -182 = -182 (with pc and mod 3049)
+P   10 | sti r15 0 -194
+       | -> store to 0 + -194 = -194 (with pc and mod 3037)
+P    9 | sti r15 0 -194
+       | -> store to 0 + -194 = -194 (with pc and mod 989)
+P    6 | sti r15 0 -190
+       | -> store to 0 + -190 = -190 (with pc and mod 993)
+P    5 | sti r15 0 -190
+       | -> store to 0 + -190 = -190 (with pc and mod 3041)
+P    2 | sti r15 0 -186
+       | -> store to 0 + -186 = -186 (with pc and mod 3045)
+P    1 | sti r15 0 -186
+       | -> store to 0 + -186 = -186 (with pc and mod 997)
+P   46 | live -16777216
+P   45 | live -16777216
+P   38 | live -2
+P   37 | live -1
+P   36 | live -1
+P   35 | live -2
+P   28 | sti r15 0 0
+       | -> store to 0 + 0 = 0 (with pc and mod 1434)
+P   27 | sti r15 0 0
+       | -> store to 0 + 0 = 0 (with pc and mod 3482)
+P   18 | live -241
+P   17 | live -241
+P   14 | live -241
+P   13 | live -241
+P   42 | live -1
+P   41 | live -2
+P   40 | zjmp -200 FAILED
+P   39 | zjmp -200 FAILED
+P   48 | live -2
+P   47 | live -1
+P   20 | zjmp -200 FAILED
+P   19 | zjmp -200 FAILED
+P   40 | live -16777216
+P   39 | live -16777216
+P   12 | zjmp -200 OK
+P   11 | zjmp -200 OK
+P   10 | zjmp -200 OK
+P    9 | zjmp -200 OK
+P    6 | zjmp -200 OK
+P    5 | zjmp -200 OK
+P    2 | zjmp -200 OK
+P    1 | zjmp -200 OK
+P   28 | zjmp -200 FAILED
+P   27 | zjmp -200 FAILED
+P   46 | live -1
+P   45 | live -2
+P   20 | live -16777216
+P   19 | live -16777216
+P   42 | sti r15 0 0
+       | -> store to 0 + 0 = 0 (with pc and mod 3073)
+P   41 | sti r15 0 0
+       | -> store to 0 + 0 = 0 (with pc and mod 1025)
+P   12 | live -1
+P   11 | live -2
+P   10 | live -2
+P    9 | live -1
+P    6 | live -1
+P    5 | live -2
+P    2 | live -2
+P    1 | live -1
+P   28 | live -16777216
+P   27 | live -16777216
+P   52 | live -2
+P   51 | live -1
+P   50 | live -1
+P   49 | live -2
+P   30 | live -1
+P   29 | live -2
+P    4 | live -2
+P    3 | live -1
+P   42 | zjmp -200 FAILED
+P   41 | zjmp -200 FAILED
+P   12 | sti r15 0 -182
+       | -> store to 0 + -182 = -182 (with pc and mod 812)
+P   11 | sti r15 0 -182
+       | -> store to 0 + -182 = -182 (with pc and mod 2860)
+P   10 | sti r15 0 -194
+       | -> store to 0 + -194 = -194 (with pc and mod 2848)
+P    9 | sti r15 0 -194
+       | -> store to 0 + -194 = -194 (with pc and mod 800)
+P    6 | sti r15 0 -190
+       | -> store to 0 + -190 = -190 (with pc and mod 804)
+P    5 | sti r15 0 -190
+       | -> store to 0 + -190 = -190 (with pc and mod 2852)
+P    2 | sti r15 0 -186
+       | -> store to 0 + -186 = -186 (with pc and mod 2856)
+P    1 | sti r15 0 -186
+       | -> store to 0 + -186 = -186 (with pc and mod 808)
+P   42 | live -16777216
+P   41 | live -16777216
+P   26 | live -16777216
+P   25 | live -16777216
+P   22 | live -16777216
+P   21 | live -16777216
+P   20 | sti r15 0 0
+       | -> store to 0 + 0 = 0 (with pc and mod 4077)
+P   19 | sti r15 0 0
+       | -> store to 0 + 0 = 0 (with pc and mod 2029)
+P   38 | live -16777216
+P   37 | live -16777216
+P   36 | live -16777216
+P   35 | live -16777216
+P   28 | sti r15 0 0
+       | -> store to 0 + 0 = 0 (with pc and mod 1462)
+P   27 | sti r15 0 0
+       | -> store to 0 + 0 = 0 (with pc and mod 3510)
+P   12 | zjmp -200 OK
+P   11 | zjmp -200 OK
+P   10 | zjmp -200 OK
+P    9 | zjmp -200 OK
+P    6 | zjmp -200 OK
+P    5 | zjmp -200 OK
+P    2 | zjmp -200 OK
+P    1 | zjmp -200 OK
+P   40 | live -2
+P   39 | live -1
+P   48 | live -16777216
+P   47 | live -16777216
+P   26 | live -1
+P   25 | live -2
+P   22 | live -2
+P   21 | live -1
+P   12 | live -1
+P   11 | live -2
+P   10 | live -2
+P    9 | live -1
+P    6 | live -1
+P    5 | live -2
+P    2 | live -2
+P    1 | live -1
+P   46 | live -16777216
+P   45 | live -16777216
+P   38 | live -1
+P   37 | live -2
+P   36 | live -2
+P   35 | live -1
+P   42 | sti r15 0 0
+       | -> store to 0 + 0 = 0 (with pc and mod 3098)
+P   41 | sti r15 0 0
+       | -> store to 0 + 0 = 0 (with pc and mod 1050)
+P   48 | live -1
+P   47 | live -2
+P   52 | live -16777216
+P   51 | live -16777216
+P   50 | live -16777216
+P   49 | live -16777216
+P   40 | sti r15 0 0
+       | -> store to 0 + 0 = 0 (with pc and mod 647)
+P   39 | sti r15 0 0
+       | -> store to 0 + 0 = 0 (with pc and mod 2695)
+P   30 | live -16777216
+P   29 | live -16777216
+P   26 | sti r15 0 -194
+       | -> store to 0 + -194 = -194 (with pc and mod 1178)
+P   25 | sti r15 0 -194
+       | -> store to 0 + -194 = -194 (with pc and mod 3226)
+P   22 | sti r15 0 -190
+       | -> store to 0 + -190 = -190 (with pc and mod 3230)
+P   21 | sti r15 0 -190
+       | -> store to 0 + -190 = -190 (with pc and mod 1182)
+P    4 | live -16777216
+P    3 | live -16777216
+P   12 | sti r15 0 -182
+       | -> store to 0 + -182 = -182 (with pc and mod 623)
+P   11 | sti r15 0 -182
+       | -> store to 0 + -182 = -182 (with pc and mod 2671)
+P   10 | sti r15 0 -194
+       | -> store to 0 + -194 = -194 (with pc and mod 2659)
+P    9 | sti r15 0 -194
+       | -> store to 0 + -194 = -194 (with pc and mod 611)
+P    6 | sti r15 0 -190
+       | -> store to 0 + -190 = -190 (with pc and mod 615)
+P    5 | sti r15 0 -190
+       | -> store to 0 + -190 = -190 (with pc and mod 2663)
+P    2 | sti r15 0 -186
+       | -> store to 0 + -186 = -186 (with pc and mod 2667)
+P    1 | sti r15 0 -186
+       | -> store to 0 + -186 = -186 (with pc and mod 619)
+P   46 | live -2
+P   45 | live -1
+P   18 | live -4849663
+P   17 | live -4849663
+P   14 | live -4849663
+P   13 | live -4849663
+P   40 | zjmp -200 FAILED
+P   39 | zjmp -200 FAILED
+P   52 | live -1
+P   51 | live -2
+P   50 | live -2
+P   49 | live -1
+P   20 | live -16777216
+P   19 | live -16777216
+P   26 | zjmp -200 OK
+P   25 | zjmp -200 OK
+P   22 | zjmp -200 OK
+P   21 | zjmp -200 OK
+P   12 | zjmp -200 OK
+P   11 | zjmp -200 OK
+P   10 | zjmp -200 OK
+P    9 | zjmp -200 OK
+P    6 | zjmp -200 OK
+P    5 | zjmp -200 OK
+P    2 | zjmp -200 OK
+P    1 | zjmp -200 OK
+P   40 | live -16777216
+P   39 | live -16777216
+P   30 | live -2
+P   29 | live -1
+P    4 | live -1
+P    3 | live -2
+P   28 | live -16777216
+P   27 | live -16777216
+P   44 | fork 61 (296)
+P   43 | fork 61 (2344)
+P   24 | fork 511 (2757)
+P   23 | fork 511 (709)
+P   20 | ld 0 r3
+P   19 | ld 0 r3
+P   12 | live -1
+P   11 | live -2
+P   10 | live -2
+P    9 | live -1
+P    6 | live -1
+P    5 | live -2
+P    2 | live -2
+P    1 | live -1
+P   18 | sti r1 -81 15
+       | -> store to -81 + 15 = -66 (with pc and mod 28)
+P   17 | sti r1 -81 15
+       | -> store to -81 + 15 = -66 (with pc and mod 2076)
+P   14 | sti r1 -81 15
+       | -> store to -81 + 15 = -66 (with pc and mod 2076)
+P   13 | sti r1 -81 15
+       | -> store to -81 + 15 = -66 (with pc and mod 28)
+P   44 | live 42
+P   43 | live 42
+P   20 | zjmp 76 OK
+P   19 | zjmp 76 OK
+P   28 | live -1
+P   27 | live -2
+P   26 | sti r15 0 -194
+       | -> store to 0 + -194 = -194 (with pc and mod 986)
+P   25 | sti r15 0 -194
+       | -> store to 0 + -194 = -194 (with pc and mod 3034)
+P   22 | sti r15 0 -190
+       | -> store to 0 + -190 = -190 (with pc and mod 3038)
+P   21 | sti r15 0 -190
+       | -> store to 0 + -190 = -190 (with pc and mod 990)
+P   42 | live -16777216
+P   41 | live -16777216
+P   48 | live -16777216
+P   47 | live -16777216
+P   12 | sti r15 0 -182
+       | -> store to 0 + -182 = -182 (with pc and mod 434)
+P   11 | sti r15 0 -182
+       | -> store to 0 + -182 = -182 (with pc and mod 2482)
+P   10 | sti r15 0 -194
+       | -> store to 0 + -194 = -194 (with pc and mod 2470)
+P    9 | sti r15 0 -194
+       | -> store to 0 + -194 = -194 (with pc and mod 422)
+P    6 | sti r15 0 -190
+       | -> store to 0 + -190 = -190 (with pc and mod 426)
+P    5 | sti r15 0 -190
+       | -> store to 0 + -190 = -190 (with pc and mod 2474)
+P    2 | sti r15 0 -186
+       | -> store to 0 + -186 = -186 (with pc and mod 2478)
+P    1 | sti r15 0 -186
+       | -> store to 0 + -186 = -186 (with pc and mod 430)
+P   18 | sti r1 -88 511
+       | -> store to -88 + 511 = 423 (with pc and mod 524)
+P   17 | sti r1 -88 511
+       | -> store to -88 + 511 = 423 (with pc and mod 2572)
+P   14 | sti r1 -88 511
+       | -> store to -88 + 511 = 423 (with pc and mod 2572)
+P   13 | sti r1 -88 511
+       | -> store to -88 + 511 = 423 (with pc and mod 524)
+P   44 | ldi 4 -230 r15
+       | -> load from 4 + -230 = -226 (with pc and mod 17)
+P   43 | ldi 4 -230 r15
+       | -> load from 4 + -230 = -226 (with pc and mod 2065)
+P   40 | sti r15 0 0
+       | -> store to 0 + 0 = 0 (with pc and mod 675)
+P   39 | sti r15 0 0
+       | -> store to 0 + 0 = 0 (with pc and mod 2723)
+P   44 | ld -190 r14
+P   43 | ld -190 r14
+P   46 | live -16777216
+P   45 | live -16777216
+P   44 | ld 0 r2
+P   43 | ld 0 r2
+P   42 | live -1
+P   41 | live -2
+P   12 | zjmp -200 OK
+P   11 | zjmp -200 OK
+P   10 | zjmp -200 OK
+P    9 | zjmp -200 OK
+P    6 | zjmp -200 OK
+P    5 | zjmp -200 OK
+P    2 | zjmp -200 OK
+P    1 | zjmp -200 OK
+P   52 | live -16777216
+P   51 | live -16777216
+P   50 | live -16777216
+P   49 | live -16777216
+P   44 | live -2
+P   43 | live -1
+P   18 | sti r15 0 -190
+       | -> store to 0 + -190 = -190 (with pc and mod -79)
+P   17 | sti r15 0 -190
+       | -> store to 0 + -190 = -190 (with pc and mod 1969)
+P   14 | sti r15 0 -190
+       | -> store to 0 + -190 = -190 (with pc and mod 1969)
+P   13 | sti r15 0 -190
+       | -> store to 0 + -190 = -190 (with pc and mod -79)
+P   12 | live -1
+P   11 | live -2
+P   10 | live -2
+P    9 | live -1
+P    6 | live -1
+P    5 | live -2
+P    2 | live -2
+P    1 | live -1
+P   30 | live -16777216
+P   29 | live -16777216
+P    4 | live -16777216
+P    3 | live -16777216
+P   56 | live -16777216
+P   55 | live -16777216
+P   46 | live -1
+P   45 | live -2
+P   16 | fork 61 (296)
+P   15 | fork 61 (2344)
+P   48 | sti r15 0 0
+       | -> store to 0 + 0 = 0 (with pc and mod 3036)
+P   47 | sti r15 0 0
+       | -> store to 0 + 0 = 0 (with pc and mod 988)
+P   24 | live -1
+P   23 | live -1
+P   54 | live -194
+P   53 | live -194
+P   52 | live -2
+P   51 | live -1
+P   50 | live -1
+P   49 | live -2
+P   16 | live 42
+P   15 | live 42
+P   18 | zjmp -200 OK
+P   17 | zjmp -200 OK
+P   14 | zjmp -200 OK
+P   13 | zjmp -200 OK
+P   44 | sti r15 0 -190
+       | -> store to 0 + -190 = -190 (with pc and mod 79)
+P   43 | sti r15 0 -190
+       | -> store to 0 + -190 = -190 (with pc and mod 2127)
+P   20 | live -4849663
+P   19 | live -4849663
+P   30 | live -1
+P   29 | live -2
+P   26 | live -16777216
+P   25 | live -16777216
+P   22 | live -16777216
+P   21 | live -16777216
+P    4 | live -2
+P    3 | live -1
+P   12 | sti r15 0 -182
+       | -> store to 0 + -182 = -182 (with pc and mod 245)
+P   11 | sti r15 0 -182
+       | -> store to 0 + -182 = -182 (with pc and mod 2293)
+P   10 | sti r15 0 -194
+       | -> store to 0 + -194 = -194 (with pc and mod 2281)
+P    9 | sti r15 0 -194
+       | -> store to 0 + -194 = -194 (with pc and mod 233)
+P    6 | sti r15 0 -190
+       | -> store to 0 + -190 = -190 (with pc and mod 237)
+P    5 | sti r15 0 -190
+       | -> store to 0 + -190 = -190 (with pc and mod 2285)
+P    2 | sti r15 0 -186
+       | -> store to 0 + -186 = -186 (with pc and mod 2289)
+P    1 | sti r15 0 -186
+       | -> store to 0 + -186 = -186 (with pc and mod 241)
+P   28 | live -16777216
+P   27 | live -16777216
+P   56 | live -1
+P   55 | live -2
+P   18 | live -241
+P   17 | live -241
+P   14 | live -241
+P   13 | live -241
+P   46 | sti r15 0 0
+       | -> store to 0 + 0 = 0 (with pc and mod 616)
+P   45 | sti r15 0 0
+       | -> store to 0 + 0 = 0 (with pc and mod 2664)
+P   48 | sti r15 0 0
+       | -> store to 0 + 0 = 0 (with pc and mod 3042)
+P   47 | sti r15 0 0
+       | -> store to 0 + 0 = 0 (with pc and mod 994)
+P   38 | live -16777216
+P   37 | live -16777216
+P   36 | live -16777216
+P   35 | live -16777216
+P   40 | live -16777216
+P   39 | live -16777216
+P   44 | zjmp -200 OK
+P   43 | zjmp -200 OK
+P   12 | zjmp -200 OK
+P   11 | zjmp -200 OK
+P   10 | zjmp -200 OK
+P    9 | zjmp -200 OK
+P    6 | zjmp -200 OK
+P    5 | zjmp -200 OK
+P    2 | zjmp -200 OK
+P    1 | zjmp -200 OK
+P   20 | sti r1 -81 15
+       | -> store to -81 + 15 = -66 (with pc and mod 28)
+P   19 | sti r1 -81 15
+       | -> store to -81 + 15 = -66 (with pc and mod 2076)
+P   44 | live -241
+P   43 | live -241
+P   46 | zjmp -200 FAILED
+P   45 | zjmp -200 FAILED
+P   16 | live -15793520
+P   15 | live -15793520
+P   42 | live -16777216
+P   41 | live -16777216
+P   48 | zjmp -200 FAILED
+P   47 | zjmp -200 FAILED
+P   12 | live -1
+P   11 | live -2
+P   10 | live -2
+P    9 | live -1
+P    6 | live -1
+P    5 | live -2
+P    2 | live -2
+P    1 | live -1
+P   40 | live -2
+P   39 | live -1
+P   26 | sti r15 0 -194
+       | -> store to 0 + -194 = -194 (with pc and mod 1014)
+P   25 | sti r15 0 -194
+       | -> store to 0 + -194 = -194 (with pc and mod 3062)
+P   22 | sti r15 0 -190
+       | -> store to 0 + -190 = -190 (with pc and mod 3066)
+P   21 | sti r15 0 -190
+       | -> store to 0 + -190 = -190 (with pc and mod 1018)
+P   46 | live -16777216
+P   45 | live -16777216
+P   48 | live -16777216
+P   47 | live -16777216
+P   38 | sti r15 0 -190
+       | -> store to 0 + -190 = -190 (with pc and mod 1018)
+P   37 | sti r15 0 -190
+       | -> store to 0 + -190 = -190 (with pc and mod 3066)
+P   36 | sti r15 0 -194
+       | -> store to 0 + -194 = -194 (with pc and mod 3062)
+P   35 | sti r15 0 -194
+       | -> store to 0 + -194 = -194 (with pc and mod 1014)
+P   20 | sti r1 -88 511
+       | -> store to -88 + 511 = 423 (with pc and mod 524)
+P   19 | sti r1 -88 511
+       | -> store to -88 + 511 = 423 (with pc and mod 2572)
+P   42 | live -2
+P   41 | live -1
+P   58 | live -194
+P   57 | live -194
+P   52 | live -16777216
+P   51 | live -16777216
+P   50 | live -16777216
+P   49 | live -16777216
+P   12 | sti r15 0 -182
+       | -> store to 0 + -182 = -182 (with pc and mod 56)
+P   11 | sti r15 0 -182
+       | -> store to 0 + -182 = -182 (with pc and mod 2104)
+P   10 | sti r15 0 -194
+       | -> store to 0 + -194 = -194 (with pc and mod 2092)
+P    9 | sti r15 0 -194
+       | -> store to 0 + -194 = -194 (with pc and mod 44)
+P    6 | sti r15 0 -190
+       | -> store to 0 + -190 = -190 (with pc and mod 48)
+P    5 | sti r15 0 -190
+       | -> store to 0 + -190 = -190 (with pc and mod 2096)
+P    2 | sti r15 0 -186
+       | -> store to 0 + -186 = -186 (with pc and mod 2100)
+P    1 | sti r15 0 -186
+       | -> store to 0 + -186 = -186 (with pc and mod 52)
+P   24 | live 511
+P   23 | live 511
+P   54 | live -1
+P   53 | live -2
+P   46 | live -2
+P   45 | live -1
+P   30 | live -16777216
+P   29 | live -16777216
+P    4 | live -16777216
+P    3 | live -16777216
+P   56 | live -16777216
+P   55 | live -16777216
+P   48 | sti r15 0 0
+       | -> store to 0 + 0 = 0 (with pc and mod 3064)
+P   47 | sti r15 0 0
+       | -> store to 0 + 0 = 0 (with pc and mod 1016)
+P   20 | sti r15 0 0
+       | -> store to 0 + 0 = 0 (with pc and mod 111)
+P   19 | sti r15 0 0
+       | -> store to 0 + 0 = 0 (with pc and mod 2159)
+P   12 | zjmp -200 OK
+P   11 | zjmp -200 OK
+P   10 | zjmp -200 OK
+P    9 | zjmp -200 OK
+P    6 | zjmp -200 OK
+P    5 | zjmp -200 OK
+P    2 | zjmp -200 OK
+P    1 | zjmp -200 OK
+P   52 | live -1
+P   51 | live -2
+P   50 | live -2
+P   49 | live -1
+P   24 | sti r15 0 0
+       | -> store to 0 + 0 = 0 (with pc and mod 2286)
+P   23 | sti r15 0 0
+       | -> store to 0 + 0 = 0 (with pc and mod 238)
+P   12 | live -1
+P   11 | live -2
+P   10 | live -2
+P    9 | live -1
+P    6 | live -1
+P    5 | live -2
+P    2 | live -2
+P    1 | live -1
+P   56 | live -2
+P   55 | live -1
+P   20 | zjmp -200 OK
+P   19 | zjmp -200 OK
+P   40 | live -16777216
+P   39 | live -16777216
+P   26 | live -16777216
+P   25 | live -16777216
+P   22 | live -16777216
+P   21 | live -16777216
+P   52 | sti r15 0 -190
+       | -> store to 0 + -190 = -190 (with pc and mod 237)
+P   51 | sti r15 0 -190
+       | -> store to 0 + -190 = -190 (with pc and mod 2285)
+P   50 | sti r15 0 -194
+       | -> store to 0 + -194 = -194 (with pc and mod 2281)
+P   49 | sti r15 0 -194
+       | -> store to 0 + -194 = -194 (with pc and mod 233)
+P   24 | zjmp -200 FAILED
+P   23 | zjmp -200 FAILED
+P   20 | live -241
+P   19 | live -241
+P   38 | live -16777216
+P   37 | live -16777216
+P   36 | live -16777216
+P   35 | live -16777216
+P   12 | sti r15 0 -182
+       | -> store to 0 + -182 = -182 (with pc and mod -133)
+P   11 | sti r15 0 -182
+       | -> store to 0 + -182 = -182 (with pc and mod 1915)
+P   10 | sti r15 0 -194
+       | -> store to 0 + -194 = -194 (with pc and mod 1903)
+P    9 | sti r15 0 -194
+       | -> store to 0 + -194 = -194 (with pc and mod -145)
+P    6 | sti r15 0 -190
+       | -> store to 0 + -190 = -190 (with pc and mod -141)
+P    5 | sti r15 0 -190
+       | -> store to 0 + -190 = -190 (with pc and mod 1907)
+P    2 | sti r15 0 -186
+       | -> store to 0 + -186 = -186 (with pc and mod 1911)
+P    1 | sti r15 0 -186
+       | -> store to 0 + -186 = -186 (with pc and mod -137)
+P   42 | live -16777216
+P   41 | live -16777216
+P   24 | live -15793520
+P   23 | live -15793520
+P   18 | live -16777216
+P   17 | live -16777216
+P   14 | live -16777216
+P   13 | live -16777216
+P   16 | sti r15 0 0
+       | -> store to 0 + 0 = 0 (with pc and mod 269)
+P   15 | sti r15 0 0
+       | -> store to 0 + 0 = 0 (with pc and mod 2317)
+P   40 | live -1
+P   39 | live -2
+P   54 | live -16777216
+P   53 | live -16777216
+P   58 | live -1
+P   57 | live -2
+P   46 | live -16777216
+P   45 | live -16777216
+P   52 | zjmp -200 FAILED
+P   51 | zjmp -200 FAILED
+P   50 | zjmp -200 FAILED
+P   49 | zjmp -200 FAILED
+P   12 | zjmp -200 OK
+P   11 | zjmp -200 OK
+P   10 | zjmp -200 OK
+P    9 | zjmp -200 OK
+P    6 | zjmp -200 OK
+P    5 | zjmp -200 OK
+P    2 | zjmp -200 OK
+P    1 | zjmp -200 OK
+P   28 | live -16777216
+P   27 | live -16777216
+P   52 | live -16777216
+P   51 | live -16777216
+P   50 | live -16777216
+P   49 | live -16777216
+P   42 | live -1
+P   41 | live -2
+P   44 | live -4849663
+P   43 | live -4849663
+P   48 | live -16777216
+P   47 | live -16777216
+P   18 | live -2
+P   17 | live -1
+P   16 | zjmp -200 FAILED
+P   15 | zjmp -200 FAILED
+P   14 | live -1
+P   13 | live -2
+P   12 | live -1
+P   11 | live -2
+P   10 | live -2
+P    9 | live -1
+P    6 | live -1
+P    5 | live -2
+P    2 | live -2
+P    1 | live -1
+P   54 | live -2
+P   53 | live -1
+P   34 | fork 25615 (250)
+P   33 | fork 25615 (2298)
+P   16 | live -7274497
+P   15 | live -7274497
+P   60 | ld -190 r14
+P   59 | ld -190 r14
+P   56 | live -16777216
+P   55 | live -16777216
+P   52 | live -2
+P   51 | live -1
+P   50 | live -1
+P   49 | live -2
+P   28 | live -1
+P   27 | live -2
+P   26 | sti r15 0 -194
+       | -> store to 0 + -194 = -194 (with pc and mod 1048)
+P   25 | sti r15 0 -194
+       | -> store to 0 + -194 = -194 (with pc and mod 3096)
+P   22 | sti r15 0 -190
+       | -> store to 0 + -190 = -190 (with pc and mod 3100)
+P   21 | sti r15 0 -190
+       | -> store to 0 + -190 = -190 (with pc and mod 1052)
+P   60 | ld 0 r2
+P   59 | ld 0 r2
+P   44 | sti r1 -81 15
+       | -> store to -81 + 15 = -66 (with pc and mod 28)
+P   43 | sti r1 -81 15
+       | -> store to -81 + 15 = -66 (with pc and mod 2076)
+P   12 | sti r15 0 -182
+       | -> store to 0 + -182 = -182 (with pc and mod 3774)
+P   11 | sti r15 0 -182
+       | -> store to 0 + -182 = -182 (with pc and mod 1726)
+P   10 | sti r15 0 -194
+       | -> store to 0 + -194 = -194 (with pc and mod 1714)
+P    9 | sti r15 0 -194
+       | -> store to 0 + -194 = -194 (with pc and mod 3762)
+P    6 | sti r15 0 -190
+       | -> store to 0 + -190 = -190 (with pc and mod 3766)
+P    5 | sti r15 0 -190
+       | -> store to 0 + -190 = -190 (with pc and mod 1718)
+P    2 | sti r15 0 -186
+       | -> store to 0 + -186 = -186 (with pc and mod 1722)
+P    1 | sti r15 0 -186
+       | -> store to 0 + -186 = -186 (with pc and mod 3770)
+P   38 | sti r15 0 -190
+       | -> store to 0 + -190 = -190 (with pc and mod 1052)
+P   37 | sti r15 0 -190
+       | -> store to 0 + -190 = -190 (with pc and mod 3100)
+P   36 | sti r15 0 -194
+       | -> store to 0 + -194 = -194 (with pc and mod 3096)
+P   35 | sti r15 0 -194
+       | -> store to 0 + -194 = -194 (with pc and mod 1048)
+P   60 | live -1
+P   59 | live -2
+P   56 | live -1
+P   55 | live -2
+P   28 | sti r15 0 0
+       | -> store to 0 + 0 = 0 (with pc and mod 1561)
+P   27 | sti r15 0 0
+       | -> store to 0 + 0 = 0 (with pc and mod 3609)
+P   12 | zjmp -200 OK
+P   11 | zjmp -200 OK
+P   10 | zjmp -200 OK
+P    9 | zjmp -200 OK
+P    6 | zjmp -200 OK
+P    5 | zjmp -200 OK
+P    2 | zjmp -200 OK
+P    1 | zjmp -200 OK
+P   40 | live -16777216
+P   39 | live -16777216
+P   58 | live -16777216
+P   57 | live -16777216
+P   44 | sti r1 -88 511
+       | -> store to -88 + 511 = 423 (with pc and mod 524)
+P   43 | sti r1 -88 511
+       | -> store to -88 + 511 = 423 (with pc and mod 2572)
+P   32 | lfork 2920 (5068)
+P   31 | lfork 2920 (3020)
+P   30 | live -16777216
+P   29 | live -16777216
+P    4 | live -16777216
+P    3 | live -16777216
+P   12 | live -1
+P   11 | live -2
+P   10 | live -2
+P    9 | live -1
+P    6 | live -1
+P    5 | live -2
+P    2 | live -2
+P    1 | live -1
+P   32 | live -5766657
+P   31 | live -5766657
+P   30 | ld 0 r3
+P   29 | ld 0 r3
+P    4 | ld 0 r3
+P    3 | ld 0 r3
+P   42 | live -16777216
+P   41 | live -16777216
+P   28 | zjmp -200 FAILED
+P   27 | zjmp -200 FAILED
+P   56 | sti r15 0 0
+       | -> store to 0 + 0 = 0 (with pc and mod 805)
+P   55 | sti r15 0 0
+       | -> store to 0 + 0 = 0 (with pc and mod 2853)
+P   18 | live -16777216
+P   17 | live -16777216
+P   14 | live -16777216
+P   13 | live -16777216
+P   40 | live -2
+P   39 | live -1
+P   54 | live -16777216
+P   53 | live -16777216
+P   58 | live -2
+P   57 | live -1
+P   28 | live -16777216
+P   27 | live -16777216
+P   20 | live -16777216
+P   19 | live -16777216
+P   26 | live -16777216
+P   25 | live -16777216
+P   22 | live -16777216
+P   21 | live -16777216
+P   30 | zjmp 76 OK
+P   29 | zjmp 76 OK
+P   12 | sti r15 0 -182
+       | -> store to 0 + -182 = -182 (with pc and mod 3585)
+P   11 | sti r15 0 -182
+       | -> store to 0 + -182 = -182 (with pc and mod 1537)
+P   10 | sti r15 0 -194
+       | -> store to 0 + -194 = -194 (with pc and mod 1525)
+P    9 | sti r15 0 -194
+       | -> store to 0 + -194 = -194 (with pc and mod 3573)
+P    6 | sti r15 0 -190
+       | -> store to 0 + -190 = -190 (with pc and mod 3577)
+P    5 | sti r15 0 -190
+       | -> store to 0 + -190 = -190 (with pc and mod 1529)
+P    4 | zjmp 76 OK
+P    3 | zjmp 76 OK
+P    2 | sti r15 0 -186
+       | -> store to 0 + -186 = -186 (with pc and mod 1533)
+P    1 | sti r15 0 -186
+       | -> store to 0 + -186 = -186 (with pc and mod 3581)
+P   52 | live -16777216
+P   51 | live -16777216
+P   50 | live -16777216
+P   49 | live -16777216
+P   16 | live -1
+P   15 | live -2
+P   56 | zjmp -200 FAILED
+P   55 | zjmp -200 FAILED
+P   38 | live -16777216
+P   37 | live -16777216
+P   36 | live -16777216
+P   35 | live -16777216
+P   54 | live -1
+P   53 | live -2
+P   28 | live -2
+P   27 | live -1
+P   60 | live -7274497
+P   59 | live -7274497
+P   56 | live -16777216
+P   55 | live -16777216
+P   20 | live -2
+P   19 | live -1
+P   12 | zjmp -200 OK
+P   11 | zjmp -200 OK
+P   10 | zjmp -200 OK
+P    9 | zjmp -200 OK
+P    6 | zjmp -200 OK
+P    5 | zjmp -200 OK
+P    2 | zjmp -200 OK
+P    1 | zjmp -200 OK
+P   52 | live -1
+P   51 | live -2
+P   50 | live -2
+P   49 | live -1
+P   42 | sti r15 0 0
+       | -> store to 0 + 0 = 0 (with pc and mod 3228)
+P   41 | sti r15 0 0
+       | -> store to 0 + 0 = 0 (with pc and mod 1180)
+P   24 | live -7274497
+P   23 | live -7274497
+P   12 | live -1
+P   11 | live -2
+P   10 | live -2
+P    9 | live -1
+P    6 | live -1
+P    5 | live -2
+P    2 | live -2
+P    1 | live -1
+P   46 | live -16777216
+P   45 | live -16777216
+P    8 | lfork 2920 (5068)
+P    7 | lfork 2920 (3020)
+P   44 | live -16029695
+P   43 | live -16029695
+P   28 | sti r15 0 0
+       | -> store to 0 + 0 = 0 (with pc and mod 1592)
+P   27 | sti r15 0 0
+       | -> store to 0 + 0 = 0 (with pc and mod 3640)
+P   34 | live -15793520
+P   33 | live -15793520
+P   44 | ld 393216 r4
+P   43 | ld 393216 r4
+P    8 | live -5766657
+P    7 | live -5766657
+P   32 | live -16029695
+P   31 | live -16029695
+P   48 | live -16777216
+P   47 | live -16777216
+P   40 | live -16777216
+P   39 | live -16777216
+P   58 | live -16777216
+P   57 | live -16777216
+P   46 | live -2
+P   45 | live -1
+P   12 | sti r15 0 -182
+       | -> store to 0 + -182 = -182 (with pc and mod 3396)
+P   11 | sti r15 0 -182
+       | -> store to 0 + -182 = -182 (with pc and mod 1348)
+P   10 | sti r15 0 -194
+       | -> store to 0 + -194 = -194 (with pc and mod 1336)
+P    9 | sti r15 0 -194
+       | -> store to 0 + -194 = -194 (with pc and mod 3384)
+P    6 | sti r15 0 -190
+       | -> store to 0 + -190 = -190 (with pc and mod 3388)
+P    5 | sti r15 0 -190
+       | -> store to 0 + -190 = -190 (with pc and mod 1340)
+P    2 | sti r15 0 -186
+       | -> store to 0 + -186 = -186 (with pc and mod 1344)
+P    1 | sti r15 0 -186
+       | -> store to 0 + -186 = -186 (with pc and mod 3392)
+P   32 | ld 393216 r4
+P   31 | ld 393216 r4
+P   28 | zjmp -200 FAILED
+P   27 | zjmp -200 FAILED
+P   30 | live -4849663
+P   29 | live -4849663
+P    4 | live -4849663
+P    3 | live -4849663
+P   16 | live -194
+P   15 | live -194
+P   28 | live -16777216
+P   27 | live -16777216
+P   48 | live -1
+P   47 | live -2
+P   12 | zjmp -200 OK
+P   11 | zjmp -200 OK
+P   10 | zjmp -200 OK
+P    9 | zjmp -200 OK
+P    6 | zjmp -200 OK
+P    5 | zjmp -200 OK
+P    2 | zjmp -200 OK
+P    1 | zjmp -200 OK
+P   54 | live -16777216
+P   53 | live -16777216
+P   58 | live -1
+P   57 | live -2
+P   40 | live -1
+P   39 | live -2
+P   44 | sti r15 0 -190
+       | -> store to 0 + -190 = -190 (with pc and mod -48)
+P   43 | sti r15 0 -190
+       | -> store to 0 + -190 = -190 (with pc and mod 2000)
+P   42 | live -16777216
+P   41 | live -16777216
+P   20 | live -16777216
+P   19 | live -16777216
+P   12 | live -1
+P   11 | live -2
+P   10 | live -2
+P    9 | live -1
+P    6 | live -1
+P    5 | live -2
+P    2 | live -2
+P    1 | live -1
+P   60 | live -2
+P   59 | live -1
+P   30 | sti r1 -81 15
+       | -> store to -81 + 15 = -66 (with pc and mod 2076)
+P   29 | sti r1 -81 15
+       | -> store to -81 + 15 = -66 (with pc and mod 28)
+P    4 | sti r1 -81 15
+       | -> store to -81 + 15 = -66 (with pc and mod 28)
+P    3 | sti r1 -81 15
+       | -> store to -81 + 15 = -66 (with pc and mod 2076)
+P   52 | live -16777216
+P   51 | live -16777216
+P   50 | live -16777216
+P   49 | live -16777216
+P   32 | sti r15 0 -190
+       | -> store to 0 + -190 = -190 (with pc and mod 2000)
+P   31 | sti r15 0 -190
+       | -> store to 0 + -190 = -190 (with pc and mod -48)
+P   44 | zjmp -200 FAILED
+P   43 | zjmp -200 FAILED
+P   24 | live -2
+P   23 | live -1
+P   54 | live -2
+P   53 | live -1
+P   62 | live -16777216
+P   61 | live -16777216
+P   28 | sti r15 0 0
+       | -> store to 0 + 0 = 0 (with pc and mod 1620)
+P   27 | sti r15 0 0
+       | -> store to 0 + 0 = 0 (with pc and mod 3668)
+P   44 | live -16777210
+P   43 | live -16777210
+P   52 | live -2
+P   51 | live -1
+P   50 | live -1
+P   49 | live -2
+P   32 | zjmp -200 FAILED
+P   31 | zjmp -200 FAILED
+P   12 | sti r15 0 -182
+       | -> store to 0 + -182 = -182 (with pc and mod 3207)
+P   11 | sti r15 0 -182
+       | -> store to 0 + -182 = -182 (with pc and mod 1159)
+P   10 | sti r15 0 -194
+       | -> store to 0 + -194 = -194 (with pc and mod 1147)
+P    9 | sti r15 0 -194
+       | -> store to 0 + -194 = -194 (with pc and mod 3195)
+P    6 | sti r15 0 -190
+       | -> store to 0 + -190 = -190 (with pc and mod 3199)
+P    5 | sti r15 0 -190
+       | -> store to 0 + -190 = -190 (with pc and mod 1151)
+P    2 | sti r15 0 -186
+       | -> store to 0 + -186 = -186 (with pc and mod 1155)
+P    1 | sti r15 0 -186
+       | -> store to 0 + -186 = -186 (with pc and mod 3203)
+P   30 | sti r1 -88 511
+       | -> store to -88 + 511 = 423 (with pc and mod 2572)
+P   29 | sti r1 -88 511
+       | -> store to -88 + 511 = 423 (with pc and mod 524)
+P    4 | sti r1 -88 511
+       | -> store to -88 + 511 = 423 (with pc and mod 524)
+P    3 | sti r1 -88 511
+       | -> store to -88 + 511 = 423 (with pc and mod 2572)
+P    8 | live -16029695
+P    7 | live -16029695
+P   18 | live -16777216
+P   17 | live -16777216
+P   14 | live -16777216
+P   13 | live -16777216
+P   46 | live -16777216
+P   45 | live -16777216
+P   32 | live -16777210
+P   31 | live -16777210
+P   42 | sti r15 0 0
+       | -> store to 0 + 0 = 0 (with pc and mod 3256)
+P   41 | sti r15 0 0
+       | -> store to 0 + 0 = 0 (with pc and mod 1208)
+P   18 | ld 0 r3
+P   17 | ld 0 r3
+P   14 | ld 0 r3
+P   13 | ld 0 r3
+P    8 | ld 393216 r4
+P    7 | ld 393216 r4
+P   54 | sti r15 0 0
+       | -> store to 0 + 0 = 0 (with pc and mod 2475)
+P   53 | sti r15 0 0
+       | -> store to 0 + 0 = 0 (with pc and mod 427)
+P   52 | live -16777216
+P   51 | live -16777216
+P   50 | live -16777216
+P   49 | live -16777216
+P   26 | live -16777216
+P   25 | live -16777216
+P   22 | live -16777216
+P   21 | live -16777216
+P   12 | zjmp -200 OK
+P   11 | zjmp -200 OK
+P   10 | zjmp -200 OK
+P    9 | zjmp -200 OK
+P    6 | zjmp -200 OK
+P    5 | zjmp -200 OK
+P    2 | zjmp -200 OK
+P    1 | zjmp -200 OK
+P   48 | live -16777216
+P   47 | live -16777216
+P   38 | live -16777216
+P   37 | live -16777216
+P   36 | live -16777216
+P   35 | live -16777216
+P   16 | live -2
+P   15 | live -1
+P   12 | live -1
+P   11 | live -2
+P   10 | live -2
+P    9 | live -1
+P    6 | live -1
+P    5 | live -2
+P    2 | live -2
+P    1 | live -1
+P   18 | zjmp 76 OK
+P   17 | zjmp 76 OK
+P   14 | zjmp 76 OK
+P   13 | zjmp 76 OK
+P   58 | live -16777216
+P   57 | live -16777216
+P   46 | live -1
+P   45 | live -2
+P   40 | live -16777216
+P   39 | live -16777216
+P   56 | live -16777216
+P   55 | live -16777216
+P   54 | zjmp -200 FAILED
+P   53 | zjmp -200 FAILED
+P   52 | live -1
+P   51 | live -2
+P   50 | live -2
+P   49 | live -1
+P   26 | live -1
+P   25 | live -2
+P   22 | live -2
+P   21 | live -1
+P   60 | live -194
+P   59 | live -194
+P   54 | live -16777216
+P   53 | live -16777216
+P    8 | sti r15 0 -190
+       | -> store to 0 + -190 = -190 (with pc and mod 2000)
+P    7 | sti r15 0 -190
+       | -> store to 0 + -190 = -190 (with pc and mod -48)
+P   48 | live -2
+P   47 | live -1
+P   38 | live -1
+P   37 | live -2
+P   36 | live -2
+P   35 | live -1
+P   44 | sti r4 -155 1
+       | -> store to -155 + 1 = -154 (with pc and mod 8)
+P   43 | sti r4 -155 1
+       | -> store to -155 + 1 = -154 (with pc and mod 2056)
+P   24 | live -194
+P   23 | live -194
+P   12 | sti r15 0 -182
+       | -> store to 0 + -182 = -182 (with pc and mod 3018)
+P   11 | sti r15 0 -182
+       | -> store to 0 + -182 = -182 (with pc and mod 970)
+P   10 | sti r15 0 -194
+       | -> store to 0 + -194 = -194 (with pc and mod 958)
+P    9 | sti r15 0 -194
+       | -> store to 0 + -194 = -194 (with pc and mod 3006)
+P    6 | sti r15 0 -190
+       | -> store to 0 + -190 = -190 (with pc and mod 3010)
+P    5 | sti r15 0 -190
+       | -> store to 0 + -190 = -190 (with pc and mod 962)
+P    2 | sti r15 0 -186
+       | -> store to 0 + -186 = -186 (with pc and mod 966)
+P    1 | sti r15 0 -186
+       | -> store to 0 + -186 = -186 (with pc and mod 3014)
+P   58 | live -2
+P   57 | live -1
+P   28 | live -16777216
+P   27 | live -16777216
+P   64 | live -16777216
+P   63 | live -16777216
+P   32 | sti r4 -155 1
+       | -> store to -155 + 1 = -154 (with pc and mod 2056)
+P   31 | sti r4 -155 1
+       | -> store to -155 + 1 = -154 (with pc and mod 8)
+P   34 | live -7274497
+P   33 | live -7274497
+P    8 | zjmp -200 FAILED
+P    7 | zjmp -200 FAILED
+P   54 | live -1
+P   53 | live -2
+P   30 | live -16029695
+P   29 | live -16029695
+P    4 | live -16029695
+P    3 | live -16029695
+P   12 | zjmp -200 OK
+P   11 | zjmp -200 OK
+P   10 | zjmp -200 OK
+P    9 | zjmp -200 OK
+P    6 | zjmp -200 OK
+P    5 | zjmp -200 OK
+P    2 | zjmp -200 OK
+P    1 | zjmp -200 OK
+P   42 | live -16777216
+P   41 | live -16777216
+P    8 | live -16777210
+P    7 | live -16777210
+P   30 | ld 393216 r4
+P   29 | ld 393216 r4
+P    4 | ld 393216 r4
+P    3 | ld 393216 r4
+P   28 | live -2
+P   27 | live -1
+P   12 | live -1
+P   11 | live -2
+P   10 | live -2
+P    9 | live -1
+P    6 | live -1
+P    5 | live -2
+P    2 | live -2
+P    1 | live -1
+P   18 | live -4849663
+P   17 | live -4849663
+P   14 | live -4849663
+P   13 | live -4849663
+P   16 | live -16777216
+P   15 | live -16777216
+P   46 | live -16777216
+P   45 | live -16777216
+P   20 | live -16777216
+P   19 | live -16777216
+P   52 | live -16777216
+P   51 | live -16777216
+P   50 | live -16777216
+P   49 | live -16777216
+P   26 | live -16777216
+P   25 | live -16777216
+P   22 | live -16777216
+P   21 | live -16777216
+P   12 | sti r15 0 -182
+       | -> store to 0 + -182 = -182 (with pc and mod 2829)
+P   11 | sti r15 0 -182
+       | -> store to 0 + -182 = -182 (with pc and mod 781)
+P   10 | sti r15 0 -194
+       | -> store to 0 + -194 = -194 (with pc and mod 769)
+P    9 | sti r15 0 -194
+       | -> store to 0 + -194 = -194 (with pc and mod 2817)
+P    6 | sti r15 0 -190
+       | -> store to 0 + -190 = -190 (with pc and mod 2821)
+P    5 | sti r15 0 -190
+       | -> store to 0 + -190 = -190 (with pc and mod 773)
+P    2 | sti r15 0 -186
+       | -> store to 0 + -186 = -186 (with pc and mod 777)
+P    1 | sti r15 0 -186
+       | -> store to 0 + -186 = -186 (with pc and mod 2825)
+P   20 | ld 0 r3
+P   19 | ld 0 r3
+P   48 | live -16777216
+P   47 | live -16777216
+P   30 | sti r15 0 -194
+       | -> store to 0 + -194 = -194 (with pc and mod 1996)
+P   29 | sti r15 0 -194
+       | -> store to 0 + -194 = -194 (with pc and mod -52)
+P    4 | sti r15 0 -190
+       | -> store to 0 + -190 = -190 (with pc and mod -48)
+P    3 | sti r15 0 -190
+       | -> store to 0 + -190 = -190 (with pc and mod 2000)
+P   60 | live -1
+P   59 | live -2
+P   38 | live -16777216
+P   37 | live -16777216
+P   36 | live -16777216
+P   35 | live -16777216
+P   16 | live -1
+P   15 | live -2
+P   62 | live -16777216
+P   61 | live -16777216
+P   18 | sti r1 -81 15
+       | -> store to -81 + 15 = -66 (with pc and mod 28)
+P   17 | sti r1 -81 15
+       | -> store to -81 + 15 = -66 (with pc and mod 2076)
+P   14 | sti r1 -81 15
+       | -> store to -81 + 15 = -66 (with pc and mod 2076)
+P   13 | sti r1 -81 15
+       | -> store to -81 + 15 = -66 (with pc and mod 28)
+P   46 | live -65025
+P   45 | live -65025
+P   58 | live -16777216
+P   57 | live -16777216
+P   44 | live -1638144
+P   43 | live -1638144
+P   52 | live -2
+P   51 | live -1
+P   50 | live -1
+P   49 | live -2
+P   26 | live -65025
+P   25 | live -65025
+P   24 | live -1
+P   23 | live -2
+P   22 | live -65025
+P   21 | live -65025
+P   12 | zjmp -200 OK
+P   11 | zjmp -200 OK
+P   10 | zjmp -200 OK
+P    9 | zjmp -200 OK
+P    8 | sti r4 -155 1
+       | -> store to -155 + 1 = -154 (with pc and mod 2056)
+P    7 | sti r4 -155 1
+       | -> store to -155 + 1 = -154 (with pc and mod 8)
+P    6 | zjmp -200 OK
+P    5 | zjmp -200 OK
+P    2 | zjmp -200 OK
+P    1 | zjmp -200 OK
+P   20 | zjmp 6 OK
+P   19 | zjmp 6 OK
+P   54 | live -16777216
+P   53 | live -16777216
+P   32 | live -1638144
+P   31 | live -1638144
+P   30 | zjmp -200 FAILED
+P   29 | zjmp -200 FAILED
+P    4 | zjmp -200 FAILED
+P    3 | zjmp -200 FAILED
+P   42 | sti r15 0 0
+       | -> store to 0 + 0 = 0 (with pc and mod 3290)
+P   41 | sti r15 0 0
+       | -> store to 0 + 0 = 0 (with pc and mod 1242)
+P   48 | live -65025
+P   47 | live -65025
+P   38 | live -65025
+P   37 | live -65025
+P   36 | live -65025
+P   35 | live -65025
+P   34 | live -1
+P   33 | live -2
+P   12 | live -1
+P   11 | live -2
+P   10 | live -2
+P    9 | live -1
+P    6 | live -1
+P    5 | live -2
+P    2 | live -2
+P    1 | live -1
+P   44 | live 4
+P   43 | live 4
+P   30 | live -16777210
+P   29 | live -16777210
+P   18 | sti r1 -88 511
+       | -> store to -88 + 511 = 423 (with pc and mod 524)
+P   17 | sti r1 -88 511
+       | -> store to -88 + 511 = 423 (with pc and mod 2572)
+P   14 | sti r1 -88 511
+       | -> store to -88 + 511 = 423 (with pc and mod 2572)
+P   13 | sti r1 -88 511
+       | -> store to -88 + 511 = 423 (with pc and mod 524)
+P    4 | live -16777210
+P    3 | live -16777210
+P   58 | live -1
+P   57 | live -2
+P   28 | live -16777216
+P   27 | live -16777216
+P   46 | sti r15 0 0
+       | -> store to 0 + 0 = 0 (with pc and mod 774)
+P   45 | sti r15 0 0
+       | -> store to 0 + 0 = 0 (with pc and mod 2822)
+P   32 | live 4
+P   31 | live 4
+P   62 | sti r15 0 -190
+       | -> store to 0 + -190 = -190 (with pc and mod 2908)
+P   61 | sti r15 0 -190
+       | -> store to 0 + -190 = -190 (with pc and mod 860)
+P   54 | live -2
+P   53 | live -1
+P   26 | sti r15 0 -194
+       | -> store to 0 + -194 = -194 (with pc and mod 1147)
+P   25 | sti r15 0 -194
+       | -> store to 0 + -194 = -194 (with pc and mod 3195)
+P   22 | sti r15 0 -190
+       | -> store to 0 + -190 = -190 (with pc and mod 3199)
+P   21 | sti r15 0 -190
+       | -> store to 0 + -190 = -190 (with pc and mod 1151)
+P   56 | live -16777216
+P   55 | live -16777216
+P   20 | sti r15 0 0
+       | -> store to 0 + 0 = 0 (with pc and mod 15)
+P   19 | sti r15 0 0
+       | -> store to 0 + 0 = 0 (with pc and mod 2063)
+P   40 | live -16777216
+P   39 | live -16777216
+P   38 | sti r15 0 -190
+       | -> store to 0 + -190 = -190 (with pc and mod 1151)
+P   37 | sti r15 0 -190
+       | -> store to 0 + -190 = -190 (with pc and mod 3199)
+P   36 | sti r15 0 -194
+       | -> store to 0 + -194 = -194 (with pc and mod 3195)
+P   35 | sti r15 0 -194
+       | -> store to 0 + -194 = -194 (with pc and mod 1147)
+P   46 | zjmp -200 FAILED
+P   45 | zjmp -200 FAILED
+P   26 | zjmp -200 OK
+P   25 | zjmp -200 OK
+P   22 | zjmp -200 OK
+P   21 | zjmp -200 OK
+P   46 | live -16777216
+P   45 | live -16777216
+P   20 | zjmp -200 OK
+P   19 | zjmp -200 OK
+P   60 | live -16777216
+P   59 | live -16777216
+P   56 | live -2
+P   55 | live -1
+P   16 | live -16777216
+P   15 | live -16777216
+P   64 | live -16777216
+P   63 | live -16777216
+P   38 | zjmp -200 FAILED
+P   37 | zjmp -200 FAILED
+P   36 | zjmp -200 FAILED
+P   35 | zjmp -200 FAILED
+P   52 | live -16777216
+P   51 | live -16777216
+P   50 | live -16777216
+P   49 | live -16777216
+P   24 | live -16777216
+P   23 | live -16777216
+P   42 | live -16777216
+P   41 | live -16777216
+P   38 | live -16777216
+P   37 | live -16777216
+P   36 | live -16777216
+P   35 | live -16777216
+P   30 | sti r4 -155 1
+       | -> store to -155 + 1 = -154 (with pc and mod 2056)
+P   29 | sti r4 -155 1
+       | -> store to -155 + 1 = -154 (with pc and mod 8)
+P    4 | sti r4 -155 1
+       | -> store to -155 + 1 = -154 (with pc and mod 8)
+P    3 | sti r4 -155 1
+       | -> store to -155 + 1 = -154 (with pc and mod 2056)
+P   46 | live -1
+P   45 | live -2
+P    8 | live -1638144
+P    7 | live -1638144
+P   60 | live -2
+P   59 | live -1
+P   34 | live -194
+P   33 | live -194
+P   26 | sti r15 0 -194
+       | -> store to 0 + -194 = -194 (with pc and mod 955)
+P   25 | sti r15 0 -194
+       | -> store to 0 + -194 = -194 (with pc and mod 3003)
+P   22 | sti r15 0 -190
+       | -> store to 0 + -190 = -190 (with pc and mod 3007)
+P   21 | sti r15 0 -190
+       | -> store to 0 + -190 = -190 (with pc and mod 959)
+P   16 | live -2
+P   15 | live -1
+P   58 | live -16777216
+P   57 | live -16777216
+P   18 | live -16029695
+P   17 | live -16029695
+P   14 | live -16029695
+P   13 | live -16029695
+P   24 | live -2
+P   23 | live -1
+P   52 | live -1
+P   51 | live -2
+P   50 | live -2
+P   49 | live -1
+P   38 | live -1
+P   37 | live -2
+P   36 | live -2
+P   35 | live -1
+P    8 | live 4
+P    7 | live 4
+P   62 | live -16777216
+P   61 | live -16777216
+P   64 | sti r15 0 -190
+       | -> store to 0 + -190 = -190 (with pc and mod 2908)
+P   63 | sti r15 0 -190
+       | -> store to 0 + -190 = -190 (with pc and mod 860)
+P   54 | live -16777216
+P   53 | live -16777216
+P   18 | ld 393216 r4
+P   17 | ld 393216 r4
+P   14 | ld 393216 r4
+P   13 | ld 393216 r4
+P   12 | live -16777216
+P   11 | live -16777216
+P   10 | live -16777216
+P    9 | live -16777216
+P    6 | live -16777216
+P    5 | live -16777216
+P    2 | live -16777216
+P    1 | live -16777216
+P   58 | live -2
+P   57 | live -1
+P   62 | live -1
+P   61 | live -2
+P   54 | live -1
+P   53 | live -2
+P   38 | sti r15 0 -190
+       | -> store to 0 + -190 = -190 (with pc and mod 1182)
+P   37 | sti r15 0 -190
+       | -> store to 0 + -190 = -190 (with pc and mod 3230)
+P   36 | sti r15 0 -194
+       | -> store to 0 + -194 = -194 (with pc and mod 3226)
+P   35 | sti r15 0 -194
+       | -> store to 0 + -194 = -194 (with pc and mod 1178)
+P   56 | live -16777216
+P   55 | live -16777216
+P   12 | live -2
+P   11 | live -1
+P   10 | live -1
+P    9 | live -2
+P    6 | live -2
+P    5 | live -1
+P    2 | live -1
+P    1 | live -2
+P   18 | sti r15 0 -190
+       | -> store to 0 + -190 = -190 (with pc and mod -48)
+P   17 | sti r15 0 -190
+       | -> store to 0 + -190 = -190 (with pc and mod 2000)
+P   14 | sti r15 0 -190
+       | -> store to 0 + -190 = -190 (with pc and mod 2000)
+P   13 | sti r15 0 -190
+       | -> store to 0 + -190 = -190 (with pc and mod -48)
+P   54 | live -16777216
+P   53 | live -16777216
+P   38 | zjmp -200 FAILED
+P   37 | zjmp -200 FAILED
+P   36 | zjmp -200 FAILED
+P   35 | zjmp -200 FAILED
+P   46 | live -16777216
+P   45 | live -16777216
+P   26 | live -16777216
+P   25 | live -16777216
+P   22 | live -16777216
+P   21 | live -16777216
+P   30 | live -1638144
+P   29 | live -1638144
+P    4 | live -1638144
+P    3 | live -1638144
+P   60 | live -16777216
+P   59 | live -16777216
+P   56 | live -1
+P   55 | live -2
+P   16 | live -16777216
+P   15 | live -16777216
+P   38 | live -16777216
+P   37 | live -16777216
+P   36 | live -16777216
+P   35 | live -16777216
+P   48 | live -16777216
+P   47 | live -16777216
+P   18 | zjmp -200 FAILED
+P   17 | zjmp -200 FAILED
+P   14 | zjmp -200 FAILED
+P   13 | zjmp -200 FAILED
+P   34 | live -2
+P   33 | live -1
+P   28 | live -16777216
+P   27 | live -16777216
+P   24 | live -16777216
+P   23 | live -16777216
+P   54 | live -2
+P   53 | live -1
+P   52 | live -16777216
+P   51 | live -16777216
+P   50 | live -16777216
+P   49 | live -16777216
+P   18 | live -16777210
+P   17 | live -16777210
+P   14 | live -16777210
+P   13 | live -16777210
+P   64 | live -16777216
+P   63 | live -16777216
+P   30 | live 4
+P   29 | live 4
+P    4 | live 4
+P    3 | live 4
+P   60 | live -1
+P   59 | live -2
+P   16 | live -1
+P   15 | live -2
+P   58 | live -16777216
+P   57 | live -16777216
+P   20 | live -16777216
+P   19 | live -16777216
+P   28 | live -2
+P   27 | live -1
+P   24 | live -1
+P   23 | live -2
+P   26 | sti r15 0 -194
+       | -> store to 0 + -194 = -194 (with pc and mod 986)
+P   25 | sti r15 0 -194
+       | -> store to 0 + -194 = -194 (with pc and mod 3034)
+P   22 | sti r15 0 -190
+       | -> store to 0 + -190 = -190 (with pc and mod 3038)
+P   21 | sti r15 0 -190
+       | -> store to 0 + -190 = -190 (with pc and mod 990)
+P   52 | live -2
+P   51 | live -1
+P   50 | live -1
+P   49 | live -2
+P   62 | live -16777216
+P   61 | live -16777216
+P   64 | live -1
+P   63 | live -2
+P   48 | sti r15 0 0
+       | -> store to 0 + 0 = 0 (with pc and mod 3228)
+P   47 | sti r15 0 0
+       | -> store to 0 + 0 = 0 (with pc and mod 1180)
+P   12 | live -16777216
+P   11 | live -16777216
+P   10 | live -16777216
+P    9 | live -16777216
+P    6 | live -16777216
+P    5 | live -16777216
+P    2 | live -16777216
+P    1 | live -16777216
+P   58 | live -1
+P   57 | live -2
+P   20 | live -65025
+P   19 | live -65025
+P   42 | live -16777216
+P   41 | live -16777216
+P   28 | sti r15 0 0
+       | -> store to 0 + 0 = 0 (with pc and mod 1719)
+P   27 | sti r15 0 0
+       | -> store to 0 + 0 = 0 (with pc and mod 3767)
+P   62 | live -2
+P   61 | live -1
+P   56 | live -16777216
+P   55 | live -16777216
+P   58 | live -16777216
+P   57 | live -16777216
+P   18 | sti r4 -155 1
+       | -> store to -155 + 1 = -154 (with pc and mod 8)
+P   17 | sti r4 -155 1
+       | -> store to -155 + 1 = -154 (with pc and mod 2056)
+P   14 | sti r4 -155 1
+       | -> store to -155 + 1 = -154 (with pc and mod 2056)
+P   13 | sti r4 -155 1
+       | -> store to -155 + 1 = -154 (with pc and mod 8)
+P   34 | live -16777216
+P   33 | live -16777216
+P   28 | zjmp -200 FAILED
+P   27 | zjmp -200 FAILED
+P   20 | sti r15 0 0
+       | -> store to 0 + 0 = 0 (with pc and mod 3956)
+P   19 | sti r15 0 0
+       | -> store to 0 + 0 = 0 (with pc and mod 1908)
+P   54 | live -16777216
+P   53 | live -16777216
+P   42 | live -2
+P   41 | live -1
+P   60 | live -16777216
+P   59 | live -16777216
+P   28 | live -16777216
+P   27 | live -16777216
+P   58 | live -2
+P   57 | live -1
+P   16 | live -16777216
+P   15 | live -16777216
+P   34 | live -1
+P   33 | live -2
+P   26 | live -16777216
+P   25 | live -16777216
+P   22 | live -16777216
+P   21 | live -16777216
+P   24 | live -16777216
+P   23 | live -16777216
+P   20 | zjmp -200 OK
+P   19 | zjmp -200 OK
+P   54 | live -1
+P   53 | live -2
+P   52 | live -16777216
+P   51 | live -16777216
+P   50 | live -16777216
+P   49 | live -16777216
+P   56 | sti r15 0 0
+       | -> store to 0 + 0 = 0 (with pc and mod 957)
+P   55 | sti r15 0 0
+       | -> store to 0 + 0 = 0 (with pc and mod 3005)
+P   64 | live -16777216
+P   63 | live -16777216
+P   48 | live -16777216
+P   47 | live -16777216
+P   20 | live -1
+P   19 | live -2
+P   28 | live -1
+P   27 | live -2
+P   60 | live -2
+P   59 | live -1
+P   16 | live -2
+P   15 | live -1
+P   24 | live -2
+P   23 | live -1
+P   62 | live -16777216
+P   61 | live -16777216
+P   64 | live -2
+P   63 | live -1
+P   46 | live -16777216
+P   45 | live -16777216
+P   56 | sti r15 0 0
+       | -> store to 0 + 0 = 0 (with pc and mod 963)
+P   55 | sti r15 0 0
+       | -> store to 0 + 0 = 0 (with pc and mod 3011)
+P   38 | live -16777216
+P   37 | live -16777216
+P   36 | live -16777216
+P   35 | live -16777216
+P   28 | sti r15 0 0
+       | -> store to 0 + 0 = 0 (with pc and mod 1750)
+P   27 | sti r15 0 0
+       | -> store to 0 + 0 = 0 (with pc and mod 3798)
+P   18 | live -1638144
+P   17 | live -1638144
+P   14 | live -1638144
+P   13 | live -1638144
+P   42 | live -16777216
+P   41 | live -16777216
+P   62 | live -1
+P   61 | live -2
+P   56 | zjmp -200 FAILED
+P   55 | zjmp -200 FAILED
+P   28 | zjmp -200 FAILED
+P   27 | zjmp -200 FAILED
+P   58 | live -16777216
+P   57 | live -16777216
+P   56 | live -16777216
+P   55 | live -16777216
+P   18 | live 4
+P   17 | live 4
+P   14 | live 4
+P   13 | live 4
+P   34 | live -16777216
+P   33 | live -16777216
+P   28 | live -16777216
+P   27 | live -16777216
+P   54 | live -16777216
+P   53 | live -16777216
+P   42 | live -65025
+P   41 | live -65025
+P   62 | sti r15 0 -190
+       | -> store to 0 + -190 = -190 (with pc and mod 3007)
+P   61 | sti r15 0 -190
+       | -> store to 0 + -190 = -190 (with pc and mod 959)
+P   20 | live -16777216
+P   19 | live -16777216
+P   60 | live -16777216
+P   59 | live -16777216
+P   12 | live -16777216
+P   11 | live -16777216
+P   10 | live -16777216
+P    9 | live -16777216
+P    6 | live -16777216
+P    5 | live -16777216
+P    2 | live -16777216
+P    1 | live -16777216
+P   58 | live -1
+P   57 | live -2
+P   16 | live -16777216
+P   15 | live -16777216
+P   34 | live -2
+P   33 | live -1
+P   28 | live -2
+P   27 | live -1
+P   24 | live -16777216
+P   23 | live -16777216
+P   64 | live -16777216
+P   63 | live -16777216
+P   54 | live -2
+P   53 | live -1
+P   56 | sti r15 0 0
+       | -> store to 0 + 0 = 0 (with pc and mod 988)
+P   55 | sti r15 0 0
+       | -> store to 0 + 0 = 0 (with pc and mod 3036)
+P   42 | sti r15 0 0
+       | -> store to 0 + 0 = 0 (with pc and mod 3389)
+P   41 | sti r15 0 0
+       | -> store to 0 + 0 = 0 (with pc and mod 1341)
+P   20 | live -2
+P   19 | live -1
+P   60 | live -1
+P   59 | live -2
+P   16 | live -1
+P   15 | live -2
+P   24 | live -1
+P   23 | live -2
+P   64 | live -1
+P   63 | live -2
+P   42 | zjmp -200 FAILED
+P   41 | zjmp -200 FAILED
+P   42 | live -16777216
+P   41 | live -16777216
+P   26 | live -16777216
+P   25 | live -16777216
+P   22 | live -16777216
+P   21 | live -16777216
+P   52 | live -16777216
+P   51 | live -16777216
+P   50 | live -16777216
+P   49 | live -16777216
+P   62 | live -16777216
+P   61 | live -16777216
+P   48 | live -16777216
+P   47 | live -16777216
+P   64 | sti r15 0 -190
+       | -> store to 0 + -190 = -190 (with pc and mod 3007)
+P   63 | sti r15 0 -190
+       | -> store to 0 + -190 = -190 (with pc and mod 959)
+P   58 | live -16777216
+P   57 | live -16777216
+P   42 | live -2
+P   41 | live -1
+P   34 | live -16777216
+P   33 | live -16777216
+P   28 | live -16777216
+P   27 | live -16777216
+P   52 | live -2
+P   51 | live -1
+P   50 | live -1
+P   49 | live -2
+P   54 | live -16777216
+P   53 | live -16777216
+P   56 | live -16777216
+P   55 | live -16777216
+P   20 | live -16777216
+P   19 | live -16777216
+P   60 | live -16777216
+P   59 | live -16777216
+P   38 | live -16777216
+P   37 | live -16777216
+P   36 | live -16777216
+P   35 | live -16777216
+P   16 | live -16777216
+P   15 | live -16777216
+P   58 | live -2
+P   57 | live -1
+P   42 | sti r15 0 0
+       | -> store to 0 + 0 = 0 (with pc and mod 3420)
+P   41 | sti r15 0 0
+       | -> store to 0 + 0 = 0 (with pc and mod 1372)
+P   34 | live -1
+P   33 | live -2
+P   28 | live -1
+P   27 | live -2
+P   24 | live -16777216
+P   23 | live -16777216
+P   54 | live -1
+P   53 | live -2
+P   20 | live -1
+P   19 | live -2
+P   60 | live -2
+P   59 | live -1
+P   16 | live -2
+P   15 | live -1
+P   42 | zjmp -200 FAILED
+P   41 | zjmp -200 FAILED
+P   24 | live -2
+P   23 | live -1
+P   64 | live -16777216
+P   63 | live -16777216
+P   42 | live -16777216
+P   41 | live -16777216
+P   16 | live -16777216
+P   15 | live -16777216
+P   52 | live -16777216
+P   51 | live -16777216
+P   50 | live -16777216
+P   49 | live -16777216
+P   16 | live -1
+P   15 | live -2
+P   58 | live -16777216
+P   57 | live -16777216
+P   34 | live -16777216
+P   33 | live -16777216
+P   28 | live -16777216
+P   27 | live -16777216
+P   52 | live -1
+P   51 | live -2
+P   50 | live -2
+P   49 | live -1
+P   54 | live -16777216
+P   53 | live -16777216
+P   20 | live -16777216
+P   19 | live -16777216
+P   60 | live -16777216
+P   59 | live -16777216
+P   58 | live -1
+P   57 | live -2
+P   34 | live -2
+P   33 | live -1
+P   28 | live -2
+P   27 | live -1
+P   24 | live -16777216
+P   23 | live -16777216
+P   62 | live -16777216
+P   61 | live -16777216
+P   20 | live -2
+P   19 | live -1
+P   60 | live -1
+P   59 | live -2
+P   26 | live -16777216
+P   25 | live -16777216
+P   22 | live -16777216
+P   21 | live -16777216
+P   56 | live -16777216
+P   55 | live -16777216
+P   24 | live -1
+P   23 | live -2
+P   48 | live -16777216
+P   47 | live -16777216
+P   60 | live -16777216
+P   59 | live -16777216
+P   16 | live -16777216
+P   15 | live -16777216
+P   38 | live -16777216
+P   37 | live -16777216
+P   36 | live -16777216
+P   35 | live -16777216
+P   24 | live -16777216
+P   23 | live -16777216
+P   52 | live -16777216
+P   51 | live -16777216
+P   50 | live -16777216
+P   49 | live -16777216
+P   60 | live -2
+P   59 | live -1
+P   16 | live -2
+P   15 | live -1
+P   38 | live -1
+P   37 | live -2
+P   36 | live -2
+P   35 | live -1
+P   56 | sti r15 0 0
+       | -> store to 0 + 0 = 0 (with pc and mod 1050)
+P   55 | sti r15 0 0
+       | -> store to 0 + 0 = 0 (with pc and mod 3098)
+P   58 | live -16777216
+P   57 | live -16777216
+P   34 | live -16777216
+P   33 | live -16777216
+P   28 | live -16777216
+P   27 | live -16777216
+P   24 | live -2
+P   23 | live -1
+P   52 | live -65025
+P   51 | live -65025
+P   50 | live -65025
+P   49 | live -65025
+P   64 | live -16777216
+P   63 | live -16777216
+P   42 | live -16777216
+P   41 | live -16777216
+P   20 | live -16777216
+P   19 | live -16777216
+P   34 | live -1
+P   33 | live -2
+P   20 | live -1
+P   19 | live -2
+P   54 | live -16777216
+P   53 | live -16777216
+P   60 | live -16777216
+P   59 | live -16777216
+P   16 | live -16777216
+P   15 | live -16777216
+P   38 | live -16777216
+P   37 | live -16777216
+P   36 | live -16777216
+P   35 | live -16777216
+P   56 | live -16777216
+P   55 | live -16777216
+P   24 | live -16777216
+P   23 | live -16777216
+P   62 | live -16777216
+P   61 | live -16777216
+P   54 | live -1
+P   53 | live -2
+P   52 | live -16777216
+P   51 | live -16777216
+P   50 | live -16777216
+P   49 | live -16777216
+P   60 | live -1
+P   59 | live -2
+P   16 | live -1
+P   15 | live -2
+P   56 | live -2
+P   55 | live -1
+P   38 | live -2
+P   37 | live -1
+P   36 | live -1
+P   35 | live -2
+P   26 | live -16777216
+P   25 | live -16777216
+P   22 | live -16777216
+P   21 | live -16777216
+P   34 | live -16777216
+P   33 | live -16777216
+P   24 | live -1
+P   23 | live -2
+P   48 | live -16777216
+P   47 | live -16777216
+P   52 | live -1
+P   51 | live -2
+P   50 | live -2
+P   49 | live -1
+P   20 | live -16777216
+P   19 | live -16777216
+P   26 | live -1
+P   25 | live -2
+P   22 | live -2
+P   21 | live -1
+P   38 | sti r15 0 -190
+       | -> store to 0 + -190 = -190 (with pc and mod 1340)
+P   37 | sti r15 0 -190
+       | -> store to 0 + -190 = -190 (with pc and mod 3388)
+P   36 | sti r15 0 -194
+       | -> store to 0 + -194 = -194 (with pc and mod 3384)
+P   35 | sti r15 0 -194
+       | -> store to 0 + -194 = -194 (with pc and mod 1336)
+P   34 | live -2
+P   33 | live -1
+P   48 | live -2
+P   47 | live -1
+P   58 | live -16777216
+P   57 | live -16777216
+P   38 | zjmp -200 FAILED
+P   37 | zjmp -200 FAILED
+P   36 | zjmp -200 FAILED
+P   35 | zjmp -200 FAILED
+P   34 | live -16777216
+P   33 | live -16777216
+P   28 | live -16777216
+P   27 | live -16777216
+P   64 | live -16777216
+P   63 | live -16777216
+P   54 | live -16777216
+P   53 | live -16777216
+P   42 | live -16777216
+P   41 | live -16777216
+P   38 | live -16777216
+P   37 | live -16777216
+P   36 | live -16777216
+P   35 | live -16777216
+P   60 | live -16777216
+P   59 | live -16777216
+P   16 | live -16777216
+P   15 | live -16777216
+P   56 | live -16777216
+P   55 | live -16777216
+P   58 | live -1
+P   57 | live -2
+P   34 | live -1
+P   33 | live -2
+P   28 | live -65025
+P   27 | live -65025
+P   24 | live -16777216
+P   23 | live -16777216
+P   54 | live -2
+P   53 | live -1
+P   52 | live -16777216
+P   51 | live -16777216
+P   50 | live -16777216
+P   49 | live -16777216
+P   38 | live -1
+P   37 | live -2
+P   36 | live -2
+P   35 | live -1
+P   60 | live -2
+P   59 | live -1
+P   16 | live -2
+P   15 | live -1
+P   56 | live -1
+P   55 | live -2
+P   26 | live -16777216
+P   25 | live -16777216
+P   22 | live -16777216
+P   21 | live -16777216
+P   48 | live -16777216
+P   47 | live -16777216
+P   24 | live -2
+P   23 | live -1
+P   26 | live -2
+P   25 | live -1
+P   22 | live -1
+P   21 | live -2
+P   48 | live -1
+P   47 | live -2
+P   58 | live -16777216
+P   57 | live -16777216
+P   34 | live -16777216
+P   33 | live -16777216
+P   26 | sti r15 0 -194
+       | -> store to 0 + -194 = -194 (with pc and mod 1144)
+P   25 | sti r15 0 -194
+       | -> store to 0 + -194 = -194 (with pc and mod 3192)
+P   22 | sti r15 0 -190
+       | -> store to 0 + -190 = -190 (with pc and mod 3196)
+P   21 | sti r15 0 -190
+       | -> store to 0 + -190 = -190 (with pc and mod 1148)
+P   62 | live -16777216
+P   61 | live -16777216
+P   28 | live -16777202
+P   27 | live -16777202
+P   54 | live -16777216
+P   53 | live -16777216
+P   38 | live -16777216
+P   37 | live -16777216
+P   36 | live -16777216
+P   35 | live -16777216
+P   48 | sti r15 0 0
+       | -> store to 0 + 0 = 0 (with pc and mod 3386)
+P   47 | sti r15 0 0
+       | -> store to 0 + 0 = 0 (with pc and mod 1338)
+P   20 | live -16777216
+P   19 | live -16777216
+P   60 | live -16777216
+P   59 | live -16777216
+P   16 | live -16777216
+P   15 | live -16777216
+P   56 | live -16777216
+P   55 | live -16777216
+P   58 | live -2
+P   57 | live -1
+P   34 | live -2
+P   33 | live -1
+P   28 | live -1
+P   27 | live -2
+P   24 | live -16777216
+P   23 | live -16777216
+P   54 | live -65025
+P   53 | live -65025
+P   38 | live -2
+P   37 | live -1
+P   36 | live -1
+P   35 | live -2
+P   44 | fork 511 (709)
+P   43 | fork 511 (2757)
+P   20 | live -65025
+P   19 | live -65025
+P   60 | live -1
+P   59 | live -2
+P   32 | fork 511 (2757)
+P   31 | fork 511 (709)
+P   24 | live -1
+P   23 | live -2
+P   42 | live -16777216
+P   41 | live -16777216
+P   56 | sti r15 0 0
+       | -> store to 0 + 0 = 0 (with pc and mod 1146)
+P   55 | sti r15 0 0
+       | -> store to 0 + 0 = 0 (with pc and mod 3194)
+P   26 | live -16777216
+P   25 | live -16777216
+P   22 | live -16777216
+P   21 | live -16777216
+P   64 | live -16777216
+P   63 | live -16777216
+P   48 | live -16777216
+P   47 | live -16777216
+P   52 | live -16777216
+P   51 | live -16777216
+P   50 | live -16777216
+P   49 | live -16777216
+P   42 | live -2
+P   41 | live -1
+P   58 | live -16777216
+P   57 | live -16777216
+P   26 | live -1
+P   25 | live -2
+P   22 | live -2
+P   21 | live -1
+P   34 | live -16777216
+P   33 | live -16777216
+P   28 | live -16777216
+P   27 | live -16777216
+P   48 | live -2
+P   47 | live -1
+P   38 | live -16777216
+P   37 | live -16777216
+P   36 | live -16777216
+P   35 | live -16777216
+P   66 | live -16777216
+P   65 | live -16777216
+P   54 | live -16777216
+P   53 | live -16777216
+P   44 | live -1
+P   43 | live -1
+P   60 | live -16777216
+P   59 | live -16777216
+P   20 | live -16777202
+P   19 | live -16777202
+P   58 | live -65025
+P   57 | live -65025
+P   68 | live -16777216
+P   67 | live -16777216
+P    8 | fork 511 (2757)
+P    7 | fork 511 (709)
+P   34 | live -1
+P   33 | live -2
+P   32 | live -1
+P   31 | live -1
+P   28 | live -241
+P   27 | live -241
+P   24 | live -16777216
+P   23 | live -16777216
+P   66 | live -2
+P   65 | live -1
+P   54 | live -2
+P   53 | live -1
+P   20 | live -2
+P   19 | live -1
+P   68 | live -1
+P   67 | live -2
+P   62 | live -16777216
+P   61 | live -16777216
+P   42 | live -16777216
+P   41 | live -16777216
+P   16 | live -16777216
+P   15 | live -16777216
+P   26 | live -16777216
+P   25 | live -16777216
+P   22 | live -16777216
+P   21 | live -16777216
+P   62 | live -2
+P   61 | live -1
+P   48 | live -16777216
+P   47 | live -16777216
+P   42 | live -1
+P   41 | live -2
+P   16 | live -2
+P   15 | live -1
+P   56 | live -16777216
+P   55 | live -16777216
+P   58 | live -16777216
+P   57 | live -16777216
+P   44 | live 65534
+P   43 | live 65535
+P   70 | live -16777216
+P   69 | live -16777216
+P   34 | live -16777216
+P   33 | live -16777216
+P   30 | fork 511 (2757)
+P   29 | fork 511 (709)
+P    4 | fork 511 (709)
+P    3 | fork 511 (2757)
+P    8 | live -1
+P    7 | live -1
+P   66 | live -16777216
+P   65 | live -16777216
+P   54 | live -16777216
+P   53 | live -16777216
+P   32 | live 65535
+P   31 | live 65534
+P   42 | sti r15 0 0
+       | -> store to 0 + 0 = 0 (with pc and mod 3578)
+P   41 | sti r15 0 0
+       | -> store to 0 + 0 = 0 (with pc and mod 1530)
+P   20 | live -16777216
+P   19 | live -16777216
+P   68 | live -16777216
+P   67 | live -16777216
+P   58 | live -2
+P   57 | live -1
+P   70 | live -1
+P   69 | live -2
+P   34 | live -2
+P   33 | live -1
+P   64 | live -16777216
+P   63 | live -16777216
+P   44 | sti r15 0 -190
+       | -> store to 0 + -190 = -190 (with pc and mod 45)
+P   43 | sti r15 0 -190
+       | -> store to 0 + -190 = -190 (with pc and mod 2093)
+P   66 | live -65025
+P   65 | live -65025
+P   42 | zjmp -200 FAILED
+P   41 | zjmp -200 FAILED
+P   32 | sti r15 0 -190
+       | -> store to 0 + -190 = -190 (with pc and mod 2093)
+P   31 | sti r15 0 -190
+       | -> store to 0 + -190 = -190 (with pc and mod 45)
+P   20 | live -241
+P   19 | live -241
+P   68 | live -65025
+P   67 | live -65025
+P   42 | live -16777216
+P   41 | live -16777216
+P   62 | live -16777216
+P   61 | live -16777216
+P   64 | live -2
+P   63 | live -1
+P   38 | live -16777216
+P   37 | live -16777216
+P   36 | live -16777216
+P   35 | live -16777216
+P   28 | live -16777216
+P   27 | live -16777216
+P   60 | live -16777216
+P   59 | live -16777216
+P   16 | live -16777216
+P   15 | live -16777216
+P   42 | live -2
+P   41 | live -1
+P   74 | live -16777216
+P   73 | live -16777216
+P   72 | live -16777216
+P   71 | live -16777216
+P   62 | live -1
+P   61 | live -2
+P   30 | live -1
+P   29 | live -1
+P   24 | live -16777216
+P   23 | live -16777216
+P    4 | live -1
+P    3 | live -1
+P   38 | live -2
+P   37 | live -1
+P   36 | live -1
+P   35 | live -2
+P    8 | live 65535
+P    7 | live 65534
+P   60 | live -1
+P   59 | live -2
+P   16 | live -1
+P   15 | live -2
+P   58 | live -16777216
+P   57 | live -16777216
+P   44 | live -15793520
+P   43 | live -15793520
+P   70 | live -16777216
+P   69 | live -16777216
+P   34 | live -16777216
+P   33 | live -16777216
+P   74 | live -2
+P   73 | live -1
+P   72 | live -1
+P   71 | live -2
+P   40 | lfork 0 (860)
+P   39 | lfork 0 (2908)
+P   28 | sti r15 0 0
+       | -> store to 0 + 0 = 0 (with pc and mod 1998)
+P   27 | sti r15 0 0
+       | -> stor
