@@ -6,7 +6,7 @@
 /*   By: djast <djast@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/10/09 09:21:36 by djast             #+#    #+#             */
-/*   Updated: 2019/11/06 16:15:31 by djast            ###   ########.fr       */
+/*   Updated: 2019/11/06 17:08:12 by djast            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,7 +26,7 @@ void	make_command_ld(t_vm_info *info, t_carriage *carr)
 		carr->registers[carr->args[1] - 1] = bytecode_to_int(info, carr, carr->cur_pos + (carr->args[0] % IDX_MOD) % MEM_SIZE, 4);
 	calc_jump_size(carr);
 	ft_printf("%d r%d\n", carr->registers[carr->args[1] - 1], carr->args[1]);
-	if (carr->args[0] == 0)
+	if (carr->registers[carr->args[1] - 1] == 0)
 		carr->carry = 1;
 	else
 		carr->carry = 0;
