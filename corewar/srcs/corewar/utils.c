@@ -6,7 +6,7 @@
 /*   By: djast <djast@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/09/25 16:51:08 by djast             #+#    #+#             */
-/*   Updated: 2019/10/23 13:54:30 by djast            ###   ########.fr       */
+/*   Updated: 2019/11/06 16:08:30 by djast            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -41,21 +41,28 @@ t_champ		*find_player_by_id(t_champ *champs, int id)
 	return (NULL);
 }
 
-int		bytecode_to_int(unsigned char *buf, int count_bytes)
+int		bytecode_to_int(t_vm_info *info, t_carriage *carr, int pos, int count_bytes)
 {
 	int result;
 	int	i;
 	int	sign;
+	unsigned char *buff;
 
+	(void) carr;
+	buff = (unsigned char *)malloc(sizeof(unsigned char) * count_bytes);
+	
+	i = 0;
+	while (i++ < count_bytes)
+		buff[i - 1] = info->map[(pos + i - 1) % MEM_SIZE];
 	result = 0;
 	i = 0;
-	sign = buf[0] & 0b10000000;
+	sign = buff[0] & 0b10000000;
 	while (count_bytes)
 	{
 		if (sign)
-			result += (buf[count_bytes - 1] ^ 0xFF) << (i++ * 8); // инвертирование
+			result += (buff[count_bytes - 1] ^ 0xFF) << (i++ * 8); // инвертирование
 		else
-			result += buf[count_bytes - 1] << (i++ * 8);
+			result += buff[count_bytes - 1] << (i++ * 8);
 		count_bytes--;
 	}
 	if (sign)
