@@ -6,7 +6,7 @@
 /*   By: djast <djast@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/09/23 13:11:12 by djast             #+#    #+#             */
-/*   Updated: 2019/11/07 15:58:37 by djast            ###   ########.fr       */
+/*   Updated: 2019/11/07 16:37:36 by djast            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -186,14 +186,13 @@ int		make_step_cycle(t_vm_info *info, t_champ *champs)
 	if (info->cycles_to_die <= 0 || info->cycles_after_check >= info->cycles_to_die)
 	{
 		//ft_printf("DEAD\n");
-		if (check_cycle_to_die(info) == 1)
-			return (1);
+		check_cycle_to_die(info);
 		if (info->live >= NBR_LIVE)
 		{
 			info->checks = 0;
 			info->cycles_after_check = 0;
 			info->cycles_to_die -= CYCLE_DELTA;
-			// ft_printf("Cycle to die is now %d\n", info->cycles_to_die);
+			ft_printf("Cycle to die is now %d\n", info->cycles_to_die);
 		}
 		else
 		{
@@ -206,7 +205,7 @@ int		make_step_cycle(t_vm_info *info, t_champ *champs)
 			info->checks = 0;
 			info->cycles_after_check = 0;
 			info->cycles_to_die -= CYCLE_DELTA;
-			// ft_printf("Cycle to die is now %d\n", info->cycles_to_die);
+			ft_printf("Cycle to die is now %d\n", info->cycles_to_die);
 		}
 		info->live = 0;
 	//	print_carriages(info->carriages);
@@ -226,20 +225,26 @@ void	start_corewar(t_champ *champs, t_vm_info *info)
 	{
 		//ft_printf("b: %p\n", champs->comment);
 		// print_map(info->map);
-		// ft_printf("It is now cycle %d\n", info->cycle);
+		ft_printf("It is now cycle %d\n", info->cycle);
 		//ft_printf("%p", info->carriages->args);
-		if (make_step_cycle(info, champs) == 1)
-			return ;
-		// if (info->cycle == 21422)
+		// if (info->cycle == 19776)
 		// {
 		// 	print_map(info->map);
 		// 	print_carriages(info->carriages);
 		// 	ft_printf("\n\n");
 		// }
+		make_step_cycle(info, champs);
+		
 		//ft_printf("It is now cycle before %d\n", info->cycle);
 		info->cycle++;
 		//ft_printf("It is now cycle after %d\n", info->cycle);
 		info->cycles_after_check++;
+		if (info->carriages == NULL)
+		{
+			//ft_printf("ENDGAME\n");
+			ft_printf("Contestant %d, \"%s\", has won !\n", info->last_live_player->id, info->last_live_player->name);
+			return ;
+		}
 		// if (info->cycle == 3569)
 		//  	break ;
 	}

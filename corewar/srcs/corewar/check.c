@@ -6,7 +6,7 @@
 /*   By: djast <djast@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/09/25 13:38:07 by djast             #+#    #+#             */
-/*   Updated: 2019/11/06 17:03:26 by djast            ###   ########.fr       */
+/*   Updated: 2019/11/07 16:35:32 by djast            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -88,11 +88,5 @@ int		check_cycle_to_die(t_vm_info *info)
 	(void) info;
 	//printf("%d\n", info->cycle);
 	delete_death_carr(info, info->carriages);
-	if (info->carriages == NULL)
-	{
-		//ft_printf("ENDGAME\n");
-		ft_printf("Contestant %d, \"%s\", has won !\n", info->last_live_player->id, info->last_live_player->name);
-		return (1);
-	}
 	return (0);
 }
