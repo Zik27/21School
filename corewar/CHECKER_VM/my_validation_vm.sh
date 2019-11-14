@@ -24,7 +24,7 @@ echo "\n${YEL}ONE_CHAMP ${NC} \n"
 for f in $FIRST_ARRAY_CH
 do
   $PATH_TO_VM/$OUR_VM $f > our_output
-  ./$ORIG_VM -v 4 $f > origin_output
+  ./$ORIG_VM -v 6 -a $f > origin_output
   if diff ./our_output ./origin_output &> /dev/null; then
     echo "${f} - ${GREEN}[OK]${NC}"
   else

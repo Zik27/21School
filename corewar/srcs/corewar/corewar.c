@@ -6,7 +6,7 @@
 /*   By: djast <djast@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/09/23 13:11:12 by djast             #+#    #+#             */
-/*   Updated: 2019/11/14 15:40:00 by djast            ###   ########.fr       */
+/*   Updated: 2019/11/14 15:49:12 by djast            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -191,7 +191,7 @@ int		make_step_cycle(t_vm_info *info, t_champ *champs)
 			info->checks = 0;
 			info->cycles_after_check = 0;
 			info->cycles_to_die -= CYCLE_DELTA;
-			// ft_printf("Cycle to die is now %d\n", info->cycles_to_die);
+			ft_printf("Cycle to die is now %d\n", info->cycles_to_die);
 		}
 		else
 		{
@@ -204,7 +204,7 @@ int		make_step_cycle(t_vm_info *info, t_champ *champs)
 			info->checks = 0;
 			info->cycles_after_check = 0;
 			info->cycles_to_die -= CYCLE_DELTA;
-			// ft_printf("Cycle to die is now %d\n", info->cycles_to_die);
+			ft_printf("Cycle to die is now %d\n", info->cycles_to_die);
 		}
 		info->live = 0;
 	//	print_carriages(info->carriages);
@@ -224,7 +224,7 @@ void	start_corewar(t_champ *champs, t_vm_info *info)
 	{
 		//ft_printf("b: %p\n", champs->comment);
 		// print_map(info->map);
-		// ft_printf("It is now cycle %d\n", info->cycle);
+		ft_printf("It is now cycle %d\n", info->cycle);
 		//ft_printf("%p", info->carriages->args);
 		// if (info->cycle == 20440)
 		// {
