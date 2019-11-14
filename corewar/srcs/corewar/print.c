@@ -6,7 +6,7 @@
 /*   By: djast <djast@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/09/25 13:20:31 by djast             #+#    #+#             */
-/*   Updated: 2019/11/13 18:37:50 by djast            ###   ########.fr       */
+/*   Updated: 2019/11/14 17:24:57 by djast            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,7 +32,7 @@ void	print_map(char *map)
 	symbol = 0;
 	while (symbol != MEM_SIZE)
 	{
-		if (symbol == 3343)
+		if (symbol == 2320)
 			ft_printf("HERE --> ");
 		ft_printf("%.2x ", map[symbol] & 0xFF);
 		symbol++;

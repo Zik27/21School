@@ -6,7 +6,7 @@
 /*   By: djast <djast@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/09/23 13:11:12 by djast             #+#    #+#             */
-/*   Updated: 2019/11/14 16:54:07 by djast            ###   ########.fr       */
+/*   Updated: 2019/11/14 17:38:56 by djast            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -73,12 +73,15 @@ int		check_registers(t_vm_info *info, t_carriage *carr)
 	args[2] = ((unsigned char)types & 0b1100) / 4;
 	i = 0;
 	step = 0;
+	// ft_printf("%d %d %d\n", args[0], args[1], args[2]);
 	while (i < 3)
 	{
+		if (g_instr[carr->op_code - 1].args_types[i] == 0)
+			break ;
 		if (args[i] == REG_CODE)
 		{
 			reg = info->map[(carr->cur_pos + step + 1 + 1) % MEM_SIZE];
-			//printf("REGISTER_CHECK: %d\n", reg);
+			// ft_printf("REGISTER_CHECK: %d\n", reg);
 			if (reg < 1 || reg > 16)
 				return (0);
 			step += 1;
@@ -226,7 +229,7 @@ void	start_corewar(t_champ *champs, t_vm_info *info)
 		// print_map(info->map);
 		ft_printf("It is now cycle %d\n", info->cycle);
 		//ft_printf("%p", info->carriages->args);
-		// if (info->cycle >= 10644 && info->cycle <= 10674)
+		// if (info->cycle == 23650)
 		// {
 		// 	print_map(info->map);
 		// 	print_carriages(info->carriages);
