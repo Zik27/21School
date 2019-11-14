@@ -6,7 +6,7 @@
 /*   By: djast <djast@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/10/09 09:22:46 by djast             #+#    #+#             */
-/*   Updated: 2019/10/20 16:49:30 by djast            ###   ########.fr       */
+/*   Updated: 2019/11/13 17:59:48 by djast            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,7 +23,7 @@ void	make_command_zjmp(t_vm_info *info, t_carriage *carr)
 	{
 		ft_printf("OK\n");
 		carr->cur_pos = (carr->cur_pos + carr->args[0] % IDX_MOD) % MEM_SIZE;
-		if (carr->cur_pos < 0)
+		while (carr->cur_pos < 0)
 			carr->cur_pos = MEM_SIZE + carr->cur_pos;
 	}
 	else

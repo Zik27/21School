@@ -6,7 +6,7 @@
 /*   By: djast <djast@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/09/25 16:51:08 by djast             #+#    #+#             */
-/*   Updated: 2019/11/06 17:03:31 by djast            ###   ########.fr       */
+/*   Updated: 2019/11/13 18:20:59 by djast            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -50,10 +50,10 @@ int		bytecode_to_int(t_vm_info *info, t_carriage *carr, int pos, int count_bytes
 
 	(void) carr;
 	buff = (unsigned char *)malloc(sizeof(unsigned char) * count_bytes);
-	
 	i = 0;
 	while (i++ < count_bytes)
 		buff[i - 1] = info->map[(pos + i - 1) % MEM_SIZE];
+	// ft_printf("buff: %x%x%x%x\n", buff[0], buff[1], buff[2], buff[3]);
 	result = 0;
 	i = 0;
 	sign = buff[0] & 0b10000000;

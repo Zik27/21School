@@ -6,7 +6,7 @@
 /*   By: djast <djast@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/10/09 09:22:05 by djast             #+#    #+#             */
-/*   Updated: 2019/11/06 16:15:28 by djast            ###   ########.fr       */
+/*   Updated: 2019/11/13 19:06:52 by djast            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -41,7 +41,7 @@ static void		print_debug_sti(t_vm_info *info, t_carriage *carr, int res)
 	else if (carr->args_types[1] == DIR_CODE)
 		a = carr->args[1];
 	else if (carr->args_types[1] == IND_CODE)
-		a = bytecode_to_int(info, carr, carr->cur_pos + (carr->args[0] % IDX_MOD), 4);
+		a = bytecode_to_int(info, carr, carr->cur_pos + (carr->args[1] % IDX_MOD), 4);
 	if (carr->args_types[2] == REG_CODE)
 		b = carr->registers[carr->args[2] - 1];
 	else if (carr->args_types[2] == DIR_CODE)
@@ -70,7 +70,7 @@ void			make_command_sti(t_vm_info *info, t_carriage *carr)
 	else if (carr->args_types[1] == DIR_CODE)
 		res += carr->args[1];
 	else if (carr->args_types[1] == IND_CODE)
-		res += bytecode_to_int(info, carr, carr->cur_pos + (carr->args[0] % IDX_MOD), 4);
+		res += bytecode_to_int(info, carr, carr->cur_pos + (carr->args[1] % IDX_MOD), 4);
 	if (carr->args_types[2] == REG_CODE)
 		res += carr->registers[carr->args[2] - 1];
 	else if (carr->args_types[2] == DIR_CODE)
