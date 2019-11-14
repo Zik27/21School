@@ -49,7 +49,7 @@ do
   for fo in $SEC_ARRAY_CH
   do
     $PATH_TO_VM/$OUR_VM $f $fo > our_output
-    ./$ORIG_VM -v 4 $f $fo > origin_output
+    ./$ORIG_VM -v 6 -a $f $fo > origin_output
     if diff ./our_output ./origin_output &> /dev/null; then
     echo "${f} ${fo} - ${GREEN}[OK]${NC}"
   else
@@ -73,7 +73,7 @@ do
     for foo in $TH_ARRAY_CH
     do
       $PATH_TO_VM/$OUR_VM $f $fo $foo > our_output
-      ./$ORIG_VM -v 4 $f $fo $foo > origin_output
+      ./$ORIG_VM -v 6 -a $f $fo $foo > origin_output
       if diff ./our_output ./origin_output &> /dev/null; then
        echo "${f} ${fo} ${foo}- ${GREEN}[OK]${NC}"
       else

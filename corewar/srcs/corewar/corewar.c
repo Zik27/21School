@@ -6,7 +6,7 @@
 /*   By: djast <djast@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/09/23 13:11:12 by djast             #+#    #+#             */
-/*   Updated: 2019/11/14 15:49:12 by djast            ###   ########.fr       */
+/*   Updated: 2019/11/14 16:54:07 by djast            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -226,7 +226,7 @@ void	start_corewar(t_champ *champs, t_vm_info *info)
 		// print_map(info->map);
 		ft_printf("It is now cycle %d\n", info->cycle);
 		//ft_printf("%p", info->carriages->args);
-		// if (info->cycle == 20440)
+		// if (info->cycle >= 10644 && info->cycle <= 10674)
 		// {
 		// 	print_map(info->map);
 		// 	print_carriages(info->carriages);

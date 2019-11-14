@@ -6,7 +6,7 @@
 /*   By: djast <djast@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/09/26 15:13:08 by djast             #+#    #+#             */
-/*   Updated: 2019/11/06 16:08:22 by djast            ###   ########.fr       */
+/*   Updated: 2019/11/14 16:53:30 by djast            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -56,6 +56,8 @@ void		calc_jump_size(t_carriage *carr)
 	carr->jump_size = 1 + g_instr[carr->op_code - 1].args_types_code;
 	while (i < 3)
 	{
+		if (g_instr[carr->op_code - 1].args_types[i] == 0)
+			break ;
 		if (carr->args_types[i] == REG_CODE)
 			carr->jump_size += 1;
 		else if (carr->args_types[i] == DIR_CODE)
