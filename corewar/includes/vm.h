@@ -3,15 +3,19 @@
 /*                                                        :::      ::::::::   */
 /*   vm.h                                               :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: vurrigon <vurrigon@student.42.fr>          +#+  +:+       +#+        */
+/*   By: djast <djast@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/09/23 13:35:39 by djast             #+#    #+#             */
-/*   Updated: 2019/11/22 16:14:24 by djast            ###   ########.fr       */
+/*   Updated: 2019/11/22 17:29:29 by djast            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef VM_H
 # define VM_H
+
+# define CODE_D 1
+# define CODE_DUMP 2
+
 
 # include "libft.h"
 # include "ft_printf.h"
@@ -60,6 +64,7 @@ typedef struct			s_vm_info
 	int					cycle;
 	int					live;
 	int					dump_cycle;
+	int					dump_type;
 	t_carriage			*carriages;
 	t_champ				*last_live_player;
 	char				*map;
@@ -79,7 +84,7 @@ char			*get_champ_code(int fd, int code_size);
 int				get_player_count(t_champ *champs);
 t_vm_info		*init_vm_info(t_vm_info **info, t_champ *players);
 void			place_players_on_arena(t_champ *champs, t_vm_info *info);
-void			print_map(char *map);
+void			print_map(char *map, int count_in_row);
 t_carriage		*init_carriages(t_champ *champs, t_vm_info *info);
 t_carriage		*init_carriage(t_champ *cur_player, t_vm_info *info);
 void			print_carriages(t_carriage *car);

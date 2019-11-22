@@ -6,7 +6,7 @@
 /*   By: djast <djast@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/09/25 13:20:31 by djast             #+#    #+#             */
-/*   Updated: 2019/11/22 17:18:36 by djast            ###   ########.fr       */
+/*   Updated: 2019/11/22 17:24:32 by djast            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,7 +25,7 @@ void	print_help(char **argv)
 	ft_printf("%s [-dump nbr_cycles] [[-n number] champion1.cor] ...\n", argv[0]);
 }
 
-void	print_map(char *map)
+void	print_map(char *map, int count_in_row)
 {
 	int symbol;
 	int row;
@@ -37,9 +37,9 @@ void	print_map(char *map)
 	{
 		ft_printf("%.2x ", map[symbol] & 0xFF);
 		symbol++;
-		if ((symbol) % 64 == 0 && symbol != 4096)
+		if ((symbol) % count_in_row == 0 && symbol != 4096)
 		{
-			row += 64;
+			row += count_in_row;
 			ft_printf("\n");
 			ft_printf("%#.4x : ", row);
 		}

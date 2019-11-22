@@ -6,7 +6,7 @@
 /*   By: djast <djast@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/09/23 13:11:12 by djast             #+#    #+#             */
-/*   Updated: 2019/11/22 17:11:56 by djast            ###   ########.fr       */
+/*   Updated: 2019/11/22 18:13:07 by djast            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -230,9 +230,12 @@ void	start_corewar(t_champ *champs, t_vm_info *info)
 		
 		if (info->dump_cycle == info->cycle)
 		{
-			print_map(info->map);
+			if (info->dump_type == CODE_D)
+				print_map(info->map, 64);
+			else if (info->dump_type == CODE_DUMP)
+				print_map(info->map, 32);
 			break ;
-		}		
+		}
 		//ft_printf("It is now cycle before %d\n", info->cycle);
 		info->cycle++;
 		//ft_printf("It is now cycle after %d\n", info->cycle);
@@ -264,6 +267,7 @@ int		main(int argc, char **argv)
 	}
 	info = (t_vm_info *)malloc(sizeof(t_vm_info));
 	info->dump_cycle = -1;
+	info->dump_type = -1;
 	champs = parse_args(argc, argv, info);
 	if (champs == NULL)
 		cerror("No champions", NULL);
@@ -273,6 +277,7 @@ int		main(int argc, char **argv)
 		free_champions(champs);
 		return (1);
 	}
+	ft_printf("%d %d %d\n", champs->id, champs->next->id, champs->next->next->id);
 	info = init_vm_info(&info, champs);
 	place_players_on_arena(champs, info);
 	info->carriages = init_carriages(champs, info);
