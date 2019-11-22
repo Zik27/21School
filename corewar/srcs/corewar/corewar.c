@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   corewar.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: vurrigon <vurrigon@student.42.fr>          +#+  +:+       +#+        */
+/*   By: djast <djast@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/09/23 13:11:12 by djast             #+#    #+#             */
-/*   Updated: 2019/11/22 16:56:30 by djast            ###   ########.fr       */
+/*   Updated: 2019/11/22 17:07:13 by djast            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -265,6 +265,8 @@ int		main(int argc, char **argv)
 	info = (t_vm_info *)malloc(sizeof(t_vm_info));
 	info->dump_cycle = -1;
 	champs = parse_args(argc, argv, info);
+	if (champs == NULL)
+		cerror("No champions", NULL);
 	if (get_player_count(champs) > MAX_PLAYERS)
 	{
 		ft_printf("Too many champions\n");
