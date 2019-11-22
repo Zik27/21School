@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   get_champ.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: djast <djast@student.42.fr>                +#+  +:+       +#+        */
+/*   By: vurrigon <vurrigon@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/09/25 14:07:20 by djast             #+#    #+#             */
-/*   Updated: 2019/11/06 16:24:20 by djast            ###   ########.fr       */
+/*   Updated: 2019/11/22 17:33:25 by vurrigon         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,11 +14,10 @@
 
 char	*get_champ_code(int fd, int code_size)
 {
-	char *byte;
-	int size;
+	char	*byte;
+	int		size;
 
 	byte = ft_strnew(code_size + 1);
-	
 	size = read(fd, byte, code_size + 1);
 	if (size != code_size)
 	{
@@ -30,11 +29,10 @@ char	*get_champ_code(int fd, int code_size)
 
 char	*get_champ_comment(int fd)
 {
-	char *byte;
-	int size;
+	char	*byte;
+	int		size;
 
 	byte = ft_strnew(2048);
-	
 	size = read(fd, byte, 2048);
 	if (size != 2048)
 	{
@@ -44,12 +42,11 @@ char	*get_champ_comment(int fd)
 	return (byte);
 }
 
-
 int		get_champ_code_size(int fd)
 {
-	unsigned char *byte;
-	int size;
-	int code_size;
+	unsigned char	*byte;
+	int				size;
+	int				code_size;
 
 	byte = (unsigned char *)ft_strnew(4);
 	size = read(fd, byte, 4);
@@ -61,14 +58,12 @@ int		get_champ_code_size(int fd)
 	return (code_size);
 }
 
-
 char	*get_champ_name(int fd)
 {
-	char *byte;
-	int size;
+	char	*byte;
+	int		size;
 
 	byte = ft_strnew(128);
-	
 	size = read(fd, byte, 128);
 	if (size != 128)
 	{

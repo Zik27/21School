@@ -3,14 +3,15 @@
 /*                                                        :::      ::::::::   */
 /*   op_utils.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: djast <djast@student.42.fr>                +#+  +:+       +#+        */
+/*   By: vurrigon <vurrigon@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/09/26 15:13:08 by djast             #+#    #+#             */
-/*   Updated: 2019/11/14 16:53:30 by djast            ###   ########.fr       */
+/*   Updated: 2019/11/22 17:56:13 by vurrigon         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "vm.h"
+
 void		get_op_arg_type(t_vm_info *info, t_carriage *carr)
 {
 	int types;
@@ -68,10 +69,10 @@ void		calc_jump_size(t_carriage *carr)
 	}
 }
 
-void	rewrite(t_vm_info *info, int addr, int number)
+void		rewrite(t_vm_info *info, int addr, int number)
 {
-	int i;
-	char *data;
+	int		i;
+	char	*data;
 
 	i = 4;
 	data = int_to_bytecode(number, 4);

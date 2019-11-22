@@ -6,7 +6,7 @@
 /*   By: vurrigon <vurrigon@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/09/23 13:11:12 by djast             #+#    #+#             */
-/*   Updated: 2019/11/22 17:10:53 by vurrigon         ###   ########.fr       */
+/*   Updated: 2019/11/22 17:41:20 by vurrigon         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -99,7 +99,6 @@ int		check_command_args(t_carriage *carr, int args[3])
 {
 	int cmd;
 	int i;
-
 
 	cmd = carr->op_code;
 	if (g_instr[cmd - 1].args_types_code == 0)
