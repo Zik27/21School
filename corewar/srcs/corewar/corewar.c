@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   corewar.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: djast <djast@student.42.fr>                +#+  +:+       +#+        */
+/*   By: vurrigon <vurrigon@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/09/23 13:11:12 by djast             #+#    #+#             */
-/*   Updated: 2019/11/14 17:38:56 by djast            ###   ########.fr       */
+/*   Updated: 2019/11/22 16:21:36 by vurrigon         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,8 +35,8 @@ void	make_command_next(t_vm_info *info, t_carriage *carr)
 void	make_command(t_vm_info *info, t_champ *champs, t_carriage *carr)
 {
 	(void) champs;
-	if (carr->op_code > 0 && carr->op_code < 16)
-		ft_printf("P %4d | ", carr->id);
+	// if (carr->op_code > 0 && carr->op_code < 16)
+	// 	ft_printf("P %4d | ", carr->id);
 	if (carr->op_code == 1)
 		make_command_live(info, champs, carr);
 	else if (carr->op_code == 2)
@@ -194,7 +194,7 @@ int		make_step_cycle(t_vm_info *info, t_champ *champs)
 			info->checks = 0;
 			info->cycles_after_check = 0;
 			info->cycles_to_die -= CYCLE_DELTA;
-			ft_printf("Cycle to die is now %d\n", info->cycles_to_die);
+			//ft_printf("Cycle to die is now %d\n", info->cycles_to_die);
 		}
 		else
 		{
@@ -207,7 +207,7 @@ int		make_step_cycle(t_vm_info *info, t_champ *champs)
 			info->checks = 0;
 			info->cycles_after_check = 0;
 			info->cycles_to_die -= CYCLE_DELTA;
-			ft_printf("Cycle to die is now %d\n", info->cycles_to_die);
+			//ft_printf("Cycle to die is now %d\n", info->cycles_to_die);
 		}
 		info->live = 0;
 	//	print_carriages(info->carriages);
@@ -227,7 +227,7 @@ void	start_corewar(t_champ *champs, t_vm_info *info)
 	{
 		//ft_printf("b: %p\n", champs->comment);
 		// print_map(info->map);
-		ft_printf("It is now cycle %d\n", info->cycle);
+		//ft_printf("It is now cycle %d\n", info->cycle);
 		//ft_printf("%p", info->carriages->args);
 		// if (info->cycle == 23650)
 		// {
@@ -256,22 +256,29 @@ void	start_corewar(t_champ *champs, t_vm_info *info)
 }
 
 
+
 int		main(int argc, char **argv)
 {
 	t_champ		*champs;
 	t_vm_info	*info;
 
-	if (argc < 2 || argc > 5)
+	if (argc < 2)
 	{
 		print_help(argv);
 		return (0);
 	}
 	champs = parse_args(argc, argv);
+	if (get_player_count(champs) > MAX_PLAYERS)
+	{
+		ft_printf("Too many champions\n");
+		free_champions(champs);
+		return (1);
+	}
 	info = init_vm_info(champs);
 	place_players_on_arena(champs, info);
 	info->carriages = init_carriages(champs, info);
 	introducing(champs, info);
 	start_corewar(champs, info);
-	//free_all(info, champs);
+	free_all(info, champs);
 	return (0);
 }

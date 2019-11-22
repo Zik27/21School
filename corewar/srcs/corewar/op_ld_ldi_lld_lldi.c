@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   op_ld_ldi_lld_lldi.c                               :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: djast <djast@student.42.fr>                +#+  +:+       +#+        */
+/*   By: vurrigon <vurrigon@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/10/09 09:21:36 by djast             #+#    #+#             */
-/*   Updated: 2019/11/07 15:44:41 by djast            ###   ########.fr       */
+/*   Updated: 2019/11/22 15:51:19 by vurrigon         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,7 @@
 
 void	make_command_ld(t_vm_info *info, t_carriage *carr)
 {
-	ft_printf("ld ");
+	//ft_printf("ld ");
 	ft_bzero(carr->args_types, 3 * sizeof(int));
 	get_op_arg_type(info, carr);
 	//printf("pos: %d\n", carr->cur_pos);
@@ -25,7 +25,7 @@ void	make_command_ld(t_vm_info *info, t_carriage *carr)
 	else
 		carr->registers[carr->args[1] - 1] = bytecode_to_int(info, carr, carr->cur_pos + (carr->args[0] % IDX_MOD) % MEM_SIZE, 4);
 	calc_jump_size(carr);
-	ft_printf("%d r%d\n", carr->registers[carr->args[1] - 1], carr->args[1]);
+	//ft_printf("%d r%d\n", carr->registers[carr->args[1] - 1], carr->args[1]);
 	if (carr->registers[carr->args[1] - 1] == 0)
 		carr->carry = 1;
 	else
@@ -51,16 +51,16 @@ static void		print_debug_ldi(t_vm_info *info, t_carriage *carr, int res)
 	else if (carr->args_types[1] == DIR_CODE)
 		b = carr->args[1];
 
-	ft_printf("%d %d r%d\n", a, b, carr->args[2]);
+	//ft_printf("%d %d r%d\n", a, b, carr->args[2]);
 	pc = carr->cur_pos + (res % IDX_MOD);
-	ft_printf("       | -> load from %d + %d = %d (with pc and mod %d)\n", a, b, res, pc);
+	//ft_printf("       | -> load from %d + %d = %d (with pc and mod %d)\n", a, b, res, pc);
 }
 
 void	make_command_ldi(t_vm_info *info, t_carriage *carr)
 {
 	int res;
 
-	ft_printf("ldi ");
+	//ft_printf("ldi ");
 	ft_bzero(carr->args_types, 3 * sizeof(int));
 	get_op_arg_type(info, carr);
 	get_op_arg(info, carr, carr->op_code);
@@ -83,7 +83,7 @@ void	make_command_ldi(t_vm_info *info, t_carriage *carr)
 
 void	make_command_lld(t_vm_info *info, t_carriage *carr)
 {
-	ft_printf("lld\n");
+	//ft_printf("lld\n");
 	ft_bzero(carr->args_types, 3 * sizeof(int));
 	get_op_arg_type(info, carr);
 	//printf("pos: %d\n", carr->cur_pos);
@@ -105,7 +105,7 @@ void	make_command_lldi(t_vm_info *info, t_carriage *carr)
 {
 	int res;
 
-	ft_printf("lldi\n");
+	//ft_printf("lldi\n");
 	ft_bzero(carr->args_types, 3 * sizeof(int));
 	get_op_arg_type(info, carr);
 	//printf("pos: %d\n", carr->cur_pos);

@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   utils.c                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: djast <djast@student.42.fr>                +#+  +:+       +#+        */
+/*   By: vurrigon <vurrigon@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/09/25 16:51:08 by djast             #+#    #+#             */
-/*   Updated: 2019/11/13 18:20:59 by djast            ###   ########.fr       */
+/*   Updated: 2019/11/22 16:03:20 by vurrigon         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -67,6 +67,7 @@ int		bytecode_to_int(t_vm_info *info, t_carriage *carr, int pos, int count_bytes
 	}
 	if (sign)
 		result = ~(result);
+	free(buff);
 	return (result);
 }
 

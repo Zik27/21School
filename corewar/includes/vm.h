@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   vm.h                                               :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: djast <djast@student.42.fr>                +#+  +:+       +#+        */
+/*   By: vurrigon <vurrigon@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/09/23 13:35:39 by djast             #+#    #+#             */
-/*   Updated: 2019/11/06 16:00:34 by djast            ###   ########.fr       */
+/*   Updated: 2019/11/22 16:21:18 by vurrigon         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -96,6 +96,7 @@ void			create_carr_copy(t_vm_info *info, t_carriage *carr);
 int				check_cycle_to_die(t_vm_info *info);
 void			delete_death_carr(t_vm_info *info, t_carriage *carr);
 void			free_all(t_vm_info *info, t_champ *champs);
+void			free_champions(t_champ *champs);
 
 void			make_command_live(t_vm_info *info, t_champ *champs, t_carriage *carr);
 void			make_command_ld(t_vm_info *info, t_carriage *carr);
