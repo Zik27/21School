@@ -6,7 +6,7 @@
 /*   By: djast <djast@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/09/23 13:11:12 by djast             #+#    #+#             */
-/*   Updated: 2019/11/14 17:38:56 by djast            ###   ########.fr       */
+/*   Updated: 2019/11/22 16:56:30 by djast            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -225,18 +225,14 @@ void	start_corewar(t_champ *champs, t_vm_info *info)
 	// printf("\n\n");
 	while (1)
 	{
-		//ft_printf("b: %p\n", champs->comment);
-		// print_map(info->map);
 		ft_printf("It is now cycle %d\n", info->cycle);
-		//ft_printf("%p", info->carriages->args);
-		// if (info->cycle == 23650)
-		// {
-		// 	print_map(info->map);
-		// 	print_carriages(info->carriages);
-		// 	ft_printf("\n\n");
-		// }
 		make_step_cycle(info, champs);
 		
+		if (info->dump_cycle == info->cycle)
+		{
+			print_map(info->map);
+			break ;
+		}		
 		//ft_printf("It is now cycle before %d\n", info->cycle);
 		info->cycle++;
 		//ft_printf("It is now cycle after %d\n", info->cycle);
@@ -244,7 +240,6 @@ void	start_corewar(t_champ *champs, t_vm_info *info)
 
 		if (info->carriages == NULL)
 		{
-
 			//ft_printf("ENDGAME\n");
 			ft_printf("Contestant %d, \"%s\", has won !\n", info->last_live_player->id, info->last_live_player->name);
 			return ;
@@ -261,13 +256,15 @@ int		main(int argc, char **argv)
 	t_champ		*champs;
 	t_vm_info	*info;
 
-	if (argc < 2 || argc > 5)
+	if (argc < 2)
 	{
 		print_help(argv);
 		return (0);
 	}
-	champs = parse_args(argc, argv);
-	info = init_vm_info(champs);
+	info = (t_vm_info *)malloc(sizeof(t_vm_info));
+	info->dump_cycle = -1;
+	champs = parse_args(argc, argv, info);
+	info = init_vm_info(&info, champs);
 	place_players_on_arena(champs, info);
 	info->carriages = init_carriages(champs, info);
 	introducing(champs, info);

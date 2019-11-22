@@ -6,7 +6,7 @@
 /*   By: djast <djast@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/09/25 13:58:35 by djast             #+#    #+#             */
-/*   Updated: 2019/11/14 15:39:07 by djast            ###   ########.fr       */
+/*   Updated: 2019/11/22 16:41:32 by djast            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,22 +38,19 @@ t_carriage			*init_carriage(t_champ *cur_player, t_vm_info *info)
 	return (new_carriage);
 }
 
-t_vm_info			*init_vm_info(t_champ *players)
+t_vm_info			*init_vm_info(t_vm_info **info, t_champ *players)
 {
-	t_vm_info *info;
-
-	info = (t_vm_info *)malloc(sizeof(t_vm_info));
-	info->count_players = get_player_count(players);
-	info->cycles_to_die = CYCLE_TO_DIE;
-	info->cycles_after_check = 1;
-	info->checks = 0;
-	info->cycle = 1;
-	info->live = 0;
+	(*info)->count_players = get_player_count(players);
+	(*info)->cycles_to_die = CYCLE_TO_DIE;
+	(*info)->cycles_after_check = 1;
+	(*info)->checks = 0;
+	(*info)->cycle = 1;
+	(*info)->live = 0;
 	while (players->next != NULL)
 		players = players->next;
-	info->last_live_player = players;
-	info->map = ft_strnew(MEM_SIZE);
-	return (info);
+	(*info)->last_live_player = players;
+	(*info)->map = ft_strnew(MEM_SIZE);
+	return (*info);
 }
 
 t_champ				*init_champ(int id)

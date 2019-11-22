@@ -6,7 +6,7 @@
 /*   By: djast <djast@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/09/25 17:06:18 by djast             #+#    #+#             */
-/*   Updated: 2019/10/16 14:47:26 by djast            ###   ########.fr       */
+/*   Updated: 2019/11/22 16:16:13 by djast            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,7 +26,6 @@ static void		put_player(int pos, t_champ *player, t_vm_info *info)
 
 void			place_players_on_arena(t_champ *champs, t_vm_info *info)
 {
-	(void)champs;
 	int place;
 	t_champ *cur_champ;
 
