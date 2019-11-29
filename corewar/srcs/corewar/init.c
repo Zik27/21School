@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   init.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: vurrigon <vurrigon@student.42.fr>          +#+  +:+       +#+        */
+/*   By: djast <djast@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/09/25 13:58:35 by djast             #+#    #+#             */
-/*   Updated: 2019/11/22 17:35:15 by vurrigon         ###   ########.fr       */
+/*   Updated: 2019/11/29 16:56:07 by djast            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -49,6 +49,8 @@ t_vm_info			*init_vm_info(t_vm_info **info, t_champ *players)
 		players = players->next;
 	(*info)->last_live_player = players;
 	(*info)->map = ft_strnew(MEM_SIZE);
+	(*info)->color_map = (int *)malloc(sizeof(int) * MEM_SIZE);
+	ft_bzero((*info)->color_map, MEM_SIZE * sizeof(int));
 	return (*info);
 }
 
@@ -80,7 +82,8 @@ t_sdl				*init_sdl()
 					SDL_WINDOW_OPENGL);
 	sdl->renderer = SDL_CreateRenderer(sdl->window, -1,
 					SDL_RENDERER_ACCELERATED);
-	sdl->font = TTF_OpenFont("TNR.ttf", 16);
+	sdl->font = TTF_OpenFont("OpenSans-Regular.ttf", 50);
 	sdl->speed = 40;
+	sdl->is_pause = 0;
 	return (sdl);
 }

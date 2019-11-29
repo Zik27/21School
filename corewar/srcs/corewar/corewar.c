@@ -6,7 +6,7 @@
 /*   By: djast <djast@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/09/23 13:11:12 by djast             #+#    #+#             */
-/*   Updated: 2019/11/29 10:22:31 by djast            ###   ########.fr       */
+/*   Updated: 2019/11/29 17:58:31 by djast            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,8 +35,8 @@ void	make_command_next(t_vm_info *info, t_carriage *carr)
 void	make_command(t_vm_info *info, t_champ *champs, t_carriage *carr)
 {
 	(void) champs;
-	if (carr->op_code > 0 && carr->op_code < 16)
-		ft_printf("P %4d | ", carr->id);
+	// if (carr->op_code > 0 && carr->op_code < 16)
+	// 	ft_printf("P %4d | ", carr->id);
 	if (carr->op_code == 1)
 		make_command_live(info, champs, carr);
 	else if (carr->op_code == 2)
@@ -190,7 +190,7 @@ int		make_step_cycle(t_vm_info *info, t_champ *champs)
 			info->checks = 0;
 			info->cycles_after_check = 0;
 			info->cycles_to_die -= CYCLE_DELTA;
-			ft_printf("Cycle to die is now %d\n", info->cycles_to_die);
+			// ft_printf("Cycle to die is now %d\n", info->cycles_to_die);
 		}
 		else
 		{
@@ -203,7 +203,7 @@ int		make_step_cycle(t_vm_info *info, t_champ *champs)
 			info->checks = 0;
 			info->cycles_after_check = 0;
 			info->cycles_to_die -= CYCLE_DELTA;
-			ft_printf("Cycle to die is now %d\n", info->cycles_to_die);
+			// ft_printf("Cycle to die is now %d\n", info->cycles_to_die);
 		}
 		info->live = 0;
 	//	print_carriages(info->carriages);
@@ -217,12 +217,32 @@ void	start_corewar(t_champ *champs, t_vm_info *info, t_sdl *sdl)
 	(void) champs;
 	int i;
 	if (sdl != NULL)
+	{
 		draw(sdl, info);
+	}
 	while (1)
 	{
 		i = 0;
 		if (sdl != NULL)
 		{
+			while (i < sdl->speed && sdl->is_pause == 0)
+			{
+				// ft_printf("It is now cycle %d\n", info->cycle);
+				if (make_step_cycle(info, champs) == 1)
+					return ;
+				info->cycle++;
+				info->cycles_after_check++;
+				i++;
+				if (info->carriages == NULL)
+				{
+					ft_printf("Contestant %d, \"%s\", has won !\n", info->last_live_player->id, info->last_live_player->name);
+					SDL_DestroyWindow(sdl->window);
+					SDL_Quit();
+					return ;
+				}
+			}
+			if (sdl->is_pause == 0)
+				draw(sdl, info);
 			if (SDL_PollEvent(&(sdl->window_event)))
 			{
 				if (SDL_QUIT == sdl->window_event.type)
@@ -230,53 +250,78 @@ void	start_corewar(t_champ *champs, t_vm_info *info, t_sdl *sdl)
 				else if (sdl->window_event.type == SDL_KEYDOWN && SDLK_ESCAPE ==
 							sdl->window_event.key.keysym.sym)
 					exit(0);
-				else if (sdl->window_event.type == SDL_KEYDOWN && SDLK_w ==
+				else if (sdl->window_event.type == SDL_KEYDOWN && SDLK_SPACE ==
 							sdl->window_event.key.keysym.sym)
 				{
-					while (i < sdl->speed)
+					sdl->is_pause = !sdl->is_pause;
+				}
+				else if (sdl->window_event.type == SDL_KEYDOWN && SDLK_s ==
+							sdl->window_event.key.keysym.sym && sdl->is_pause == 1)
+				{
+					// ft_printf("It is now cycle %d\n", info->cycle);
+					if (make_step_cycle(info, champs) == 1)
+						return ;
+					info->cycle++;
+					info->cycles_after_check++;
+					i++;
+					if (info->carriages == NULL)
 					{
-						ft_printf("It is now cycle %d\n", info->cycle);
-						if (make_step_cycle(info, champs) == 1)
-							return ;
-						info->cycle++;
-						info->cycles_after_check++;
-						i++;
+						// ft_printf("Contestant %d, \"%s\", has won !\n", info->last_live_player->id, info->last_live_player->name);
+						SDL_DestroyWindow(sdl->window);
+						SDL_Quit();
+						return ;
 					}
 					draw(sdl, info);
 				}
-				else if(sdl->window_event.type == SDL_KEYDOWN && SDLK_a ==
+				else if(sdl->window_event.type == SDL_KEYDOWN && SDLK_r ==
 							sdl->window_event.key.keysym.sym)
 				{
-					sdl->speed += 1;
-					printf("Now speed: %d\n", sdl->speed);
+					sdl->speed += 100;
+					// printf("Now speed: %d\n", sdl->speed);
+					draw(sdl, info);
 				}
-				else if(sdl->window_event.type == SDL_KEYDOWN && SDLK_z ==
+				else if(sdl->window_event.type == SDL_KEYDOWN && SDLK_e ==
 							sdl->window_event.key.keysym.sym)
 				{
-					sdl->speed -= 1;
-					printf("Now speed: %d\n", sdl->speed);
+					sdl->speed += 10;
+					// printf("Now speed: %d\n", sdl->speed);
+					draw(sdl, info);
 				}
-			}
+				else if(sdl->window_event.type == SDL_KEYDOWN && SDLK_w ==
+							sdl->window_event.key.keysym.sym)
+				{
+					sdl->speed = sdl->speed > 9 ? sdl->speed - 10 : 0;
+					// printf("Now speed: %d\n", sdl->speed);
+					draw(sdl, info);
+				}
+				else if(sdl->window_event.type == SDL_KEYDOWN && SDLK_q ==
+							sdl->window_event.key.keysym.sym)
+				{
+					sdl->speed = sdl->speed > 99 ? sdl->speed - 100 : 0;
+					// printf("Now speed: %d\n", sdl->speed);
+					draw(sdl, info);
+				}
+			}		
 		}
 		else
 		{
-		ft_printf("It is now cycle %d\n", info->cycle);
-		make_step_cycle(info, champs);
-		if (info->dump_cycle == info->cycle)
-		{
-			if (info->dump_type == CODE_D)
-				print_map(info->map, 64);
-			else if (info->dump_type == CODE_DUMP)
-				print_map(info->map, 32);
-			break ;
-		}
-		info->cycle++;
-		info->cycles_after_check++;
-		if (info->carriages == NULL)
-		{
-			ft_printf("Contestant %d, \"%s\", has won !\n", info->last_live_player->id, info->last_live_player->name);
-			return ;
-		}
+			ft_printf("It is now cycle %d\n", info->cycle);
+			make_step_cycle(info, champs);
+			if (info->dump_cycle == info->cycle)
+			{
+				if (info->dump_type == CODE_D)
+					print_map(info->map, 64);
+				else if (info->dump_type == CODE_DUMP)
+					print_map(info->map, 32);
+				break ;
+			}
+			info->cycle++;
+			info->cycles_after_check++;
+			if (info->carriages == NULL)
+			{
+				ft_printf("Contestant %d, \"%s\", has won !\n", info->last_live_player->id, info->last_live_player->name);
+				return ;
+			}
 		}
 	}
 }
@@ -310,7 +355,8 @@ int		main(int argc, char **argv)
 	info->carriages = init_carriages(champs, info);
 	if (sdl == NULL)
 		introducing(champs, info);
-	start_corewar(champs, info);
+
+	start_corewar(champs, info, sdl);
 	free_all(info, champs);
 	return (0);
 }

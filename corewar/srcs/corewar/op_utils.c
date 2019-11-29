@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   op_utils.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: vurrigon <vurrigon@student.42.fr>          +#+  +:+       +#+        */
+/*   By: djast <djast@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/09/26 15:13:08 by djast             #+#    #+#             */
-/*   Updated: 2019/11/29 12:55:55 by vurrigon         ###   ########.fr       */
+/*   Updated: 2019/11/29 17:50:28 by djast            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -78,7 +78,7 @@ void		calc_jump_size(t_carriage *carr)
 	}
 }
 
-void		rewrite(t_vm_info *info, int addr, int number)
+void		rewrite(t_vm_info *info, int addr, int number, t_champ *champ)
 {
 	int		i;
 	char	*data;
@@ -90,6 +90,7 @@ void		rewrite(t_vm_info *info, int addr, int number)
 	while (i != 0)
 	{
 		info->map[(addr + i - 1) % MEM_SIZE] = data[i - 1];
+		info->color_map[(addr + i - 1) % MEM_SIZE] = champ->id;
 		i--;
 	}
 	free(data);

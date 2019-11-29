@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   vm.h                                               :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: vurrigon <vurrigon@student.42.fr>          +#+  +:+       +#+        */
+/*   By: djast <djast@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/09/23 13:35:39 by djast             #+#    #+#             */
-/*   Updated: 2019/11/29 12:39:24 by vurrigon         ###   ########.fr       */
+/*   Updated: 2019/11/29 17:48:06 by djast            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,6 +30,32 @@
 # define SYMBOL_SIZE 18
 # define SPACE_SIZE 2
 
+# define COREWAR_TEXT_X SIZE_WIN_X * 0.77
+# define COREWAR_TEXT_Y SIZE_WIN_Y * 0.07
+# define COREWAR_TEXT_SIZE_X SIZE_WIN_X * 0.22
+# define COREWAR_TEXT_SIZE_Y 100
+
+# define SPEED_TEXT_X SIZE_WIN_X * 0.77
+# define SPEED_TEXT_Y SIZE_WIN_Y * 0.2
+# define SPEED_TEXT_SIZE_X SIZE_WIN_X * 0.05
+# define SPEED_TEXT_SIZE_Y 40
+
+# define SPEED_RES_X SIZE_WIN_X * 0.83
+# define SPEED_RES_Y SIZE_WIN_Y * 0.2
+# define SPEED_RES_SIZE_X SIZE_WIN_X * 0.05
+# define SPEED_RES_SIZE_Y 40
+
+# define CYCLE_TEXT_X SIZE_WIN_X * 0.77
+# define CYCLE_TEXT_Y SIZE_WIN_Y * 0.25
+# define CYCLE_TEXT_SIZE_X SIZE_WIN_X * 0.05
+# define CYCLE_TEXT_SIZE_Y 40
+
+# define CYCLE_RES_X SIZE_WIN_X * 0.83
+# define CYCLE_RES_Y SIZE_WIN_Y * 0.25
+# define CYCLE_RES_SIZE_X SIZE_WIN_X * 0.05
+# define CYCLE_RES_SIZE_Y 40
+
+
 typedef struct		s_sdl
 {
 	SDL_Window		*window;
@@ -39,6 +65,7 @@ typedef struct		s_sdl
 	SDL_Texture		*text;
 	SDL_Surface		*surface;
 	int				speed;
+	int				is_pause;
 }					t_sdl;
 
 typedef struct			s_champ
@@ -109,7 +136,7 @@ t_champ			*find_player_by_id(t_champ *champs, int id);
 void			introducing(t_champ	*champs, t_vm_info *info);
 void			set_op_steps(t_carriage *carr);
 int				bytecode_to_int(t_vm_info *info, int pos, int count_bytes);
-void			rewrite(t_vm_info *info, int addr, int number);
+void			rewrite(t_vm_info *info, int addr, int number, t_champ *champ);
 void			get_op_arg_type(t_vm_info *info, t_carriage *carr);
 void			get_op_arg(t_vm_info *info, t_carriage *carr, int cmd);
 void			calc_jump_size(t_carriage *carr);

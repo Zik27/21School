@@ -3,10 +3,10 @@
 #                                                         :::      ::::::::    #
 #    Makefile                                           :+:      :+:    :+:    #
 #                                                     +:+ +:+         +:+      #
-#    By: vurrigon <vurrigon@student.42.fr>          +#+  +:+       +#+         #
+#    By: djast <djast@student.42.fr>                +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2019/02/15 17:18:06 by djast             #+#    #+#              #
-#    Updated: 2019/11/29 13:23:11 by vurrigon         ###   ########.fr        #
+#    Updated: 2019/11/29 16:42:19 by djast            ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -107,7 +107,9 @@ GREEN = \033[0;32m
 RED = \033[0;31m
 RESET = \033[0m
 
-all: install_sdl $(NAME_ASM) $(NAME_COREWAR)
+#all: install_sdl $(NAME_ASM) $(NAME_COREWAR)
+
+all: $(NAME_ASM) $(NAME_COREWAR)
 
 no_sdl: $(NAME_ASM) $(NAME_COREWAR)
 

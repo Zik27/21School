@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   parse.c                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: vurrigon <vurrigon@student.42.fr>          +#+  +:+       +#+        */
+/*   By: djast <djast@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/09/25 13:21:23 by djast             #+#    #+#             */
-/*   Updated: 2019/11/29 10:19:46 by djast            ###   ########.fr       */
+/*   Updated: 2019/11/29 14:47:26 by djast            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -78,7 +78,7 @@ int			get_argv_cor(char **argv)
 	return (count);
 }
 
-t_champ		*parse_args(int argc, char **argv, t_vm_info *info)
+t_champ		*parse_args(int argc, char **argv, t_sdl **sdl, t_vm_info *info)
 {
 	int		i;
 	char	*find;

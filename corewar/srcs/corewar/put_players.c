@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   put_players.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: vurrigon <vurrigon@student.42.fr>          +#+  +:+       +#+        */
+/*   By: djast <djast@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/09/25 17:06:18 by djast             #+#    #+#             */
-/*   Updated: 2019/11/29 12:37:11 by vurrigon         ###   ########.fr       */
+/*   Updated: 2019/11/29 16:00:56 by djast            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,6 +20,7 @@ static void		put_player(int pos, t_champ *player, t_vm_info *info)
 	while (index != player->code_size)
 	{
 		info->map[pos + index] = player->code[index] & 0xFF;
+		info->color_map[pos + index] = player->id;
 		index++;
 	}
 }
