@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   put_players.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: djast <djast@student.42.fr>                +#+  +:+       +#+        */
+/*   By: vurrigon <vurrigon@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/09/25 17:06:18 by djast             #+#    #+#             */
-/*   Updated: 2019/11/22 16:16:13 by djast            ###   ########.fr       */
+/*   Updated: 2019/11/29 12:37:11 by vurrigon         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,8 +26,8 @@ static void		put_player(int pos, t_champ *player, t_vm_info *info)
 
 void			place_players_on_arena(t_champ *champs, t_vm_info *info)
 {
-	int place;
-	t_champ *cur_champ;
+	int		place;
+	t_champ	*cur_champ;
 
 	place = 0;
 	cur_champ = champs;

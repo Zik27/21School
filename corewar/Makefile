@@ -3,10 +3,10 @@
 #                                                         :::      ::::::::    #
 #    Makefile                                           :+:      :+:    :+:    #
 #                                                     +:+ +:+         +:+      #
-#    By: djast <djast@student.42.fr>                +#+  +:+       +#+         #
+#    By: vurrigon <vurrigon@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2019/02/15 17:18:06 by djast             #+#    #+#              #
-#    Updated: 2019/10/16 15:29:40 by djast            ###   ########.fr        #
+#    Updated: 2019/11/29 13:23:11 by vurrigon         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -38,7 +38,24 @@ FILES_ASM =		asm.c \
 				valid.c \
 				write_to_file.c \
 				utils_dasm.c \
-				free_dasm.c
+				free_dasm.c \
+				bytecode.c \
+				bytecode_translate.c \
+				free_asm.c \
+				ft_split_spaces.c \
+				init.c \
+				instructions_arguments.c \
+				instructions.c \
+				is_something_check.c \
+				lable_handle.c \
+				parse_body.c \
+				parse_name_comment_check_error.c \
+				parse_name_comment_check.c \
+				parse_name_comment.c \
+				tokenize.c \
+				valid_arg_type.c \
+				valid_arguments.c \
+
 
 FILSE_COREWAR = corewar.c \
 				parse.c \

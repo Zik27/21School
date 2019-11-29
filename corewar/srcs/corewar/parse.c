@@ -3,18 +3,19 @@
 /*                                                        :::      ::::::::   */
 /*   parse.c                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: djast <djast@student.42.fr>                +#+  +:+       +#+        */
+/*   By: vurrigon <vurrigon@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/09/25 13:21:23 by djast             #+#    #+#             */
-/*   Updated: 2019/11/22 18:13:33 by djast            ###   ########.fr       */
+/*   Updated: 2019/11/29 12:33:36 by vurrigon         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "vm.h"
 
-void		parse_champion(t_champ **champs, t_champ **cur_champ, char *filename, int i)
+void		parse_champion(t_champ **champs, t_champ **cur_champ,
+								char *filename, int i)
 {
-	t_champ *tmp;
+	t_champ	*tmp;
 
 	tmp = check_file(filename, i);
 	if ((*champs) == NULL)
@@ -31,8 +32,8 @@ void		parse_champion(t_champ **champs, t_champ **cur_champ, char *filename, int 
 
 void		parse_dump_flag(char *command, char *argv_cycle, t_vm_info *info)
 {
-	int cycle;
-	char *check;
+	int		cycle;
+	char	*check;
 
 	cycle = ft_atoi(argv_cycle);
 	check = ft_itoa(cycle);
@@ -49,8 +50,8 @@ void		parse_dump_flag(char *command, char *argv_cycle, t_vm_info *info)
 
 int			is_flag(char *place, char *name, int max_players, t_champ *champs)
 {
-	int int_place;
-	char *find;
+	int		int_place;
+	char	*find;
 
 	int_place = ft_atoi(place);
 	if (int_place > max_players || find_player_by_id(champs, int_place) != 0 ||
@@ -62,9 +63,9 @@ int			is_flag(char *place, char *name, int max_players, t_champ *champs)
 
 int			get_argv_cor(char **argv)
 {
-	int i;
-	int count;
-	char *find;
+	int		i;
+	int		count;
+	char	*find;
 
 	i = 1;
 	count = 0;
@@ -79,13 +80,13 @@ int			get_argv_cor(char **argv)
 
 t_champ		*parse_args(int argc, char **argv, t_vm_info *info)
 {
-	int i;
-	char *find;
-	t_champ *champs;
-	int id;
-	int count_players;
-	
+	int		i;
+	char	*find;
+	t_champ	*champs;
+	int		id;
+	int		count_players;
 	t_champ *cur_champ;
+
 	i = 1;
 	id = 1;
 	count_players = get_argv_cor(argv);
@@ -110,7 +111,8 @@ t_champ		*parse_args(int argc, char **argv, t_vm_info *info)
 				cerror("Wrong -n flag", NULL);
 			if (is_flag(argv[i + 1], argv[i + 2], count_players, champs) == 1)
 			{
-				parse_champion(&champs, &cur_champ, argv[i + 2], ft_atoi(argv[i + 1]));
+				parse_champion(&champs, &cur_champ, argv[i + 2],
+									ft_atoi(argv[i + 1]));
 				i += 2;
 			}
 			else

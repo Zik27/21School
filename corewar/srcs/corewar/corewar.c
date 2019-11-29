@@ -6,7 +6,7 @@
 /*   By: vurrigon <vurrigon@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/09/23 13:11:12 by djast             #+#    #+#             */
-/*   Updated: 2019/11/22 18:13:07 by djast            ###   ########.fr       */
+/*   Updated: 2019/11/29 12:56:26 by vurrigon         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -252,8 +252,6 @@ void	start_corewar(t_champ *champs, t_vm_info *info)
 	//print_map(info->map);
 }
 
-
-
 int		main(int argc, char **argv)
 {
 	t_champ		*champs;
@@ -276,7 +274,7 @@ int		main(int argc, char **argv)
 		free_champions(champs);
 		return (1);
 	}
-	ft_printf("%d %d %d\n", champs->id, champs->next->id, champs->next->next->id);
+	//ft_printf("%d %d %d\n", champs->id, champs->next->id, champs->next->next->id);
 	info = init_vm_info(&info, champs);
 	place_players_on_arena(champs, info);
 	info->carriages = init_carriages(champs, info);

@@ -12,6 +12,17 @@ typedef struct	s_op
 	unsigned short		t_dir_size;
 }				t_op;
 
+static int 		i_name[8][7] = {
+		{15, 1, 14, 10, 13, 2, -1},	//l
+		{4, 6, 16, -1},				//a
+		{11, 5, 3, -1},				//s
+		{7, -1},	                //o
+		{12, -1},					//f
+		{8, -1},					//x
+		{9, -1},					//z
+		{-1}
+};
+
 static t_op		g_instr[16] = {
 	{
 		.name = "live",

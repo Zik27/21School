@@ -6,7 +6,7 @@
 /*   By: vurrigon <vurrigon@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/09/26 15:13:08 by djast             #+#    #+#             */
-/*   Updated: 2019/11/22 17:56:13 by vurrigon         ###   ########.fr       */
+/*   Updated: 2019/11/29 12:55:55 by vurrigon         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,6 +22,29 @@ void		get_op_arg_type(t_vm_info *info, t_carriage *carr)
 	carr->args_types[2] = ((unsigned char)types & 0b1100) / 4;
 }
 
+static void	get_args(t_vm_info *info, t_carriage *carr, int cmd, int i)
+{
+	if (carr->args_types[i] == REG_CODE)
+	{
+		carr->args[i] = info->map[(carr->cur_pos + carr->cur_step + 1 + 1) %
+																MEM_SIZE];
+		carr->cur_step += 1;
+	}
+	else if (carr->args_types[i] == DIR_CODE)
+	{
+		carr->args[i] = bytecode_to_int(info,
+			(carr->cur_pos + 1 + g_instr[cmd - 1].args_types_code +
+				carr->cur_step) % MEM_SIZE, g_instr[cmd - 1].t_dir_size);
+		carr->cur_step += g_instr[cmd - 1].t_dir_size;
+	}
+	else if (carr->args_types[i] == IND_CODE)
+	{
+		carr->args[i] = bytecode_to_int(info, (carr->cur_pos + 1 +
+			g_instr[cmd - 1].args_types_code + carr->cur_step) % MEM_SIZE, 2);
+		carr->cur_step += 2;
+	}
+}
+
 void		get_op_arg(t_vm_info *info, t_carriage *carr, int cmd)
 {
 	int i;
@@ -30,21 +53,7 @@ void		get_op_arg(t_vm_info *info, t_carriage *carr, int cmd)
 	carr->cur_step = 0;
 	while (i < 3)
 	{
-		if (carr->args_types[i] == REG_CODE)
-		{
-			carr->args[i] = info->map[(carr->cur_pos + carr->cur_step + 1 + 1) % MEM_SIZE];
-			carr->cur_step += 1;
-		}
-		else if (carr->args_types[i] == DIR_CODE)
-		{
-			carr->args[i] = bytecode_to_int(info, carr, (carr->cur_pos + 1 + g_instr[cmd - 1].args_types_code + carr->cur_step) % MEM_SIZE, g_instr[cmd - 1].t_dir_size);
-			carr->cur_step += g_instr[cmd - 1].t_dir_size;
-		}
-		else if (carr->args_types[i] == IND_CODE)
-		{
-			carr->args[i] = bytecode_to_int(info, carr, (carr->cur_pos + 1 + g_instr[cmd - 1].args_types_code + carr->cur_step) % MEM_SIZE, 2);
-			carr->cur_step += 2;
-		}
+		get_args(info, carr, cmd, i);
 		i++;
 	}
 }
