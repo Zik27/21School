@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   op_st_sti.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: vurrigon <vurrigon@student.42.fr>          +#+  +:+       +#+        */
+/*   By: djast <djast@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/10/09 09:22:05 by djast             #+#    #+#             */
-/*   Updated: 2019/11/22 17:55:10 by vurrigon         ###   ########.fr       */
+/*   Updated: 2019/11/29 10:25:20 by djast            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,12 +14,12 @@
 
 void			make_command_st(t_vm_info *info, t_carriage *carr)
 {
-	//ft_printf("st ");
+	ft_printf("st ");
 	ft_bzero(carr->args_types, 3 * sizeof(int));
 	get_op_arg_type(info, carr);
 	//printf("pos: %d\n", carr->cur_pos);
 	get_op_arg(info, carr, carr->op_code);
-	//ft_printf("r%d %d\n", carr->args[0], carr->args[1]);
+	ft_printf("r%d %d\n", carr->args[0], carr->args[1]);
 	if (carr->args_types[1] == REG_CODE)
 		carr->registers[carr->args[1] - 1] = carr->registers[carr->args[0] - 1];
 	else
@@ -47,16 +47,16 @@ static void		print_debug_sti(t_vm_info *info, t_carriage *carr, int res)
 		b = carr->registers[carr->args[2] - 1];
 	else if (carr->args_types[2] == DIR_CODE)
 		b = carr->args[2];
-	//ft_printf(" %d %d\n", a, b);
+	ft_printf(" %d %d\n", a, b);
 	pc = carr->cur_pos + (res % IDX_MOD);
-	//ft_printf("       | -> store to %d + %d = %d (with pc and mod %d)\n", a, b, res, pc);
+	ft_printf("       | -> store to %d + %d = %d (with pc and mod %d)\n", a, b, res, pc);
 }
 
 void			make_command_sti(t_vm_info *info, t_carriage *carr)
 {
 	int res;
 
-	//ft_printf("sti ");
+	ft_printf("sti ");
 	res = 0;
 	ft_bzero(carr->args_types, 3 * sizeof(int));
 	get_op_arg_type(info, carr);
@@ -64,7 +64,7 @@ void			make_command_sti(t_vm_info *info, t_carriage *carr)
 	//printf("%d %d %d\n", carr->args_types[0], carr->args_types[1], carr->args_types[2]);
 	get_op_arg(info, carr, carr->op_code);
 	//printf("args: %x %x\n", carr->args[0], carr->args[1]);
-	//ft_printf("r%d", carr->args[0]);
+	ft_printf("r%d", carr->args[0]);
 	if (carr->args_types[1] == REG_CODE)
 		res += carr->registers[carr->args[1] - 1];
 	else if (carr->args_types[1] == DIR_CODE)
