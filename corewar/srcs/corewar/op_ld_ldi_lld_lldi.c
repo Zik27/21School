@@ -21,7 +21,7 @@ void			make_command_ld(t_vm_info *info, t_carriage *carr)
 	if (carr->args_types[0] == DIR_CODE)
 		carr->registers[carr->args[1] - 1] = carr->args[0];
 	else
-		carr->registers[carr->args[1] - 1] = bytecode_to_int(info, carr,
+		carr->registers[carr->args[1] - 1] = bytecode_to_int(info,
 					carr->cur_pos + (carr->args[0] % IDX_MOD) % MEM_SIZE, 4);
 	calc_jump_size(carr);
 	ft_printf("%d r%d\n", carr->registers[carr->args[1] - 1], carr->args[1]);
@@ -44,7 +44,7 @@ static void		print_debug_ldi(t_vm_info *info, t_carriage *carr, int res)
 	else if (carr->args_types[0] == DIR_CODE)
 		a = carr->args[0];
 	else if (carr->args_types[0] == IND_CODE)
-		a = bytecode_to_int(info, carr, carr->cur_pos +
+		a = bytecode_to_int(info, carr->cur_pos +
 									(carr->args[0] % IDX_MOD) % MEM_SIZE, 4);
 	if (carr->args_types[1] == REG_CODE)
 		b = carr->registers[carr->args[1] - 1];
@@ -69,13 +69,13 @@ void			make_command_ldi(t_vm_info *info, t_carriage *carr)
 	else if (carr->args_types[0] == DIR_CODE)
 		res += carr->args[0];
 	else if (carr->args_types[0] == IND_CODE)
-		res += bytecode_to_int(info, carr, carr->cur_pos +
+		res += bytecode_to_int(info, carr->cur_pos +
 									(carr->args[0] % IDX_MOD) % MEM_SIZE, 4);
 	if (carr->args_types[1] == REG_CODE)
 		res += carr->registers[carr->args[1] - 1];
 	else if (carr->args_types[1] == DIR_CODE)
 		res += carr->args[1];
-	carr->registers[carr->args[2] - 1] = bytecode_to_int(info, carr,
+	carr->registers[carr->args[2] - 1] = bytecode_to_int(info, 
 							(carr->cur_pos + (res % IDX_MOD)) % MEM_SIZE, 4);
 	print_debug_ldi(info, carr, res);
 	calc_jump_size(carr);
@@ -93,7 +93,7 @@ void			make_command_lld(t_vm_info *info, t_carriage *carr)
 	if (carr->args_types[0] == DIR_CODE)
 		carr->registers[carr->args[1] - 1] = carr->args[0];
 	else
-		carr->registers[carr->args[1] - 1] = bytecode_to_int(info, carr,
+		carr->registers[carr->args[1] - 1] = bytecode_to_int(info,
 							(carr->cur_pos + carr->args[0]) % MEM_SIZE, 4);
 	calc_jump_size(carr);
 	if (carr->args[0] == 0)
@@ -119,13 +119,13 @@ void			make_command_lldi(t_vm_info *info, t_carriage *carr)
 	else if (carr->args_types[0] == DIR_CODE)
 		res += carr->args[0];
 	else if (carr->args_types[0] == IND_CODE)
-		res += bytecode_to_int(info, carr, (carr->cur_pos +
+		res += bytecode_to_int(info, (carr->cur_pos +
 									(carr->args[0] % IDX_MOD)) % MEM_SIZE, 4);
 	if (carr->args_types[1] == REG_CODE)
 		res += carr->registers[carr->args[1] - 1];
 	else if (carr->args_types[1] == DIR_CODE)
 		res += carr->args[1];
-	carr->registers[carr->args[2] - 1] = bytecode_to_int(info, carr,
+	carr->registers[carr->args[2] - 1] = bytecode_to_int(info,
 										(carr->cur_pos + res) % MEM_SIZE, 4);
 	calc_jump_size(carr);
 }

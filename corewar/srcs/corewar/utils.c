@@ -6,7 +6,7 @@
 /*   By: vurrigon <vurrigon@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/09/25 16:51:08 by djast             #+#    #+#             */
-/*   Updated: 2019/11/22 16:03:20 by vurrigon         ###   ########.fr       */
+/*   Updated: 2019/11/29 12:38:26 by vurrigon         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -41,14 +41,13 @@ t_champ		*find_player_by_id(t_champ *champs, int id)
 	return (NULL);
 }
 
-int		bytecode_to_int(t_vm_info *info, t_carriage *carr, int pos, int count_bytes)
+int		bytecode_to_int(t_vm_info *info, int pos, int count_bytes)
 {
-	int result;
-	int	i;
-	int	sign;
-	unsigned char *buff;
+	int				result;
+	int				i;
+	int				sign;
+	unsigned char	*buff;
 
-	(void) carr;
 	buff = (unsigned char *)malloc(sizeof(unsigned char) * count_bytes);
 	i = 0;
 	while (i++ < count_bytes)
@@ -89,18 +88,15 @@ char	*int_to_bytecode(int value, int size)
 
 void	create_carr_copy(t_vm_info *info, t_carriage *carr)
 {
- 	t_carriage *new_carr;
- 	int i;
+ 	t_carriage	*new_carr;
+ 	int			i;
 
  	new_carr = init_carriage(carr->champ, info);
-
 	i = 0;
 	while (i++ < REG_NUMBER)
 		new_carr->registers[i - 1] = carr->registers[i - 1];
-
 	new_carr->carry = carr->carry;
 	new_carr->cycle_last_live = carr->cycle_last_live;
-
 	new_carr->next = info->carriages;
 	info->carriages = new_carr;
 }

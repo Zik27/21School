@@ -240,8 +240,6 @@ void	start_corewar(t_champ *champs, t_vm_info *info)
 	}
 }
 
-
-
 int		main(int argc, char **argv)
 {
 	t_champ		*champs;

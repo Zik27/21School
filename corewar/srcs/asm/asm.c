@@ -6,12 +6,11 @@
 /*   By: vurrigon <vurrigon@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/09/17 11:50:59 by vurrigon          #+#    #+#             */
-/*   Updated: 2019/10/09 13:04:49 by vurrigon         ###   ########.fr       */
+/*   Updated: 2019/10/19 15:27:52 by vurrigon         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "corewar.h"
-#include <stdio.h>
 
 int		check_extension(char *filename)
 {
@@ -36,141 +35,51 @@ int		check_extension(char *filename)
 	return (0);
 }
 
-int	skip_tab_space(t_player *player, char *line)
+void	check_end_file(t_player *player)
 {
-	while (line[player->num_col])
+	char	buf[2];
+	int		lpos;
+	int		end;
+
+	end = lseek(player->fd, 0, SEEK_END);
+	lpos = end;
+	while (lpos-- > 0)
 	{
-		if (line[player->num_col] == ' ' || line[player->num_col] == '\t')
-			player->num_col++;
-		else if (line[player->num_col] == '"')
-			return (QUOTE);
-		else
-			return (-1);
-	}
-	return (0);
-}
-
-void	write_name(t_player *player, char *line)
-{
-	char	*tmp;
-	int		length;
-
-	if (skip_tab_space(player, line) != QUOTE)
-		error_file("Syntax error", player->num_col + 1, player->num_row);
-	player->num_col++;
-	tmp = ft_strchr(&line[player->num_col], '"');
-	if (!tmp)
-		error_file("Invalid name", player->num_col + 1, player->num_row);
-	length = tmp - &line[player->num_col];
-	if (length > PROG_NAME_LENGTH)
- 		error("Champion name too long (Max length 128)");
- 	tmp = &line[player->num_col];
- 	player->num_col += length + 1;
- 	if (skip_tab_space(player, line) && !is_comment(line, player))
- 		error_file("Syntax error", player->num_col + 1, player->num_row);
- 	player->name = ft_strndup(tmp, length);
- 	printf("[%s]\n", player->name);
-}
-
-void	write_comment(t_player *player, char *line)
-{
-	char	*tmp;
-	int		length;
-
-	if (skip_tab_space(player, line) != QUOTE)
-		error_file("Syntax error", player->num_col + 1, player->num_row);
-	player->num_col++;
-	tmp = ft_strchr(&line[player->num_col], '"');
-	if (!tmp)
-		error_file("Invalid comment", player->num_col + 1, player->num_row);
-	length = tmp - &line[player->num_col];
-	if (length > COMMENT_LENGTH)
-		error("Champion comment too long (Max length 2048)");
- 	tmp = &line[player->num_col];
- 	player->num_col += length + 1;
- 	if (skip_tab_space(player, line) && !is_comment(line, player))
- 		error_file("Syntax error", player->num_col + 1, player->num_row);
- 	player->comment = ft_strndup(tmp, length);
- 	printf("[%s]\n", player->comment);
-}
-
-int		check_command(char *line, t_player *player)
-{
-	if (!ft_strncmp(line, NAME_CMD_STRING, 5) && (line[5] == '\t' || line[5] == ' '))
-	{
-		player->num_col += OFFSET_CMD_NAME;
-		write_name(player, line);
-		return (1);
-	}
-	else if (!ft_strncmp(line, COMMENT_CMD_STRING, 8) && (line[8] == '\t' || line[8] == ' '))
-	{
-		player->num_col += OFFSET_CMD_COMMENT;
-		write_comment(player, line);
-		return (1);
-	}
-	return (0);
-
-}
-
-void	search_comment_name(t_player *player, char *line)
-{
-	while (line[player->num_col])
-	{
-		if (is_comment(line, player))
+		lseek(player->fd, lpos, SEEK_SET);
+		read(player->fd, buf, 1);
+		if (is_whitespace(*buf))
+			continue;
+		else if (*buf == '\n')
 			return ;
-		else if (line[player->num_col] == '.')
+		else
 		{
-			if (!check_command(&line[player->num_col], player))
-				error_file("Unknown command", player->num_col + 1, player->num_row);
+			check_comment(player->fd, lpos, buf);
 			return ;
 		}
-		else if (line[player->num_col] != ' ' && line[player->num_col] != '\t')
-			error_file("Syntax error", player->num_col + 1, player->num_row);		
-		player->num_col++;
 	}
 }
 
-int		check_name_comment(int fd, t_player *player)
+void	assemble(int fd, char *file_name)
 {
-	char	*line;
+	t_player	*header;
+	int			new_fd;
 
-	while (get_next_line(fd, &line) == 1)
-	{
-		player->num_row++;
-		search_comment_name(player, line);
-		player->num_col = 0;
-		free(line);
-		if (player->comment && player->name)
-			return (1);
-	}
-	return (0);
-}
-
-t_player	*init_player()
-{
-	t_player *player;
-
-	if (!(player = malloc(sizeof(t_player))))
-		return (NULL);
-	player->name = NULL;
-	player->comment = NULL;
-	player->num_row = 0;
-	player->num_col = 0;
-	player->instr = NULL;
-	return (player);
-}
-
-void	assemble(int fd)
-{
-	t_player *header;
-
-	if (!(header = init_player()))
+	if (!(header = init_player(fd, file_name)))
 		error("Error allocating header memory");
 	if (!check_name_comment(fd, header))
 		error("Error reading of name or comment");
+	reading_body_champion(fd, header);
+	calculate_size_exec_code(header);
+	check_arg_is_digit(header);
+	check_end_file(header);
+	new_fd = create_file_bytecode(header);
+	translate_to_bytecode(header, new_fd);
+	ft_putstr("Writing output program to ");
+	ft_putendl(header->file_name);
+	free_asm(header);
 }
 
-int	main(int argc, char **argv)
+int		main(int argc, char **argv)
 {
 	int	fd;
 	int	exten;
@@ -185,9 +94,7 @@ int	main(int argc, char **argv)
 		if (fd == -1)
 			error("File name missing.");
 		if (exten == 1)
-			assemble(fd);
-		else
-			disassemble(fd, argv[1]);
+			assemble(fd, argv[1]);
 	}
 	return (0);
 }
