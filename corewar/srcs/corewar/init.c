@@ -3,21 +3,20 @@
 /*                                                        :::      ::::::::   */
 /*   init.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: djast <djast@student.42.fr>                +#+  +:+       +#+        */
+/*   By: vurrigon <vurrigon@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/09/25 13:58:35 by djast             #+#    #+#             */
-/*   Updated: 2019/11/22 16:41:32 by djast            ###   ########.fr       */
+/*   Updated: 2019/11/22 17:35:15 by vurrigon         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "vm.h"
 
-
 t_carriage			*init_carriage(t_champ *cur_player, t_vm_info *info)
 {
-	t_carriage *new_carriage;
-	int i;
-	static int carr_id = 1;	
+	t_carriage	*new_carriage;
+	int			i;
+	static int	carr_id = 1;
 
 	new_carriage = (t_carriage *)malloc(sizeof(t_carriage));
 	new_carriage->id = carr_id;

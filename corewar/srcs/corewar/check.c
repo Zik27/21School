@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   check.c                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: djast <djast@student.42.fr>                +#+  +:+       +#+        */
+/*   By: vurrigon <vurrigon@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/09/25 13:38:07 by djast             #+#    #+#             */
-/*   Updated: 2019/11/07 16:35:32 by djast            ###   ########.fr       */
+/*   Updated: 2019/11/22 17:30:59 by vurrigon         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,7 +19,6 @@ static int		check_magic_number(int fd)
 	int magic_number;
 
 	byte = ft_strnew(4);
-	
 	size = read(fd, byte, 4);
 	if (size != 4)
 		return (0);
@@ -83,9 +82,8 @@ t_champ			*check_file(char *arg, int id)
 	return (champ);
 }
 
-int		check_cycle_to_die(t_vm_info *info)
+int				check_cycle_to_die(t_vm_info *info)
 {
-	(void) info;
 	//printf("%d\n", info->cycle);
 	delete_death_carr(info, info->carriages);
 	return (0);
