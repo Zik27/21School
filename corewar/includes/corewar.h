@@ -6,7 +6,7 @@
 /*   By: vurrigon <vurrigon@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/09/17 12:29:08 by vurrigon          #+#    #+#             */
-/*   Updated: 2019/10/19 15:07:27 by vurrigon         ###   ########.fr       */
+/*   Updated: 2019/11/29 14:03:33 by vurrigon         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -137,6 +137,7 @@ void			search_comment_name(t_player *player, char *line);
 void			search_continue(t_player *player, char *line);
 void			link_lable_to_instr(t_instr *instr, t_label *label);
 void			change_col_num(t_player *player, char **arg_line, char *arg);
+void			disassemble(int fd, char *full_name);
 
 /*
 **	Error
