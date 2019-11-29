@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   op_live.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: djast <djast@student.42.fr>                +#+  +:+       +#+        */
+/*   By: vurrigon <vurrigon@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/10/09 09:20:37 by djast             #+#    #+#             */
-/*   Updated: 2019/11/29 10:24:09 by djast            ###   ########.fr       */
+/*   Updated: 2019/11/29 14:51:24 by vurrigon         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,11 +16,11 @@ void	make_command_live(t_vm_info *info, t_champ *champs, t_carriage *carr)
 {
 	t_champ *champ;
 
-	ft_printf("live ");
+	//ft_printf("live ");
 	ft_bzero(carr->args_types, 3 * sizeof(int));
 	carr->args_types[0] = DIR_CODE;
 	get_op_arg(info, carr, carr->op_code);
-	ft_printf("%d\n", carr->args[0]);
+	//ft_printf("%d\n", carr->args[0]);
 	info->live++;
 	carr->cycle_last_live = info->cycle;
 	calc_jump_size(carr);
