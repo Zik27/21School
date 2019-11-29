@@ -67,3 +67,20 @@ t_champ				*init_champ(int id)
 	champ->next = NULL;
 	return (champ);
 }
+
+t_sdl				*init_sdl()
+{
+	t_sdl *sdl;
+
+	sdl = (t_sdl *)malloc(sizeof(t_sdl));
+	TTF_Init();
+	SDL_Init(SDL_INIT_VIDEO);
+	sdl->window = SDL_CreateWindow("Corewar", SDL_WINDOWPOS_UNDEFINED,
+					SDL_WINDOWPOS_UNDEFINED, SIZE_WIN_X, 1300,
+					SDL_WINDOW_OPENGL);
+	sdl->renderer = SDL_CreateRenderer(sdl->window, -1,
+					SDL_RENDERER_ACCELERATED);
+	sdl->font = TTF_OpenFont("TNR.ttf", 16);
+	sdl->speed = 40;
+	return (sdl);
+}

@@ -118,6 +118,8 @@ t_champ		*parse_args(int argc, char **argv, t_vm_info *info)
 			else
 				cerror("Wrong place to put player", NULL);
 		}
+		else if ((find = ft_strstr(argv[i], "-v")) != NULL && find[2] == '\0' && *sdl == NULL)
+			*sdl = init_sdl();
 		else
 			cerror("Can't read source file %s", argv[i]);
 		i++;

@@ -100,3 +100,13 @@ void	create_carr_copy(t_vm_info *info, t_carriage *carr)
 	new_carr->next = info->carriages;
 	info->carriages = new_carr;
 }
+
+char 		*hex_to_charhex(int value)
+{
+	char *data;
+
+	data = ft_strnew(2);
+	data[0] = value / 16 + '0';
+	data[1] = value % 16 + '0';
+	return (data);
+}

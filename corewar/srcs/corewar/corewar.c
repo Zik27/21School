@@ -212,15 +212,56 @@ int		make_step_cycle(t_vm_info *info, t_champ *champs)
 	return (0);
 }
 
-void	start_corewar(t_champ *champs, t_vm_info *info)
+void	start_corewar(t_champ *champs, t_vm_info *info, t_sdl *sdl)
 {
 	(void) champs;
-
+	int i;
+	if (sdl != NULL)
+		draw(sdl, info);
 	while (1)
 	{
+		i = 0;
+		if (sdl != NULL)
+		{
+			if (SDL_PollEvent(&(sdl->window_event)))
+			{
+				if (SDL_QUIT == sdl->window_event.type)
+					exit(0);
+				else if (sdl->window_event.type == SDL_KEYDOWN && SDLK_ESCAPE ==
+							sdl->window_event.key.keysym.sym)
+					exit(0);
+				else if (sdl->window_event.type == SDL_KEYDOWN && SDLK_w ==
+							sdl->window_event.key.keysym.sym)
+				{
+					while (i < sdl->speed)
+					{
+						ft_printf("It is now cycle %d\n", info->cycle);
+						if (make_step_cycle(info, champs) == 1)
+							return ;
+						info->cycle++;
+						info->cycles_after_check++;
+						i++;
+					}
+					draw(sdl, info);
+				}
+				else if(sdl->window_event.type == SDL_KEYDOWN && SDLK_a ==
+							sdl->window_event.key.keysym.sym)
+				{
+					sdl->speed += 1;
+					printf("Now speed: %d\n", sdl->speed);
+				}
+				else if(sdl->window_event.type == SDL_KEYDOWN && SDLK_z ==
+							sdl->window_event.key.keysym.sym)
+				{
+					sdl->speed -= 1;
+					printf("Now speed: %d\n", sdl->speed);
+				}
+			}
+		}
+		else
+		{
 		ft_printf("It is now cycle %d\n", info->cycle);
 		make_step_cycle(info, champs);
-		
 		if (info->dump_cycle == info->cycle)
 		{
 			if (info->dump_type == CODE_D)
@@ -231,11 +272,11 @@ void	start_corewar(t_champ *champs, t_vm_info *info)
 		}
 		info->cycle++;
 		info->cycles_after_check++;
-
 		if (info->carriages == NULL)
 		{
 			ft_printf("Contestant %d, \"%s\", has won !\n", info->last_live_player->id, info->last_live_player->name);
 			return ;
+		}
 		}
 	}
 }
@@ -244,16 +285,18 @@ int		main(int argc, char **argv)
 {
 	t_champ		*champs;
 	t_vm_info	*info;
+	t_sdl		*sdl;
 
 	if (argc < 2)
 	{
 		print_help(argv);
 		return (0);
 	}
+	sdl = NULL;
 	info = (t_vm_info *)malloc(sizeof(t_vm_info));
 	info->dump_cycle = -1;
 	info->dump_type = -1;
-	champs = parse_args(argc, argv, info);
+	champs = parse_args(argc, argv, &sdl, info);
 	if (champs == NULL)
 		cerror("No champions", NULL);
 	if (get_player_count(champs) > MAX_PLAYERS)
@@ -265,7 +308,8 @@ int		main(int argc, char **argv)
 	info = init_vm_info(&info, champs);
 	place_players_on_arena(champs, info);
 	info->carriages = init_carriages(champs, info);
-	introducing(champs, info);
+	if (sdl == NULL)
+		introducing(champs, info);
 	start_corewar(champs, info);
 	free_all(info, champs);
 	return (0);

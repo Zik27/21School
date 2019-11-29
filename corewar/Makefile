@@ -14,7 +14,7 @@ NAME_ASM = asm
 NAME_COREWAR = corewar
 
 CC = gcc
-CFLAGS = -Wall -Wextra -Werror -g
+CFLAGS = -Wall -Wextra -Werror -g -O3
 
 LIBFT_FOLDER = ./libft
 LIBFT = $(LIBFT_FOLDER)/libft.a
@@ -25,8 +25,16 @@ HEADERS_DIRECTORY = ./includes
 HEADERS = $(HEADERS_DIRECTORY)/corewar.h
 HEADER_DASM = $(HEADERS_DIRECTORY)/dasm.h
 
-LIBS = -lft -L$(LIBFT_FOLDER) -lftprintf -L$(LIBFT_FOLDER)
-INCLUDES = -I$(HEADERS_DIRECTORY) -I$(LIBFT_FOLDER)
+ID_UN := $(shell id -un)
+
+SDL_FOLDER = /Users/$(ID_UN)/.brew/Cellar/sdl2/2.0.10/include/SDL2
+SDL_LIB = /Users/$(ID_UN)/.brew/Cellar/sdl2/2.0.10/lib
+
+SDL_TTF_FOLDER = /Users/$(ID_UN)/.brew/Cellar/sdl2_ttf/2.0.15/include/SDL2
+SDL_TTF_LIB = /Users/$(ID_UN)/.brew/Cellar/sdl2_ttf/2.0.15/lib
+
+LIBS = -lft -L$(LIBFT_FOLDER) -L$(SDL_TTF_LIB) -L$(SDL_LIB) -lftprintf -L$(LIBFT_FOLDER) -lSDL2 -lSDL2_ttf
+INCLUDES = -I$(HEADERS_DIRECTORY) -I$(LIBFT_FOLDER) -I$(SDL_TTF_FOLDER) -I$(SDL_FOLDER)
 
 FILES_ASM =		asm.c \
 				error.c \
@@ -75,7 +83,8 @@ FILSE_COREWAR = corewar.c \
 				op_st_sti.c\
 				op_utils.c \
 				op_zjmp.c \
-				free.c
+				free.c \
+				draw.c
 
 SRC_DIRECTORY = ./srcs/
 SRC_DIRECTORY_ASM = $(SRC_DIRECTORY)asm/
@@ -98,7 +107,17 @@ GREEN = \033[0;32m
 RED = \033[0;31m
 RESET = \033[0m
 
-all: $(NAME_ASM) $(NAME_COREWAR)
+all: install_sdl $(NAME_ASM) $(NAME_COREWAR)
+
+no_sdl: $(NAME_ASM) $(NAME_COREWAR)
+
+install_sdl:
+	@brew install sdl2
+	@brew switch sdl2 2.0.10
+	@brew install sdl2_ttf
+	@brew switch sdl2_ttf 2.0.15
+	@brew install sdl2_mixer
+	@brew switch sdl2_mixer 2.0.4
 
 $(NAME_ASM): $(LIBFT) $(OBJ_DIRECTORY) $(OBJ_DIRECTORY_ASM) $(OBJ_ASM_FILES) $(HEADER_DASM)
 	@$(CC) $(CFLAGS) $(LIBS) $(INCLUDES) $(OBJ_ASM_FILES)  -o $(NAME_ASM)
