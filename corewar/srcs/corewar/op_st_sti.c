@@ -6,7 +6,7 @@
 /*   By: djast <djast@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/10/09 09:22:05 by djast             #+#    #+#             */
-/*   Updated: 2019/12/06 18:26:31 by djast            ###   ########.fr       */
+/*   Updated: 2019/12/06 18:33:03 by djast            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -45,7 +45,7 @@ static void		print_debug_sti(t_vm_info *info, t_carriage *carr, int res)
 		b = carr->registers[carr->args[2] - 1];
 	else if (carr->args_types[2] == DIR_CODE)
 		b = carr->args[2];
-	ft_printf("sti %d %d\n", a, b);
+	ft_printf("sti r%d %d %d\n", carr->args[0], a, b);
 	pc = carr->cur_pos + (res % IDX_MOD);
 	ft_printf("       | -> store to %d + %d = %d (with pc and mod %d)\n",
 																a, b, res, pc);
