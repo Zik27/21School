@@ -6,7 +6,7 @@
 /*   By: djast <djast@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/09/25 13:58:35 by djast             #+#    #+#             */
-/*   Updated: 2019/11/29 16:56:07 by djast            ###   ########.fr       */
+/*   Updated: 2019/12/06 17:50:52 by djast            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,8 +28,8 @@ t_carriage			*init_carriage(t_champ *cur_player, t_vm_info *info)
 	new_carriage->cur_pos = (carr_id++ - 1) * (MEM_SIZE / info->count_players);
 	new_carriage->registers[0] = -cur_player->id;
 	new_carriage->champ = cur_player;
-	new_carriage->args_types = (int *)malloc(sizeof(int) * 3);
-	new_carriage->args = (int *)malloc(sizeof(int) * 3);
+	new_carriage->args_types = (int *)ft_memalloc(sizeof(int) * 3);
+	new_carriage->args = (int *)ft_memalloc(sizeof(int) * 3);
 	i = 1;
 	while (i < REG_NUMBER)
 		new_carriage->registers[i++] = 0;

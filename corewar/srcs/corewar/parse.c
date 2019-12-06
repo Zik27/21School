@@ -6,7 +6,7 @@
 /*   By: djast <djast@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/09/25 13:21:23 by djast             #+#    #+#             */
-/*   Updated: 2019/11/29 14:47:26 by djast            ###   ########.fr       */
+/*   Updated: 2019/12/06 18:22:22 by djast            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -105,6 +105,8 @@ t_champ		*parse_args(int argc, char **argv, t_sdl **sdl, t_vm_info *info)
 			parse_dump_flag(argv[i], argv[i + 1], info);
 			i++;
 		}
+		else if (ft_strcmp(argv[i], "-debug") == 0)
+			info->debug_flag = 1;
 		else if (ft_strcmp(argv[i], "-n") == 0)
 		{
 			if (i + 2 >= argc)

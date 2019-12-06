@@ -6,7 +6,7 @@
 /*   By: djast <djast@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/09/23 13:35:39 by djast             #+#    #+#             */
-/*   Updated: 2019/11/29 17:48:06 by djast            ###   ########.fr       */
+/*   Updated: 2019/12/06 17:27:24 by djast            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -108,6 +108,7 @@ typedef struct			s_vm_info
 	int					live;
 	int					dump_cycle;
 	int					dump_type;
+	int					debug_flag;
 	t_carriage			*carriages;
 	t_champ				*last_live_player;
 	char				*map;

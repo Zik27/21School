@@ -6,7 +6,7 @@
 /*   By: djast <djast@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/09/23 13:11:12 by djast             #+#    #+#             */
-/*   Updated: 2019/11/29 17:58:31 by djast            ###   ########.fr       */
+/*   Updated: 2019/12/06 18:25:35 by djast            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,8 +35,8 @@ void	make_command_next(t_vm_info *info, t_carriage *carr)
 void	make_command(t_vm_info *info, t_champ *champs, t_carriage *carr)
 {
 	(void) champs;
-	// if (carr->op_code > 0 && carr->op_code < 16)
-	// 	ft_printf("P %4d | ", carr->id);
+	if (carr->op_code > 0 && carr->op_code < 16 && info->debug_flag == 1)
+		ft_printf("P %4d | ", carr->id);
 	if (carr->op_code == 1)
 		make_command_live(info, champs, carr);
 	else if (carr->op_code == 2)
@@ -190,12 +190,12 @@ int		make_step_cycle(t_vm_info *info, t_champ *champs)
 			info->checks = 0;
 			info->cycles_after_check = 0;
 			info->cycles_to_die -= CYCLE_DELTA;
-			// ft_printf("Cycle to die is now %d\n", info->cycles_to_die);
+			if (info->debug_flag == 1)
+				ft_printf("Cycle to die is now %d\n", info->cycles_to_die);
 		}
 		else
 		{
 			info->checks++;
-		//	printf("CHECKS: %d\n", info->checks);
 			info->cycles_after_check = 0;
 		}
 		if (info->checks >= MAX_CHECKS)
@@ -203,11 +203,10 @@ int		make_step_cycle(t_vm_info *info, t_champ *champs)
 			info->checks = 0;
 			info->cycles_after_check = 0;
 			info->cycles_to_die -= CYCLE_DELTA;
-			// ft_printf("Cycle to die is now %d\n", info->cycles_to_die);
+			if (info->debug_flag == 1)
+				ft_printf("Cycle to die is now %d\n", info->cycles_to_die);
 		}
 		info->live = 0;
-	//	print_carriages(info->carriages);
-	//	ft_printf("\n\n");
 	}
 	return (0);
 }
@@ -227,7 +226,6 @@ void	start_corewar(t_champ *champs, t_vm_info *info, t_sdl *sdl)
 		{
 			while (i < sdl->speed && sdl->is_pause == 0)
 			{
-				// ft_printf("It is now cycle %d\n", info->cycle);
 				if (make_step_cycle(info, champs) == 1)
 					return ;
 				info->cycle++;
@@ -235,7 +233,6 @@ void	start_corewar(t_champ *champs, t_vm_info *info, t_sdl *sdl)
 				i++;
 				if (info->carriages == NULL)
 				{
-					ft_printf("Contestant %d, \"%s\", has won !\n", info->last_live_player->id, info->last_live_player->name);
 					SDL_DestroyWindow(sdl->window);
 					SDL_Quit();
 					return ;
@@ -258,7 +255,6 @@ void	start_corewar(t_champ *champs, t_vm_info *info, t_sdl *sdl)
 				else if (sdl->window_event.type == SDL_KEYDOWN && SDLK_s ==
 							sdl->window_event.key.keysym.sym && sdl->is_pause == 1)
 				{
-					// ft_printf("It is now cycle %d\n", info->cycle);
 					if (make_step_cycle(info, champs) == 1)
 						return ;
 					info->cycle++;
@@ -266,7 +262,6 @@ void	start_corewar(t_champ *champs, t_vm_info *info, t_sdl *sdl)
 					i++;
 					if (info->carriages == NULL)
 					{
-						// ft_printf("Contestant %d, \"%s\", has won !\n", info->last_live_player->id, info->last_live_player->name);
 						SDL_DestroyWindow(sdl->window);
 						SDL_Quit();
 						return ;
@@ -277,35 +272,32 @@ void	start_corewar(t_champ *champs, t_vm_info *info, t_sdl *sdl)
 							sdl->window_event.key.keysym.sym)
 				{
 					sdl->speed += 100;
-					// printf("Now speed: %d\n", sdl->speed);
 					draw(sdl, info);
 				}
 				else if(sdl->window_event.type == SDL_KEYDOWN && SDLK_e ==
 							sdl->window_event.key.keysym.sym)
 				{
 					sdl->speed += 10;
-					// printf("Now speed: %d\n", sdl->speed);
 					draw(sdl, info);
 				}
 				else if(sdl->window_event.type == SDL_KEYDOWN && SDLK_w ==
 							sdl->window_event.key.keysym.sym)
 				{
 					sdl->speed = sdl->speed > 9 ? sdl->speed - 10 : 0;
-					// printf("Now speed: %d\n", sdl->speed);
 					draw(sdl, info);
 				}
 				else if(sdl->window_event.type == SDL_KEYDOWN && SDLK_q ==
 							sdl->window_event.key.keysym.sym)
 				{
 					sdl->speed = sdl->speed > 99 ? sdl->speed - 100 : 0;
-					// printf("Now speed: %d\n", sdl->speed);
 					draw(sdl, info);
 				}
 			}		
 		}
 		else
 		{
-			ft_printf("It is now cycle %d\n", info->cycle);
+			if (info->debug_flag == 1)
+				ft_printf("It is now cycle %d\n", info->cycle);
 			make_step_cycle(info, champs);
 			if (info->dump_cycle == info->cycle)
 			{
@@ -341,6 +333,7 @@ int		main(int argc, char **argv)
 	info = (t_vm_info *)malloc(sizeof(t_vm_info));
 	info->dump_cycle = -1;
 	info->dump_type = -1;
+	info->debug_flag = 0;
 	champs = parse_args(argc, argv, &sdl, info);
 	if (champs == NULL)
 		cerror("No champions", NULL);
