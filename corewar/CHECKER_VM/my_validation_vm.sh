@@ -23,7 +23,7 @@ echo "\n${YEL}ONE_CHAMP ${NC} \n"
 
 for f in $FIRST_ARRAY_CH
 do
-  $PATH_TO_VM/$OUR_VM $f > our_output
+  $PATH_TO_VM/$OUR_VM -debug $f > our_output
   ./$ORIG_VM -v 6 -a $f > origin_output
   if diff ./our_output ./origin_output &> /dev/null; then
     echo "${f} - ${GREEN}[OK]${NC}"
@@ -48,7 +48,7 @@ for f in $FIRST_ARRAY_CH
 do
   for fo in $SEC_ARRAY_CH
   do
-    $PATH_TO_VM/$OUR_VM $f $fo > our_output
+    $PATH_TO_VM/$OUR_VM -debug $f $fo > our_output
     ./$ORIG_VM -v 6 -a $f $fo > origin_output
     if diff ./our_output ./origin_output &> /dev/null; then
     echo "${f} ${fo} - ${GREEN}[OK]${NC}"
@@ -72,7 +72,7 @@ do
   do
     for foo in $TH_ARRAY_CH
     do
-      $PATH_TO_VM/$OUR_VM $f $fo $foo > our_output
+      $PATH_TO_VM/$OUR_VM -debug $f $fo $foo > our_output
       ./$ORIG_VM -v 6 -a $f $fo $foo > origin_output
       if diff ./our_output ./origin_output &> /dev/null; then
        echo "${f} ${fo} ${foo}- ${GREEN}[OK]${NC}"
