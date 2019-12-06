@@ -6,7 +6,7 @@
 /*   By: djast <djast@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/09/23 13:11:12 by djast             #+#    #+#             */
-/*   Updated: 2019/12/06 18:25:35 by djast            ###   ########.fr       */
+/*   Updated: 2019/12/06 20:26:51 by djast            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -324,6 +324,7 @@ int		main(int argc, char **argv)
 	t_vm_info	*info;
 	t_sdl		*sdl;
 
+	sleep(8);
 	if (argc < 2)
 	{
 		print_help(argv);
@@ -350,6 +351,6 @@ int		main(int argc, char **argv)
 		introducing(champs, info);
 
 	start_corewar(champs, info, sdl);
-	free_all(info, champs);
+	free_all(sdl, info, champs);
 	return (0);
 }

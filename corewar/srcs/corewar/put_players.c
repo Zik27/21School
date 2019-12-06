@@ -6,7 +6,7 @@
 /*   By: djast <djast@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/09/25 17:06:18 by djast             #+#    #+#             */
-/*   Updated: 2019/12/06 17:37:20 by djast            ###   ########.fr       */
+/*   Updated: 2019/12/06 20:21:14 by djast            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,9 +34,9 @@ void			place_players_on_arena(t_champ *champs, t_vm_info *info)
 	cur_champ = champs;
 	while (place != info->count_players)
 	{
+		cur_champ = find_player_by_id(champs, place + 1);
 		put_player(place * (MEM_SIZE / info->count_players), cur_champ,
 																info);
-		cur_champ = cur_champ->next;
 		place++;
 	}
 }

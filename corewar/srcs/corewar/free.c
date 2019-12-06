@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   free.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: vurrigon <vurrigon@student.42.fr>          +#+  +:+       +#+        */
+/*   By: djast <djast@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/10/16 15:02:01 by djast             #+#    #+#             */
-/*   Updated: 2019/11/22 17:31:31 by vurrigon         ###   ########.fr       */
+/*   Updated: 2019/12/06 19:16:42 by djast            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -53,10 +53,13 @@ void			free_champions(t_champ *champs)
 	}
 }
 
-void			free_all(t_vm_info *info, t_champ *champs)
+void			free_all(t_sdl *sdl, t_vm_info *info, t_champ *champs)
 {
 	free_cariages(info->carriages);
 	free_champions(champs);
 	free(info->map);
+	free(info->color_map);
 	free(info);
+	if (sdl != NULL)
+		free(sdl);
 }

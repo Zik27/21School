@@ -6,7 +6,7 @@
 /*   By: djast <djast@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/09/25 13:21:23 by djast             #+#    #+#             */
-/*   Updated: 2019/12/06 18:22:22 by djast            ###   ########.fr       */
+/*   Updated: 2019/12/06 19:30:53 by djast            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -55,7 +55,7 @@ int			is_flag(char *place, char *name, int max_players, t_champ *champs)
 
 	int_place = ft_atoi(place);
 	if (int_place > max_players || find_player_by_id(champs, int_place) != 0 ||
-		int_place < 0 || (find = ft_strstr(name, ".cor")) == NULL ||
+		int_place < 1 || (find = ft_strstr(name, ".cor")) == NULL ||
 		find[4] != '\0')
 		return (0);
 	return (1);
@@ -78,6 +78,25 @@ int			get_argv_cor(char **argv)
 	return (count);
 }
 
+void		set_champion_id(t_champ	*champs)
+{
+	int id;
+	t_champ *cur_champ;
+
+	id = 1;
+	cur_champ = champs;
+	while (cur_champ != NULL)
+	{
+		while (cur_champ->id == -1)
+		{
+			if (find_player_by_id(champs, id) == NULL)
+				cur_champ->id = id;
+			id++;
+		}
+		cur_champ = cur_champ->next;
+	}
+}
+
 t_champ		*parse_args(int argc, char **argv, t_sdl **sdl, t_vm_info *info)
 {
 	int		i;
@@ -96,7 +115,7 @@ t_champ		*parse_args(int argc, char **argv, t_sdl **sdl, t_vm_info *info)
 		while (find_player_by_id(champs, id) != 0)
 			id++;
 		if ((find = ft_strstr(argv[i], ".cor")) != NULL && find[4] == '\0')
-			parse_champion(&champs, &cur_champ, argv[i], id++);
+			parse_champion(&champs, &cur_champ, argv[i], -1);
 		else if (ft_strcmp(argv[i], "-d") == 0 ||
 							ft_strcmp(argv[i], "-dump") == 0)
 		{
@@ -126,5 +145,6 @@ t_champ		*parse_args(int argc, char **argv, t_sdl **sdl, t_vm_info *info)
 			cerror("Can't read source file %s", argv[i]);
 		i++;
 	}
+	set_champion_id(champs);
 	return (champs);
 }

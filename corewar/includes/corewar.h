@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   corewar.h                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: vurrigon <vurrigon@student.42.fr>          +#+  +:+       +#+        */
+/*   By: djast <djast@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/09/17 12:29:08 by vurrigon          #+#    #+#             */
-/*   Updated: 2019/11/29 14:03:33 by vurrigon         ###   ########.fr       */
+/*   Updated: 2019/12/06 19:17:07 by djast            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,7 +19,6 @@
 # include <sys/types.h>
 # include <sys/stat.h>
 # include <fcntl.h>
-#include <stdio.h>
 # define QUOTE 1
 # define STOP_BEFORE_QUOTE 1
 # define SKIP_QUOTE 0

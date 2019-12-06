@@ -6,7 +6,7 @@
 /*   By: djast <djast@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/10/20 13:37:36 by djast             #+#    #+#             */
-/*   Updated: 2019/11/29 17:17:49 by djast            ###   ########.fr       */
+/*   Updated: 2019/12/06 20:32:47 by djast            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -97,11 +97,8 @@ void draw_text_on_right_panel(t_sdl *sdl, t_vm_info *info)
 							CYCLE_RES_SIZE_X, CYCLE_RES_SIZE_Y);
 	text = ft_itoa(info->cycle - 1);
 	draw_text(sdl, text, *r, *c);
+	free(text);
 	free(r);
-
-
-
-
 	free(c);
 }
 

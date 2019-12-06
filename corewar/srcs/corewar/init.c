@@ -6,7 +6,7 @@
 /*   By: djast <djast@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/09/25 13:58:35 by djast             #+#    #+#             */
-/*   Updated: 2019/12/06 18:40:28 by djast            ###   ########.fr       */
+/*   Updated: 2019/12/06 20:24:25 by djast            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -49,6 +49,7 @@ t_vm_info			*init_vm_info(t_vm_info **info, t_champ *players)
 		players = players->next;
 	(*info)->last_live_player = players;
 	(*info)->map = ft_strnew(MEM_SIZE);
+	ft_bzero((*info)->map, MEM_SIZE * sizeof(char));
 	(*info)->color_map = (int *)malloc(sizeof(int) * MEM_SIZE);
 	ft_bzero((*info)->color_map, MEM_SIZE * sizeof(int));
 	return (*info);
@@ -84,6 +85,6 @@ t_sdl				*init_sdl()
 					SDL_RENDERER_ACCELERATED);
 	sdl->font = TTF_OpenFont("OpenSans-Regular.ttf", 50);
 	sdl->speed = 40;
-	sdl->is_pause = 0;
+	sdl->is_pause = 1;
 	return (sdl);
 }

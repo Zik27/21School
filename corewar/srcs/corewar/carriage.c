@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   carriage.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: vurrigon <vurrigon@student.42.fr>          +#+  +:+       +#+        */
+/*   By: djast <djast@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/09/25 17:25:42 by djast             #+#    #+#             */
-/*   Updated: 2019/11/22 17:27:15 by vurrigon         ###   ########.fr       */
+/*   Updated: 2019/12/06 20:32:40 by djast            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -43,16 +43,18 @@ t_carriage		*init_carriages(t_champ *champs, t_vm_info *info)
 	t_carriage	*cur_carriage;
 	t_carriage	*new_carriage;
 	t_champ		*cur_player;
+	int			id;
 
-	cur_player = champs;
 	carriages = NULL;
-	while (cur_player != NULL)
+	id = 1;
+	while (id != info->count_players + 1)
 	{
+		cur_player = find_player_by_id(champs, id);
 		new_carriage = init_carriage(cur_player, info);
 		cur_carriage = carriages;
 		carriages = new_carriage;
 		carriages->next = cur_carriage;
-		cur_player = cur_player->next;
+		id++;
 	}
 	return (carriages);
 }

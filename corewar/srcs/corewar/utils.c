@@ -6,7 +6,7 @@
 /*   By: djast <djast@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/09/25 16:51:08 by djast             #+#    #+#             */
-/*   Updated: 2019/12/06 18:34:37 by djast            ###   ########.fr       */
+/*   Updated: 2019/12/06 19:09:27 by djast            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -50,6 +50,8 @@ int		bytecode_to_int(t_vm_info *info, int pos, int count_bytes)
 
 	buff = (unsigned char *)malloc(sizeof(unsigned char) * count_bytes);
 	i = 0;
+	while (pos < 0)
+		pos += MEM_SIZE;
 	while (i++ < count_bytes)
 		buff[i - 1] = info->map[(pos + i - 1) % MEM_SIZE];
 	result = 0;
@@ -58,7 +60,7 @@ int		bytecode_to_int(t_vm_info *info, int pos, int count_bytes)
 	while (count_bytes)
 	{
 		if (sign)
-			result += (buff[count_bytes - 1] ^ 0xFF) << (i++ * 8); // инвертирование
+			result += (buff[count_bytes - 1] ^ 0xFF) << (i++ * 8);
 		else
 			result += buff[count_bytes - 1] << (i++ * 8);
 		count_bytes--;

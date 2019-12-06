@@ -6,7 +6,7 @@
 /*   By: djast <djast@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/09/23 13:35:39 by djast             #+#    #+#             */
-/*   Updated: 2019/12/06 17:27:24 by djast            ###   ########.fr       */
+/*   Updated: 2019/12/06 20:07:21 by djast            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -145,7 +145,7 @@ char			*int_to_bytecode(int value, int size);
 void			create_carr_copy(t_vm_info *info, t_carriage *carr);
 int				check_cycle_to_die(t_vm_info *info);
 void			delete_death_carr(t_vm_info *info, t_carriage *carr);
-void			free_all(t_vm_info *info, t_champ *champs);
+void			free_all(t_sdl *sdl, t_vm_info *info, t_champ *champs);
 void			free_champions(t_champ *champs);
 char			*hex_to_charhex(int value);
 t_sdl			*init_sdl();
