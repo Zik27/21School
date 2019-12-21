@@ -3,7 +3,7 @@
 /*                                                        :::      ::::::::   */
 /*   corewar.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: djast <djast@student.42.fr>                +#+  +:+       +#+        */
+/*   By: vurrigon <vurrigon@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/09/23 13:11:12 by djast             #+#    #+#             */
 /*   Updated: 2019/12/06 20:26:51 by djast            ###   ########.fr       */
@@ -339,11 +339,7 @@ int		main(int argc, char **argv)
 	if (champs == NULL)
 		cerror("No champions", NULL);
 	if (get_player_count(champs) > MAX_PLAYERS)
-	{
-		ft_printf("Too many champions\n");
-		free_champions(champs);
-		return (1);
-	}
+		cerror("Too many champions", NULL);
 	info = init_vm_info(&info, champs);
 	place_players_on_arena(champs, info);
 	info->carriages = init_carriages(champs, info);
