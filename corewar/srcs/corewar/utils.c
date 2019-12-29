@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   utils.c                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: djast <djast@student.42.fr>                +#+  +:+       +#+        */
+/*   By: vurrigon <vurrigon@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/09/25 16:51:08 by djast             #+#    #+#             */
-/*   Updated: 2019/12/06 19:09:27 by djast            ###   ########.fr       */
+/*   Updated: 2019/12/29 12:46:34 by vurrigon         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,8 +14,8 @@
 
 int			get_player_count(t_champ *champs)
 {
-	int count;
-	t_champ *cur_champ;
+	int		count;
+	t_champ	*cur_champ;
 
 	count = 0;
 	cur_champ = champs;
@@ -41,7 +41,7 @@ t_champ		*find_player_by_id(t_champ *champs, int id)
 	return (NULL);
 }
 
-int		bytecode_to_int(t_vm_info *info, int pos, int count_bytes)
+int			bytecode_to_int(t_vm_info *info, int pos, int count_bytes)
 {
 	int				result;
 	int				i;
@@ -71,7 +71,7 @@ int		bytecode_to_int(t_vm_info *info, int pos, int count_bytes)
 	return (result);
 }
 
-char	*int_to_bytecode(int value, int size)
+char		*int_to_bytecode(int value, int size)
 {
 	int8_t		i;
 	char		*data;
@@ -87,12 +87,12 @@ char	*int_to_bytecode(int value, int size)
 	return (data);
 }
 
-void	create_carr_copy(t_vm_info *info, t_carriage *carr)
+void		create_carr_copy(t_vm_info *info, t_carriage *carr)
 {
- 	t_carriage	*new_carr;
- 	int			i;
+	t_carriage	*new_carr;
+	int			i;
 
- 	new_carr = init_carriage(carr->champ, info);
+	new_carr = init_carriage(carr->champ, info);
 	i = 0;
 	while (i++ < REG_NUMBER)
 		new_carr->registers[i - 1] = carr->registers[i - 1];
@@ -102,9 +102,9 @@ void	create_carr_copy(t_vm_info *info, t_carriage *carr)
 	info->carriages = new_carr;
 }
 
-char 		*hex_to_charhex(int value)
+char		*hex_to_charhex(int value)
 {
-	char *data;
+	char	*data;
 
 	data = ft_strnew(2);
 	data[0] = value / 16 + '0';

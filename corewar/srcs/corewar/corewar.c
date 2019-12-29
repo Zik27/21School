@@ -34,15 +34,14 @@ void	make_command_next(t_vm_info *info, t_carriage *carr)
 
 void	make_command(t_vm_info *info, t_champ *champs, t_carriage *carr)
 {
-	(void) champs;
 	if (carr->op_code > 0 && carr->op_code < 16 && info->debug_flag == 1)
 		ft_printf("P %4d | ", carr->id);
 	if (carr->op_code == 1)
 		make_command_live(info, champs, carr);
 	else if (carr->op_code == 2)
-	 	make_command_ld(info, carr);
+		make_command_ld(info, carr);
 	else if (carr->op_code == 3)
-	 	make_command_st(info, carr);
+		make_command_st(info, carr);
 	else if (carr->op_code == 4)
 		make_command_add(info, carr);
 	else if (carr->op_code == 5)
@@ -143,11 +142,11 @@ int		get_info_for_command(t_vm_info *info, t_carriage *carr)
 	int		args[3];
 
 	if (carr->op_code < 1 || carr->op_code > 16)
-    {
-    	carr->cur_pos = (carr->cur_pos + 1) % MEM_SIZE;
-        return (0);
-    }
-    types = (info->map[(carr->cur_pos + 1) % MEM_SIZE]) & 0xFF;
+	{
+		carr->cur_pos = (carr->cur_pos + 1) % MEM_SIZE;
+		return (0);
+	}
+	types = (info->map[(carr->cur_pos + 1) % MEM_SIZE]) & 0xFF;
 	args[0] = ((unsigned char)types & 0b11000000) / 64;
 	args[1] = ((unsigned char)types & 0b110000) / 16;
 	args[2] = ((unsigned char)types & 0b1100) / 4;
@@ -178,11 +177,13 @@ int		make_step_cycle(t_vm_info *info, t_champ *champs)
 			if (get_info_for_command(info, cur_carriage) == 1)
 				make_command(info, champs, cur_carriage);
 		}
-		cur_carriage->cur_pos = (cur_carriage->cur_pos + cur_carriage->jump_size) % MEM_SIZE;
+		cur_carriage->cur_pos = (cur_carriage->cur_pos +
+										cur_carriage->jump_size) % MEM_SIZE;
 		cur_carriage->jump_size = 0;
 		cur_carriage = cur_carriage->next;
 	}
-	if (info->cycles_to_die <= 0 || info->cycles_after_check >= info->cycles_to_die)
+	if (info->cycles_to_die <= 0 || info->cycles_after_check >=
+												info->cycles_to_die)
 	{
 		check_cycle_to_die(info);
 		if (info->live >= NBR_LIVE)
@@ -213,8 +214,8 @@ int		make_step_cycle(t_vm_info *info, t_champ *champs)
 
 void	start_corewar(t_champ *champs, t_vm_info *info, t_sdl *sdl)
 {
-	(void) champs;
 	int i;
+
 	if (sdl != NULL)
 	{
 		draw(sdl, info);
@@ -253,7 +254,7 @@ void	start_corewar(t_champ *champs, t_vm_info *info, t_sdl *sdl)
 					sdl->is_pause = !sdl->is_pause;
 				}
 				else if (sdl->window_event.type == SDL_KEYDOWN && SDLK_s ==
-							sdl->window_event.key.keysym.sym && sdl->is_pause == 1)
+						sdl->window_event.key.keysym.sym && sdl->is_pause == 1)
 				{
 					if (make_step_cycle(info, champs) == 1)
 						return ;
@@ -268,31 +269,31 @@ void	start_corewar(t_champ *champs, t_vm_info *info, t_sdl *sdl)
 					}
 					draw(sdl, info);
 				}
-				else if(sdl->window_event.type == SDL_KEYDOWN && SDLK_r ==
+				else if (sdl->window_event.type == SDL_KEYDOWN && SDLK_r ==
 							sdl->window_event.key.keysym.sym)
 				{
 					sdl->speed += 100;
 					draw(sdl, info);
 				}
-				else if(sdl->window_event.type == SDL_KEYDOWN && SDLK_e ==
+				else if (sdl->window_event.type == SDL_KEYDOWN && SDLK_e ==
 							sdl->window_event.key.keysym.sym)
 				{
 					sdl->speed += 10;
 					draw(sdl, info);
 				}
-				else if(sdl->window_event.type == SDL_KEYDOWN && SDLK_w ==
+				else if (sdl->window_event.type == SDL_KEYDOWN && SDLK_w ==
 							sdl->window_event.key.keysym.sym)
 				{
 					sdl->speed = sdl->speed > 9 ? sdl->speed - 10 : 0;
 					draw(sdl, info);
 				}
-				else if(sdl->window_event.type == SDL_KEYDOWN && SDLK_q ==
+				else if (sdl->window_event.type == SDL_KEYDOWN && SDLK_q ==
 							sdl->window_event.key.keysym.sym)
 				{
 					sdl->speed = sdl->speed > 99 ? sdl->speed - 100 : 0;
 					draw(sdl, info);
 				}
-			}		
+			}
 		}
 		else
 		{
@@ -311,7 +312,8 @@ void	start_corewar(t_champ *champs, t_vm_info *info, t_sdl *sdl)
 			info->cycles_after_check++;
 			if (info->carriages == NULL)
 			{
-				ft_printf("Contestant %d, \"%s\", has won !\n", info->last_live_player->id, info->last_live_player->name);
+				ft_printf("Contestant %d, \"%s\", has won !\n",
+					info->last_live_player->id, info->last_live_player->name);
 				return ;
 			}
 		}
@@ -325,10 +327,7 @@ int		main(int argc, char **argv)
 	t_sdl		*sdl;
 
 	if (argc < 2)
-	{
 		print_help(argv);
-		return (0);
-	}
 	sdl = NULL;
 	info = (t_vm_info *)malloc(sizeof(t_vm_info));
 	info->dump_cycle = -1;
@@ -344,7 +343,6 @@ int		main(int argc, char **argv)
 	info->carriages = init_carriages(champs, info);
 	if (sdl == NULL)
 		introducing(champs, info);
-
 	start_corewar(champs, info, sdl);
 	free_all(sdl, info, champs);
 	return (0);

@@ -76,7 +76,7 @@ void			make_command_ldi(t_vm_info *info, t_carriage *carr)
 		res += carr->registers[carr->args[1] - 1];
 	else if (carr->args_types[1] == DIR_CODE)
 		res += carr->args[1];
-	carr->registers[carr->args[2] - 1] = bytecode_to_int(info, 
+	carr->registers[carr->args[2] - 1] = bytecode_to_int(info,
 							(carr->cur_pos + (res % IDX_MOD)) % MEM_SIZE, 4);
 	if (info->debug_flag == 1)
 		print_debug_ldi(info, carr, res);

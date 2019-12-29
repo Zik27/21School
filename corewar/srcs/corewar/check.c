@@ -6,7 +6,7 @@
 /*   By: vurrigon <vurrigon@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/09/25 13:38:07 by djast             #+#    #+#             */
-/*   Updated: 2019/11/22 17:30:59 by vurrigon         ###   ########.fr       */
+/*   Updated: 2019/12/29 12:10:33 by vurrigon         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,9 +14,9 @@
 
 static int		check_magic_number(int fd)
 {
-	char *byte;
-	int size;
-	int magic_number;
+	char	*byte;
+	int		size;
+	int		magic_number;
 
 	byte = ft_strnew(4);
 	size = read(fd, byte, 4);
@@ -36,8 +36,8 @@ static int		check_magic_number(int fd)
 
 static int		check_null(int fd, int size)
 {
-	char *byte;
-	int size_read;
+	char	*byte;
+	int		size_read;
 
 	byte = ft_strnew(size);
 	size_read = read(fd, byte, size);
@@ -55,8 +55,8 @@ static int		check_null(int fd, int size)
 
 t_champ			*check_file(char *arg, int id)
 {
-	int fd;
-	t_champ *champ;
+	int		fd;
+	t_champ	*champ;
 
 	fd = open(arg, O_RDONLY);
 	if (fd == -1)
@@ -72,7 +72,7 @@ t_champ			*check_file(char *arg, int id)
 	if (!check_null(fd, 4))
 		cerror("Error: File %s has an invalid header", arg);
 	if ((champ->code = get_champ_code(fd, champ->code_size)) == NULL)
-		cerror("Error: File %s has a code size that differ from what its header says", arg);
+		cerror("Error: File %s has a code size that differs in header", arg);
 	if (champ->code_size > CHAMP_MAX_SIZE)
 	{
 		ft_printf("Error: File %s has too large a code (%d bytes > %d bytes)\n",
@@ -84,7 +84,6 @@ t_champ			*check_file(char *arg, int id)
 
 int				check_cycle_to_die(t_vm_info *info)
 {
-	//printf("%d\n", info->cycle);
 	delete_death_carr(info, info->carriages);
 	return (0);
 }
