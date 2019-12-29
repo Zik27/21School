@@ -6,7 +6,7 @@
 /*   By: djast <djast@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/12/29 15:22:06 by djast             #+#    #+#             */
-/*   Updated: 2019/12/29 15:38:02 by djast            ###   ########.fr       */
+/*   Updated: 2019/12/29 16:17:30 by djast            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,7 +23,9 @@ void		make_sdl_step(t_champ *champs, t_vm_info *info, t_sdl *sdl, int *i)
 	{
 		SDL_DestroyWindow(sdl->window);
 		SDL_Quit();
-		return ;
+		ft_printf("Contestant %d, \"%s\", has won !\n",
+			info->last_live_player->id, info->last_live_player->name);
+		exit(0);
 	}
 }
 
