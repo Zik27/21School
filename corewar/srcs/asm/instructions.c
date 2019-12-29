@@ -6,7 +6,7 @@
 /*   By: vurrigon <vurrigon@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/10/22 19:15:41 by aestella          #+#    #+#             */
-/*   Updated: 2019/11/29 13:25:15 by vurrigon         ###   ########.fr       */
+/*   Updated: 2019/12/29 13:23:45 by vurrigon         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -45,13 +45,13 @@ int		is_instruction(t_player *player, char *line)
 
 	i = 0;
 	j = 0;
-	while (i_name[i][0] != -1 &&
-			line[player->num_col] != g_instr[i_name[i][0] - 1].name[0])
+	while (g_name[i][0] != -1 &&
+			line[player->num_col] != g_instr[g_name[i][0] - 1].name[0])
 		i++;
 	if (i >= 8)
 		return (0);
 	else
-		return (check_instr_name(line, i_name[i], player));
+		return (check_instr_name(line, g_name[i], player));
 }
 
 void	ft_link_new_instr(t_instr *new_instr, t_player *player)

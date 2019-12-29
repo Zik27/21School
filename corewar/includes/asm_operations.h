@@ -1,6 +1,17 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   asm_operations.h                                   :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: vurrigon <vurrigon@student.42.fr>          +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2019/12/29 13:20:20 by vurrigon          #+#    #+#             */
+/*   Updated: 2019/12/29 13:24:40 by vurrigon         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
 
-#ifndef ASM_OPEARIONS_H
-# define ASM_OPEARIONS_H
+#ifndef ASM_OPERATIONS_H
+# define ASM_OPERATIONS_H
 
 typedef struct	s_op
 {
@@ -12,15 +23,15 @@ typedef struct	s_op
 	unsigned short		t_dir_size;
 }				t_op;
 
-static int 		i_name[8][7] = {
-		{15, 1, 14, 10, 13, 2, -1},	//l
-		{4, 6, 16, -1},				//a
-		{11, 5, 3, -1},				//s
-		{7, -1},	                //o
-		{12, -1},					//f
-		{8, -1},					//x
-		{9, -1},					//z
-		{-1}
+static int		g_name[8][7] = {
+	{15, 1, 14, 10, 13, 2, -1},
+	{4, 6, 16, -1},
+	{11, 5, 3, -1},
+	{7, -1},
+	{12, -1},
+	{8, -1},
+	{9, -1},
+	{-1}
 };
 
 static t_op		g_instr[16] = {
