@@ -6,7 +6,7 @@
 /*   By: djast <djast@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/12/29 13:30:29 by djast             #+#    #+#             */
-/*   Updated: 2019/12/29 14:45:00 by djast            ###   ########.fr       */
+/*   Updated: 2019/12/29 15:53:49 by djast            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -70,7 +70,7 @@ t_champ		*parse_args(int argc, char **argv, t_vm_info *info)
 {
 	int		i;
 	int		id;
-	
+
 	i = 1;
 	id = 1;
 	while (i < argc)
