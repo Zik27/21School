@@ -6,7 +6,7 @@
 /*   By: vurrigon <vurrigon@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/09/19 16:40:19 by vurrigon          #+#    #+#             */
-/*   Updated: 2019/10/22 22:01:08 by aestella         ###   ########.fr       */
+/*   Updated: 2019/11/29 16:53:32 by vurrigon         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -59,8 +59,8 @@ void	del_comment(char *line)
 }
 
 /*
- ** Есть в DASM
- */
+** Есть в DASM
+*/
 
 void	free_split(char **str)
 {

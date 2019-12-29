@@ -6,7 +6,7 @@
 /*   By: vurrigon <vurrigon@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/09/23 13:11:12 by djast             #+#    #+#             */
-/*   Updated: 2019/12/06 20:26:51 by djast            ###   ########.fr       */
+/*   Updated: 2019/12/29 11:17:35 by vurrigon         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -324,7 +324,6 @@ int		main(int argc, char **argv)
 	t_vm_info	*info;
 	t_sdl		*sdl;
 
-	sleep(8);
 	if (argc < 2)
 	{
 		print_help(argv);

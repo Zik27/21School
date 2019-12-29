@@ -15,52 +15,52 @@ SEC_ARRAY_CH=./champ/*.cor
 TH_ARRAY_CH=./champ/*.cor
 i=0
 
-rm error*
+rm error* > /dev/null 2>&1
 
 # Цикл 1 - проход по каждому игроку
 
-echo "\n${YEL}ONE_CHAMP ${NC} \n"
+# echo "\n${YEL}ONE_CHAMP ${NC} \n"
 
-for f in $FIRST_ARRAY_CH
-do
-  $PATH_TO_VM/$OUR_VM -debug $f > our_output
-  ./$ORIG_VM -v 6 -a $f > origin_output
-  if diff ./our_output ./origin_output &> /dev/null; then
-    echo "${f} - ${GREEN}[OK]${NC}"
-  else
-    echo "${f} - ${RED}[KO]${NC}"
-    echo "${f}
-    __________
-    " > error_$i
-    diff ./our_output ./origin_output >> error_$i
-    echo "__________
-    " >> error_$i
-    fi
-    i=$((i+1))
-done
+# for f in $FIRST_ARRAY_CH
+# do
+#   $PATH_TO_VM/$OUR_VM -debug $f > our_output
+#   ./$ORIG_VM -v 6 -a $f > origin_output
+#   if diff ./our_output ./origin_output &> /dev/null; then
+#     echo "${f} - ${GREEN}[OK]${NC}"
+#   else
+#     echo "${f} - ${RED}[KO]${NC}"
+#     echo "${f}
+#     __________
+#     " > error_$i
+#     diff ./our_output ./origin_output >> error_$i
+#     echo "__________
+#     " >> error_$i
+#     fi
+#     i=$((i+1))
+# done
 
 
-# Цикл 2 - проход по каждому игроку с каждым игроком из массива 2 (1 - 2 массивы)
+# # Цикл 2 - проход по каждому игроку с каждым игроком из массива 2 (1 - 2 массивы)
 
-echo "\n${YEL}TWO CHAMPIONS ${NC} \n"
-array_two=()
-for f in $FIRST_ARRAY_CH
-do
-  for fo in $SEC_ARRAY_CH
-  do
-    $PATH_TO_VM/$OUR_VM -debug $f $fo > our_output
-    ./$ORIG_VM -v 6 -a $f $fo > origin_output
-    if diff ./our_output ./origin_output &> /dev/null; then
-    echo "${f} ${fo} - ${GREEN}[OK]${NC}"
-  else
-    echo "${f} ${fo} - ${RED}[KO]${NC}"
-    echo "${f} ${fo}\n________________________________\n" > error_$i
-    diff ./our_output ./origin_output >> error_$i
-    echo "________________________________\n" >> error_$i
-    fi
-    i=$((i+1))
-  done
-done
+# echo "\n${YEL}TWO CHAMPIONS ${NC} \n"
+# array_two=()
+# for f in $FIRST_ARRAY_CH
+# do
+#   for fo in $SEC_ARRAY_CH
+#   do
+#     $PATH_TO_VM/$OUR_VM -debug $f $fo > our_output
+#     ./$ORIG_VM -v 6 -a $f $fo > origin_output
+#     if diff ./our_output ./origin_output &> /dev/null; then
+#     echo "${f} ${fo} - ${GREEN}[OK]${NC}"
+#   else
+#     echo "${f} ${fo} - ${RED}[KO]${NC}"
+#     echo "${f} ${fo}\n________________________________\n" > error_$i
+#     diff ./our_output ./origin_output >> error_$i
+#     echo "________________________________\n" >> error_$i
+#     fi
+#     i=$((i+1))
+#   done
+# done
 
 # Цикл 3 - проход по каждому 1-му со 2-м с каждым 3 (1 - 2 -3 массивы) god help
 

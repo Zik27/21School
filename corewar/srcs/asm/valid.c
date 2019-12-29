@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   valid.c                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: djast <djast@student.42.fr>                +#+  +:+       +#+        */
+/*   By: vurrigon <vurrigon@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/10/01 11:18:24 by vurrigon          #+#    #+#             */
-/*   Updated: 2019/11/06 15:28:09 by djast            ###   ########.fr       */
+/*   Updated: 2019/11/29 16:55:05 by vurrigon         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -41,10 +41,10 @@ void	check_null(int fd, int bytes)
 
 char	*get_name(int fd)
 {
-	int	ret;
+	int				ret;
 	unsigned char	buf[PROG_NAME_LENGTH];
-	char	*result;
-	int		i;
+	char			*result;
+	int				i;
 
 	i = 0;
 	ret = read(fd, buf, PROG_NAME_LENGTH);
@@ -61,10 +61,10 @@ char	*get_name(int fd)
 
 char	*get_comment(int fd)
 {
-	int	ret;
+	int				ret;
 	unsigned char	buf[COMMENT_LENGTH];
-	char	*result;
-	int		i;
+	char			*result;
+	int				i;
 
 	i = 0;
 	ret = read(fd, buf, COMMENT_LENGTH);
@@ -78,7 +78,6 @@ char	*get_comment(int fd)
 	}
 	return (result);
 }
-
 
 void	get_types(t_dasm *dasm, unsigned char types)
 {

@@ -6,7 +6,7 @@
 /*   By: vurrigon <vurrigon@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/09/17 11:50:59 by vurrigon          #+#    #+#             */
-/*   Updated: 2019/11/29 14:02:43 by vurrigon         ###   ########.fr       */
+/*   Updated: 2019/11/29 16:48:42 by vurrigon         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -79,7 +79,7 @@ void	assemble(int fd, char *file_name)
 	free_asm(header);
 }
 
-int	main(int argc, char **argv)
+int		main(int argc, char **argv)
 {
 	int	fd;
 	int	exten;

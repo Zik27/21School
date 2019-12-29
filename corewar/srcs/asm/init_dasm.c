@@ -6,13 +6,13 @@
 /*   By: vurrigon <vurrigon@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/10/01 11:13:53 by vurrigon          #+#    #+#             */
-/*   Updated: 2019/10/16 17:10:52 by vurrigon         ###   ########.fr       */
+/*   Updated: 2019/11/29 16:52:50 by vurrigon         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "dasm.h"
 
-t_dasm	*init_dasm(char	*full_name)
+t_dasm		*init_dasm(char *full_name)
 {
 	t_dasm *dasm;
 
@@ -30,6 +30,7 @@ t_dasm	*init_dasm(char	*full_name)
 t_inst_dasm	*init_ins_dasm(char *name)
 {
 	t_inst_dasm *op;
+
 	if (!(op = (t_inst_dasm *)malloc(sizeof(t_inst_dasm))))
 		return (NULL);
 	op->name = name;

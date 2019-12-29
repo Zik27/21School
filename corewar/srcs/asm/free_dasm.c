@@ -6,13 +6,13 @@
 /*   By: vurrigon <vurrigon@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/10/09 12:16:35 by vurrigon          #+#    #+#             */
-/*   Updated: 2019/10/09 13:43:04 by vurrigon         ###   ########.fr       */
+/*   Updated: 2019/11/29 16:51:01 by vurrigon         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "dasm.h"
 
-static void free_arg_dasm(t_args_dasm *dasm_arg)
+static void	free_arg_dasm(t_args_dasm *dasm_arg)
 {
 	t_args_dasm	*tmp;
 
@@ -38,7 +38,7 @@ static void	free_instr_dasm(t_inst_dasm *dasm_ins)
 	}
 }
 
-void	free_dasm(t_dasm *dasm)
+void		free_dasm(t_dasm *dasm)
 {
 	if (dasm->name)
 		free(dasm->name);

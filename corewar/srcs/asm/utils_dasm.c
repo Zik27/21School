@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   utils_dasm.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: djast <djast@student.42.fr>                +#+  +:+       +#+        */
+/*   By: vurrigon <vurrigon@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/10/01 11:17:17 by vurrigon          #+#    #+#             */
-/*   Updated: 2019/11/06 15:28:08 by djast            ###   ########.fr       */
+/*   Updated: 2019/11/29 16:53:57 by vurrigon         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,7 +24,7 @@ int		bytecode_to_int(unsigned char *buf, int count_bytes)
 	while (count_bytes)
 	{
 		if (sign)
-			result += (buf[count_bytes - 1] ^ 0xFF) << (i++ * 8); // инвертирование
+			result += (buf[count_bytes - 1] ^ 0xFF) << (i++ * 8);
 		else
 			result += buf[count_bytes - 1] << (i++ * 8);
 		count_bytes--;

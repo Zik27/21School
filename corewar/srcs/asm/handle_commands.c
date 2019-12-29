@@ -6,7 +6,7 @@
 /*   By: vurrigon <vurrigon@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/10/01 11:15:44 by vurrigon          #+#    #+#             */
-/*   Updated: 2019/10/09 12:51:20 by vurrigon         ###   ########.fr       */
+/*   Updated: 2019/11/29 16:51:47 by vurrigon         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,9 +37,9 @@ static void	read_arg_types_code(int fd, t_dasm *dasm)
 	get_types(dasm, buf[0]);
 }
 
-void	handling_command(int fd, t_dasm *dasm)
+void		handling_command(int fd, t_dasm *dasm)
 {
-	int	code_op;
+	int		code_op;
 	char	*buf[1];
 	int		ret;
 
@@ -57,5 +57,5 @@ void	handling_command(int fd, t_dasm *dasm)
 		dasm->arg_types = NULL;
 	}
 	if ((ret = read(fd, buf, 1)))
-		error("Code size does not match");	
+		error("Code size does not match");
 }

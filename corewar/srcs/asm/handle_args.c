@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   handle_args.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: djast <djast@student.42.fr>                +#+  +:+       +#+        */
+/*   By: vurrigon <vurrigon@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/10/01 11:14:46 by vurrigon          #+#    #+#             */
-/*   Updated: 2019/11/06 15:28:07 by djast            ###   ########.fr       */
+/*   Updated: 2019/11/29 16:52:16 by vurrigon         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -63,7 +63,7 @@ static void	handle_ind(int fd, t_dasm *dasm)
 	add_arg_to_instr(dasm->instr, init_arg(arg));
 }
 
-void	handle_args(int fd, t_dasm *dasm, int code_op)
+void		handle_args(int fd, t_dasm *dasm, int code_op)
 {
 	int i;
 
