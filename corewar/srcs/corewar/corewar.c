@@ -6,7 +6,7 @@
 /*   By: djast <djast@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/09/23 13:11:12 by djast             #+#    #+#             */
-/*   Updated: 2019/12/29 12:02:29 by djast            ###   ########.fr       */
+/*   Updated: 2019/12/29 14:41:45 by djast            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -324,16 +324,17 @@ int		main(int argc, char **argv)
 {
 	t_champ		*champs;
 	t_vm_info	*info;
-	t_sdl		*sdl;
 
 	if (argc < 2)
 		print_help(argv);
-	sdl = NULL;
 	info = (t_vm_info *)malloc(sizeof(t_vm_info));
 	info->dump_cycle = -1;
 	info->dump_type = -1;
 	info->debug_flag = 0;
-	champs = parse_args(argc, argv, &sdl, info);
+	info->champs = NULL;
+	info->cur_champ = NULL;
+	info->sdl = NULL;
+	champs = parse_args(argc, argv, info);
 	if (champs == NULL)
 		cerror("No champions", NULL);
 	if (get_player_count(champs) > MAX_PLAYERS)
@@ -341,9 +342,9 @@ int		main(int argc, char **argv)
 	info = init_vm_info(&info, champs);
 	place_players_on_arena(champs, info);
 	info->carriages = init_carriages(champs, info);
-	if (sdl == NULL)
+	if (info->sdl == NULL)
 		introducing(champs, info);
-	start_corewar(champs, info, sdl);
-	free_all(sdl, info, champs);
+	start_corewar(champs, info, info->sdl);
+	free_all(info->sdl, info, champs);
 	return (0);
 }

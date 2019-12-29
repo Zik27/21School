@@ -6,7 +6,7 @@
 /*   By: djast <djast@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/09/23 13:35:39 by djast             #+#    #+#             */
-/*   Updated: 2019/12/29 14:17:38 by djast            ###   ########.fr       */
+/*   Updated: 2019/12/29 14:35:56 by djast            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -108,11 +108,12 @@ typedef struct			s_vm_info
 	int					*color_map;
 	t_champ				*cur_champ;
 	t_champ				*champs;
+	t_sdl				*sdl;
 }						t_vm_info;
 
 void					cerror(char *message, char *error_file);
 void					print_help(char **argv);
-t_champ					*parse_args(int argc, char **argv, t_sdl **sdl,
+t_champ					*parse_args(int argc, char **argv,
 														t_vm_info *info);
 t_champ					*check_file(char *arg, int id);
 t_champ					*init_champ(int id);
