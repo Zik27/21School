@@ -6,7 +6,7 @@
 /*   By: vurrigon <vurrigon@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/09/25 16:51:08 by djast             #+#    #+#             */
-/*   Updated: 2019/12/29 12:46:34 by vurrigon         ###   ########.fr       */
+/*   Updated: 2019/12/29 15:29:37 by vurrigon         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,20 +25,6 @@ int			get_player_count(t_champ *champs)
 		cur_champ = cur_champ->next;
 	}
 	return (count);
-}
-
-t_champ		*find_player_by_id(t_champ *champs, int id)
-{
-	t_champ		*cur_champ;
-
-	cur_champ = champs;
-	while (cur_champ != NULL)
-	{
-		if (cur_champ->id == id)
-			return (cur_champ);
-		cur_champ = cur_champ->next;
-	}
-	return (NULL);
 }
 
 int			bytecode_to_int(t_vm_info *info, int pos, int count_bytes)
@@ -65,8 +51,7 @@ int			bytecode_to_int(t_vm_info *info, int pos, int count_bytes)
 			result += buff[count_bytes - 1] << (i++ * 8);
 		count_bytes--;
 	}
-	if (sign)
-		result = ~(result);
+	result = sign ? ~(result) : result;
 	free(buff);
 	return (result);
 }
