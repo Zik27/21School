@@ -6,7 +6,7 @@
 #    By: djast <djast@student.42.fr>                +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2019/02/15 17:18:06 by djast             #+#    #+#              #
-#    Updated: 2019/12/29 12:05:08 by djast            ###   ########.fr        #
+#    Updated: 2019/12/29 13:16:30 by djast            ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -85,7 +85,9 @@ FILSE_COREWAR = corewar.c \
 				op_utils.c \
 				op_zjmp.c \
 				free.c \
-				draw.c
+				draw.c \
+				draw_map.c \
+				draw_right_panel.c
 
 SRC_DIRECTORY = ./srcs/
 SRC_DIRECTORY_ASM = $(SRC_DIRECTORY)asm/

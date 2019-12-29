@@ -6,7 +6,7 @@
 /*   By: djast <djast@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/09/23 13:35:39 by djast             #+#    #+#             */
-/*   Updated: 2019/12/06 20:07:21 by djast            ###   ########.fr       */
+/*   Updated: 2019/12/29 13:17:34 by djast            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -150,6 +150,15 @@ void			free_champions(t_champ *champs);
 char			*hex_to_charhex(int value);
 t_sdl			*init_sdl();
 void			draw(t_sdl *sdl, t_vm_info *info);
+void			draw_map(t_sdl *sdl, t_vm_info *info);
+void			draw_map_symbol(t_sdl *sdl, char text, SDL_Rect r,
+										SDL_Color color);
+void			draw_right_panel(t_sdl *sdl, t_vm_info *info);
+void			draw_text_on_right_panel(t_sdl *sdl, t_vm_info *info);
+SDL_Color		*create_sdl_color(int r, int g, int b, int a);
+SDL_Rect		*create_sdl_rect(int x, int y, int w, int h);
+void			draw_text(t_sdl *sdl, char *text, SDL_Rect button,
+										SDL_Color color);
 
 void			make_command_live(t_vm_info *info, t_champ *champs, t_carriage *carr);
 void			make_command_ld(t_vm_info *info, t_carriage *carr);
