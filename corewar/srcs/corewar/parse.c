@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   parse.c                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: djast <djast@student.42.fr>                +#+  +:+       +#+        */
+/*   By: vurrigon <vurrigon@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/09/25 13:21:23 by djast             #+#    #+#             */
-/*   Updated: 2019/12/06 19:30:53 by djast            ###   ########.fr       */
+/*   Updated: 2019/12/29 12:30:44 by vurrigon         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -78,10 +78,10 @@ int			get_argv_cor(char **argv)
 	return (count);
 }
 
-void		set_champion_id(t_champ	*champs)
+void		set_champion_id(t_champ *champs)
 {
-	int id;
-	t_champ *cur_champ;
+	int		id;
+	t_champ	*cur_champ;
 
 	id = 1;
 	cur_champ = champs;
@@ -139,7 +139,8 @@ t_champ		*parse_args(int argc, char **argv, t_sdl **sdl, t_vm_info *info)
 			else
 				cerror("Wrong place to put player", NULL);
 		}
-		else if ((find = ft_strstr(argv[i], "-v")) != NULL && find[2] == '\0' && *sdl == NULL)
+		else if ((find = ft_strstr(argv[i], "-v")) != NULL && find[2] == '\0'
+					&& *sdl == NULL)
 			*sdl = init_sdl();
 		else
 			cerror("Can't read source file %s", argv[i]);

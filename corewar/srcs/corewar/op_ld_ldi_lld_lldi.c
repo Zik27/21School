@@ -6,7 +6,7 @@
 /*   By: vurrigon <vurrigon@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/10/09 09:21:36 by djast             #+#    #+#             */
-/*   Updated: 2019/12/29 11:53:38 by vurrigon         ###   ########.fr       */
+/*   Updated: 2019/12/29 12:41:37 by vurrigon         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -76,7 +76,7 @@ void			make_command_ldi(t_vm_info *info, t_carriage *carr)
 		res += carr->registers[carr->args[1] - 1];
 	else if (carr->args_types[1] == DIR_CODE)
 		res += carr->args[1];
-	carr->registers[carr->args[2] - 1] = bytecode_to_int(info, 
+	carr->registers[carr->args[2] - 1] = bytecode_to_int(info,
 							(carr->cur_pos + (res % IDX_MOD)) % MEM_SIZE, 4);
 	if (info->debug_flag == 1)
 		print_debug_ldi(info, carr, res);
@@ -103,8 +103,6 @@ void			make_command_lld(t_vm_info *info, t_carriage *carr)
 		carr->carry = 0;
 }
 
-
-/* TODO: debug lldi */
 void			make_command_lldi(t_vm_info *info, t_carriage *carr)
 {
 	int res;

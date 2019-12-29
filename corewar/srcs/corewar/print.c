@@ -6,7 +6,7 @@
 /*   By: vurrigon <vurrigon@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/09/25 13:20:31 by djast             #+#    #+#             */
-/*   Updated: 2019/11/29 12:36:48 by vurrigon         ###   ########.fr       */
+/*   Updated: 2019/12/29 12:39:34 by vurrigon         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,6 +24,7 @@ void	print_help(char **argv)
 	ft_printf("Usage: ");
 	ft_printf("%s [-dump nbr_cycles] [[-n number] champion1.cor] ...\n",
 																	argv[0]);
+	exit(0);
 }
 
 void	print_map(char *map, int count_in_row)

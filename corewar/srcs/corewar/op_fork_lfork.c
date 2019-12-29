@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   op_fork_lfork.c                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: djast <djast@student.42.fr>                +#+  +:+       +#+        */
+/*   By: vurrigon <vurrigon@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/10/09 09:40:38 by djast             #+#    #+#             */
-/*   Updated: 2019/12/06 17:32:29 by djast            ###   ########.fr       */
+/*   Updated: 2019/12/29 12:31:08 by vurrigon         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,8 +39,8 @@ void			make_command_lfork(t_vm_info *info, t_carriage *carr)
 	while (info->carriages->cur_pos < 0)
 		info->carriages->cur_pos = MEM_SIZE + info->carriages->cur_pos;
 	if (info->debug_flag == 1)
-	ft_printf("lfork %d (%d)\n", carr->args[0], carr->cur_pos +
-														carr->args[0]);
+		ft_printf("lfork %d (%d)\n", carr->args[0], carr->cur_pos +
+			carr->args[0]);
 	set_op_steps(info->carriages);
 	calc_jump_size(carr);
 }
