@@ -6,7 +6,7 @@
 /*   By: vurrigon <vurrigon@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/09/25 13:21:23 by djast             #+#    #+#             */
-/*   Updated: 2019/12/29 12:30:44 by vurrigon         ###   ########.fr       */
+/*   Updated: 2019/12/29 12:59:31 by vurrigon         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -46,6 +46,7 @@ void		parse_dump_flag(char *command, char *argv_cycle, t_vm_info *info)
 		info->dump_type = CODE_D;
 	else
 		info->dump_type = CODE_DUMP;
+	free(check);
 }
 
 int			is_flag(char *place, char *name, int max_players, t_champ *champs)
