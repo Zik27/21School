@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   vm.h                                               :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: djast <djast@student.42.fr>                +#+  +:+       +#+        */
+/*   By: vurrigon <vurrigon@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/09/23 13:35:39 by djast             #+#    #+#             */
-/*   Updated: 2019/12/06 20:07:21 by djast            ###   ########.fr       */
+/*   Updated: 2019/12/29 13:48:17 by vurrigon         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,44 +29,38 @@
 # define SIZE_WIN_Y 1300
 # define SYMBOL_SIZE 18
 # define SPACE_SIZE 2
-
 # define COREWAR_TEXT_X SIZE_WIN_X * 0.77
 # define COREWAR_TEXT_Y SIZE_WIN_Y * 0.07
 # define COREWAR_TEXT_SIZE_X SIZE_WIN_X * 0.22
 # define COREWAR_TEXT_SIZE_Y 100
-
 # define SPEED_TEXT_X SIZE_WIN_X * 0.77
 # define SPEED_TEXT_Y SIZE_WIN_Y * 0.2
 # define SPEED_TEXT_SIZE_X SIZE_WIN_X * 0.05
 # define SPEED_TEXT_SIZE_Y 40
-
 # define SPEED_RES_X SIZE_WIN_X * 0.83
 # define SPEED_RES_Y SIZE_WIN_Y * 0.2
 # define SPEED_RES_SIZE_X SIZE_WIN_X * 0.05
 # define SPEED_RES_SIZE_Y 40
-
 # define CYCLE_TEXT_X SIZE_WIN_X * 0.77
 # define CYCLE_TEXT_Y SIZE_WIN_Y * 0.25
 # define CYCLE_TEXT_SIZE_X SIZE_WIN_X * 0.05
 # define CYCLE_TEXT_SIZE_Y 40
-
 # define CYCLE_RES_X SIZE_WIN_X * 0.83
 # define CYCLE_RES_Y SIZE_WIN_Y * 0.25
 # define CYCLE_RES_SIZE_X SIZE_WIN_X * 0.05
 # define CYCLE_RES_SIZE_Y 40
 
-
-typedef struct		s_sdl
+typedef struct			s_sdl
 {
-	SDL_Window		*window;
-	SDL_Renderer	*renderer;
-	SDL_Event		window_event;
-	TTF_Font		*font;
-	SDL_Texture		*text;
-	SDL_Surface		*surface;
-	int				speed;
-	int				is_pause;
-}					t_sdl;
+	SDL_Window			*window;
+	SDL_Renderer		*renderer;
+	SDL_Event			window_event;
+	TTF_Font			*font;
+	SDL_Texture			*text;
+	SDL_Surface			*surface;
+	int					speed;
+	int					is_pause;
+}						t_sdl;
 
 typedef struct			s_champ
 {
@@ -80,7 +74,7 @@ typedef struct			s_champ
 	struct s_champ		*next;
 }						t_champ;
 
-typedef struct 			s_carriage
+typedef struct			s_carriage
 {
 	int					id;
 	int					carry;
@@ -96,7 +90,6 @@ typedef struct 			s_carriage
 	int					*args;
 	struct s_carriage	*next;
 }						t_carriage;
-
 
 typedef struct			s_vm_info
 {
@@ -115,57 +108,59 @@ typedef struct			s_vm_info
 	int					*color_map;
 }						t_vm_info;
 
-
-
-void			cerror(char *message, char *error_file);
-void			print_help(char **argv);
-t_champ			*parse_args(int argc, char **argv, t_sdl **sdl, t_vm_info *info);
-t_champ			*check_file(char *arg, int id);
-t_champ			*init_champ(int id);
-char 			*get_champ_name(int fd);
-int				get_champ_code_size(int fd);
-char			*get_champ_comment(int fd);
-char			*get_champ_code(int fd, int code_size);
-int				get_player_count(t_champ *champs);
-t_vm_info		*init_vm_info(t_vm_info **info, t_champ *players);
-void			place_players_on_arena(t_champ *champs, t_vm_info *info);
-void			print_map(char *map, int count_in_row);
-t_carriage		*init_carriages(t_champ *champs, t_vm_info *info);
-t_carriage		*init_carriage(t_champ *cur_player, t_vm_info *info);
-void			print_carriages(t_carriage *car);
-t_champ			*find_player_by_id(t_champ *champs, int id);
-void			introducing(t_champ	*champs, t_vm_info *info);
-void			set_op_steps(t_carriage *carr);
-int				bytecode_to_int(t_vm_info *info, int pos, int count_bytes);
-void			rewrite(t_vm_info *info, int addr, int number, t_champ *champ);
-void			get_op_arg_type(t_vm_info *info, t_carriage *carr);
-void			get_op_arg(t_vm_info *info, t_carriage *carr, int cmd);
-void			calc_jump_size(t_carriage *carr);
-char			*int_to_bytecode(int value, int size);
-void			create_carr_copy(t_vm_info *info, t_carriage *carr);
-int				check_cycle_to_die(t_vm_info *info);
-void			delete_death_carr(t_vm_info *info, t_carriage *carr);
-void			free_all(t_sdl *sdl, t_vm_info *info, t_champ *champs);
-void			free_champions(t_champ *champs);
-char			*hex_to_charhex(int value);
-t_sdl			*init_sdl();
-void			draw(t_sdl *sdl, t_vm_info *info);
-
-void			make_command_live(t_vm_info *info, t_champ *champs, t_carriage *carr);
-void			make_command_ld(t_vm_info *info, t_carriage *carr);
-void			make_command_st(t_vm_info *info, t_carriage *carr);
-void			make_command_add(t_vm_info *info, t_carriage *carr);
-void			make_command_sub(t_vm_info *info, t_carriage *carr);
-void			make_command_and(t_vm_info *info, t_carriage *carr);
-void			make_command_or(t_vm_info *info, t_carriage *carr);
-void			make_command_xor(t_vm_info *info, t_carriage *carr);
-void			make_command_zjmp(t_vm_info *info, t_carriage *carr);
-void			make_command_ldi(t_vm_info *info, t_carriage *carr);
-void			make_command_sti(t_vm_info *info, t_carriage *carr);
-void			make_command_fork(t_vm_info *info, t_carriage *carr);
-void			make_command_lld(t_vm_info *info, t_carriage *carr);
-void			make_command_lldi(t_vm_info *info, t_carriage *carr);
-void			make_command_lfork(t_vm_info *info, t_carriage *carr);
-void			make_command_aff(t_vm_info *info, t_carriage *carr);
+void					cerror(char *message, char *error_file);
+void					print_help(char **argv);
+t_champ					*parse_args(int argc, char **argv, t_sdl **sdl,
+														t_vm_info *info);
+t_champ					*check_file(char *arg, int id);
+t_champ					*init_champ(int id);
+char					*get_champ_name(int fd);
+int						get_champ_code_size(int fd);
+char					*get_champ_comment(int fd);
+char					*get_champ_code(int fd, int code_size);
+int						get_player_count(t_champ *champs);
+t_vm_info				*init_vm_info(t_vm_info **info, t_champ *players);
+void					place_players_on_arena(t_champ *champs,
+												t_vm_info *info);
+void					print_map(char *map, int count_in_row);
+t_carriage				*init_carriages(t_champ *champs, t_vm_info *info);
+t_carriage				*init_carriage(t_champ *cur_player, t_vm_info *info);
+void					print_carriages(t_carriage *car);
+t_champ					*find_player_by_id(t_champ *champs, int id);
+void					introducing(t_champ	*champs, t_vm_info *info);
+void					set_op_steps(t_carriage *carr);
+int						bytecode_to_int(t_vm_info *info, int pos,
+											int count_bytes);
+void					rewrite(t_vm_info *info, int addr, int number,
+									t_champ *champ);
+void					get_op_arg_type(t_vm_info *info, t_carriage *carr);
+void					get_op_arg(t_vm_info *info, t_carriage *carr, int cmd);
+void					calc_jump_size(t_carriage *carr);
+char					*int_to_bytecode(int value, int size);
+void					create_carr_copy(t_vm_info *info, t_carriage *carr);
+int						check_cycle_to_die(t_vm_info *info);
+void					delete_death_carr(t_vm_info *info, t_carriage *carr);
+void					free_all(t_sdl *sdl, t_vm_info *info, t_champ *champs);
+void					free_champions(t_champ *champs);
+char					*hex_to_charhex(int value);
+t_sdl					*init_sdl();
+void					draw(t_sdl *sdl, t_vm_info *info);
+void					make_command_live(t_vm_info *info, t_champ *champs,
+											t_carriage *carr);
+void					make_command_ld(t_vm_info *info, t_carriage *carr);
+void					make_command_st(t_vm_info *info, t_carriage *carr);
+void					make_command_add(t_vm_info *info, t_carriage *carr);
+void					make_command_sub(t_vm_info *info, t_carriage *carr);
+void					make_command_and(t_vm_info *info, t_carriage *carr);
+void					make_command_or(t_vm_info *info, t_carriage *carr);
+void					make_command_xor(t_vm_info *info, t_carriage *carr);
+void					make_command_zjmp(t_vm_info *info, t_carriage *carr);
+void					make_command_ldi(t_vm_info *info, t_carriage *carr);
+void					make_command_sti(t_vm_info *info, t_carriage *carr);
+void					make_command_fork(t_vm_info *info, t_carriage *carr);
+void					make_command_lld(t_vm_info *info, t_carriage *carr);
+void					make_command_lldi(t_vm_info *info, t_carriage *carr);
+void					make_command_lfork(t_vm_info *info, t_carriage *carr);
+void					make_command_aff(t_vm_info *info, t_carriage *carr);
 
 #endif
