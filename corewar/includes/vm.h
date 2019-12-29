@@ -6,7 +6,7 @@
 /*   By: djast <djast@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/09/23 13:35:39 by djast             #+#    #+#             */
-/*   Updated: 2019/12/29 14:35:56 by djast            ###   ########.fr       */
+/*   Updated: 2019/12/29 15:41:10 by djast            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -165,6 +165,15 @@ void					parse_dump_flag(char *command, char *argv_cycle,
 															t_vm_info *info);
 void					set_champion_id(t_champ *champs);
 int						get_argv_cor(char **argv);
+void					sdl_loop(t_champ *champs, t_vm_info *info, t_sdl *sdl,
+																int *i);
+int						make_step_cycle(t_vm_info *info, t_champ *champs);
+void					make_command(t_vm_info *info, t_champ *champs,
+														t_carriage *carr);
+int						get_info_for_command(t_vm_info *info, t_carriage *carr);
+void					skip_command(t_carriage *carr, int args[3]);
+int						check_command_args(t_carriage *carr, int args[3]);
+int						check_registers(t_vm_info *info, t_carriage *carr);
 void					make_command_live(t_vm_info *info, t_champ *champs,
 											t_carriage *carr);
 void					make_command_ld(t_vm_info *info, t_carriage *carr);

@@ -6,7 +6,7 @@
 /*   By: djast <djast@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/09/25 13:58:35 by djast             #+#    #+#             */
-/*   Updated: 2019/12/29 14:33:20 by djast            ###   ########.fr       */
+/*   Updated: 2019/12/29 15:57:42 by djast            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -85,6 +85,7 @@ t_sdl				*init_sdl(void)
 					SDL_RENDERER_ACCELERATED);
 	sdl->font = TTF_OpenFont("OpenSans-Regular.ttf", 50);
 	sdl->speed = 40;
+	sdl->text = NULL;
 	sdl->is_pause = 1;
 	return (sdl);
 }
