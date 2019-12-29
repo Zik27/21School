@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   vm.h                                               :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: vurrigon <vurrigon@student.42.fr>          +#+  +:+       +#+        */
+/*   By: djast <djast@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/09/23 13:35:39 by djast             #+#    #+#             */
-/*   Updated: 2019/12/29 13:17:34 by djast            ###   ########.fr       */
+/*   Updated: 2019/12/29 14:17:38 by djast            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -106,6 +106,8 @@ typedef struct			s_vm_info
 	t_champ				*last_live_player;
 	char				*map;
 	int					*color_map;
+	t_champ				*cur_champ;
+	t_champ				*champs;
 }						t_vm_info;
 
 void					cerror(char *message, char *error_file);
@@ -145,15 +147,23 @@ void					free_champions(t_champ *champs);
 char					*hex_to_charhex(int value);
 t_sdl					*init_sdl();
 void					draw(t_sdl *sdl, t_vm_info *info);
-void			draw_map(t_sdl *sdl, t_vm_info *info);
-void			draw_map_symbol(t_sdl *sdl, char text, SDL_Rect r,
+void					draw_map(t_sdl *sdl, t_vm_info *info);
+void					draw_map_symbol(t_sdl *sdl, char text, SDL_Rect r,
+											SDL_Color color);
+void					draw_right_panel(t_sdl *sdl, t_vm_info *info);
+void					draw_text_on_right_panel(t_sdl *sdl, t_vm_info *info);
+SDL_Color				*create_sdl_color(int r, int g, int b, int a);
+SDL_Rect				*create_sdl_rect(int x, int y, int w, int h);
+void					draw_text(t_sdl *sdl, char *text, SDL_Rect button,
 										SDL_Color color);
-void			draw_right_panel(t_sdl *sdl, t_vm_info *info);
-void			draw_text_on_right_panel(t_sdl *sdl, t_vm_info *info);
-SDL_Color		*create_sdl_color(int r, int g, int b, int a);
-SDL_Rect		*create_sdl_rect(int x, int y, int w, int h);
-void			draw_text(t_sdl *sdl, char *text, SDL_Rect button,
-										SDL_Color color);
+void					parse_champion(t_champ **champs, t_champ **cur_champ,
+								char *filename, int i);
+int						is_flag(char *place, char *name, int max_players,
+															t_champ *champs);
+void					parse_dump_flag(char *command, char *argv_cycle,
+															t_vm_info *info);
+void					set_champion_id(t_champ *champs);
+int						get_argv_cor(char **argv);
 void					make_command_live(t_vm_info *info, t_champ *champs,
 											t_carriage *carr);
 void					make_command_ld(t_vm_info *info, t_carriage *carr);
