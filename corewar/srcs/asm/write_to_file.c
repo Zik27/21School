@@ -6,7 +6,7 @@
 /*   By: vurrigon <vurrigon@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/10/01 11:11:32 by vurrigon          #+#    #+#             */
-/*   Updated: 2019/11/29 16:55:47 by vurrigon         ###   ########.fr       */
+/*   Updated: 2019/12/29 16:00:19 by vurrigon         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,7 +22,7 @@ int		create_new_fd(t_dasm *dasm)
 	tmp = ft_strsub(dasm->full_name_file, 0, new_name - dasm->full_name_file);
 	new_name = ft_strjoin(tmp, ".s");
 	free(tmp);
-	fd = open(new_name, O_WRONLY);
+	fd = open(new_name, O_WRONLY | O_TRUNC);
 	if (fd == -1)
 	{
 		open(new_name, O_CREAT);
