@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   op_ld_ldi_lld_lldi.c                               :+:      :+:    :+:   */
+/*   op_ld_ldi.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: vurrigon <vurrigon@student.42.fr>          +#+  +:+       +#+        */
+/*   By: djast <djast@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2019/10/09 09:21:36 by djast             #+#    #+#             */
-/*   Updated: 2019/12/29 11:53:38 by vurrigon         ###   ########.fr       */
+/*   Created: 2019/12/29 12:04:13 by djast             #+#    #+#             */
+/*   Updated: 2019/12/29 12:37:28 by djast            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -80,51 +80,5 @@ void			make_command_ldi(t_vm_info *info, t_carriage *carr)
 							(carr->cur_pos + (res % IDX_MOD)) % MEM_SIZE, 4);
 	if (info->debug_flag == 1)
 		print_debug_ldi(info, carr, res);
-	calc_jump_size(carr);
-}
-
-void			make_command_lld(t_vm_info *info, t_carriage *carr)
-{
-	ft_bzero(carr->args_types, 3 * sizeof(int));
-	get_op_arg_type(info, carr);
-	get_op_arg(info, carr, carr->op_code);
-	if (carr->args_types[0] == DIR_CODE)
-		carr->registers[carr->args[1] - 1] = carr->args[0];
-	else
-		carr->registers[carr->args[1] - 1] = bytecode_to_int(info,
-							(carr->cur_pos + carr->args[0]) % MEM_SIZE, 4);
-	if (info->debug_flag == 1)
-		ft_printf("lld %d r%d\n", carr->registers[carr->args[1] - 1],
-															carr->args[1]);
-	calc_jump_size(carr);
-	if (carr->args[0] == 0)
-		carr->carry = 1;
-	else
-		carr->carry = 0;
-}
-
-
-/* TODO: debug lldi */
-void			make_command_lldi(t_vm_info *info, t_carriage *carr)
-{
-	int res;
-
-	ft_bzero(carr->args_types, 3 * sizeof(int));
-	get_op_arg_type(info, carr);
-	get_op_arg(info, carr, carr->op_code);
-	res = 0;
-	if (carr->args_types[0] == REG_CODE)
-		res += carr->registers[carr->args[0] - 1];
-	else if (carr->args_types[0] == DIR_CODE)
-		res += carr->args[0];
-	else if (carr->args_types[0] == IND_CODE)
-		res += bytecode_to_int(info, (carr->cur_pos +
-									(carr->args[0] % IDX_MOD)) % MEM_SIZE, 4);
-	if (carr->args_types[1] == REG_CODE)
-		res += carr->registers[carr->args[1] - 1];
-	else if (carr->args_types[1] == DIR_CODE)
-		res += carr->args[1];
-	carr->registers[carr->args[2] - 1] = bytecode_to_int(info,
-										(carr->cur_pos + res) % MEM_SIZE, 4);
 	calc_jump_size(carr);
 }

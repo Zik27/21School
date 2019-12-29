@@ -6,7 +6,7 @@
 /*   By: djast <djast@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/09/25 13:21:23 by djast             #+#    #+#             */
-/*   Updated: 2019/12/06 19:30:53 by djast            ###   ########.fr       */
+/*   Updated: 2019/12/21 19:48:27 by djast            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -145,6 +145,7 @@ t_champ		*parse_args(int argc, char **argv, t_sdl **sdl, t_vm_info *info)
 			cerror("Can't read source file %s", argv[i]);
 		i++;
 	}
+
 	set_champion_id(champs);
 	return (champs);
 }
